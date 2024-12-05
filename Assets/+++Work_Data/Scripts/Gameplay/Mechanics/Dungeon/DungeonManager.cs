@@ -23,6 +23,7 @@ public class DungeonManager : MonoBehaviour
 
     public GameObject wallVertical;
     public GameObject wallHorizontal;
+    public List<GameObject> decorativeAssets;
     private List<Vector3Int> possibleDoorVerticalPosition;
     private List<Vector3Int> possibleDoorHorizontalPosition;
     private List<Vector3Int> possibleWallVerticalPosition;
@@ -142,6 +143,12 @@ public class DungeonManager : MonoBehaviour
         }
     }
 
+
+    public void initiateAssets()
+    {
+        //find out the possible spaces in which the assets can spawn
+        //make sure assets cannot spawn out of bounds
+    }
     private void AddWallPositionToList(Vector3 wallPosition, List<Vector3Int> wallList, List<Vector3Int> doorList)
     {
         Vector3Int point = Vector3Int.CeilToInt(wallPosition);

@@ -21,14 +21,10 @@ public class PlayerController : MonoBehaviour
     
     [Min(0)]
     [Tooltip("The maximum speed of the player in uu/s")]
-    [SerializeField] private float crouchSpeed;
     [SerializeField] private float walkSpeed;
-    [SerializeField] private float runSpeed;
-    
     [Min(0)]
     [Tooltip("How fast the movement speed is in-/decreasing")]
     [SerializeField] private float speedChangeRate = 10f;
-
     [SerializeField] private float rotationSpeed = 10f;
 
     [Header("Slope Movement")] 
@@ -40,7 +36,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float raycastLength = 0.5f;
     
     [Header("Camera")] 
-    
+    //needs a massive rework, doesnt fit for our type of game
     [SerializeField] private Transform cameraTarget;
 
     [SerializeField] private float verticalCameraRotationMin = -30f;
@@ -101,8 +97,6 @@ public class PlayerController : MonoBehaviour
         inputActions = new GameInput();
         moveAction = inputActions.Player.Move;
         lookAction = inputActions.Player.Look;
-        runAction = inputActions.Player.ShiftRun;
-        crouchAction = inputActions.Player.Crouch;
 
         characterTargetRotation = transform.rotation;
         cameraRotation = cameraTarget.rotation.eulerAngles;
@@ -113,12 +107,6 @@ public class PlayerController : MonoBehaviour
 public void OnEnable()
     {
         inputActions.Enable();
-
-        runAction.performed += Run;
-        runAction.canceled += Run;
-        
-        crouchAction.performed += Crouch;
-        crouchAction.canceled += Crouch;
     }
 
     private void Update()
@@ -140,11 +128,6 @@ public void OnEnable()
   public void OnDisable()
     {
         inputActions.Disable();
-        runAction.performed -= Run;
-        runAction.canceled -= Run;
-        
-        crouchAction.performed -= Crouch;
-        crouchAction.canceled -= Crouch;
     }
 
     private void OnDestroy()
@@ -161,17 +144,6 @@ public void OnEnable()
         lookInput = lookAction.ReadValue<Vector2>();
     }
 
-    private void Run(InputAction.CallbackContext ctx)
-    {
-        isRunning = ctx.performed;
-        currentSpeed = isRunning ? runSpeed : walkSpeed;
-    }
-    
-    private void Crouch(InputAction.CallbackContext ctx)
-    {
-        isCrouching = ctx.performed;
-        currentSpeed = isCrouching ? crouchSpeed : isRunning ? runSpeed : walkSpeed;
-    }
 
     #endregion
     
@@ -269,7 +241,7 @@ public void OnEnable()
     #endregion
     
     #region Camera
-
+    //fix clipping into walls while were at it...
     private void RotateCamera(Vector2 lookInput)
     {
         if (lookInput != Vector2.zero)
@@ -279,18 +251,7 @@ public void OnEnable()
             float deltaTimeMultiplier = isMouseLook ? 1 : Time.deltaTime;
 
             float sensitivity = isMouseLook ? mouseCameraSensitivity : controllerCameraSensitivity;
-            
-            /*       
-            if (isMouseLook)
-            {
-                sensitivity = mouseCameraSensitivity;
-            }
-            else
-            {
-                sensitivity = controllerCameraSensitivity;
-            }
-            */
-
+  
             lookInput *= deltaTimeMultiplier * sensitivity;
             
             cameraRotation.x += lookInput.y * cameraVerticalSpeed * (!isMouseLook && invertY ? -1 : 1);
