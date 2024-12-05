@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class RemoveItem : MonoBehaviour
 {
     [SerializeField] State state;
+    [SerializeField] State money;
+
     [SerializeField]  private UnityEvent onCollected;
     [SerializeField] private GameObject Indicator;
     
@@ -13,7 +15,25 @@ public class RemoveItem : MonoBehaviour
 
     public void Remove()
     {
+        // Mathf.Clamp(state.amount, 0, 100);
         onCollected.Invoke();
+        
+        FindObjectOfType<GameState>().Remove(state);
+        
+
+        Indicator.SetActive(false);
+        
+    }
+
+    public void AddMoney()
+    {
+        FindObjectOfType<GameState>().Add(money);
+    }
+    
+    public void Buy()
+    {
+        Indicator.SetActive(true);
+
         FindObjectOfType<GameState>().Remove(state);
         
     }

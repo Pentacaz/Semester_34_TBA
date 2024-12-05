@@ -53,6 +53,8 @@ public class GameState : MonoBehaviour
         // gibt es nich
         if (state == null)
         {
+           // Mathf.Clamp(amount, 0, 100);
+
             State newState = new State(id, amount);
             states.Add(newState);
         }
@@ -87,7 +89,6 @@ public class GameState : MonoBehaviour
         {
             if (states[i].amount == 0)
             {
-                Mathf.Clamp(states[i].amount, 0, 100);
                 states.RemoveAt(i);
                 i--;
                 
@@ -108,6 +109,7 @@ public class GameState : MonoBehaviour
 
     public void Remove(State state, bool invokeEvent = true)
     {
+        
         StartCoroutine(CheckItems());
         Add(state.id, -state.amount, invokeEvent);
     }
@@ -118,6 +120,7 @@ public class GameState : MonoBehaviour
         // liste von state s
         foreach (State state in states)
         {
+            
             Add(state, false);
         }
         StateChanged?.Invoke();

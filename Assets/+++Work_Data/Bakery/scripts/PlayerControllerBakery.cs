@@ -11,7 +11,7 @@ public class PlayerControllerBakery : MonoBehaviour
     private static readonly int Hash_MovementSpeed = Animator.StringToHash("MovementSpeed");
     private static readonly int Hash_Grounded = Animator.StringToHash("Grounded");
     private static readonly int Hash_Crouched = Animator.StringToHash("Crouched");
-    private static readonly int Hash_Jumped = Animator.StringToHash("Jumped");
+    //private static readonly int Hash_Jumped = Animator.StringToHash("Jumped");
     private static readonly int Hash_ActionTrigger = Animator.StringToHash("ActionTrigger");
     private static readonly int Hash_ActionId = Animator.StringToHash("ActionId");
     private static readonly int Hash_WeaponEquipTrigger = Animator.StringToHash("WeaponEquipTrigger");
@@ -402,14 +402,10 @@ public class PlayerControllerBakery : MonoBehaviour
         
         animator.SetFloat(Hash_MovementSpeed, speed);
         animator.SetBool(Hash_Grounded, isGrounded);
-        animator.SetBool(Hash_Crouched, isCrouched);
+       // animator.SetBool(Hash_Crouched, isCrouched);
     }
 
-    public void JumpEnd()
-    {
-        animator.SetBool(Hash_Jumped, false);
-    }
-
+  
     public void AnimationsWeaponEquip(int id)
     {
         animator.SetTrigger(Hash_WeaponEquipTrigger);
