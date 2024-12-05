@@ -14,6 +14,8 @@ public class State
     
     public State(string id, int amount)
     {
+        
+
         this.id = id;
         this.amount = amount;
     }

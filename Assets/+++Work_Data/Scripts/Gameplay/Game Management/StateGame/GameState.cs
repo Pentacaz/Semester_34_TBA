@@ -58,6 +58,7 @@ public class GameState : MonoBehaviour
         }
         else
         {
+            Mathf.Clamp(amount, 0, 100);
             state.amount += amount;
         }
 
@@ -86,8 +87,10 @@ public class GameState : MonoBehaviour
         {
             if (states[i].amount == 0)
             {
+                Mathf.Clamp(states[i].amount, 0, 100);
                 states.RemoveAt(i);
                 i--;
+                
             }
         }
         isCoroutineRunning = false;
@@ -100,9 +103,15 @@ public class GameState : MonoBehaviour
         // durchläuft liste von State s 
         // zerteilt items in bestandteile
         Add(state.id, state.amount, invokeEvent);
+        
     }
 
-
+    public void Remove(State state, bool invokeEvent = true)
+    {
+        StartCoroutine(CheckItems());
+        Add(state.id, -state.amount, invokeEvent);
+    }
+    
     public void Add(List<State> states)
     { // für jeden gegen stand in der liste State wird es aufgeruffen 
         // States = > liste ; zuerst aufgeruffen
