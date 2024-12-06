@@ -7,7 +7,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
-[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
     private static readonly int Hash_MovementSpeed = Animator.StringToHash("MovementSpeed");
@@ -16,35 +15,21 @@ public class PlayerController : MonoBehaviour
 
     #region Inspector
 
-    [FormerlySerializedAs("movementSpeed")]
-    [Header("Movement")]
-    
-    [Min(0)]
-    [Tooltip("The maximum speed of the player in uu/s")]
+
     [SerializeField] private float walkSpeed;
-    [Min(0)]
-    [Tooltip("How fast the movement speed is in-/decreasing")]
+    [SerializeField] private float dashPower;
+    
     [SerializeField] private float speedChangeRate = 10f;
     [SerializeField] private float rotationSpeed = 10f;
 
-    [Header("Slope Movement")] 
-    
-    [SerializeField] private float pullDownForce = 5f;
-
-    [SerializeField] private LayerMask raycastMask;
-
-    [SerializeField] private float raycastLength = 0.5f;
     
     [Header("Camera")] 
     //needs a massive rework, doesnt fit for our type of game
     [SerializeField] private Transform cameraTarget;
-
+    
     [SerializeField] private float verticalCameraRotationMin = -30f;
-
     [SerializeField] private float verticalCameraRotationMax = 70f;
-
     [SerializeField] private float cameraHorizontalSpeed = 200f;
-
     [SerializeField] private float cameraVerticalSpeed = 130f;
 
     [Header("Animations")] 
@@ -58,63 +43,63 @@ public class PlayerController : MonoBehaviour
     
     [Header("Controller Settings")] 
     [SerializeField] private float controllerCameraSensitivity = 1f;
-
     [SerializeField] private bool invertY = true;
 
     #endregion
     
     #region Private Variables
-    private CharacterController characterController;
+    private Rigidbody _rigidbody;
     
-    private GameInput inputActions;
-    private InputAction moveAction;
-    private InputAction lookAction;
-    private InputAction runAction;
-    private InputAction crouchAction;
-    private Interactable selectedInteractable;
+    private GameInput _inputActions;
+    private InputAction _moveAction;
+    private InputAction _lookAction;
+    private InputAction _dashAction;
+    private Interactable _selectedInteractable;
     
-    private Vector2 moveInput;
-    private Vector2 lookInput;
+    private Vector2 _moveInput;
+    private Vector2 _lookInput;
 
-    private Quaternion characterTargetRotation = Quaternion.identity;
+    private Quaternion _characterTargetRotation = Quaternion.identity;
     
-    private Vector2 cameraRotation;
-    
-    private Vector3 lastMovement;
+    private Vector2 _cameraRotation;
+    private Vector3 _lastMovement;
 
-    private bool isGrounded;
-    private bool isRunning;
-    private bool isCrouching;
-    private float airTime;
-    private float currentSpeed = 3f;
+    private bool _isGrounded;
+    private bool _isRunning;
+    private bool _isCrouching;
+    private float _airTime;
+    private float _currentSpeed = 3f;
     #endregion
     
     #region Event Functions
     private void Awake()
     {
-        characterController = GetComponent<CharacterController>();
+      _rigidbody = GetComponent<Rigidbody>();
            
-        inputActions = new GameInput();
-        moveAction = inputActions.Player.Move;
-        lookAction = inputActions.Player.Look;
+        _inputActions = new GameInput();
+        _moveAction = _inputActions.Player.Move;
+        _lookAction = _inputActions.Player.Look;
+        _dashAction = _inputActions.Player.Dash;
 
-        characterTargetRotation = transform.rotation;
-        cameraRotation = cameraTarget.rotation.eulerAngles;
+        _characterTargetRotation = transform.rotation;
+        _cameraRotation = cameraTarget.rotation.eulerAngles;
 
-        currentSpeed = walkSpeed;
+        _currentSpeed = walkSpeed;
     }
 
 public void OnEnable()
     {
-        inputActions.Enable();
+        _inputActions.Enable();
+        _dashAction.performed += DashAction;
+       
     }
 
     private void Update()
     {
         ReadInput();
 
-        Rotate(moveInput);
-        Move(moveInput);
+        Rotate(_moveInput);
+        Move(_moveInput);
 
         GroundCheck();
         UpdateAnimator();
@@ -122,12 +107,15 @@ public void OnEnable()
 
     private void LateUpdate()
     {
-        RotateCamera(lookInput);
+      
     }
 
   public void OnDisable()
     {
-        inputActions.Disable();
+        _inputActions.Disable();
+        _dashAction.performed -= DashAction;
+    
+    
     }
 
     private void OnDestroy()
@@ -140,15 +128,15 @@ public void OnEnable()
 
     private void ReadInput()
     {
-        moveInput = moveAction.ReadValue<Vector2>();
-        lookInput = lookAction.ReadValue<Vector2>();
+        _moveInput = _moveAction.ReadValue<Vector2>();
+        _lookInput = _lookAction.ReadValue<Vector2>();
     }
 
 
     #endregion
     
     #region Movement
-
+// #TODO rewrite cause this clips with walls.
     private void Rotate(Vector2 moveInput)
     {
         if (moveInput != Vector2.zero)
@@ -158,24 +146,26 @@ public void OnEnable()
             Vector3 worldInputDirection = cameraTarget.TransformDirection(inputDirection);
             worldInputDirection.y = 0;
             
-            characterTargetRotation = Quaternion.LookRotation(worldInputDirection);
+            _characterTargetRotation = Quaternion.LookRotation(worldInputDirection);
         }
 
-        if (Quaternion.Angle(transform.rotation, characterTargetRotation) > 0.1f)
+        if (Quaternion.Angle(transform.rotation, _characterTargetRotation) > 0.1f)
         {
             transform.rotation =
-                Quaternion.Slerp(transform.rotation, characterTargetRotation, rotationSpeed * Time.deltaTime);
+                Quaternion.Slerp(transform.rotation, _characterTargetRotation, rotationSpeed * Time.deltaTime);
         }
         else
         {
-            transform.rotation = characterTargetRotation;
+            transform.rotation = _characterTargetRotation;
         }
     }
-    
+    // #TODO rewrite to fit rb because NO way I'll write custom physics
     private void Move(Vector2 moveInput)
     {
-        float targetSpeed = moveInput == Vector2.zero ? 0 : this.currentSpeed * moveInput.magnitude;
-        Vector3 currentVelocity = lastMovement;
+        
+        _rigidbody.velocity = moveInput * (walkSpeed * Time.deltaTime);
+        float targetSpeed = moveInput == Vector2.zero ? 0 : this._currentSpeed * moveInput.magnitude;
+        Vector3 currentVelocity = _lastMovement;
         currentVelocity.y = 0;
         float currentSpeed = currentVelocity.magnitude;
 
@@ -188,21 +178,13 @@ public void OnEnable()
             currentSpeed = targetSpeed;
         }
 
-        Vector3 targetDirection = characterTargetRotation * Vector3.forward;
+        Vector3 targetDirection = _characterTargetRotation * Vector3.forward;
         
         Vector3 movement = targetDirection * currentSpeed;
-        characterController.SimpleMove(movement);
-
-        if (Physics.Raycast(transform.position + Vector3.up * 0.01f, Vector3.down,
-                out RaycastHit hit, raycastLength, raycastMask, QueryTriggerInteraction.Ignore))
-        {
-            if (Vector3.ProjectOnPlane(movement, hit.normal).y < 0)
-            {
-                characterController.Move(Vector3.down * (pullDownForce * Time.deltaTime));
-            }
-        }
+        //characterController.SimpleMove(movement);
         
-        lastMovement = movement;
+        
+        _lastMovement = movement;
     }
 
     #endregion
@@ -211,59 +193,118 @@ public void OnEnable()
 
     private void GroundCheck()
     {
-        if (characterController.isGrounded)
+        if (_isGrounded)
         {
-            airTime = 0;
+            _airTime = 0;
         }
         else
         {
-            airTime += Time.deltaTime;
+            _airTime += Time.deltaTime;
         }
 
-        isGrounded = airTime < coyoteTime;
+        _isGrounded = _airTime < coyoteTime;
     }
 
+
+
+    public void DashAction(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+           _rigidbody.AddForce(Vector3.forward * (dashPower * walkSpeed * Time.deltaTime));
+        }
+    }
     #endregion    
     
     #region Animator
 
     private void UpdateAnimator()
     {
-        Vector3 velocity = lastMovement;
+        Vector3 velocity = _lastMovement;
         velocity.y = 0;
         float speed = velocity.magnitude;
         
         animator.SetFloat(Hash_MovementSpeed, speed);
-        animator.SetBool(Hash_Grounded, isGrounded);
-        animator.SetBool(Hash_Crouch, isCrouching);
+        animator.SetBool(Hash_Grounded, _isGrounded);
+        animator.SetBool(Hash_Crouch, _isCrouching);
     }
 
     #endregion
     
     #region Camera
     //fix clipping into walls while were at it...
+   
+
+    private void OnTriggerEnter(Collider other)
+    {
+        TrySelectInteractable(other);
+    }
+    
+
+    private void OnTriggerExit(Collider other)
+    {
+        TryDeselectInteractable(other);
+    }
+    
+ 
+
+    private void Interact(InputAction.CallbackContext ctx)
+    {
+        if (_selectedInteractable != null)
+        {
+            _selectedInteractable.Interact();
+        }
+    }
+
+    private void TrySelectInteractable(Collider other)
+    {
+        Interactable interactable = other.GetComponent<Interactable>();
+
+        if (interactable == null){ return; }
+
+        if (_selectedInteractable != null)
+        {
+            _selectedInteractable.Deselect();
+        }
+        
+        _selectedInteractable = interactable;
+        _selectedInteractable.Select();
+    }
+    
+    private void TryDeselectInteractable(Collider other)
+    {
+        Interactable interactable = other.GetComponent<Interactable>();
+
+        if (interactable == null){ return; }
+
+        if (interactable == _selectedInteractable)
+        {
+            _selectedInteractable.Deselect();
+            _selectedInteractable = null;
+        }
+    }
     private void RotateCamera(Vector2 lookInput)
     {
         if (lookInput != Vector2.zero)
         {
             bool isMouseLook = IsMouseLook(); 
-                            //   ist mein bool true ? true : false
+            //   ist mein bool true ? true : false
             float deltaTimeMultiplier = isMouseLook ? 1 : Time.deltaTime;
 
             float sensitivity = isMouseLook ? mouseCameraSensitivity : controllerCameraSensitivity;
   
             lookInput *= deltaTimeMultiplier * sensitivity;
             
-            cameraRotation.x += lookInput.y * cameraVerticalSpeed * (!isMouseLook && invertY ? -1 : 1);
-            cameraRotation.y += lookInput.x * cameraHorizontalSpeed;
+            _cameraRotation.x += lookInput.y * cameraVerticalSpeed * (!isMouseLook && invertY ? -1 : 1);
+            _cameraRotation.y += lookInput.x * cameraHorizontalSpeed;
 
-            cameraRotation.x = NormalizeAngle(cameraRotation.x);
-            cameraRotation.y = NormalizeAngle(cameraRotation.y);
+            _cameraRotation.x = NormalizeAngle(_cameraRotation.x);
+            _cameraRotation.y = NormalizeAngle(_cameraRotation.y);
 
-            cameraRotation.x = Mathf.Clamp(cameraRotation.x, verticalCameraRotationMin, verticalCameraRotationMax);
+            _cameraRotation.x = Mathf.Clamp(_cameraRotation.x, verticalCameraRotationMin, verticalCameraRotationMax);
         }
         
-        cameraTarget.rotation = Quaternion.Euler(cameraRotation.x, cameraRotation.y, 0);
+        cameraTarget.rotation = Quaternion.Euler(_cameraRotation.x, _cameraRotation.y, 0);
     }
     
     private float NormalizeAngle(float angle)
@@ -285,63 +326,13 @@ public void OnEnable()
 
     private bool IsMouseLook()
     {
-        if (lookAction.activeControl == null)
+        if (_lookAction.activeControl == null)
         {
             return true;
         }
 
-        return lookAction.activeControl.device.name == "Mouse";
+        return _lookAction.activeControl.device.name == "Mouse";
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        TrySelectInteractable(other);
-    }
-    
-
-    private void OnTriggerExit(Collider other)
-    {
-        TryDeselectInteractable(other);
-    }
-    
- 
-
-    private void Interact(InputAction.CallbackContext ctx)
-    {
-        if (selectedInteractable != null)
-        {
-            selectedInteractable.Interact();
-        }
-    }
-
-    private void TrySelectInteractable(Collider other)
-    {
-        Interactable interactable = other.GetComponent<Interactable>();
-
-        if (interactable == null){ return; }
-
-        if (selectedInteractable != null)
-        {
-            selectedInteractable.Deselect();
-        }
-        
-        selectedInteractable = interactable;
-        selectedInteractable.Select();
-    }
-    
-    private void TryDeselectInteractable(Collider other)
-    {
-        Interactable interactable = other.GetComponent<Interactable>();
-
-        if (interactable == null){ return; }
-
-        if (interactable == selectedInteractable)
-        {
-            selectedInteractable.Deselect();
-            selectedInteractable = null;
-        }
-    }
-    
     
     #endregion
 }
