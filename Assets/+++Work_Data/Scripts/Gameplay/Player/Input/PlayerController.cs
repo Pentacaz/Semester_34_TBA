@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speedChangeRate = 10f;
     [SerializeField] private float rotationSpeed = 10f;
 
-    
+    [SerializeField] public float gravity = -19.62f;
+    private Vector3 velocity;
     [Header("Camera")] 
     //needs a massive rework, doesnt fit for our type of game
     [SerializeField] private Transform cameraTarget;
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
     
     #region Private Variables
     private Rigidbody _rigidbody;
+    private CharacterController _characterController;
     
     private GameInput _inputActions;
     private InputAction _moveAction;
@@ -74,7 +76,7 @@ public class PlayerController : MonoBehaviour
     #region Event Functions
     private void Awake()
     {
-      _rigidbody = GetComponent<Rigidbody>();
+      _characterController = GetComponent<CharacterController>();
            
         _inputActions = new GameInput();
         _moveAction = _inputActions.Player.Move;
@@ -107,7 +109,7 @@ public void OnEnable()
 
     private void LateUpdate()
     {
-      
+      RotateCamera(_lookInput);
     }
 
   public void OnDisable()
@@ -163,10 +165,11 @@ public void OnEnable()
     private void Move(Vector2 moveInput)
     {
         
-        _rigidbody.velocity = moveInput * (walkSpeed * Time.deltaTime);
-        float targetSpeed = moveInput == Vector2.zero ? 0 : this._currentSpeed * moveInput.magnitude;
+         float targetSpeed = moveInput == Vector2.zero ? 0 : this._currentSpeed * moveInput.magnitude;
+
         Vector3 currentVelocity = _lastMovement;
         currentVelocity.y = 0;
+
         float currentSpeed = currentVelocity.magnitude;
 
         if (Mathf.Abs(currentSpeed - targetSpeed) > 0.01f)
@@ -179,12 +182,19 @@ public void OnEnable()
         }
 
         Vector3 targetDirection = _characterTargetRotation * Vector3.forward;
-        
+
         Vector3 movement = targetDirection * currentSpeed;
-        //characterController.SimpleMove(movement);
-        
+        if (!_isGrounded)
+        {
+            velocity.y += gravity * Time.deltaTime;
+        }
+
+        movement.y = velocity.y;
+
+        _characterController.Move(movement * Time.deltaTime);
         
         _lastMovement = movement;
+    
     }
 
     #endregion
@@ -193,7 +203,7 @@ public void OnEnable()
 
     private void GroundCheck()
     {
-        if (_isGrounded)
+        if (_characterController.isGrounded)
         {
             _airTime = 0;
         }
