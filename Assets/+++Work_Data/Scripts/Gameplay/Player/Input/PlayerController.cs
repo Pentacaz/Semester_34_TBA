@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     [Header("Camera")] 
     //needs a massive rework, doesnt fit for our type of game
     [SerializeField] private Transform cameraTarget;
-    
+    //rework
     [SerializeField] private float verticalCameraRotationMin = -30f;
     [SerializeField] private float verticalCameraRotationMax = 70f;
     [SerializeField] private float cameraHorizontalSpeed = 200f;
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     
     #region Private Variables
     private Rigidbody _rigidbody;
-    private CharacterController _characterController;
+ 
     
     private GameInput _inputActions;
     private InputAction _moveAction;
@@ -76,8 +76,7 @@ public class PlayerController : MonoBehaviour
     #region Event Functions
     private void Awake()
     {
-      _characterController = GetComponent<CharacterController>();
-           
+    
         _inputActions = new GameInput();
         _moveAction = _inputActions.Player.Move;
         _lookAction = _inputActions.Player.Look;
@@ -165,35 +164,7 @@ public void OnEnable()
     private void Move(Vector2 moveInput)
     {
         
-         float targetSpeed = moveInput == Vector2.zero ? 0 : this._currentSpeed * moveInput.magnitude;
-
-        Vector3 currentVelocity = _lastMovement;
-        currentVelocity.y = 0;
-
-        float currentSpeed = currentVelocity.magnitude;
-
-        if (Mathf.Abs(currentSpeed - targetSpeed) > 0.01f)
-        {
-            currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, speedChangeRate * Time.deltaTime);
-        }
-        else
-        {
-            currentSpeed = targetSpeed;
-        }
-
-        Vector3 targetDirection = _characterTargetRotation * Vector3.forward;
-
-        Vector3 movement = targetDirection * currentSpeed;
-        if (!_isGrounded)
-        {
-            velocity.y += gravity * Time.deltaTime;
-        }
-
-        movement.y = velocity.y;
-
-        _characterController.Move(movement * Time.deltaTime);
-        
-        _lastMovement = movement;
+       
     
     }
 
@@ -203,7 +174,7 @@ public void OnEnable()
 
     private void GroundCheck()
     {
-        if (_characterController.isGrounded)
+       /* if (_characterController.isGrounded)
         {
             _airTime = 0;
         }
@@ -213,6 +184,7 @@ public void OnEnable()
         }
 
         _isGrounded = _airTime < coyoteTime;
+        */
     }
 
 
