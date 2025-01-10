@@ -102,7 +102,17 @@ public class GameState : MonoBehaviour
         Add(state.id, state.amount, invokeEvent);
     }
 
+    public void Remove(State state, bool invokeEvent = true)
+    {
+        // state => item ( id amount)
+        // durchläuft liste von State s 
+         Mathf.Clamp(state.amount, 0, 2000);
 
+        // zerteilt items in bestandteile
+        Add(state.id, -state.amount, invokeEvent);
+    }
+    
+    
     public void Add(List<State> states)
     { // für jeden gegen stand in der liste State wird es aufgeruffen 
         // States = > liste ; zuerst aufgeruffen
