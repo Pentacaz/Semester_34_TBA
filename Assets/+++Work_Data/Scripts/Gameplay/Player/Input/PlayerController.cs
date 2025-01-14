@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float controllerCameraSensitivity = 1f;
     [SerializeField] private bool invertY = true;
 
+    
+  
+
     #endregion
     
     #region Private Variables
@@ -71,6 +74,10 @@ public class PlayerController : MonoBehaviour
     private bool _isCrouching;
     private float _airTime;
     private float _currentSpeed = 3f;
+    
+
+    public Transform groundCheck;
+    public LayerMask groundLayer;
     #endregion
     
     #region Event Functions
@@ -102,13 +109,14 @@ public void OnEnable()
         Rotate(_moveInput);
         Move(_moveInput);
 
-        GroundCheck();
+            //GroundCheck();
         UpdateAnimator();
     }
 
     private void LateUpdate()
     {
       RotateCamera(_lookInput);
+      //_isGrounded = IsGrounded();
     }
 
   public void OnDisable()
@@ -164,30 +172,16 @@ public void OnEnable()
     private void Move(Vector2 moveInput)
     {
         
-       
-    
+        // _rigidbody.velocity = moveInput * (walkSpeed * Time.fixedDeltaTime); 
     }
 
     #endregion
 
     #region GroundCheck
 
-    private void GroundCheck()
-    {
-       /* if (_characterController.isGrounded)
-        {
-            _airTime = 0;
-        }
-        else
-        {
-            _airTime += Time.deltaTime;
-        }
+  
 
-        _isGrounded = _airTime < coyoteTime;
-        */
-    }
-
-
+ 
 
     public void DashAction(InputAction.CallbackContext ctx)
     {
