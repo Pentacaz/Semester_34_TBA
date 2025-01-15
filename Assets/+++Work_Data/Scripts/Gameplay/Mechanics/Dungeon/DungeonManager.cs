@@ -41,7 +41,7 @@ public class DungeonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CreateDungeon();
+        //CreateDungeon();
     }
 
     public void CreateDungeon()
@@ -138,14 +138,12 @@ public class DungeonManager : MonoBehaviour
         mesh.triangles = triangles;
         GameObject dungeonFloor = new GameObject
             ("Mesh"+bottomleftCorner, typeof(MeshFilter), 
-                  typeof(MeshRenderer), typeof(MeshCollider), typeof(NavMeshSurface));
+                  typeof(MeshRenderer), typeof(NavMeshSurface));
         
         dungeonFloor.transform.position = Vector3.zero;
         dungeonFloor.transform.localScale = Vector3.one;
         dungeonFloor.GetComponent<MeshFilter>().mesh = mesh;
         dungeonFloor.GetComponent<MeshRenderer>().material = material;
-        dungeonFloor.GetComponent<MeshCollider>().convex = true;
-        dungeonFloor.GetComponent<MeshCollider>().sharedMesh = mesh;
         dungeonFloor.transform.parent = transform;
         dungeonFloor.GetComponent<NavMeshSurface>().BuildNavMesh();
        
