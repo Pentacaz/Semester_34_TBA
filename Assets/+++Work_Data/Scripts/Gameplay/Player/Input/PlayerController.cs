@@ -123,8 +123,6 @@ public void OnEnable()
     {
         _inputActions.Disable();
         _dashAction.performed -= DashAction;
-    
-    
     }
 
     private void OnDestroy()

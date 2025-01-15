@@ -4,8 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-
-public class DungeonCreatorEditor : MonoBehaviour
+[CustomEditor(typeof(DungeonManager))]
+public class DungeonCreatorEditor : Editor
 {
-    
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+        DungeonManager dungeonCreator = (DungeonManager)target;
+        if (GUILayout.Button("CreateNewDungeon"))
+        {
+            dungeonCreator.CreateDungeon();
+        }
+
+    }
 }
