@@ -1,10 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCombatController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private PlayerBaseController _playerBaseController;
+
+    public float comboDuration;
+    public float comboCooldown;
+    
+    private void Awake()
+    {
+        _playerBaseController = GetComponent<PlayerBaseController>();
+    }
+
     void Start()
     {
         

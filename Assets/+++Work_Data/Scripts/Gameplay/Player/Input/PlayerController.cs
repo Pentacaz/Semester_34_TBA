@@ -32,14 +32,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float cameraDistance = 5.0f;
     [SerializeField] private float cameraRadius = 0.5f;
     [Header("Animations")] 
-    [SerializeField] private Animator animator;
-
-    [SerializeField] private float coyoteTime;
-    
     [Header("Mouse Settings")] 
-    
     [SerializeField] private float mouseCameraSensitivity = 1f;
-    
     [Header("Controller Settings")] 
     [SerializeField] private float controllerCameraSensitivity = 1f;
     [SerializeField] private bool invertY = true;
@@ -70,8 +64,8 @@ public class PlayerController : MonoBehaviour
     private bool _isCrouching;
 
     private float _currentSpeed = 3f;
-    
 
+    [SerializeField] private bool isInDungeon;
   
 
     #endregion
@@ -94,7 +88,10 @@ public class PlayerController : MonoBehaviour
 public void OnEnable()
     {
         _inputActions.Enable();
+        //if (isInDungeon)
         _dashAction.performed += DashAction;
+        
+        
        
     }
 
