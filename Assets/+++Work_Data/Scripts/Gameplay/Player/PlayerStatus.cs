@@ -32,7 +32,7 @@ public class PlayerStatus : MonoBehaviour
             currentHp = maxHp;
         }
         
-        _uiManager.RefreshHealthbar(maxHp, currentHp);
+        //_uiManager.RefreshHealthbar(maxHp, currentHp);
     }
     
     public void Heal(float hp)
@@ -44,7 +44,7 @@ public class PlayerStatus : MonoBehaviour
             currentHp = maxHp;
         }
         
-        _uiManager.RefreshHealthbar(maxHp, currentHp);
+        //_uiManager.RefreshHealthbar(maxHp, currentHp);
     }
 
     

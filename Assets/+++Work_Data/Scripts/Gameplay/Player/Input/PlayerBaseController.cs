@@ -44,8 +44,7 @@ public class PlayerBaseController : MonoBehaviour
     [SerializeField] private bool invertY = true;
 
     #endregion
-
-
+    
     #region Input
 
     private PlayerInputActions _inputActions;
@@ -90,6 +89,7 @@ public class PlayerBaseController : MonoBehaviour
     private int _movementSpeedHash;
 
     private Cooking _cooking;
+    private PlayerCombatController _playerCombatController;
 
     public int engageId;
 
@@ -116,7 +116,7 @@ public class PlayerBaseController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponentInChildren<Animator>();
         _movementSpeedHash = Animator.StringToHash("MovementSpeed");
-
+        _playerCombatController = GetComponent<PlayerCombatController>();
         _cooking = GameObject.FindObjectOfType<Cooking>();
     }
 
@@ -127,6 +127,9 @@ public class PlayerBaseController : MonoBehaviour
 
        _dodgeAction.performed += OnDash;
        _dodgeAction.canceled += OnDash;
+       
+       _attackAction.performed += OnBaseAttack;
+       _attackAction.canceled += OnBaseAttack;
         
         
         _engageAction.performed += OnEngage;
@@ -167,6 +170,9 @@ public class PlayerBaseController : MonoBehaviour
         _engageAction.canceled -= OnEngage;
         _dodgeAction.performed -= OnDash;
         _dodgeAction.canceled -= OnDash;
+        
+        _attackAction.performed -= OnBaseAttack;
+        _attackAction.canceled -= OnBaseAttack;
     }
 
     private void OnDash(InputAction.CallbackContext ctx)
@@ -185,12 +191,22 @@ public class PlayerBaseController : MonoBehaviour
                 else if (ctx.canceled)
                 {
                     //isDashing = false;
-             
-//add cooldown to prevent infinite dashing, having the cooldown in relation to the distance dashed.
+                    
                 }
-        }
-    
+    }
 
+    private void OnBaseAttack(InputAction.CallbackContext ctx)
+    { 
+        if(ctx.performed)
+        {
+            _playerCombatController.attack = !_playerCombatController.attack;
+           _playerCombatController.AttackHandler(); 
+           
+        }else if (ctx.canceled)
+        {
+            _playerCombatController.attack = true;
+        }
+    }
 
     public void EnableInput()
     {
