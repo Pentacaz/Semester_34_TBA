@@ -15,7 +15,7 @@ public class NpcAreaBehaviour : MonoBehaviour
                 if (!npcSpotLocations[i].isOccupied)
                 {
                     npcSpotLocations[i].ChangeStatus(true);
-                    other.GetComponent<NavMeshPatrol>().SetNavMeshDestination(npcSpotLocations[i]);
+                    //other.GetComponent<NavMeshPatrol>().SetNavMeshDestination(npcSpotLocations[i]);
                     break;
                 }
             }
@@ -26,7 +26,7 @@ public class NpcAreaBehaviour : MonoBehaviour
     {
         if (other.CompareTag("NPC_ActionPatrol"))
         {
-            other.GetComponent<NavMeshPatrol>().CheckForNpcSpotLocation();
+           // other.GetComponent<NavMeshPatrol>().CheckForNpcSpotLocation();
         }
     }
 }

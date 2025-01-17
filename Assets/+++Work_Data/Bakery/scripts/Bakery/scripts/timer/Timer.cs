@@ -10,9 +10,10 @@ public class Timer : MonoBehaviour
     public Slider timerSlider;
     public float sliderTimer;
     public bool timerStop;
+    public GameObject highlightedArea;
+    private NavMeshPatrol navMeshPatrol;
 
-
- /*   private void Start()
+  /*  private void Start()
     {
         timerSlider.maxValue = sliderTimer;
         timerSlider.value = sliderTimer;
@@ -20,12 +21,24 @@ public class Timer : MonoBehaviour
     }
 */
 
-    public void StartTimer()
+  private void Start()
+  {
+      navMeshPatrol = GetComponent<NavMeshPatrol>();
+  }
+
+  public void StartTimer()
+    {
+        timerStop = false;
+        timerSlider.maxValue = sliderTimer;
+        timerSlider.value = sliderTimer;
+        StartCour();
+    }
+    
+    
+    public void StartCour()
     {
         StartCoroutine(StartTimerTicker());
-          timerSlider.maxValue = sliderTimer;
-        timerSlider.value = sliderTimer;
-        timerStop = true;
+        
     }
 
     IEnumerator StartTimerTicker()
@@ -45,6 +58,21 @@ public class Timer : MonoBehaviour
                 timerSlider.value = sliderTimer;
             }
             
+        }
+    }
+
+    public void StopTimer()
+    {
+        timerStop = true;
+    }
+
+    public void FailedOrder()
+    {
+        if (timerSlider.value.Equals(timerSlider.minValue))
+        {
+            
+            navMeshPatrol.ResumePatrol();
+            highlightedArea.SetActive(false);
         }
     }
 }

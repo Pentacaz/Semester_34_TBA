@@ -8,7 +8,7 @@ public class NpcSpotLocation : MonoBehaviour
 
     public void ChangeStatus(bool status)
     {
-        //spotTrigger.enabled = !status;
+        spotTrigger.enabled = !status;
         isOccupied = status;
     }
 }
