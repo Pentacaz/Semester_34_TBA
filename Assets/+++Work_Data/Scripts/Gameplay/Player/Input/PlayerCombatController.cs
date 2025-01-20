@@ -41,46 +41,62 @@ public class PlayerCombatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-        StartTimer(attack);
+       
+     
         if(!attack)
         {
-            comboCooldown = comboCooldownvalue;
-            comboTimer = comboTimervalue;
-
+            ResetTimers();
+            currentComboCoolDown = comboCooldown;
+            currentComboTimer = comboTimer;
+        }
+        else
+        {
+            StartTimer();
         }
     }
 
     public void AttackHandler()
     {
-        // add breakup of attack sequences and more reliable timer structure.
-       currentComboCoolDown = comboCooldown;
-       currentComboTimer = comboTimer;
-       if ( currentComboCoolDown < 0)
+        
+       if ( currentComboCoolDown <= 0 && currentComboTimer >= 0)
        {
-           if (currentComboTimer >= 0) 
+           comboId += 1;
+           
+           if(comboId >= maxCombo)
            {
-               comboId += 1;
-           }
-           if(comboId == maxCombo)
-           {
-               comboId = minCombo;
+               comboId = minCombo; 
            }
        }
-       
+
+       currentComboCoolDown = comboCooldown;
+       currentComboTimer = comboTimer;
         AnimCallAction(comboId);
         Debug.Log($"comboId = {comboId}");
             
     }
 
-    public void StartTimer(bool attackPerformed)
+    public void StartTimer()
     {
-        if(attackPerformed)
+        comboCooldown -= Time.deltaTime;
+        comboTimer -= Time.deltaTime;
+
+        if (comboTimer <= 0)
         {
-            comboCooldown -= Time.deltaTime;
-            comboTimer -= Time.deltaTime;
+            comboId = minCombo; 
         }
+        
     }
 
+    public void ResetTimers()
+    {
+        
+      
+        comboTimer = comboTimervalue; 
+        comboCooldown = comboCooldownvalue;
+        
+        
+        
+    }
     
     public void AnimCallAction(int id)
     {

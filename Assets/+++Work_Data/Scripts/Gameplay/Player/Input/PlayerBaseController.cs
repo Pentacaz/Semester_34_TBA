@@ -126,10 +126,10 @@ public class PlayerBaseController : MonoBehaviour
         EnableInput();
 
        _dodgeAction.performed += OnDash;
-       _dodgeAction.canceled += OnDash;
+       //_dodgeAction.canceled += OnDash;
        
        _attackAction.performed += OnBaseAttack;
-       _attackAction.canceled += OnBaseAttack;
+       //_attackAction.canceled += OnBaseAttack;
         
         
         _engageAction.performed += OnEngage;
@@ -204,7 +204,7 @@ public class PlayerBaseController : MonoBehaviour
            
         }else if (ctx.canceled)
         {
-            _playerCombatController.attack = true;
+            _playerCombatController.attack = false;
         }
     }
 
