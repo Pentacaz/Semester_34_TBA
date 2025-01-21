@@ -4,24 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Timer : MonoBehaviour
+public class ClockTimer : MonoBehaviour
 {
 
     public Slider timerSlider;
     public float sliderTimer;
+    public float maxTime;
     public bool timerStop;
     public GameObject highlightedArea;
     private NavMeshPatrol navMeshPatrol;
 
-
-
-  /*  private void Start()
-    {
-        timerSlider.maxValue = sliderTimer;
-        timerSlider.value = sliderTimer;
-        StartTimer();
-    }
-*/
+    [SerializeField] private GameObject customers;
+    
+    
 
      private void Start()
     {
@@ -29,18 +24,19 @@ public class Timer : MonoBehaviour
     }
 
    public void StartTimer()
-    {
+   {
+        sliderTimer = maxTime;
         timerStop = false;
         timerSlider.maxValue = sliderTimer;
         timerSlider.value = sliderTimer;
-        StartCour();
-    }
-    
-    
-    public void StartCour()
-    {
+        customers.SetActive(true);
+        
+        
         StartCoroutine(StartTimerTicker());
     }
+    
+    
+    
 
     IEnumerator StartTimerTicker()
     {
@@ -52,15 +48,21 @@ public class Timer : MonoBehaviour
             if (sliderTimer <- 0)
             {
                 timerStop = true;
-
-               // navMeshPatrol.ResumePatrol();
-                //highlightedArea.SetActive(false);
+                customers.SetActive(false);
+                highlightedArea.SetActive(true);
+                navMeshPatrol.StopPatrol();
+                
+                
+                
             }
 
             if (timerStop == false)
             {
                 timerSlider.value = sliderTimer;
+                
             }
+          
+            
             
         }
     }

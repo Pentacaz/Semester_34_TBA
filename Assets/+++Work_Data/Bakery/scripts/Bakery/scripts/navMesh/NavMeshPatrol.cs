@@ -22,16 +22,15 @@ public class NavMeshPatrol : MonoBehaviour
    [SerializeField] private bool waitAtWaypoint = true;
    [SerializeField] private Vector2 waitDuration = new Vector2(1, 5);
 
-
    [Header("Gizmos")] 
    
    [SerializeField] private bool showWaypoints = true;
    
    
    #endregion
-   
-   
-   private NavMeshAgent navMeshAgent;
+
+
+   public NavMeshAgent navMeshAgent;
    private int currentWaypointIndex = -1;
    private bool isWaiting;
    
@@ -52,6 +51,7 @@ public class NavMeshPatrol : MonoBehaviour
    private void Start()
    {
       SetNextWaypoint();
+      StopPatrol();
    }
 
 
@@ -97,8 +97,8 @@ public class NavMeshPatrol : MonoBehaviour
          case 0:
 
             Debug.LogError("No Waypoints set for NavMesh", this);
-            return;
-            break;
+            return; 
+            
          
          case 1:
             if (randomOrder)

@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
 public class RemoveItem : MonoBehaviour
 {
@@ -11,8 +9,14 @@ public class RemoveItem : MonoBehaviour
 
     [SerializeField]  private UnityEvent onCollected;
     [SerializeField] private GameObject Indicator;
+    private NavMeshPatrol navMeshPatrol;
     
     private Interactable _selectedInteractable;
+
+    private void Start()
+    {
+        navMeshPatrol = GetComponent<NavMeshPatrol>();
+    }
 
     public void Remove()
     {
@@ -42,6 +46,7 @@ public class RemoveItem : MonoBehaviour
     public void IndicatorState()
     {
         Indicator.SetActive(false);
-        Destroy(Indicator);
+        navMeshPatrol.ResumePatrol();
+
     }
 }

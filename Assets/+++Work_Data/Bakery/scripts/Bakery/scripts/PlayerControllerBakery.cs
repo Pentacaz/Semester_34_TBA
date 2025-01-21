@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
+
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerControllerBakery : MonoBehaviour
@@ -17,7 +17,7 @@ public class PlayerControllerBakery : MonoBehaviour
     
     #region Inspector
     
-    [FormerlySerializedAs("movementSpeed")]
+   
     [Header("Movement")]
     
     [Min(0)]

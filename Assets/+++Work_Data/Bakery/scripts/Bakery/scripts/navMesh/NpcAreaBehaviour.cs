@@ -5,10 +5,11 @@ using UnityEngine;
 public class NpcAreaBehaviour : MonoBehaviour
 {
     [SerializeField] private List<NpcSpotLocation> npcSpotLocations;
+
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("NPC_ActionPatrol"))
+        if (other.CompareTag("NPC"))
         {
             for (int i = 0; i < npcSpotLocations.Count; i++)
             {
@@ -24,7 +25,7 @@ public class NpcAreaBehaviour : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("NPC_ActionPatrol"))
+        if (other.CompareTag("NPC"))
         {
            // other.GetComponent<NavMeshPatrol>().CheckForNpcSpotLocation();
         }
