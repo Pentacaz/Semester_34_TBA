@@ -196,17 +196,41 @@ public class PlayerBaseController : MonoBehaviour
     }
 
     private void OnBaseAttack(InputAction.CallbackContext ctx)
-    { 
-        if(ctx.performed)
+    {
+        if (_playerCombatController.canAttack)
         {
-            _playerCombatController.attack = !_playerCombatController.attack;
-           _playerCombatController.AttackHandler(); 
+            if(ctx.performed)
+            {
+                _playerCombatController.attack = !_playerCombatController.attack;
+                _playerCombatController.attackId = 1;
+                _playerCombatController.AttackHandler(); 
            
-        }else if (ctx.canceled)
+            }else if (ctx.canceled)
+            {
+                
+                _playerCombatController.attack = false;
+            }
+        }
+      
+    }
+
+    private void OnHeavyAttack(InputAction.CallbackContext ctx)
+    {
+        if (_playerCombatController.canHeavyAttack)
         {
-            _playerCombatController.attack = false;
+            if(ctx.performed)
+            {
+                _playerCombatController.attack = !_playerCombatController.attack;
+                _playerCombatController.attackId = 2;
+           
+            }else if (ctx.canceled)
+            {
+                
+                _playerCombatController.attack = false;
+            }
         }
     }
+    
 
     public void EnableInput()
     {
