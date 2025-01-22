@@ -12,28 +12,17 @@ using Color = UnityEngine.Color;
 public class UiManager : MonoBehaviour
 {
     #region Healthbar
-
-    public float currentHp;
-    public float maxHp;
-    public Image healthBar;
+    public Image _healthBar;
     #endregion
 
-    private void Update()
+
+   
+
+    public void RefreshHealthbar(float maxHp, float currentHp)
     {
-       RefreshHealthBar();
+        _healthBar.fillAmount = currentHp / maxHp;
     }
 
-    //EnemyReciever enemyreciever;
-    //PlayerReciever playerReciever;
-    // public void RefreshHealthbar(float maxHp, float currentHp)
-    public void RefreshHealthBar()
-    {
-        healthBar.fillAmount = currentHp / maxHp;
-        if (healthBar.fillAmount < 0.5f)
-        {//do properly
-            healthBar.color = Color.Lerp(Color.green, Color.red,0.5f);
-        }
-    }
 
 
 }

@@ -69,6 +69,7 @@ public class PlayerBaseController : MonoBehaviour
     public float moveSpeed;
     public float maxForce;
 
+    #region  Dash
 
     public float dashForce;
     public float dashSpeed;
@@ -81,9 +82,16 @@ public class PlayerBaseController : MonoBehaviour
     public bool isDashing;
 
     [FormerlySerializedAs("isDashing")] public bool canDash;
+
+    #endregion
+   
     #endregion
 
+    
 
+    
+
+   
 
     private Animator _animator;
     private int _movementSpeedHash;
@@ -249,15 +257,16 @@ public class PlayerBaseController : MonoBehaviour
         Vector3 targetVelocity = new Vector3(moveInput.x, 0, moveInput.y);
         targetVelocity *= isDashing ? dashSpeed : moveSpeed;
 
-
         targetVelocity = transform.TransformDirection(targetVelocity);
 
-        Vector3 velocityChange = (targetVelocity - _currentVelocity);
-        Vector3.ClampMagnitude(velocityChange, maxForce);
+        Vector3 velocityChange = (targetVelocity - new Vector3(_currentVelocity.x, 0, _currentVelocity.z));
+        velocityChange = Vector3.ClampMagnitude(velocityChange, maxForce);
         _rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
 
         RotateTarget();
     }
+
+
 
     public void RotateTarget()
     {
