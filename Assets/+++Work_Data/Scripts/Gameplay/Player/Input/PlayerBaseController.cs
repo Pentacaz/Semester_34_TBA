@@ -189,15 +189,10 @@ public class PlayerBaseController : MonoBehaviour
                 {  trail.SetActive(true);
                     isDashing = true;
                     dashCooldownTimer = dashCooldown;
-                  
                     
-                    if (_moveInput == Vector2.zero)
-                    {
-            
-                    }
                 }
                 else if (ctx.canceled)
-                {
+                { 
                     //isDashing = false;
                     
                 }
@@ -270,6 +265,12 @@ public class PlayerBaseController : MonoBehaviour
 
     public void RotateTarget()
     {
+        
+        /*
+
+comment comment comment
+
+*/ 
         _relativeDirection = _Vcam.transform.TransformDirection(_playerDirection);
         _relativeDirection.y = 0f;
         _relativeDirection.Normalize();
@@ -281,7 +282,7 @@ public class PlayerBaseController : MonoBehaviour
 
 
         _rigidbody.MovePosition(_rigidbody.position + _relativeDirection * (_speed * Time.deltaTime));
-
+        
     }
 
     

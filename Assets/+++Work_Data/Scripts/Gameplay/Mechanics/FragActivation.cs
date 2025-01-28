@@ -11,6 +11,8 @@ public class FragActivation : MonoBehaviour
  public float timer;
  private float _timerValue;
  private Collider _collider;
+ public int actionRequirementId;
+ 
 
  private void Start()
  {
@@ -32,11 +34,30 @@ public class FragActivation : MonoBehaviour
 
   private void OnTriggerEnter(Collider other)
   {
-    if (other.gameObject.CompareTag("Player"))
+    if (other.gameObject.CompareTag("Player") )
     {
-      initialObject.SetActive(false);
-      fracualObject.SetActive(true);
-      activeTimer = true;
+      switch (actionRequirementId)
+      {
+        case 1:
+          initialObject.SetActive(false);
+          fracualObject.SetActive(true);
+          activeTimer = true;
+          break;
+        case 2:
+          if (other.gameObject.GetComponent<PlayerBaseController>().isDashing)
+          {
+            initialObject.SetActive(false);
+            fracualObject.SetActive(true);
+            activeTimer = true;
+          }
+        
+          break;
+       
+        default:
+          break;
+        //other cases maybe later??
+      }
+   
     }
   
   }
