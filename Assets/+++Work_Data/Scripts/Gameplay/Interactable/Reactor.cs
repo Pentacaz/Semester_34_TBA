@@ -10,16 +10,16 @@ public class Reactor : MonoBehaviour
     #region Inspector
 
     [Tooltip("AND connected conditions that all need to be fulfilled.")]
-    [SerializeField] private List<State> conditions;
+    public List<State> conditions;
 
     [Tooltip("Invoked when all the conditions become fulfilled.")]
-    [SerializeField] private UnityEvent onFulfilled;
+    public UnityEvent onFulfilled;
 
     [Tooltip("Invoked when any of the conditions return to being unfulfilled.")]
-    [SerializeField] private UnityEvent onUnfulfilled;
+    public UnityEvent onUnfulfilled;
 
     [Tooltip("Optional field to reference a QuestEntry, if this reactor represents a quest.")]
-    [SerializeField] private QuestEntry questEntry;
+    public QuestEntry questEntry;
 
     #endregion
 

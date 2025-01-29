@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -33,6 +32,9 @@ public class RemoveItem : MonoBehaviour
     public void AddMoney()
     {
         FindObjectOfType<GameState>().Add(money);
+        FindObjectOfType<GameState>().Remove(state);
+        
+        
     }
     
     public void Buy()
@@ -46,7 +48,8 @@ public class RemoveItem : MonoBehaviour
     public void IndicatorState()
     {
         Indicator.SetActive(false);
-        navMeshPatrol.ResumePatrol();
 
+        navMeshPatrol.ResumePatrol();
+        
     }
 }

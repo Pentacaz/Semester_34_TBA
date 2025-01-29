@@ -28,7 +28,6 @@ public class Wire : MonoBehaviour,IPointerDownHandler,IPointerEnterHandler,IPoin
         if(!this.Equals(hoverItem) && itemName.Equals(hoverItem.itemName))
         {
             UpdateLine(hoverItem.transform.position);
-            MatchLogic.AddPoint();
             Destroy(hoverItem);
             Destroy(this);
 

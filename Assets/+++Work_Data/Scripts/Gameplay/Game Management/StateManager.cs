@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class StateManager : MonoBehaviour
@@ -14,7 +12,7 @@ public class StateManager : MonoBehaviour
     // Einen Array vom Typ X mit dem Namen Y
     [SerializeField] private StateInfo[] _stateInfos;
     
-    [FormerlySerializedAs("item_PanelContainer")] [SerializeField] private GameObject state_PanelContainer;
+    [SerializeField] private GameObject state_PanelContainer;
     [SerializeField] private Image item_image;
     [SerializeField] private TextMeshProUGUI text_itemHeader;
     [SerializeField] private TextMeshProUGUI text_itemDescription;
