@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 
 public class PlayerBaseController : MonoBehaviour
 {
-    [SerializeField] private Transform playerOrientation;
+    [SerializeField] public Transform playerOrientation;
     [SerializeField] private float speedChangeRate = 10f;
     [SerializeField] private float rotationSpeed = 10f;
 
@@ -15,7 +15,7 @@ public class PlayerBaseController : MonoBehaviour
 
     private Quaternion _playerRotation;
     private Quaternion _rotation;
-    private Vector3 _playerDirection;
+    public Vector3 _playerDirection;
     private Vector3 _relativeDirection;
     private float _turnSpeed = 8;
     private float _speed = 6;

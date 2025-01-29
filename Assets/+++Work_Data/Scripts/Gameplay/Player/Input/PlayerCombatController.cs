@@ -49,20 +49,20 @@ public class PlayerCombatController : MonoBehaviour
     { 
        CanAttack();
        ComboMemory(attackId);
-        if(!attack)
-        {
-            ResetTimers();
-            
-        }
-        else
-        {
-            StartTimer();
-        }
+       if (!attack)
+       {
+           ResetTimers();
+       }
+       else
+       {
+           StartTimer();
+       }
+        
+        
     }
 
     public void AttackHandler()
     {
-        
        if  (comboTimer >= 0 && currentComboTimer >= 0)
        {
            comboId += 1;
@@ -79,7 +79,6 @@ public class PlayerCombatController : MonoBehaviour
        
        currentComboCoolDown = comboCooldown;
        currentComboTimer = comboTimer;
-       currentComboTimer -= Time.deltaTime;
 
         AnimCallAction(comboId);
         Debug.Log($"comboId = {comboId}");
@@ -141,7 +140,6 @@ public class PlayerCombatController : MonoBehaviour
                 
                 break;
         }
-      
     }
     public void AnimCallAction(int id)
     {

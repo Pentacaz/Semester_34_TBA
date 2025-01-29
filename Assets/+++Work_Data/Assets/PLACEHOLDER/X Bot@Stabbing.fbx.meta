@@ -46,7 +46,7 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
+      loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
@@ -56,7 +56,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.21895663
+        functionName: SetActiveWp
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 04e6a795af78b79489b96b4b66274726,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.47496164
+        functionName: SetInactiveWp
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 04e6a795af78b79489b96b4b66274726,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

@@ -12,7 +12,7 @@ public class PlayerReciever : MonoBehaviour
     public int currentHp;
     public bool canGetDamage = true;
     public float invincibilityTimer = 1.5f;
-  public float _invincibilityTimerValue;
+    public float _invincibilityTimerValue;
 
     private void Start()
     {
@@ -26,7 +26,7 @@ public class PlayerReciever : MonoBehaviour
 
     private void Update()
     {
-        Invincibility(tookDamage);
+        Invincibility(ref tookDamage);
     }
 
     public void GetDmg(int dmg)
@@ -53,9 +53,9 @@ public class PlayerReciever : MonoBehaviour
     
     }
 
-    public void Invincibility(bool damage)
+    public void Invincibility(ref bool damage)
     {
-        if (tookDamage)
+        if (damage)
         {
             canGetDamage = false;
             
@@ -63,7 +63,7 @@ public class PlayerReciever : MonoBehaviour
         }
 
         if (invincibilityTimer <= 0)
-        {   tookDamage = false;
+        {   damage = false;
             canGetDamage = true;
             invincibilityTimer = _invincibilityTimerValue;
         }

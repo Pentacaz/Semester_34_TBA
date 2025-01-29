@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerInflictor : MonoBehaviour
 {
-    [SerializeField] private int dealDmgId;
-    [SerializeField] private float[] damageValues;
+ 
+    [SerializeField] private int damageValues;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+    private void OnTriggerEnter(Collider collision)
+    {   
         if (collision.CompareTag("Enemy"))
         {
             Debug.Log("Attack enemy");
-            //collision.GetComponent<EnemyReceiver>().GetDmg(damageValues[dealDmgId]);
+            collision.GetComponent<EnemyReciever>().GetDmg(damageValues);
         }
     }
 }
