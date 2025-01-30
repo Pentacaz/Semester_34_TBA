@@ -7,6 +7,8 @@ public class PlayerReciever : MonoBehaviour
 {
     PlayerController pController;
     private UiManager _uiManager;
+    public int healCount;
+    public int maxHeal;
     public bool tookDamage = false;
     public int maxHp = 25;
     public int currentHp;
@@ -26,7 +28,7 @@ public class PlayerReciever : MonoBehaviour
 
     private void Update()
     {
-        Invincibility(ref tookDamage);
+        Invincibility();
     }
 
     public void GetDmg(int dmg)
@@ -53,9 +55,36 @@ public class PlayerReciever : MonoBehaviour
     
     }
 
-    public void Invincibility(ref bool damage)
+    public void GetHeal(int amount)
     {
-        if (damage)
+        healCount++;
+        
+        
+        if (healCount >= maxHeal)
+        {
+            Debug.Log("No heals remaining!");
+            return;
+        }
+        else
+        {
+            currentHp += amount;
+
+            // Ensure health doesn't exceed max health
+            if (currentHp > maxHp)
+            {
+                currentHp = maxHp;
+            }
+            _uiManager.RefreshHealthbar(maxHp,currentHp);
+            Debug.Log($"Player healed by {amount}. Current health: {currentHp}/{maxHp}");
+        }
+        
+    
+            
+    }
+    
+    public void Invincibility()
+    {
+        if (tookDamage)
         {
             canGetDamage = false;
             
@@ -63,7 +92,7 @@ public class PlayerReciever : MonoBehaviour
         }
 
         if (invincibilityTimer <= 0)
-        {   damage = false;
+        {   tookDamage = false;
             canGetDamage = true;
             invincibilityTimer = _invincibilityTimerValue;
         }

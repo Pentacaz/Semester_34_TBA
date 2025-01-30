@@ -48,7 +48,7 @@ public class PlayerBaseController : MonoBehaviour
     #region Input
 
     private PlayerInputActions _inputActions;
-
+    public Interactable selectedInteractable;
     private InputAction _moveAction;
     private InputAction _runAction;
     private InputAction _lookAction;
@@ -140,7 +140,7 @@ public class PlayerBaseController : MonoBehaviour
        //_attackAction.canceled += OnBaseAttack;
         
         
-        _engageAction.performed += OnEngage;
+        _engageAction.performed += Interact;
        
 
     }
@@ -175,7 +175,7 @@ public class PlayerBaseController : MonoBehaviour
     private void OnDisable()
     {
         DisableInput();
-        _engageAction.canceled -= OnEngage;
+        _engageAction.performed-= Interact;
         _dodgeAction.performed -= OnDash;
         _dodgeAction.canceled -= OnDash;
         
@@ -291,20 +291,53 @@ comment comment comment
  
 
     #region Engage
-
-    public void OnEngage(InputAction.CallbackContext ctx)
+    private void OnTriggerEnter(Collider other)
     {
-        //#TODO Add SWITCH CASE for different engages.
-        if (ctx.performed && _cooking.inRange)
-        {
-            StartCoroutine(_cooking.ResultTextDisplay("Purrfection!"));
-            Debug.Log("SUCCESS");
-        }
-        else
-        {
-            StartCoroutine(_cooking.ResultTextDisplay("Cat-astrophe..."));
+        TrySelectInteractable(other);
+    }
 
-            Debug.Log("FAIL");
+    private void OnTriggerExit(Collider other)
+    {
+        TryDeselectInteractable(other);
+    }
+    private void Interact(InputAction.CallbackContext ctx)
+    {
+   
+        if (selectedInteractable != null)
+        {
+            selectedInteractable.Interact();
+            Debug.Log("interacted");
+            //_navMeshPatrol.StopPatrolForDialog();
+        }
+    }
+
+
+
+    private void TrySelectInteractable(Collider other)
+    {
+        Interactable interactable = other.GetComponent<Interactable>();
+
+        if (interactable == null){ return; }
+
+        if (selectedInteractable != null)
+        {
+            selectedInteractable.Deselect();
+        }
+        
+        selectedInteractable = interactable;
+        selectedInteractable.Select();
+    }
+    
+    private void TryDeselectInteractable(Collider other)
+    {
+        Interactable interactable = other.GetComponent<Interactable>();
+
+        if (interactable == null){ return; }
+
+        if (interactable == selectedInteractable)
+        {
+            selectedInteractable.Deselect();
+            selectedInteractable = null;
         }
     }
 

@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    private EnemyInflictor _enemyInflictor;
+    
+    public EnemyInflictor _enemyInflictor;
     
     
     #region Inspector
@@ -35,6 +36,7 @@ public class EnemyBehaviour : MonoBehaviour
     private bool isWaiting;
     #endregion
 
+    public GameObject dmgObject;
     #region MyRegion
 
     public List<GameObject> projectiles;
@@ -64,7 +66,7 @@ public class EnemyBehaviour : MonoBehaviour
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        _enemyInflictor = GetComponentInChildren<EnemyInflictor>();
+       
         navMeshAgent.autoBraking = waitAtWaypoint;
     }
 
@@ -150,8 +152,6 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (isWaiting)
         {
-      
-            
             return;
         }
 
@@ -186,10 +186,12 @@ public class EnemyBehaviour : MonoBehaviour
         if (distance < playerDamageRange)
         {
             EnemyAttack();
+            _playerInRange = true;
+            ChangeStance();
         }
         else
         {
-           
+            _playerInRange = false;
         }
             
     }
@@ -219,20 +221,6 @@ public class EnemyBehaviour : MonoBehaviour
 
 public void EnemyAttack()
 {
-    
-    if (playerWaypoints.Count == 0)
-    {
-        Debug.LogError("No player waypoints set for NavMesh", this);
-        return;
-    }
-
-    currentWaypointIndex = (currentWaypointIndex + 1) % playerWaypoints.Count;
-    navMeshAgent.destination = playerWaypoints[currentWaypointIndex].position;
-    Debug.Log("Following player waypoint: " + currentWaypointIndex, this);
-  
-    
-    if (_playerInRange && playerWaypoints.Contains(waypoints[currentWaypointIndex]))
-    {
         switch (_enemyType)
         {
             case EnemyType.RANGE :
@@ -240,13 +228,20 @@ public void EnemyAttack()
                 Debug.Log("in range of ranged enemy");   
                 break;
             case EnemyType.GROUND :
+                if (_enemyInflictor.canAttack && _playerInRange)
+                {
+                    dmgObject.SetActive(true);
+                }
+                else
+                {
+                    dmgObject.SetActive(false);
+                }
                 
                 Debug.Log("in range of grounded enemy");   
                 break;
               
         }
-    }
-   
+    
 }
 
 public void RangedProjectile()

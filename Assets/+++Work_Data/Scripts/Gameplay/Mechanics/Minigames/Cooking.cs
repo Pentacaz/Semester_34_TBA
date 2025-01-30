@@ -44,7 +44,7 @@ private void Awake()
 void Start()
     {
         // Moves the area that needs to be hit once very time the action is started.
-        SetSuccessArea();
+        //SetSuccessArea();
     }
 
     void Update()
@@ -99,6 +99,21 @@ void Start()
         yield return new WaitForSeconds(0.6f); //#TODO replace with actual animation lengh value
         textObject.SetActive(false);
 
+    }
+
+    public void CookAction()
+    {
+        if ( inRange)
+        {
+            StartCoroutine(ResultTextDisplay("Purrfection!"));
+            Debug.Log("SUCCESS");
+        }
+        else
+        {
+            StartCoroutine(ResultTextDisplay("Cat-astrophe..."));
+
+            Debug.Log("FAIL");
+        }
     }
 }
 

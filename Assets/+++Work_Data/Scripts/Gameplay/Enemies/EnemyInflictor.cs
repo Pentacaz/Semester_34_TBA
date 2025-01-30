@@ -18,21 +18,21 @@ public class EnemyInflictor : MonoBehaviour
 
     private void Update()
     {
-        AttackCooldown(ref attacked);
+        AttackCooldown();
     }
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("Player") && collision.GetComponent<PlayerReciever>().canGetDamage)
+        if (collision.CompareTag("Player") &&  FindObjectOfType<PlayerReciever>().canGetDamage)
         {
             print("attack Player");
             collision.GetComponent<PlayerReciever>().GetDmg(damageValue);
         }
     }
 
-    public void AttackCooldown(ref bool attack)
+    public void AttackCooldown()
     {
-        if (attack)
+        if (attacked)
         {
             canAttack = false;
             
@@ -40,7 +40,7 @@ public class EnemyInflictor : MonoBehaviour
         }
 
         if (attackCooldown <= 0)
-        {   attack = false;
+        {   attacked = false;
             canAttack = true;
             attackCooldown = _attackCooldownvalue;
         }

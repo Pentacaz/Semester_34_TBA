@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public class EnemyReciever : MonoBehaviour
 {
     #region takeDMG
-    
+
+    public EnemyBehaviour enemyBehaviour;
     public int currentHp;
     public int maxHp = 15;
     
@@ -22,6 +23,7 @@ public class EnemyReciever : MonoBehaviour
     public float invincibilityTimer = 1.5f;
     private float _invincibilityTimerValue;
    private Vector3 playerdirec;
+   public GameObject loot;
     #endregion
 
     #region Behavior
@@ -101,12 +103,11 @@ public class EnemyReciever : MonoBehaviour
 
         if (currentHp <= 0)
         {
-            switch (enemyBehaviourOnDeath)
-            {
-                case EnemyBehaviourOnDeath.SELFDESTRUCT:
-                    
-                    break;
-            }
+           
+              this.gameObject.SetActive(false);
+              loot.SetActive(true);
+              
+            
             //deathIndicator.SetActive(true);
             Debug.Log("DEATH ENEMY");
         }
@@ -126,13 +127,14 @@ public class EnemyReciever : MonoBehaviour
         if (damage)
         {
             canGetDamage = false;
-            
+            enemyBehaviour.StopPatrol();
             invincibilityTimer -= Time.deltaTime;
         }
 
         if (invincibilityTimer <= 0)
         {   tookDamage = false;
             canGetDamage = true;
+            enemyBehaviour.ResumePatrol();
             invincibilityTimer = _invincibilityTimerValue;
         }
     }

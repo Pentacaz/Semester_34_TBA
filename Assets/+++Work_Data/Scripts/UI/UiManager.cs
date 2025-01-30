@@ -13,6 +13,7 @@ public class UiManager : MonoBehaviour
 {
     #region Healthbar
     public Image _healthBar;
+    public Image[] healAmounts;
     #endregion
 
 
@@ -24,5 +25,6 @@ public class UiManager : MonoBehaviour
     }
 
 
+    
 
 }
