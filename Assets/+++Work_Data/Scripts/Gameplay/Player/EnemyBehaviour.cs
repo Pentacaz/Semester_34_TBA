@@ -42,8 +42,10 @@ public class EnemyBehaviour : MonoBehaviour
     public List<GameObject> projectiles;
 
     #endregion
+
+    private EnemyStatus _enemyStatus;
     [SerializeField] private EnemyType _enemyType;
-    [SerializeField] private EnemyAction _enemyActions;
+
   
    public enum EnemyType
     {
@@ -51,28 +53,21 @@ public class EnemyBehaviour : MonoBehaviour
       RANGE
     }
 
-   public enum EnemyAction
-    {
-        ATTACK,
-        RANGEATTACK,
-        PATROL,
-        WAITINGFORACTION,
-        SELFDESTRUCT,
-    }
-
    
     #region Unity Event Functions
 
     private void Awake()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
-       
+     
         navMeshAgent.autoBraking = waitAtWaypoint;
     }
 
     private void Start()
     {
         SetNextWaypoint();
+       // navMeshAgent.speed = _enemyStatus.enemySpeed;
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        _enemyStatus = GetComponent<EnemyStatus>();
     }
 
     private void Update()
@@ -228,14 +223,8 @@ public void EnemyAttack()
                 Debug.Log("in range of ranged enemy");   
                 break;
             case EnemyType.GROUND :
-                if (_enemyInflictor.canAttack && _playerInRange)
-                {
-                    dmgObject.SetActive(true);
-                }
-                else
-                {
-                    dmgObject.SetActive(false);
-                }
+               
+            
                 
                 Debug.Log("in range of grounded enemy");   
                 break;
@@ -244,6 +233,21 @@ public void EnemyAttack()
     
 }
 
+//come back to this later - after scriptable objects are set up
+public void ChaseBehavior()
+{
+    float timer = 3f;
+    
+    
+    if (_enemyInflictor.canAttack && _playerInRange)
+    {
+        dmgObject.SetActive(true);
+    }
+    else
+    {
+        dmgObject.SetActive(false);
+    }
+}
 public void RangedProjectile()
 {
     

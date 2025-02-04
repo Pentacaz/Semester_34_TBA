@@ -9,55 +9,50 @@ using UnityEngine.UI;
 public class EnemyReciever : MonoBehaviour
 {
     #region takeDMG
-
-    public EnemyBehaviour enemyBehaviour;
+    
     public int currentHp;
-    public int maxHp = 15;
+    
+    #region Damage Indicator 
     
     public bool tookDamage;
-    public Image damageIndicator;
-    private Rigidbody _rigidbody;
-    public float pushForce;
-    
     public bool canGetDamage = true;
+    public float pushForce;
     public float invincibilityTimer = 1.5f;
     private float _invincibilityTimerValue;
-   private Vector3 playerdirec;
-   public GameObject loot;
+    
+    public Image damageIndicator;
+
+    #endregion
+  
+  
+
     #endregion
 
-    #region Behavior
-
+    #region References
+    
+    private EnemyBehaviour _enemyBehaviour;
+    private EnemyStatus _enemyStatus;
+    
+    private Rigidbody _rigidbody;
+    
     private Animator _animator;
-
+    
+  
+    public GameObject loot;
+    
     #endregion
-    
-    
-   
-    ///public GameObject deathIndicator;
-   public enum EnemyBehaviourOnDeath
-    {
-        SELFDESTRUCT
-        
-    }
-
-    public EnemyBehaviourOnDeath enemyBehaviourOnDeath;
-
     private void Awake()
     {
-     
+        _enemyStatus = GetComponent<EnemyStatus>();
+        _enemyBehaviour = GetComponent<EnemyBehaviour>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
     
     private void Start()
     {
-       
-         playerdirec =FindObjectOfType<PlayerBaseController>()._playerDirection;
-         _rigidbody = GetComponent<Rigidbody>();
         _invincibilityTimerValue = invincibilityTimer;
-        DamageIndication(damageIndicator,maxHp,currentHp);;
+        DamageIndication(damageIndicator,_enemyStatus.enemyMaxHp,currentHp);;
     }
-
-
     private void Update()
     {
       
@@ -73,19 +68,17 @@ public class EnemyReciever : MonoBehaviour
             currentHp -= dmg;
 
 
-            if (currentHp > maxHp)
+            if (currentHp > _enemyStatus.enemyMaxHp)
             {
-                currentHp = maxHp;
+                currentHp = _enemyStatus.enemyMaxHp;
             }
 
-            DamageIndication(damageIndicator,maxHp,currentHp);
+            DamageIndication(damageIndicator,_enemyStatus.enemyMaxHp,currentHp);
         }
        
         
     }
-        
     
-
     public void DamageIndication(Image damageind,float maxHpval, float currentHpval)
     {
         
@@ -94,10 +87,7 @@ public class EnemyReciever : MonoBehaviour
         
         if (tookDamage)
         {
-           
-            PushEnemy(playerdirec);
-
-            
+            PushEnemy();
             Debug.Log("TOOK DAMAGE ENEMY");
         }
 
@@ -115,26 +105,23 @@ public class EnemyReciever : MonoBehaviour
         //there is probs a way to solve this better,
     }
 
-    public void PushEnemy(Vector3 damageSourcePosition)
+    public void PushEnemy()
     {
-        Vector3 pushDirection = (transform.position - damageSourcePosition).normalized;
-
-        
-        _rigidbody.AddForce(pushDirection * pushForce, ForceMode.Impulse);
+        _rigidbody.AddForce(_rigidbody.velocity * -1, ForceMode.Impulse);
     }
     public void Invincibility(bool damage)
     {
         if (damage)
         {
             canGetDamage = false;
-            enemyBehaviour.StopPatrol();
+            _enemyBehaviour.StopPatrol();
             invincibilityTimer -= Time.deltaTime;
         }
 
         if (invincibilityTimer <= 0)
         {   tookDamage = false;
             canGetDamage = true;
-            enemyBehaviour.ResumePatrol();
+            _enemyBehaviour.ResumePatrol();
             invincibilityTimer = _invincibilityTimerValue;
         }
     }

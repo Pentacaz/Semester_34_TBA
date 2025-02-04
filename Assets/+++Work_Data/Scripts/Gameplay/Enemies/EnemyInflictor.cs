@@ -7,13 +7,18 @@ public class EnemyInflictor : MonoBehaviour
 {
     public bool canAttack = true;
     public bool attacked = false;
-    public float attackCooldown;
     private float _attackCooldownvalue;
-    public int damageValue;
+    private EnemyStatus _enemyStatus;
+
+    private void Awake()
+    {
+        _enemyStatus = GetComponent<EnemyStatus>();
+    }
 
     private void Start()
     {
-        _attackCooldownvalue = attackCooldown;
+       
+        _attackCooldownvalue = _enemyStatus.enemyAttackCooldown;
     }
 
     private void Update()
@@ -26,7 +31,7 @@ public class EnemyInflictor : MonoBehaviour
         if (collision.CompareTag("Player") &&  FindObjectOfType<PlayerReciever>().canGetDamage)
         {
             print("attack Player");
-            collision.GetComponent<PlayerReciever>().GetDmg(damageValue);
+            collision.GetComponent<PlayerReciever>().GetDmg(_enemyStatus.enemyDmg);
         }
     }
 
@@ -36,13 +41,13 @@ public class EnemyInflictor : MonoBehaviour
         {
             canAttack = false;
             
-            attackCooldown -= Time.deltaTime;
+            _enemyStatus.enemyAttackCooldown -= Time.deltaTime;
         }
 
-        if (attackCooldown <= 0)
+        if (_enemyStatus.enemyAttackCooldown <= 0)
         {   attacked = false;
             canAttack = true;
-            attackCooldown = _attackCooldownvalue;
+            _enemyStatus.enemyAttackCooldown = _attackCooldownvalue;
         }
     }
 

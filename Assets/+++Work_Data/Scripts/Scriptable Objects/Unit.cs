@@ -8,6 +8,7 @@ public class Unit : ScriptableObject
     [Header("Essentials")] 
     public RuntimeAnimatorController animController;
     public Animator animator;
+    public GameObject unitRig;
     public Mesh unitMesh;
     
    [Header("Stats")] 
@@ -18,10 +19,6 @@ public class Unit : ScriptableObject
     public int maxHp = 0;
     public int speed = 0;
 
-    [Header("Enemy Type")] 
-    public bool projectile;
-
-    public bool ground;
-
-    public bool air;
+    [Header("Enemy Secondary Stats")] 
+    public float attackCooldown;
 }
