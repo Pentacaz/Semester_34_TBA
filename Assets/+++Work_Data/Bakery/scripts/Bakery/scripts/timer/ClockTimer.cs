@@ -52,8 +52,6 @@ public class ClockTimer : MonoBehaviour
                 highlightedArea.SetActive(true);
                 navMeshPatrol.StopPatrol();
                 
-                
-                
             }
 
             if (timerStop == false)

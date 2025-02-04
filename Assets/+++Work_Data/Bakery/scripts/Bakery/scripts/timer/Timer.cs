@@ -51,9 +51,8 @@ public class Timer : MonoBehaviour
 
             if (sliderTimer <- 0)
             {
-                timerStop = true;
-
-               // navMeshPatrol.ResumePatrol();
+                StopTimer(); 
+                navMeshPatrol.ResumePatrol();
                 //highlightedArea.SetActive(false);
             }
 
