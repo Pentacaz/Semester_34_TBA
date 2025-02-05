@@ -16,7 +16,7 @@ public class NavMeshPatrol : MonoBehaviour
 
    [Header("Waypoints")]
    [SerializeField] private bool randomOrder;
-   [SerializeField] private List<Transform> waypoints;
+   [SerializeField] private List<GameObject> waypoints;
    [SerializeField] private bool waitAtWaypoint = true;
    [SerializeField] private Vector2 waitDuration = new Vector2(1, 5);
 
@@ -31,8 +31,7 @@ public class NavMeshPatrol : MonoBehaviour
    public NavMeshAgent navMeshAgent;
    private int currentWaypointIndex = -1;
    private bool isWaiting;
-   
-   
+
    
    #region Unity Event Functtion
 
@@ -41,15 +40,19 @@ public class NavMeshPatrol : MonoBehaviour
 
    private void Awake()
    {
+      
       navMeshAgent = GetComponent<NavMeshAgent>();
+      
       navMeshAgent.autoBraking = waitAtWaypoint;
+      waypoints = new List<GameObject>();
+      waypoints.AddRange(GameObject.FindGameObjectsWithTag("wp"));
    }
    
    
    private void Start()
    {
       SetNextWaypoint();
-      StopPatrol();
+     // StopPatrol();
    }
 
 
@@ -108,7 +111,7 @@ public class NavMeshPatrol : MonoBehaviour
             {
                Debug.LogError("Only one waypoint set for NavMeshPatrol",this);
                return;
-            }
+            } 
             break;
       }
 
@@ -128,7 +131,7 @@ public class NavMeshPatrol : MonoBehaviour
          currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Count;
       }
 
-      navMeshAgent.destination = waypoints[currentWaypointIndex].position;
+      navMeshAgent.destination = waypoints[currentWaypointIndex].transform.position;
 
    }
 
@@ -179,13 +182,13 @@ public class NavMeshPatrol : MonoBehaviour
 
       for (int i = 0; i < waypoints.Count; i++)
       {
-         Transform waypoint = waypoints[i];
+         GameObject waypoint = waypoints[i];
          Gizmos.color = currentWaypointIndex == i ? Color.green : Color.yellow;
-         Gizmos.DrawSphere(waypoint.position,0.3f);
+         Gizmos.DrawSphere(waypoint.transform.position,0.3f);
 
          if (!randomOrder)
          {
-            Gizmos.DrawLine(i == 0 ? waypoints[^1].position : waypoints[i-1].position,waypoints[i].position);
+            Gizmos.DrawLine(i == 0 ? waypoints[^1].transform.position : waypoints[i-1].transform.position,waypoints[i].transform.position);
          }
       }
    }

@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class ClockTimer : MonoBehaviour
 {
@@ -13,14 +15,22 @@ public class ClockTimer : MonoBehaviour
     public bool timerStop;
     public GameObject highlightedArea;
     private NavMeshPatrol navMeshPatrol;
+    
+    
 
-    [SerializeField] private GameObject customers;
     
-    
+    [SerializeField] private GameObject[] customers;
+
+    private ClockTimer clockTimer;
+    private float spawnInterval;
+
+   // [SerializeField] private GameObject customers;
+
 
      private void Start()
     {
         navMeshPatrol = GetComponent<NavMeshPatrol>();
+        highlightedArea.SetActive(true);
     }
 
    public void StartTimer()
@@ -29,10 +39,13 @@ public class ClockTimer : MonoBehaviour
         timerStop = false;
         timerSlider.maxValue = sliderTimer;
         timerSlider.value = sliderTimer;
-        customers.SetActive(true);
+
+        highlightedArea.SetActive(false);
+
         
-        
+
         StartCoroutine(StartTimerTicker());
+        RandomOrder();
     }
     
     
@@ -47,20 +60,24 @@ public class ClockTimer : MonoBehaviour
 
             if (sliderTimer <- 0)
             {
-                timerStop = true;
-                customers.SetActive(false);
-                highlightedArea.SetActive(true);
-                navMeshPatrol.StopPatrol();
-                
-            }
+                GameObject[] gos = GameObject.FindGameObjectsWithTag("NPC");
+                foreach (GameObject go in gos)
+                {
+                    Destroy(go);
 
+                }
+                StopTimer();    
+               
+
+
+
+            }
             if (timerStop == false)
             {
                 timerSlider.value = sliderTimer;
-                
+
+
             }
-          
-            
             
         }
     }
@@ -68,7 +85,29 @@ public class ClockTimer : MonoBehaviour
     public void StopTimer()
     {
         timerStop = true;
+        CancelInvoke("RandomOrder"); 
+        highlightedArea.SetActive(true); 
+        navMeshPatrol.StopPatrol();
     }
+
+    public void RandomOrder()
+    {
+        
+        int randomIndex = Random.Range(0, customers.Length); 
+        Instantiate(customers[randomIndex]); 
+
+        
+        spawnInterval = Random.Range(8,12);
+        Invoke("RandomOrder", spawnInterval);
+
+
+      
+            
+    }
+
+    
+  
+   
 
    
 }
