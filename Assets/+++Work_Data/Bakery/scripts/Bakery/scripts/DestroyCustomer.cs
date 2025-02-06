@@ -9,7 +9,7 @@ public class DestroyCustomer : MonoBehaviour
     {
         if (other.CompareTag("NPC"))
         {
-            Destroy(gameObject);
+            Destroy(GameObject.FindGameObjectWithTag("NPC"));
         }
     }
 }

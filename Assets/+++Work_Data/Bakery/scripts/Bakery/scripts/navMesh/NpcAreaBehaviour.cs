@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class NpcAreaBehaviour : MonoBehaviour
 {
+    [SerializeField] private string tagName;
     [SerializeField] private List<NpcSpotLocation> npcSpotLocations;
-
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("NPC"))
+        if (other.CompareTag(tagName))
         {
             for (int i = 0; i < npcSpotLocations.Count; i++)
             {
                 if (!npcSpotLocations[i].isOccupied)
                 {
                     npcSpotLocations[i].ChangeStatus(true);
-                    //other.GetComponent<NavMeshPatrol>().SetNavMeshDestination(npcSpotLocations[i]);
+                    other.GetComponent<NavMeshPatrolBakes>().SetNavMeshDestination(npcSpotLocations[i]);
                     break;
                 }
             }
@@ -25,9 +25,9 @@ public class NpcAreaBehaviour : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("NPC"))
+        if (other.CompareTag(tagName))
         {
-           // other.GetComponent<NavMeshPatrol>().CheckForNpcSpotLocation();
+            other.GetComponent<NavMeshPatrolBakes>().CheckForNpcSpotLocation();
         }
     }
 }

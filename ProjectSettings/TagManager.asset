@@ -8,6 +8,7 @@ TagManager:
   - Dungeon
   - NPC
   - wp
+  - Bin
   layers:
   - Default
   - TransparentFX

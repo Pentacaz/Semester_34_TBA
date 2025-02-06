@@ -97,7 +97,7 @@ public class ClockTimer : MonoBehaviour
         Instantiate(customers[randomIndex]); 
 
         
-        spawnInterval = Random.Range(8,12);
+        spawnInterval = Random.Range(8,10);
         Invoke("RandomOrder", spawnInterval);
 
 
