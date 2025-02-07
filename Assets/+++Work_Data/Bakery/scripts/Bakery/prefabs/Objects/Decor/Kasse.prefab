@@ -26,17 +26,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e9a12af8d77b37b4d9b03e66fdc21e93,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.715
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9a12af8d77b37b4d9b03e66fdc21e93,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9a12af8d77b37b4d9b03e66fdc21e93,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.117
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9a12af8d77b37b4d9b03e66fdc21e93,
         type: 3}
@@ -91,5 +91,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3065300991913489790, guid: e9a12af8d77b37b4d9b03e66fdc21e93,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5456679875514906071}
   m_SourcePrefab: {fileID: 100100000, guid: e9a12af8d77b37b4d9b03e66fdc21e93, type: 3}
+--- !u!1 &1746704978954674087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3065300991913489790, guid: e9a12af8d77b37b4d9b03e66fdc21e93,
+    type: 3}
+  m_PrefabInstance: {fileID: 3654576464270469849}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &5456679875514906071
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746704978954674087}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4600869639404757604, guid: e9a12af8d77b37b4d9b03e66fdc21e93, type: 3}

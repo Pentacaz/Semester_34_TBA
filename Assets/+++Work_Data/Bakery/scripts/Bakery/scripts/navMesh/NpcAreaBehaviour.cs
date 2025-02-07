@@ -11,6 +11,7 @@ public class NpcAreaBehaviour : MonoBehaviour
     {
         if (other.CompareTag(tagName))
         {
+
             for (int i = 0; i < npcSpotLocations.Count; i++)
             {
                 if (!npcSpotLocations[i].isOccupied)
