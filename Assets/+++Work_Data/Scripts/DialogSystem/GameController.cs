@@ -62,14 +62,14 @@ public class GameController : MonoBehaviour
     {
         
         Time.timeScale = 1;
-        player.OnDisable(); 
+//        player.OnDisable(); 
     }
 
     // inventory
     public void EnterInventoryMode()
     {
         Time.timeScale = 0;
-        player.OnDisable(); 
+  //      player.OnDisable(); 
         
     }
    

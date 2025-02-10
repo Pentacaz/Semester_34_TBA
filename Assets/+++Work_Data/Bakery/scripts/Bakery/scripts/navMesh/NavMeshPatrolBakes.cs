@@ -27,6 +27,8 @@ public class NavMeshPatrolBakes : MonoBehaviour
 
     [Tooltip("List of waypoints for the NavMeshAgent to walk to. Make sure to put at least two waypoints into this list!")]
     [SerializeField] private List<GameObject> waypoints;
+    
+    [SerializeField] private GameObject bin;
 
     [Tooltip("Wait a certain amount of time when reaching a waypoint.")]
     [SerializeField] private bool waitAtWaypoint = true;
@@ -64,6 +66,7 @@ public class NavMeshPatrolBakes : MonoBehaviour
         navMeshAgent.autoBraking = waitAtWaypoint;
         waypoints.AddRange(GameObject.FindGameObjectsWithTag("wp"));
         npcSpotLocation = FindObjectOfType<NpcSpotLocation>();
+        bin = GameObject.FindWithTag("Bin");;
 
     }
 
@@ -88,6 +91,7 @@ public class NavMeshPatrolBakes : MonoBehaviour
             {
                 navMeshAgent.SetDestination(npcSpotLocation.location.position);
             }
+            
         }
     }
 
@@ -172,6 +176,16 @@ public class NavMeshPatrolBakes : MonoBehaviour
         print("Set Next waypoint");
     }
 
+    
+    public void CompletedOrder()
+    {
+        CheckForNpcSpotLocation();
+        navMeshAgent.isStopped = false;
+        navMeshAgent.SetDestination(bin.transform.position);
+        
+    }
+    
+    
     /// <summary>
     /// Check if the navmesh agent has reached its destination and if so set the next waypoint.
     /// </summary>

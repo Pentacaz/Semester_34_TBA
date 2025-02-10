@@ -362,8 +362,8 @@ public class PlayerControllerBakery : MonoBehaviour
         velocity.y = 0;
         float speed = velocity.magnitude;
         
-        animator.SetFloat(Hash_MovementSpeed, speed);
-        animator.SetBool(Hash_Grounded, isGrounded);
+//        animator.SetFloat(Hash_MovementSpeed, speed);
+//        animator.SetBool(Hash_Grounded, isGrounded);
        // animator.SetBool(Hash_Crouched, isCrouched);
     }
 

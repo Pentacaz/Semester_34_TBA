@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class DestroyCustomer : MonoBehaviour
 {
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("NPC"))
+        if (other.CompareTag("Bin"))
         {
-            Destroy(GameObject.FindGameObjectWithTag("NPC"));
+            Destroy(gameObject);
         }
     }
 }

@@ -112,7 +112,7 @@ public class NavMeshPatrol : MonoBehaviour
                Debug.LogError("Only one waypoint set for NavMeshPatrol",this);
                return;
             } 
-            break;
+            
       }
 
       if (randomOrder)

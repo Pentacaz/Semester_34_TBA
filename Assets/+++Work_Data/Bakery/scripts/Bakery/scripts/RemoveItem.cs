@@ -8,18 +8,17 @@ public class RemoveItem : MonoBehaviour
 
     [SerializeField]  private UnityEvent onCollected;
     [SerializeField] private GameObject Indicator;
-    private NavMeshPatrol navMeshPatrol;
+    private NavMeshPatrolBakes navMeshPatrol;
     
     private Interactable _selectedInteractable;
 
     private void Start()
     {
-        navMeshPatrol = GetComponent<NavMeshPatrol>();
+        navMeshPatrol = GetComponent<NavMeshPatrolBakes>();
     }
 
     public void Remove()
     {
-        // Mathf.Clamp(state.amount, 0, 100);
         onCollected.Invoke();
         
         FindObjectOfType<GameState>().Remove(state);
@@ -29,27 +28,24 @@ public class RemoveItem : MonoBehaviour
         
     }
 
-    public void AddMoney()
+    public void GiveOrder()
     {
         FindObjectOfType<GameState>().Add(money);
         FindObjectOfType<GameState>().Remove(state);
-        
         
     }
     
     public void Buy()
     {
         Indicator.SetActive(true);
-
         FindObjectOfType<GameState>().Remove(state);
         
     }
 
     public void IndicatorState()
     {
-        Indicator.SetActive(false);
-
-        navMeshPatrol.ResumePatrol();
+        Destroy(Indicator);
+        navMeshPatrol.CompletedOrder();
         
     }
 }

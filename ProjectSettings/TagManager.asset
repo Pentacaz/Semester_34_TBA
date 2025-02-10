@@ -9,6 +9,7 @@ TagManager:
   - NPC
   - wp
   - Bin
+  - NPCBase
   layers:
   - Default
   - TransparentFX

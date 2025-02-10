@@ -28,10 +28,10 @@ public class NpcActionTrigger : MonoBehaviour
             {
                 int listIndex = Random.Range(0, animActions.Count);
 
-                other.GetComponent<NavMeshPatrol>().StopPatrol();
+                other.GetComponent<NavMeshPatrolBakes>().StopPatrol();
                // other.GetComponent<NavMeshPatrol>().CallAnimationAction(animActions[listIndex].actionId);
                 
-                StartCoroutine(ResumePatrol(other.GetComponent<NavMeshPatrol>(), 
+                StartCoroutine(ResumePatrol(other.GetComponent<NavMeshPatrolBakes>(), 
                     Random.Range(animActions[listIndex].waitTime.x, animActions[listIndex].waitTime.y),
                     animActions[listIndex].isLooping, 
                     animActions[listIndex].waitTimeEnd));
@@ -56,7 +56,7 @@ public class NpcActionTrigger : MonoBehaviour
         }
     }
 
-    IEnumerator ResumePatrol(NavMeshPatrol navMeshPatrol, float waitTime, bool isLooping, float waitEndTime)
+    IEnumerator ResumePatrol(NavMeshPatrolBakes navMeshPatrol, float waitTime, bool isLooping, float waitEndTime)
     {
         yield return new WaitForSeconds(waitTime);
         
