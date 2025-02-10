@@ -171,6 +171,8 @@ MonoBehaviour:
   waitAtWaypoint: 1
   waitDuration: {x: 1, y: 5}
   showWaypoints: 1
+  navMeshAgent: {fileID: 1751733827148532083}
+  npcSpotLocation: {fileID: 0}
 --- !u!1001 &2262682068495004696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -263,7 +265,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9582843f5a544194097f832e290e6612, type: 2}
+      objectReference: {fileID: 2100000, guid: 29b1b466267b8264b8e13af34aa44aeb, type: 2}
     - target: {fileID: -5117297389063522286, guid: fde902c288fdc6d4989b912b8c4da298,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -171,6 +171,7 @@ MonoBehaviour:
   waitAtWaypoint: 1
   waitDuration: {x: 1, y: 5}
   showWaypoints: 1
+  navMeshAgent: {fileID: 1751733827148532083}
 --- !u!1001 &2262682068495004696
 PrefabInstance:
   m_ObjectHideFlags: 0

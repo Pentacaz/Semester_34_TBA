@@ -64,8 +64,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5688193543854056444}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -137,6 +137,7 @@ RectTransform:
   m_LocalScale: {x: 0.077803105, y: 0.077803105, z: 0.077803105}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6676809494557927882}
   - {fileID: 2752430084272367680}
   - {fileID: 8234263453887989568}
   m_Father: {fileID: 4444974041377604958}
@@ -363,7 +364,6 @@ GameObject:
   - component: {fileID: 7296420137174804329}
   - component: {fileID: 2686658234622441105}
   - component: {fileID: 9115348470086090101}
-  - component: {fileID: 657541945416010145}
   - component: {fileID: 2217650691792052533}
   - component: {fileID: 1648572416777894595}
   - component: {fileID: 7061718531395945107}
@@ -463,28 +463,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &657541945416010145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4178563692421473305}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0f0f1b7de8588c48ab00c19846c1ac7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 7061718531395945107}
-  randomOrder: 0
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  waitAtWaypoint: 0
-  waitDuration: {x: 1, y: 5}
-  showWaypoints: 1
-  navMeshAgent: {fileID: 9115348470086090101}
 --- !u!54 &2217650691792052533
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -574,6 +552,8 @@ MonoBehaviour:
   waitAtWaypoint: 1
   waitDuration: {x: 1, y: 5}
   showWaypoints: 1
+  navMeshAgent: {fileID: 9115348470086090101}
+  npcSpotLocation: {fileID: 0}
 --- !u!1 &5793329566895596197
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,9 +652,9 @@ MonoBehaviour:
   onCollected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 657541945416010145}
-        m_TargetAssemblyTypeName: NavMeshPatrol, Assembly-CSharp
-        m_MethodName: ResumePatrol
+      - m_Target: {fileID: 8727846989291874177}
+        m_TargetAssemblyTypeName: RemoveItem, Assembly-CSharp
+        m_MethodName: AddMoney
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -712,7 +692,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 657541945416010145}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NavMeshPatrol, Assembly-CSharp
         m_MethodName: ResumePatrol
         m_Mode: 1
@@ -751,15 +731,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6475857109963001058}
   m_LocalRotation: {x: -0, y: -0, z: 0.49391794, w: 0.8695085}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.041355457, y: 0.041355457, z: 0.041355457}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00008939674}
+  m_LocalScale: {x: 0.5315399, y: 0.5315399, z: 0.53154}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4444974041377604958}
+  m_Father: {fileID: 3942033703839191551}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 59.197}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2, y: 429}
+  m_AnchoredPosition: {x: 94.821945, y: -141.38263}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &218594964869359913
@@ -832,8 +812,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8794403002033487083}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1058,7 +1038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4444974041377604958
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1071,7 +1051,6 @@ RectTransform:
   m_LocalScale: {x: 0.0022186365, y: 0.0020571682, z: 0.0019938634}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 6676809494557927882}
   - {fileID: 3942033703839191551}
   - {fileID: 1248233744771071260}
   m_Father: {fileID: 9071944629200579875}

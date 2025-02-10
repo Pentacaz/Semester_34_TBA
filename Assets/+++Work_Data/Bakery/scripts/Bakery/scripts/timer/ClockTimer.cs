@@ -87,7 +87,7 @@ public class ClockTimer : MonoBehaviour
         timerStop = true;
         CancelInvoke("RandomOrder"); 
         highlightedArea.SetActive(true); 
-        navMeshPatrol.StopPatrol();
+//        navMeshPatrol.StopPatrol();
     }
 
     public void RandomOrder()

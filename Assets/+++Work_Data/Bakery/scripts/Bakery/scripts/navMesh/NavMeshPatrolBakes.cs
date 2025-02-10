@@ -52,6 +52,7 @@ public class NavMeshPatrolBakes : MonoBehaviour
     private bool isWaiting;
 
     private bool isInActionArea;
+    
     public NpcSpotLocation npcSpotLocation;
     
     #region Unity Event Functions
@@ -62,6 +63,7 @@ public class NavMeshPatrolBakes : MonoBehaviour
         // Disable auto breaking if we don't want to wait at each waypoint.
         navMeshAgent.autoBraking = waitAtWaypoint;
         waypoints.AddRange(GameObject.FindGameObjectsWithTag("wp"));
+        npcSpotLocation = FindObjectOfType<NpcSpotLocation>();
 
     }
 
@@ -82,8 +84,10 @@ public class NavMeshPatrolBakes : MonoBehaviour
         }
         else if (isInActionArea)
         {
-            if(navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance + 0.01f)
+            if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance + 0.01f)
+            {
                 navMeshAgent.SetDestination(npcSpotLocation.location.position);
+            }
         }
     }
 

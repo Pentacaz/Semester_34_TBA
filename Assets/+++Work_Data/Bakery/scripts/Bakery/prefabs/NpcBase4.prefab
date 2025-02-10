@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1208170781559245059}
   - component: {fileID: 1751733827148532083}
-  - component: {fileID: 5659033723185407411}
   - component: {fileID: 6450650158693738678}
   - component: {fileID: 5623909467257145801}
   - component: {fileID: 7763916458701500621}
@@ -60,28 +59,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5659033723185407411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6903506906184245368}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0f0f1b7de8588c48ab00c19846c1ac7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 7763916458701500621}
-  randomOrder: 0
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  waitAtWaypoint: 1
-  waitDuration: {x: 1, y: 5}
-  showWaypoints: 1
-  navMeshAgent: {fileID: 1751733827148532083}
 --- !u!54 &6450650158693738678
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -171,6 +148,8 @@ MonoBehaviour:
   waitAtWaypoint: 1
   waitDuration: {x: 1, y: 5}
   showWaypoints: 1
+  navMeshAgent: {fileID: 1751733827148532083}
+  npcSpotLocation: {fileID: 0}
 --- !u!1001 &7424518875939735753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -253,7 +232,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: adeb8187a7db12046969c8543f7e9e8d, type: 2}
+      objectReference: {fileID: 2100000, guid: d87769ceca7cc4f4c99f130b8296ddf3, type: 2}
     - target: {fileID: -3133498875991405556, guid: 62edddf03e6d6bf48a4bc701dd03bcf7,
         type: 3}
       propertyPath: m_IsActive
