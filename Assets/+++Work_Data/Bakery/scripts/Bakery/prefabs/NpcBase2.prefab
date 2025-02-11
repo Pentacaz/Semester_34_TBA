@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5685262591912961082}
   - component: {fileID: 7605114472451662513}
   - component: {fileID: 5787210099855104744}
+  - component: {fileID: 5996563000601099852}
   m_Layer: 0
   m_Name: HighlightedArea
   m_TagString: NPC
@@ -146,6 +147,38 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   Indicator: {fileID: 2309272565771547351}
+--- !u!114 &5996563000601099852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037131595319272783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19082538440fc34db5862a7ca5e18a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2940251249118412034}
+        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  filterOnTag: 1
+  reactOn: wp
 --- !u!1 &1258178847642162782
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,6 +838,7 @@ GameObject:
   - component: {fileID: 2306686043578372118}
   - component: {fileID: 7881394177495200848}
   - component: {fileID: 8383295727518921039}
+  - component: {fileID: 2940251249118412034}
   m_Layer: 0
   m_Name: NpcBase2
   m_TagString: NPC
@@ -987,6 +1021,22 @@ MonoBehaviour:
       m_Calls: []
   filterOnTag: 1
   reactOn: wp
+--- !u!114 &2940251249118412034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6903506906184245368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a01bae3abbfd7514bbe9e4fe0a08f760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerSlider: {fileID: 6994089425496896398}
+  sliderTimer: 10
+  timerStop: 0
+  highlightedArea: {fileID: 2309272565771547351}
 --- !u!1 &7838147673356368990
 GameObject:
   m_ObjectHideFlags: 0

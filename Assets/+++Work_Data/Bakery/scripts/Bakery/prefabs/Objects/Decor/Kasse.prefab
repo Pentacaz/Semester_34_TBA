@@ -83,11 +83,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kasse
       objectReference: {fileID: 0}
-    - target: {fileID: 2298583863841295040, guid: e9a12af8d77b37b4d9b03e66fdc21e93,
+    - target: {fileID: 2278095058042547401, guid: e9a12af8d77b37b4d9b03e66fdc21e93,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cd625eec15eec4742a44d4f04858bda1, type: 2}
+    - target: {fileID: 2298583863841295040, guid: e9a12af8d77b37b4d9b03e66fdc21e93,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ceb33ad09fbb81846b7e988d631fbb35, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

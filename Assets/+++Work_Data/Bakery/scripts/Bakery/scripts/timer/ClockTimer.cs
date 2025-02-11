@@ -14,7 +14,6 @@ public class ClockTimer : MonoBehaviour
     public float maxTime;
     public bool timerStop;
     public GameObject highlightedArea;
-    private NavMeshPatrol navMeshPatrol;
     
     
 
@@ -23,14 +22,19 @@ public class ClockTimer : MonoBehaviour
 
     private ClockTimer clockTimer;
     private float spawnInterval;
-
+    private LightingManager lightingManager;
+    
    // [SerializeField] private GameObject customers;
 
+   private void Awake()
+   {
+       lightingManager = GetComponent<LightingManager>();
+   }
 
-     private void Start()
+   private void Start()
     {
-        navMeshPatrol = GetComponent<NavMeshPatrol>();
-        highlightedArea.SetActive(true);
+        highlightedArea.SetActive(true); 
+        
     }
 
    public void StartTimer()
@@ -63,9 +67,11 @@ public class ClockTimer : MonoBehaviour
                 GameObject[] gos = GameObject.FindGameObjectsWithTag("NPC");
                 foreach (GameObject go in gos)
                 {
+
                     Destroy(go);
 
                 }
+
                 StopTimer();    
                
 
@@ -85,9 +91,9 @@ public class ClockTimer : MonoBehaviour
     public void StopTimer()
     {
         timerStop = true;
+
         CancelInvoke("RandomOrder"); 
-        highlightedArea.SetActive(true); 
-//        navMeshPatrol.StopPatrol();
+        highlightedArea.SetActive(true);
     }
 
     public void RandomOrder()

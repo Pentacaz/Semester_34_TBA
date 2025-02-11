@@ -243,7 +243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5288197334794033186
 RectTransform:
   m_ObjectHideFlags: 0
@@ -361,7 +361,7 @@ RectTransform:
   m_Father: {fileID: 8670777723178544545}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -493,6 +493,7 @@ GameObject:
   - component: {fileID: 2557463640633498387}
   - component: {fileID: 541726024912965546}
   - component: {fileID: 6649963956218692901}
+  - component: {fileID: 6654864203727965992}
   m_Layer: 0
   m_Name: HighlightedArea
   m_TagString: NPC
@@ -627,6 +628,38 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   Indicator: {fileID: 1933468526312976179}
+--- !u!114 &6654864203727965992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4868874593641068749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19082538440fc34db5862a7ca5e18a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 891222206652664460}
+        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  filterOnTag: 1
+  reactOn: wp
 --- !u!1 &5311917469279176432
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,6 +838,7 @@ GameObject:
   - component: {fileID: 2263222563889960763}
   - component: {fileID: 3178338922547654449}
   - component: {fileID: 836761042407391526}
+  - component: {fileID: 891222206652664460}
   m_Layer: 0
   m_Name: NpcBase3
   m_TagString: NPC
@@ -987,6 +1021,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612b8e6833e92134898433d29bebaba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &891222206652664460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6903506906184245368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a01bae3abbfd7514bbe9e4fe0a08f760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerSlider: {fileID: 3352553630359820538}
+  sliderTimer: 10
+  timerStop: 0
+  highlightedArea: {fileID: 1933468526312976179}
 --- !u!1 &7001262515948118971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,7 +1070,7 @@ RectTransform:
   m_Father: {fileID: 432183460293971039}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

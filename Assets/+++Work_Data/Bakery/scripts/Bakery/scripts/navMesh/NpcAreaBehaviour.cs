@@ -20,6 +20,10 @@ public class NpcAreaBehaviour : MonoBehaviour
                     other.GetComponent<NavMeshPatrolBakes>().SetNavMeshDestination(npcSpotLocations[i]);
                     break;
                 }
+                else
+                {
+                    other.GetComponent<NavMeshPatrolBakes>().CompletedOrder(); 
+                }
             }
         }
     }

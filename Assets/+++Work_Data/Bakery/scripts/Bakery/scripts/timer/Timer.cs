@@ -11,7 +11,7 @@ public class Timer : MonoBehaviour
     public float sliderTimer;
     public bool timerStop;
     public GameObject highlightedArea;
-    private NavMeshPatrol navMeshPatrol;
+    private NavMeshPatrolBakes navMeshPatrol;
 
 
 
@@ -25,7 +25,7 @@ public class Timer : MonoBehaviour
 
      private void Start()
     {
-        navMeshPatrol = GetComponent<NavMeshPatrol>();
+        navMeshPatrol = GetComponent<NavMeshPatrolBakes>();
     }
 
    public void StartTimer()
@@ -52,8 +52,8 @@ public class Timer : MonoBehaviour
             if (sliderTimer <- 0)
             {
                 StopTimer(); 
-                navMeshPatrol.ResumePatrol();
-                //highlightedArea.SetActive(false);
+                navMeshPatrol.CompletedOrder();
+                highlightedArea.SetActive(false);
             }
 
             if (timerStop == false)
