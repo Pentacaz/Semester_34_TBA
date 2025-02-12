@@ -22,12 +22,16 @@ public class RemoveItem : MonoBehaviour
         onCollected.Invoke();
         
         FindObjectOfType<GameState>().Remove(state);
-        
-
         Indicator.SetActive(false);
         
     }
 
+    public void TakeOrder()
+    {
+        FindObjectOfType<GameState>().Add(state);
+        
+    }
+    
     public void GiveOrder()
     {
         FindObjectOfType<GameState>().Add(money);
