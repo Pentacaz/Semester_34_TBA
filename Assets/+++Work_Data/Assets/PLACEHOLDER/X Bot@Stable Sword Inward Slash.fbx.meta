@@ -57,7 +57,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.56601983
+      - time: 0.5480018
         functionName: SetActiveWp
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 04e6a795af78b79489b96b4b66274726,
@@ -65,7 +65,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.81908184
+      - time: 0.6358986
         functionName: SetInactiveWp
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 04e6a795af78b79489b96b4b66274726,

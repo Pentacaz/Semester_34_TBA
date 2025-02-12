@@ -5,11 +5,12 @@ using UnityEngine;
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class EnemyReciever : MonoBehaviour
 {
     #region takeDMG
-    
+    private VisualEffect _vfx;
     public float currentHp;
     
     #region Damage Indicator
@@ -44,6 +45,7 @@ public class EnemyReciever : MonoBehaviour
     {
         _enemyStatus = GetComponent<EnemyStatus>();
         _enemyAuraBehaviour = GetComponent<EnemyAuraBehaviour>();
+        _vfx = GetComponentInChildren<VisualEffect>();
         _rigidbody = GetComponent<Rigidbody>();
         
     }
@@ -81,12 +83,13 @@ public class EnemyReciever : MonoBehaviour
     
     public void DamageIndication(Image damageind,float maxHpval, float currentHpval)
     {
-        
+       
       
         damageind.fillAmount = currentHpval / maxHpval;
         
         if (tookDamage)
         {
+            _vfx.Play();
             Debug.Log("TOOK DAMAGE ENEMY");
         }
 

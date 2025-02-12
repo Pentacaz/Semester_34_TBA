@@ -8,11 +8,11 @@ public class PlayerInflictor : MonoBehaviour
 {
  
     [SerializeField] private int damageValues;
-    private VisualEffect _vfx;
+
 
     private void Awake()
     {
-        _vfx = GetComponentInChildren<VisualEffect>();
+       
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -21,7 +21,7 @@ public class PlayerInflictor : MonoBehaviour
         {
             Debug.Log("Attack enemy");
             collision.GetComponent<EnemyReciever>().GetDmg(damageValues);
-            _vfx.Play();
+           
         }
     }
 
