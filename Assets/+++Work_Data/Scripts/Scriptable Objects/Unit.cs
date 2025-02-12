@@ -16,9 +16,16 @@ public class Unit : ScriptableObject
     public int unitLevel = 1;
     public int defense = 0;
     public int damage = 0;
-    public int maxHp = 0;
+    public float maxHp = 0;
     public int speed = 0;
 
     [Header("Enemy Secondary Stats")] 
     public float attackCooldown;
+    
+    public enum EnemyType
+    {
+        GROUND,
+        PROJECTILE,
+        EXPLOSIVE
+    }
 }

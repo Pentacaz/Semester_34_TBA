@@ -30,7 +30,7 @@ public class PlayerReciever : MonoBehaviour
     {
         Invincibility();
     }
-
+    
     public void GetDmg(int dmg)
     {
         if (canGetDamage)
@@ -97,4 +97,6 @@ public class PlayerReciever : MonoBehaviour
             invincibilityTimer = _invincibilityTimerValue;
         }
     }
+    
+    
 }

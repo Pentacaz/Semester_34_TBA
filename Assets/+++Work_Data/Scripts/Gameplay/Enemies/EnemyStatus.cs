@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyStatus : MonoBehaviour
 {
-   
+  
     public Animator anim;
     public SkinnedMeshRenderer enemyMesh;
     
     public int enemyLevel;
-    public int enemyMaxHp;
+    public float enemyMaxHp;
     public int enemyDmg;
     public int enemyDefense;
     public string enemyName;
@@ -18,12 +18,6 @@ public class EnemyStatus : MonoBehaviour
     public int enemyBaseDefense;
     public float enemyAttackCooldown;
     
-    enum EnemyState
-    {
-        PATROL,
-        CHASE,
-        ATTACK
-    }
     
     public void SetUpEnemy(Unit unit)
     {
@@ -34,7 +28,7 @@ public class EnemyStatus : MonoBehaviour
         enemyLevel = unit.unitLevel ;
         enemyBaseDefense = unit.defense;
         enemyBaseDmg = unit.damage;
-        enemyMaxHp =unit.maxHp;
+        enemyMaxHp = unit.maxHp;
         enemySpeed = unit.speed;
         enemyAttackCooldown = unit.attackCooldown;
     

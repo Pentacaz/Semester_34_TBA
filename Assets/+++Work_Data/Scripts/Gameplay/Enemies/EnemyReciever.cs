@@ -10,10 +10,11 @@ public class EnemyReciever : MonoBehaviour
 {
     #region takeDMG
     
-    public int currentHp;
+    public float currentHp;
     
-    #region Damage Indicator 
-    
+    #region Damage Indicator
+
+    public Transform playerdirec;
     public bool tookDamage;
     public bool canGetDamage = true;
     public float pushForce;
@@ -24,13 +25,11 @@ public class EnemyReciever : MonoBehaviour
 
     #endregion
   
-  
-
     #endregion
 
     #region References
     
-    private EnemyBehaviour _enemyBehaviour;
+    private EnemyAuraBehaviour _enemyAuraBehaviour;
     private EnemyStatus _enemyStatus;
     
     private Rigidbody _rigidbody;
@@ -44,12 +43,14 @@ public class EnemyReciever : MonoBehaviour
     private void Awake()
     {
         _enemyStatus = GetComponent<EnemyStatus>();
-        _enemyBehaviour = GetComponent<EnemyBehaviour>();
+        _enemyAuraBehaviour = GetComponent<EnemyAuraBehaviour>();
         _rigidbody = GetComponent<Rigidbody>();
+        
     }
     
     private void Start()
-    {
+    {Debug.Log("enemyreciever");
+        currentHp = _enemyStatus.enemyMaxHp;
         _invincibilityTimerValue = invincibilityTimer;
         DamageIndication(damageIndicator,_enemyStatus.enemyMaxHp,currentHp);;
     }
@@ -75,7 +76,6 @@ public class EnemyReciever : MonoBehaviour
 
             DamageIndication(damageIndicator,_enemyStatus.enemyMaxHp,currentHp);
         }
-       
         
     }
     
@@ -87,7 +87,6 @@ public class EnemyReciever : MonoBehaviour
         
         if (tookDamage)
         {
-            PushEnemy();
             Debug.Log("TOOK DAMAGE ENEMY");
         }
 
@@ -105,23 +104,21 @@ public class EnemyReciever : MonoBehaviour
         //there is probs a way to solve this better,
     }
 
-    public void PushEnemy()
-    {
-        _rigidbody.AddForce(_rigidbody.velocity * -1, ForceMode.Impulse);
-    }
+  
+    
     public void Invincibility(bool damage)
     {
         if (damage)
         {
             canGetDamage = false;
-            _enemyBehaviour.StopPatrol();
+            //_enemyAuraBehaviour.StopPatrol();
             invincibilityTimer -= Time.deltaTime;
         }
 
         if (invincibilityTimer <= 0)
         {   tookDamage = false;
             canGetDamage = true;
-            _enemyBehaviour.ResumePatrol();
+            //_enemyAuraBehaviour.ResumePatrol();
             invincibilityTimer = _invincibilityTimerValue;
         }
     }

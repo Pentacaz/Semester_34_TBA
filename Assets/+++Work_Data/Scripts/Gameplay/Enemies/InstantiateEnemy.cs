@@ -12,11 +12,12 @@ public class InstantiateEnemy : MonoBehaviour
     private void Awake()
     {
         _enemyStatus = GetComponent<EnemyStatus>();
+        SetUpEnemyStatus();
     }
 
     void Start()
     {
-        SetUpEnemyStatus();
+        
         
     }
 
@@ -27,7 +28,7 @@ public class InstantiateEnemy : MonoBehaviour
     }
 
     public void SetUpEnemyStatus()
-    {
+    { Debug.Log("SetUpEnemy");
        int index = Random.Range(0, units.Count);
        _enemyStatus.SetUpEnemy(units[index]);
     }

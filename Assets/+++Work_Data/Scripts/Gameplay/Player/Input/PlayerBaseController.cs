@@ -80,18 +80,12 @@ public class PlayerBaseController : MonoBehaviour
     public float dashCooldownTimer;
 
     public bool isDashing;
-
+    public float pushBackForce = 1.0f;
     [FormerlySerializedAs("isDashing")] public bool canDash;
 
     #endregion
    
     #endregion
-
-    
-
-    
-
-   
 
     private Animator _animator;
     private int _movementSpeedHash;
@@ -100,9 +94,7 @@ public class PlayerBaseController : MonoBehaviour
     private PlayerCombatController _playerCombatController;
 
     public int engageId;
-
     
- 
     private void Awake()
     {
 
@@ -141,7 +133,6 @@ public class PlayerBaseController : MonoBehaviour
         
         
         _engageAction.performed += Interact;
-       
 
     }
 
@@ -285,11 +276,7 @@ comment comment comment
         
     }
 
-    
-    
-
- 
-
+   
     #region Engage
     private void OnTriggerEnter(Collider other)
     {
@@ -408,5 +395,25 @@ comment comment comment
 
         _animator.SetFloat(_movementSpeedHash, speed);
     }
+    
+    
 
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("wall collides");
+            Vector3 collisionNormal = collision.contacts[0].normal;
+            Vector3 pushBackDirection = -collisionNormal;
+
+            if (_rigidbody != null)
+            {
+                _rigidbody.AddForce(pushBackDirection * pushBackForce, ForceMode.Impulse);
+            }
+        }
+    }
+    
 }
+
+
