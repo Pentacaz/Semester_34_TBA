@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class EnemyInflictor : MonoBehaviour
 {
-  
-    private EnemyState _enemyState;
-  
+    public bool isAuraEnemy;
+    public float damagePerSecond = 1f; // Damage per second
+    public float interval = 1f;        // Interval between damage ticks
+
     private EnemyStatus _enemyStatus;
+    private float _damageTimer;
+    private bool _isPlayerInTrigger;
+    private PlayerReciever _playerReceiver;
 
     private void Awake()
     {
@@ -17,17 +21,57 @@ public class EnemyInflictor : MonoBehaviour
 
     private void Start()
     {
-       
-       
+        _damageTimer = interval;
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void Update()
     {
-        if (collision.CompareTag("Player") &&  FindObjectOfType<PlayerReciever>().canGetDamage)
+        if (_isPlayerInTrigger && isAuraEnemy && gameObject.activeSelf)
         {
-            print("attack Player" + collision.gameObject.name);
-            collision.GetComponent<PlayerReciever>().GetDmg(_enemyStatus.enemyDmg);
+            DamageOverTime();
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && other.GetComponent<PlayerReciever>().canGetDamage)
+        {
+            _isPlayerInTrigger = true;
+            _playerReceiver = other.GetComponent<PlayerReciever>();
+
+            if (!isAuraEnemy)
+            {
+                Debug.Log("Attack Player: " + other.gameObject.name);
+                _playerReceiver.GetDmg(_enemyStatus.enemyDmg);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _isPlayerInTrigger = false;
+        }
+    }
+
+    private void DamageOverTime()
+    {
+        _damageTimer -= Time.deltaTime;
+
+        if (_damageTimer <= 0)
+        {
+            int dotDamage = (int)(damagePerSecond * interval);
+            _playerReceiver.GetDmg(dotDamage);
+            _damageTimer = interval;
+        }
+    }
 }
+
+
+       
+       
+
+      
+    
+    
