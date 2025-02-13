@@ -24,7 +24,6 @@ public class ClockTimer : MonoBehaviour
     private float spawnInterval;
     private LightingManager lightingManager;
     
-   // [SerializeField] private GameObject customers;
 
    private void Awake()
    {

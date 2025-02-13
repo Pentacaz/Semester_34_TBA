@@ -10,7 +10,7 @@ public class StateManager : MonoBehaviour
     private GameController gameController;
     
     // Einen Array vom Typ X mit dem Namen Y
-    [SerializeField] private StateInfo[] _stateInfos;
+    [SerializeField] public StateInfo[] _stateInfos;
     
     [SerializeField] private GameObject state_PanelContainer;
     [SerializeField] private Image item_image;
@@ -34,6 +34,7 @@ public class StateManager : MonoBehaviour
 
     void AddNewState(string id, int amount)
     {
+        
         foreach (StateInfo stateInfo in _stateInfos)
         {
             if (id == stateInfo.id)

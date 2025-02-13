@@ -10,7 +10,7 @@ public class StateInfo
     // serialzable = im system heinzufügen
     
     public string id;
-
+    
     public int amount;
 
     public string name;
@@ -18,5 +18,9 @@ public class StateInfo
     public string description;
 
     public Sprite sprite;
-    
+
+    private void Awake()
+    {
+        amount = Mathf.Clamp(0,0, 100000);
+    }
 }
