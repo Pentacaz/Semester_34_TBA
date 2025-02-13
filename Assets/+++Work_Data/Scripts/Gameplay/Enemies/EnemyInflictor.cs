@@ -6,9 +6,11 @@ using UnityEngine;
 public class EnemyInflictor : MonoBehaviour
 {
     public bool isAuraEnemy;
-    public float damagePerSecond = 1f; // Damage per second
-    public float interval = 1f;        // Interval between damage ticks
+    public float damagePerSecond = 1f;
+    public float interval = 1f;
 
+
+  
     private EnemyStatus _enemyStatus;
     private float _damageTimer;
     private bool _isPlayerInTrigger;
@@ -38,12 +40,13 @@ public class EnemyInflictor : MonoBehaviour
         {
             _isPlayerInTrigger = true;
             _playerReceiver = other.GetComponent<PlayerReciever>();
-
+          
             if (!isAuraEnemy)
             {
                 Debug.Log("Attack Player: " + other.gameObject.name);
                 _playerReceiver.GetDmg(_enemyStatus.enemyDmg);
             }
+           
         }
     }
 
@@ -66,7 +69,11 @@ public class EnemyInflictor : MonoBehaviour
             _damageTimer = interval;
         }
     }
+    
+    
+
 }
+
 
 
        

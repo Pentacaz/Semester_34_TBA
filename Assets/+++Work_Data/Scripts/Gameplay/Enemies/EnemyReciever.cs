@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,15 +13,15 @@ public class EnemyReciever : MonoBehaviour
     #region takeDMG
     private VisualEffect _vfx;
     public float currentHp;
-    
+ 
     #region Damage Indicator
 
-    public Transform playerdirec;
+    public CinemachineVirtualCamera vcam;
     public bool tookDamage;
     public bool canGetDamage = true;
-    public float pushForce;
     public float invincibilityTimer = 1.5f;
     private float _invincibilityTimerValue;
+    public float knockback;
     
     public Image damageIndicator;
 
@@ -28,6 +29,13 @@ public class EnemyReciever : MonoBehaviour
   
     #endregion
 
+    #region CAM
+
+    public float camStrength;
+    public float vCAmStrengthVelocity;
+    public float vCamSmoothTime;
+
+    #endregion
     #region References
     
     private EnemyAuraBehaviour _enemyAuraBehaviour;
@@ -90,6 +98,8 @@ public class EnemyReciever : MonoBehaviour
         if (tookDamage)
         {
             _vfx.Play();
+            Pushback();
+            CamShake();
             Debug.Log("TOOK DAMAGE ENEMY");
         }
 
@@ -126,7 +136,23 @@ public class EnemyReciever : MonoBehaviour
         }
     }
 
-   
+    public void Pushback()
+    {
+        print("PUSHED!!!!");
+        _rigidbody.AddForce(-this.gameObject.transform.position * knockback, ForceMode.Impulse);
+    }
+
+    public void CamShake()
+    {
+        float randomX = Random.value - 0.5f;
+        float randomY = Random.value - 0.5f;
+        float randomZ = Random.value - 0.5f;
+
+        float shakeStrength = Mathf.SmoothDamp(camStrength, 0f, ref vCAmStrengthVelocity, vCamSmoothTime);
+        vcam.transform.localEulerAngles = new Vector3(randomX, randomY, randomZ) * shakeStrength;
+       
+       
+        
+       
+    }
 }
-
-
