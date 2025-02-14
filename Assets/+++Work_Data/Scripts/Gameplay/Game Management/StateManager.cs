@@ -37,26 +37,27 @@ public class StateManager : MonoBehaviour
         
         foreach (StateInfo stateInfo in _stateInfos)
         {
-            if (id == stateInfo.id)
+            if (stateInfo.id == id)
             {
                 item_image.sprite = stateInfo.sprite;
                 text_itemHeader.SetText(stateInfo.name);
                 text_itemDescription.SetText(stateInfo.description);
 
-                StartCoroutine(DelayOpenPanel());
             }
         }
         
-        
+        StartCoroutine(DelayOpenPanel());
+
     }
 
     IEnumerator DelayOpenPanel()
     {
         yield return null;
         state_PanelContainer.SetActive(true);
-        gameController.StartStatePopUp();
+        Selectable newSelection;
+        newSelection = itemButton;
+        //gameController.StartStatePopUp();
         
-        Selectable newSelection = itemButton;
         
         yield return null; // Wait for next Update() / next frame
 
@@ -65,7 +66,7 @@ public class StateManager : MonoBehaviour
 
     public void CloseStatePopUp()
     {
-        EventSystem.current.SetSelectedGameObject(null);
+       // EventSystem.current.SetSelectedGameObject(null);
         state_PanelContainer.SetActive(false);
         //gameController.EndStatePopUp();
     }
@@ -74,7 +75,7 @@ public class StateManager : MonoBehaviour
     {
         foreach (StateInfo stateInfo in _stateInfos)
         {
-            if (id == stateInfo.id)
+            if (stateInfo.id == id)
             {
                 return stateInfo;
             }

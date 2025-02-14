@@ -19,8 +19,13 @@ public class StateInfo
 
     public Sprite sprite;
 
-    private void Awake()
+ 
+    public StateInfo(string id, int amount,Sprite sprite,string description)
     {
-        amount = Mathf.Clamp(0,0, 100000);
+        this.id = id;
+        this.amount = amount;
+        this.sprite = sprite;
+        this.description = description;
+        //this.name = name;
     }
 }

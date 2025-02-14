@@ -14,17 +14,24 @@ public class InventorySlot : MonoBehaviour
     [SerializeField] private GameObject inventorySlotBorder;
     [SerializeField] private Image iventorySlotImage;
     [SerializeField] private TextMeshProUGUI inventorySlotAmountText;
+    private StateManager stateManager;
 
+    private void Start()
+    {
+        inventoryManager = FindObjectOfType<InventoryManager>();
+    }
+    
+    private void Awake()
+    {
+        stateManager = FindObjectOfType<StateManager>();
+    }
     public void SetStateInfo(StateInfo stateInfo)
     {
         this.stateInfo = stateInfo;
         SetVisuals();
     }
 
-    private void Start()
-    {
-        inventoryManager = FindObjectOfType<InventoryManager>();
-    }
+    
 
     void SetVisuals()
     {
@@ -38,6 +45,7 @@ public class InventorySlot : MonoBehaviour
         inventorySlotToggle.interactable = value;
         iventorySlotImage.gameObject.SetActive(value);
         inventorySlotAmountText.gameObject.SetActive(value); 
+        inventorySlotBorder.gameObject.SetActive(false);
     }
 
     public void TurnOffBorder()
