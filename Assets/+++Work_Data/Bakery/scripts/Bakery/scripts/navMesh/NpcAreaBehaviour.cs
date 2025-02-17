@@ -1,11 +1,16 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NpcAreaBehaviour : MonoBehaviour
 {
     [SerializeField] private string tagName;
     [SerializeField] private List<NpcSpotLocation> npcSpotLocations;
+    private NavMeshAgent navMeshAgent;
+    private NpcSpotLocation npcSpotLocation;
+    
+    
     
     private void OnTriggerEnter(Collider other)
     {
@@ -18,6 +23,12 @@ public class NpcAreaBehaviour : MonoBehaviour
                 {
                     npcSpotLocations[i].ChangeStatus(true);
                     other.GetComponent<NavMeshPatrolBakes>().SetNavMeshDestination(npcSpotLocations[i]);
+                    
+                    if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance + 0.01f)
+                    {
+                        navMeshAgent.SetDestination(npcSpotLocation.location.position);
+
+                    }
                     break;
                 }
                 else

@@ -63,7 +63,7 @@ public class InventorySlot : MonoBehaviour
     {
         if (inventorySlotToggle.isOn)
         {
-            inventoryManager.ShowItemDescription(stateInfo);
+            //inventoryManager.ShowItemDescription(stateInfo);
         }
     }
 }

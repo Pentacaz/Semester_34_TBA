@@ -9,15 +9,10 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private InventorySlot[] inventorySlots;
-    [SerializeField] private GameObject inventoryContainer;
     private GameState gameState;
     private StateManager stateManager;
 
-    [Header("Item Description Panel")]
-    [SerializeField] private Image itemImage;
-    [SerializeField] private GameObject itemDescriptionContainer;
-    [SerializeField] private TextMeshProUGUI itemHeaderText;
-    [SerializeField] private TextMeshProUGUI itemDescriptionText;
+
    
    
    
@@ -26,6 +21,8 @@ public class InventoryManager : MonoBehaviour
     {
         gameState = FindObjectOfType<GameState>();
         stateManager = FindObjectOfType<StateManager>();
+        
+        RefreshInventory();
     }
    
     public void RefreshInventory()
@@ -38,7 +35,6 @@ public class InventoryManager : MonoBehaviour
 
             if (currentStateList.Count == 0)
             {
-                itemDescriptionContainer.SetActive(false);
                 inventorySlots[i].TurnOffBorder();
             }
          
@@ -58,11 +54,5 @@ public class InventoryManager : MonoBehaviour
     }
 
 
-    public void ShowItemDescription(StateInfo stateInfo)
-    {
-        itemImage.sprite = stateInfo.sprite;
-        itemHeaderText.SetText(stateInfo.name);
-        itemDescriptionText.SetText(stateInfo.description);
-        itemDescriptionContainer.SetActive(true);
-    }
+
 }

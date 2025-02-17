@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 304704982958097461}
   - component: {fileID: 5192354053745430984}
   - component: {fileID: 4132146562835352981}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 5903034343376012410}
   - component: {fileID: 4230953467932482287}
   - component: {fileID: 4243875543099813216}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 4913599903152543953}
   - component: {fileID: 5857390894824212345}
   - component: {fileID: 7818855624224710930}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: speechBubble (1)
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 615997089067409859}
   - component: {fileID: 7972380678468534722}
   - component: {fileID: 4150596315928057874}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Indicator
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 1793547450045993791}
   - component: {fileID: 4644215127226897999}
   - component: {fileID: 5877582059363854808}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 7932623912218602995}
   - component: {fileID: 8065379502628910032}
   - component: {fileID: 3753764211916361580}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: speechBubble
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 541726024912965546}
   - component: {fileID: 6649963956218692901}
   - component: {fileID: 6654864203727965992}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HighlightedArea
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -669,7 +669,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8670777723178544545}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -706,7 +706,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4220424682866183297}
   - component: {fileID: 3352553630359820538}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Timer
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -795,7 +795,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 432183460293971039}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -839,7 +839,7 @@ GameObject:
   - component: {fileID: 3178338922547654449}
   - component: {fileID: 836761042407391526}
   - component: {fileID: 891222206652664460}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NpcBase3
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -1048,7 +1048,7 @@ GameObject:
   - component: {fileID: 341433017597958841}
   - component: {fileID: 7664794183955260152}
   - component: {fileID: 4607079281063765668}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1195,6 +1195,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 95575ea5dfd415d4b8a3546bd4865c6b, type: 2}
+    - target: {fileID: -7836109915214537875, guid: fde902c288fdc6d4989b912b8c4da298,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -7216324569214997577, guid: fde902c288fdc6d4989b912b8c4da298,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1210,16 +1215,51 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 95575ea5dfd415d4b8a3546bd4865c6b, type: 2}
+    - target: {fileID: -4551560926237814871, guid: fde902c288fdc6d4989b912b8c4da298,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -4377140140577612734, guid: fde902c288fdc6d4989b912b8c4da298,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -4022733492923779155, guid: fde902c288fdc6d4989b912b8c4da298,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -3420019266473321476, guid: fde902c288fdc6d4989b912b8c4da298,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -3123161358151396148, guid: fde902c288fdc6d4989b912b8c4da298,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 29b1b466267b8264b8e13af34aa44aeb, type: 2}
+    - target: {fileID: -2511240423080479738, guid: fde902c288fdc6d4989b912b8c4da298,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -2487204615506245915, guid: fde902c288fdc6d4989b912b8c4da298,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -620985028805245127, guid: fde902c288fdc6d4989b912b8c4da298,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 95575ea5dfd415d4b8a3546bd4865c6b, type: 2}
+    - target: {fileID: -389060815399261467, guid: fde902c288fdc6d4989b912b8c4da298,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 152443124015881386, guid: fde902c288fdc6d4989b912b8c4da298,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1230,21 +1270,61 @@ PrefabInstance:
       propertyPath: m_Name
       value: sir dave
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fde902c288fdc6d4989b912b8c4da298,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1121910427813565596, guid: fde902c288fdc6d4989b912b8c4da298,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 95575ea5dfd415d4b8a3546bd4865c6b, type: 2}
+    - target: {fileID: 1285708551777934105, guid: fde902c288fdc6d4989b912b8c4da298,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507767883509144192, guid: fde902c288fdc6d4989b912b8c4da298,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806455235375228090, guid: fde902c288fdc6d4989b912b8c4da298,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891554517966182813, guid: fde902c288fdc6d4989b912b8c4da298,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3779745573541866595, guid: fde902c288fdc6d4989b912b8c4da298,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4739138893033786567, guid: fde902c288fdc6d4989b912b8c4da298,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 29b1b466267b8264b8e13af34aa44aeb, type: 2}
+    - target: {fileID: 5161181382502148836, guid: fde902c288fdc6d4989b912b8c4da298,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6164996480583612547, guid: fde902c288fdc6d4989b912b8c4da298,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 95575ea5dfd415d4b8a3546bd4865c6b, type: 2}
+    - target: {fileID: 6643673837506869548, guid: fde902c288fdc6d4989b912b8c4da298,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8809842158217664744, guid: fde902c288fdc6d4989b912b8c4da298,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

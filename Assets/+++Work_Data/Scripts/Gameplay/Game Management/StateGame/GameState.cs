@@ -12,12 +12,15 @@ public class GameState : MonoBehaviour
     #region Inspector
 
     [SerializeField] private List<State> states;
-  
 
+    private InventoryManager _inventoryManager;
     #endregion
 
-    
-    
+    private void Start()
+    {
+        _inventoryManager = FindObjectOfType<InventoryManager>();
+    }
+
     public State Get(string id)
     {
         foreach (State state in states)
@@ -33,6 +36,7 @@ public class GameState : MonoBehaviour
     
     public void Add(string id, int amount, bool invokeEvent = true)
     {
+        print($"ID {id} amount {amount}");
         // Aufbau items
         //Wenn dieses passiert ( item eigesammelt) wir Event StateAdded invoked
         
@@ -69,8 +73,12 @@ public class GameState : MonoBehaviour
             // reference StateMangerItem script
             StateAdded?.Invoke(id,amount);
         }
+        
+
 
         StartCoroutine(CheckItems());
+        
+
     }
     
     private bool isCoroutineRunning = false;
@@ -84,13 +92,14 @@ public class GameState : MonoBehaviour
         yield return new WaitForEndOfFrame();
         for (int i = 0; i < states.Count; i++)
         {
-            if (states[i].amount == 0)
+            if (states[i].amount < 1)
             {
                 states.RemoveAt(i);
                 i--;
             }
         }
         isCoroutineRunning = false;
+        _inventoryManager.RefreshInventory();
     }
 
 

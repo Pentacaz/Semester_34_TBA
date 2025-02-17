@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -74,30 +74,46 @@ public class NavMeshPatrolBakes : MonoBehaviour
     {
         // Move to the first waypoint on game start.
         SetNextWaypoint();
+
     }
 
     private void Update()
     {
+        
+
         // Update the MovementSpeed in the animator with the speed of the navMeshAgent.
         animator.SetFloat(MovementSpeedId, navMeshAgent.velocity.magnitude);
 
         if (!navMeshAgent.isStopped && !isInActionArea)
         {
             CheckIfWaypointIsReached();
+            
+
         }
         else if (isInActionArea)
         {
             if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance + 0.01f)
             {
                 navMeshAgent.SetDestination(npcSpotLocation.location.position);
+
             }
+            else
+            {
+                CheckForNpcSpotLocation();
+            }
+           
+            
             
         }
+
     }
 
     #endregion
 
     #region Navigation
+
+
+   
 
     /// <summary>
     /// Stop the <see cref="navMeshAgent"/> from moving for an interaction.
@@ -182,7 +198,9 @@ public class NavMeshPatrolBakes : MonoBehaviour
         CheckForNpcSpotLocation();
         navMeshAgent.isStopped = false;
         navMeshAgent.SetDestination(bin.transform.position);
-        
+
+
+
     }
     
     
@@ -207,6 +225,8 @@ public class NavMeshPatrolBakes : MonoBehaviour
             else
             {
                 SetNextWaypoint();
+                CompletedOrder();
+
             }
         }
     }
