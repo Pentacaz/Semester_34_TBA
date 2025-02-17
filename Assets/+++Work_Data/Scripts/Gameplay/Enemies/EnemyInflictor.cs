@@ -23,6 +23,7 @@ public class EnemyInflictor : MonoBehaviour
 
     private void Start()
     {
+        damagePerSecond = _enemyStatus.enemyDmg;
         _damageTimer = interval;
     }
 

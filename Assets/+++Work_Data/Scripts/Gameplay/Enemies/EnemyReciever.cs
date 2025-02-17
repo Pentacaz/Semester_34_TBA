@@ -107,8 +107,9 @@ public class EnemyReciever : MonoBehaviour
         {
            
               this.gameObject.SetActive(false);
+              loot.transform.position = this.gameObject.transform.position;
               loot.SetActive(true);
-              
+              //play vfx
             
             //deathIndicator.SetActive(true);
             Debug.Log("DEATH ENEMY");

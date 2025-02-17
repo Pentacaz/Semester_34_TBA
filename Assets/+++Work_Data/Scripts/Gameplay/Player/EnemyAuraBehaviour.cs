@@ -30,7 +30,7 @@ public class EnemyAuraBehaviour : MonoBehaviour
     public bool rotateWhileAttacking;
     public bool canAttackPlayer = false;
     public GameObject auraDmgObject;
-    private float _attackCooldownvalue;
+    public float _attackCooldownvalue;
     public float auraDmgTime;
     public float chaseTime;
     
@@ -68,8 +68,8 @@ public class EnemyAuraBehaviour : MonoBehaviour
         // navMeshAgent.speed = _enemyStatus.enemySpeed;
         _auraDmgTimer = auraDmgTime;
         _chaseTimer = chaseTime;
-        
-        _attackCooldownvalue = 0;
+        navMeshAgent.speed = _enemyStatus.enemySpeed;
+        //_attackCooldownvalue = 0;
     }
 
     private void Update()
