@@ -16,13 +16,13 @@ public class EnemyReciever : MonoBehaviour
  
     #region Damage Indicator
 
-    public CinemachineVirtualCamera vcam;
+    public CinemachineFreeLook vcam;
     public bool tookDamage;
     public bool canGetDamage = true;
     public float invincibilityTimer = 1.5f;
     private float _invincibilityTimerValue;
     public float knockback;
-    
+    private SpawnEnemies _spawnEnemies;
     public Image damageIndicator;
 
     #endregion
@@ -52,10 +52,12 @@ public class EnemyReciever : MonoBehaviour
     private void Awake()
     {
         _enemyStatus = GetComponent<EnemyStatus>();
+        vcam = FindObjectOfType<CinemachineFreeLook>();
         _enemyAuraBehaviour = GetComponent<EnemyAuraBehaviour>();
         _vfx = GetComponentInChildren<VisualEffect>();
         _rigidbody = GetComponent<Rigidbody>();
-        
+        _spawnEnemies = FindObjectOfType<SpawnEnemies>();
+
     }
     
     private void Start()
@@ -105,8 +107,9 @@ public class EnemyReciever : MonoBehaviour
 
         if (currentHp <= 0)
         {
-           
-              this.gameObject.SetActive(false);
+              Destroy(this.gameObject);
+             // this.gameObject.SetActive(false);
+              _spawnEnemies.RemoveDefeatedEnemy(this.gameObject);
               loot.transform.position = this.gameObject.transform.position;
               loot.SetActive(true);
               //play vfx
@@ -114,8 +117,6 @@ public class EnemyReciever : MonoBehaviour
             //deathIndicator.SetActive(true);
             Debug.Log("DEATH ENEMY");
         }
-        // if i had used a regular enemy id call the animator and play the death animation. 
-        //there is probs a way to solve this better,
     }
 
   

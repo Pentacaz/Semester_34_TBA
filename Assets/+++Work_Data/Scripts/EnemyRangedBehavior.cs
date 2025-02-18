@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
+using UnityEngine.VFX;
 
-public class EnemyAuraBehaviour : MonoBehaviour
+public class EnemyRangedBehavior : MonoBehaviour
 {
+   
+  
     public EnemyState enemyState;
     public EnemyInflictor _enemyInflictor;
 
@@ -30,9 +32,14 @@ public class EnemyAuraBehaviour : MonoBehaviour
     public bool rotateWhileAttacking;
     public bool canAttackPlayer = false;
     public GameObject auraDmgObject;
+    public GameObject playerHitAreaIndicator;
+    public float circleRadius;
     public float _attackCooldownvalue;
     public float auraDmgTime;
     public float chaseTime;
+    public bool lockedIn;
+
+    public VisualEffect attackVFX;
     
     [SerializeField] private float enemyAggroArea;
     [SerializeField] private float enemyAttackArea;
@@ -69,10 +76,17 @@ public class EnemyAuraBehaviour : MonoBehaviour
         _chaseTimer = chaseTime;
         navMeshAgent.speed = _enemyStatus.enemySpeed;
         //_attackCooldownvalue = 0;
+        
     }
 
     private void Update()
     {
+        if (!lockedIn)
+        {
+            playerHitAreaIndicator.transform.position = player.transform.position;
+        }
+
+      
         CalculateEnemyAggroRange(enemyAggroArea);
         CalculateEnemyAttackRange(enemyAttackArea);
         AttackCooldown();
@@ -210,6 +224,7 @@ public class EnemyAuraBehaviour : MonoBehaviour
                 enemyState != EnemyState.ATTACKING)
             {
                 enemyState = EnemyState.CHASE;
+                playerHitAreaIndicator.SetActive(false);
             }
         }
     }
@@ -258,12 +273,33 @@ public class EnemyAuraBehaviour : MonoBehaviour
     
     void AttackCooldown()
     {
-        if (enemyState == EnemyState.CANATTACK)
-        {
+        if (enemyState == EnemyState.CANATTACK || _playerInRange && enemyState == EnemyState.CHASE)
+        {   
             _attackCooldownvalue -= Time.deltaTime;
+            
+            if (_attackCooldownvalue <= _enemyStatus.enemyAttackCooldown/2)
+            {
+                print($"{_attackCooldownvalue}");
+                playerHitAreaIndicator.SetActive(true);
+            }  else 
+            {
+                playerHitAreaIndicator.SetActive(false);
+            }
 
+            if (_attackCooldownvalue <= _enemyStatus.enemyAttackCooldown / 4)
+            {
+                lockedIn = true;
+            }
+            else
+            {
+                lockedIn = false;
+            }
+          
+            
+            
             if (_attackCooldownvalue <= 0)
             {
+                
                 _isAttacking = true;
                 _attackCooldownvalue = _enemyStatus.enemyAttackCooldown;
                 EnemyAttack();
@@ -308,7 +344,7 @@ public class EnemyAuraBehaviour : MonoBehaviour
     
     public void EnemyAttack()
     {
-        auraDmgObject.SetActive(true);
+        SpawnProjectileOnLastPlayerPosition();
         _isAttacking = true;
     }
     public void StopEnemyAttack()
@@ -318,7 +354,17 @@ public class EnemyAuraBehaviour : MonoBehaviour
     }
     
 
+    void SpawnProjectileOnLastPlayerPosition()
+    {
 
+
+
+        Vector3 spawnPosition = playerHitAreaIndicator.transform.position;
+
+        auraDmgObject.transform.position = spawnPosition;
+        auraDmgObject.SetActive(true);
+        attackVFX.Play();
+    }
     #endregion
     
     #region Gizmos
@@ -347,10 +393,13 @@ public class EnemyAuraBehaviour : MonoBehaviour
             Gizmos.DrawWireSphere(transform.position, enemyAttackArea);
             Gizmos.color = Color.black;
             Gizmos.DrawWireSphere(transform.position, enemyStopArea);
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(transform.position,circleRadius);
         }
     }
 
+    
+    
     #endregion
+    
 }
-
-

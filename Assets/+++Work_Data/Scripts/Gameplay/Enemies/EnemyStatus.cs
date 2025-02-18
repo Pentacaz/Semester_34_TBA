@@ -21,8 +21,8 @@ public class EnemyStatus : MonoBehaviour
     
     public void SetUpEnemy(Unit unit)
     {
-        anim.runtimeAnimatorController = unit.animController;
-        enemyMesh.sharedMesh = unit.unitMesh;
+        //anim.runtimeAnimatorController = unit.animController;
+//        enemyMesh.sharedMesh = unit.unitMesh;
         //enemyMesh.rootBone = unit.unitRig.GetComponent<>();
         enemyName = unit.unitName;
         enemyLevel = unit.unitLevel ;

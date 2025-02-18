@@ -49,9 +49,9 @@ public class PlayerBaseController : MonoBehaviour
 
     private PlayerInputActions _inputActions;
     public Interactable selectedInteractable;
-    private InputAction _moveAction;
+    [FormerlySerializedAs("_moveAction")] public InputAction moveAction;
     private InputAction _runAction;
-    private InputAction _lookAction;
+    [FormerlySerializedAs("_lookAction")] public InputAction lookAction;
     private InputAction _dodgeAction;
     private InputAction _engageAction;
     private InputAction _attackAction;
@@ -63,8 +63,8 @@ public class PlayerBaseController : MonoBehaviour
     private Rigidbody _rigidbody;
 
     private Vector3 _currentVelocity;
-    private Vector2 _moveInput;
-    private Vector2 _lookInput;
+    [FormerlySerializedAs("_moveInput")] public  Vector2 moveInput;
+    [FormerlySerializedAs("_lookInput")] public Vector2 lookInput;
 
     public float moveSpeed;
     public float maxForce;
@@ -100,8 +100,8 @@ public class PlayerBaseController : MonoBehaviour
 
         _inputActions = new PlayerInputActions();
 
-        _moveAction = _inputActions.Player.Move;
-        _lookAction = _inputActions.Player.Look;
+        moveAction = _inputActions.Player.Move;
+        lookAction = _inputActions.Player.Look;
         _dodgeAction = _inputActions.Player.Dash;
         _engageAction = _inputActions.Player.Engage;
         _attackAction = _inputActions.Player.Attack;
@@ -154,12 +154,12 @@ public class PlayerBaseController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        OnMove(_moveInput);
+        OnMove(moveInput);
     }
 
     private void LateUpdate()
     {
-        OnLook(_lookInput);
+        OnLook(lookInput);
     }
 
  
@@ -332,25 +332,7 @@ comment comment comment
     
     public void OnLook(Vector2 lookInput)
     {
-        if (lookInput != Vector2.zero)
-        {
-            bool isMouseLook = IsMouseLook();
-            bool isControllerLook = IsControllerLook();
-
-            float deltaTimeMultiplier = isMouseLook ? 1 : Time.deltaTime;
-            float sensitivity = isMouseLook ? mouseCameraSensitivity : (isControllerLook ? controllerCameraSensitivity : 1);
-
-            lookInput *= deltaTimeMultiplier * sensitivity;
-
-            _cameraRotation.x += lookInput.y * cameraVerticalSpeed * (!isMouseLook && invertY ? -1 : 1);
-            _cameraRotation.y += lookInput.x * cameraHorizontalSpeed;
-
-            _cameraRotation.x = Mathf.Clamp(NormalizeAngle(_cameraRotation.x), verticalCameraRotationMin,
-                verticalCameraRotationMax);
-            _cameraRotation.y = NormalizeAngle(_cameraRotation.y);
-
-            cameraTarget.rotation = Quaternion.Euler(_cameraRotation.x, _cameraRotation.y, 0);
-        }
+     
     }
 
     private float NormalizeAngle(float angle)
@@ -372,18 +354,18 @@ comment comment comment
 
     private bool IsMouseLook()
     {
-        return _lookAction.activeControl != null && _lookAction.activeControl.device.name == "Mouse";
+        return lookAction.activeControl != null && lookAction.activeControl.device.name == "Mouse";
     }
 
     private bool IsControllerLook()
     {
-        return _lookAction.activeControl != null && _lookAction.activeControl.device.name == "Gamepad";
+        return lookAction.activeControl != null && lookAction.activeControl.device.name == "Gamepad";
     }
     
     void ReadInput()
     {
-        _moveInput = _moveAction.ReadValue<Vector2>();
-        _lookInput = _lookAction.ReadValue<Vector2>();
+        moveInput = moveAction.ReadValue<Vector2>();
+        lookInput = lookAction.ReadValue<Vector2>();
     }
 
     public void AnimationSetUp(Vector3 lastMovement)
@@ -413,6 +395,7 @@ comment comment comment
             }
         }
     }
+    
     
 }
 
