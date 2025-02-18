@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    private PlayerController player;
+    private PlayerControllerBakery player;
     private DialogueController dialogueController;
 
     public enum GameMode
@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        player = FindObjectOfType<PlayerController>();
+        player = FindObjectOfType<PlayerControllerBakery>();
         dialogueController = FindObjectOfType<DialogueController>();
     }
 

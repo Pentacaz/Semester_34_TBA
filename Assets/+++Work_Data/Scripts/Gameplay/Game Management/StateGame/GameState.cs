@@ -11,14 +11,17 @@ public class GameState : MonoBehaviour
     public static event Action <string, int> StateAdded;
     #region Inspector
 
-    [SerializeField] private List<State> states;
+    [SerializeField] public List<State> states;
 
     private InventoryManager _inventoryManager;
+
+    private RemoveItem removeItem;
     #endregion
 
     private void Start()
     {
         _inventoryManager = FindObjectOfType<InventoryManager>();
+        removeItem = GetComponent<RemoveItem>();
     }
 
     public State Get(string id)
@@ -108,6 +111,7 @@ public class GameState : MonoBehaviour
         // state => item ( id amount)
         // durchläuft liste von State s 
         // zerteilt items in bestandteile
+        
         Add(state.id, state.amount, invokeEvent);
     }
 
@@ -115,10 +119,10 @@ public class GameState : MonoBehaviour
     {
         // state => item ( id amount)
         // durchläuft liste von State s 
-         Mathf.Clamp(state.amount, 0, 2000);
-
+        
         // zerteilt items in bestandteile
         Add(state.id, -state.amount, invokeEvent);
+
     }
     
     

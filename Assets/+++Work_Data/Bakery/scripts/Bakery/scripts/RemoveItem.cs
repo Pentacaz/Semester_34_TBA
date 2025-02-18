@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class RemoveItem : MonoBehaviour
 {
-    [SerializeField] State state;
+    public State state;
     [SerializeField] State money;
 
     [SerializeField]  private UnityEvent onCollected;
@@ -11,10 +11,13 @@ public class RemoveItem : MonoBehaviour
     private NavMeshPatrolBakes navMeshPatrol;
     
     private Interactable _selectedInteractable;
+    private GameState gameState;
+    
 
     private void Start()
     {
         navMeshPatrol = GetComponent<NavMeshPatrolBakes>();
+        gameState = GetComponent<GameState>();
     }
 
     public void Remove()
@@ -22,27 +25,35 @@ public class RemoveItem : MonoBehaviour
         onCollected.Invoke();
         
         FindObjectOfType<GameState>().Remove(state);
+        //gameState.Get(state.id);
+
         Indicator.SetActive(false);
         
     }
 
     public void TakeOrder()
     {
+        
         FindObjectOfType<GameState>().Add(state);
+
         
     }
     
     public void GiveOrder()
     {
-        FindObjectOfType<GameState>().Add(money);
-        FindObjectOfType<GameState>().Remove(state);
+      
+            FindObjectOfType<GameState>().Add(money);
+            FindObjectOfType<GameState>().Remove(state);
         
+        
+
     }
     
     public void Buy()
     {
         Indicator.SetActive(true);
         FindObjectOfType<GameState>().Remove(state);
+
         
     }
 
@@ -51,5 +62,18 @@ public class RemoveItem : MonoBehaviour
         Destroy(Indicator);
         navMeshPatrol.CompletedOrder();
         
+    }
+
+    public State Get(string id)
+    {
+        foreach (State state in gameState.states)
+        {
+            if (state.id == id)
+            {
+                return state;
+            }
+        }
+        
+        return null;
     }
 }

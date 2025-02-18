@@ -112,7 +112,7 @@ public class PlayerControllerBakery : MonoBehaviour
         currentSpeed = walkSpeed;
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
         inputActions.Enable();
        // runAction.performed += ShiftInput;
@@ -143,7 +143,7 @@ public class PlayerControllerBakery : MonoBehaviour
         RotateCamera(lookInput);
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         inputActions.Disable();
        

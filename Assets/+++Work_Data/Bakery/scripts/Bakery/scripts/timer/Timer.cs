@@ -12,16 +12,9 @@ public class Timer : MonoBehaviour
     public bool timerStop;
     public GameObject highlightedArea;
     private NavMeshPatrolBakes navMeshPatrol;
+    
 
 
-
-  /*  private void Start()
-    {
-        timerSlider.maxValue = sliderTimer;
-        timerSlider.value = sliderTimer;
-        StartTimer();
-    }
-*/
 
      private void Start()
     {
@@ -54,6 +47,7 @@ public class Timer : MonoBehaviour
                 StopTimer(); 
                 navMeshPatrol.CompletedOrder();
                 highlightedArea.SetActive(false);
+                
             }
 
             if (timerStop == false)
@@ -67,6 +61,7 @@ public class Timer : MonoBehaviour
     public void StopTimer()
     {
         timerStop = true;
+
     }
 
    

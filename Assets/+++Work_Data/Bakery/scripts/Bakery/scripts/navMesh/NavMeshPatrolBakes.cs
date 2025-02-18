@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// Gives a <see cref="NavMeshAgent"/> a patrolling behaviour, moving between a set of points.
@@ -79,7 +81,8 @@ public class NavMeshPatrolBakes : MonoBehaviour
 
     private void Update()
     {
-        
+
+    
 
         // Update the MovementSpeed in the animator with the speed of the navMeshAgent.
         animator.SetFloat(MovementSpeedId, navMeshAgent.velocity.magnitude);
@@ -87,7 +90,6 @@ public class NavMeshPatrolBakes : MonoBehaviour
         if (!navMeshAgent.isStopped && !isInActionArea)
         {
             CheckIfWaypointIsReached();
-            
 
         }
         else if (isInActionArea)
@@ -97,16 +99,13 @@ public class NavMeshPatrolBakes : MonoBehaviour
                 navMeshAgent.SetDestination(npcSpotLocation.location.position);
 
             }
-            else
-            {
-                CheckForNpcSpotLocation();
-            }
-           
-            
             
         }
-
+        
+        
     }
+
+    
 
     #endregion
 
@@ -195,12 +194,11 @@ public class NavMeshPatrolBakes : MonoBehaviour
     
     public void CompletedOrder()
     {
+        navMeshAgent.SetDestination(bin.transform.position);
         CheckForNpcSpotLocation();
         navMeshAgent.isStopped = false;
-        navMeshAgent.SetDestination(bin.transform.position);
-
-
-
+        
+       
     }
     
     
@@ -243,7 +241,11 @@ public class NavMeshPatrolBakes : MonoBehaviour
     {
         this.npcSpotLocation = npcSpotLocation;
         isInActionArea = true;
+        
     }
+    
+    
+    
 
     public void CheckForNpcSpotLocation()
     {
@@ -251,6 +253,7 @@ public class NavMeshPatrolBakes : MonoBehaviour
         
         npcSpotLocation.ChangeStatus(false);
         npcSpotLocation = null;
+
     }
 
     #endregion

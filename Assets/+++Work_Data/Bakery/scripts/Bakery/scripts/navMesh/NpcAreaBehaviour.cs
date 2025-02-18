@@ -31,19 +31,21 @@ public class NpcAreaBehaviour : MonoBehaviour
                     }
                     break;
                 }
-                else
+                /*else
                 {
                     other.GetComponent<NavMeshPatrolBakes>().CompletedOrder(); 
                 }
+                */
             }
         }
     }
 
-    private void OnTriggerExit(Collider other)
+  /*  private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(tagName))
         {
             other.GetComponent<NavMeshPatrolBakes>().CheckForNpcSpotLocation();
         }
     }
+    */
 }
