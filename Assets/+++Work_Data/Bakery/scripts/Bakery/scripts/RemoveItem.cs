@@ -41,6 +41,7 @@ public class RemoveItem : MonoBehaviour
     
     public void GiveOrder()
     {
+
       
             FindObjectOfType<GameState>().Add(money);
             FindObjectOfType<GameState>().Remove(state);

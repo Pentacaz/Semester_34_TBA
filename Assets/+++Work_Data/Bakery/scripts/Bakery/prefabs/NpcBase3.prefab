@@ -500,7 +500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4853372905269973304
 Transform:
   m_ObjectHideFlags: 0
@@ -839,6 +839,7 @@ GameObject:
   - component: {fileID: 3178338922547654449}
   - component: {fileID: 836761042407391526}
   - component: {fileID: 891222206652664460}
+  - component: {fileID: 5990814196804722360}
   m_Layer: 6
   m_Name: NpcBase3
   m_TagString: NPC
@@ -1037,6 +1038,40 @@ MonoBehaviour:
   sliderTimer: 10
   timerStop: 0
   highlightedArea: {fileID: 1933468526312976179}
+--- !u!114 &5990814196804722360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6903506906184245368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a9025ac61dfe84fb79371db5cc0a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions:
+  - id: cake
+    amount: 1
+  onFulfilled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4868874593641068749}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onUnfulfilled:
+    m_PersistentCalls:
+      m_Calls: []
+  questEntry: {fileID: 0}
 --- !u!1 &7001262515948118971
 GameObject:
   m_ObjectHideFlags: 0

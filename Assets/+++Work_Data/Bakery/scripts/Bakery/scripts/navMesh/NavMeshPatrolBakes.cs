@@ -198,7 +198,8 @@ public class NavMeshPatrolBakes : MonoBehaviour
         CheckForNpcSpotLocation();
         navMeshAgent.isStopped = false;
         
-       
+
+
     }
     
     

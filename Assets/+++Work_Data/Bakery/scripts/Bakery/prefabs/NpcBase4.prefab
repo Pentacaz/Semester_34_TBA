@@ -220,7 +220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3002553969946229833
 Transform:
   m_ObjectHideFlags: 0
@@ -803,6 +803,7 @@ GameObject:
   - component: {fileID: 7893887649617393118}
   - component: {fileID: 2475846416855801183}
   - component: {fileID: 4073195904732403964}
+  - component: {fileID: 5052187055822223375}
   m_Layer: 6
   m_Name: NpcBase4
   m_TagString: NPC
@@ -1001,6 +1002,40 @@ MonoBehaviour:
   sliderTimer: 10
   timerStop: 0
   highlightedArea: {fileID: 5820086737382234274}
+--- !u!114 &5052187055822223375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6903506906184245368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a9025ac61dfe84fb79371db5cc0a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions:
+  - id: coffee
+    amount: 1
+  onFulfilled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1844634203086009104}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onUnfulfilled:
+    m_PersistentCalls:
+      m_Calls: []
+  questEntry: {fileID: 0}
 --- !u!1 &8325922419253762410
 GameObject:
   m_ObjectHideFlags: 0

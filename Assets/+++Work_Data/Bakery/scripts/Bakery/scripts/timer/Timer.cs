@@ -47,7 +47,8 @@ public class Timer : MonoBehaviour
                 StopTimer(); 
                 navMeshPatrol.CompletedOrder();
                 highlightedArea.SetActive(false);
-                
+                navMeshPatrol.enabled = false;
+
             }
 
             if (timerStop == false)

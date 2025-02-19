@@ -34,7 +34,7 @@ public class StateManager : MonoBehaviour
 
     void AddNewState(string id, int amount)
     {
-        
+        /*
         foreach (StateInfo stateInfo in _stateInfos)
         {
             if (stateInfo.id == id)
@@ -45,6 +45,7 @@ public class StateManager : MonoBehaviour
 
             }
         }
+        */
         
         StartCoroutine(DelayOpenPanel());
 

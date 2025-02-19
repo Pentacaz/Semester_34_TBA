@@ -14,8 +14,8 @@ public class ClockTimer : MonoBehaviour
     public float maxTime;
     public bool timerStop;
     public GameObject highlightedArea;
-    
-    
+
+    private NpcSpotLocation spotLocation;
 
     
     [SerializeField] private GameObject[] customers;
@@ -28,6 +28,7 @@ public class ClockTimer : MonoBehaviour
    private void Awake()
    {
        lightingManager = GetComponent<LightingManager>();
+       spotLocation = GetComponent<NpcSpotLocation>();
    }
 
    private void Start()
@@ -71,17 +72,16 @@ public class ClockTimer : MonoBehaviour
 
                 }
 
-                StopTimer();    
-               
+                StopTimer();
 
+                spotLocation.isOccupied = false;
 
 
             }
             if (timerStop == false)
             {
                 timerSlider.value = sliderTimer;
-
-
+                
             }
             
         }
