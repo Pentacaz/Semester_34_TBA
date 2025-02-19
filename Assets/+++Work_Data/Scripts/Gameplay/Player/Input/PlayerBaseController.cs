@@ -138,7 +138,7 @@ public class PlayerBaseController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {  
         ReadInput();
         AnimationSetUp(_currentVelocity);
 

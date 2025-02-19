@@ -448,6 +448,7 @@ GameObject:
   - component: {fileID: 5011062343371473121}
   - component: {fileID: 7956995060630738324}
   - component: {fileID: 1694009117489948424}
+  - component: {fileID: 870040187085978811}
   m_Layer: 0
   m_Name: Enemy_Prototype_Easy_Ground
   m_TagString: Enemy
@@ -677,8 +678,8 @@ MonoBehaviour:
   invincibilityTimer: 0.2
   knockback: 0.2
   damageIndicator: {fileID: 6974272089875866989}
-  camStrength: 1
-  vCAmStrengthVelocity: 1
+  camStrength: 10
+  vCAmStrengthVelocity: 10
   vCamSmoothTime: 1
   loot: {fileID: 4773407644254495317}
 --- !u!54 &1694009117489948424
@@ -708,6 +709,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 72
   m_CollisionDetection: 0
+--- !u!114 &870040187085978811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9002974533343014635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3163ca3c6fa256c41812022b745b2862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTarget: {fileID: 0}
+  shakeDuration: 0.1
+  shakeStrength: 0.08
 --- !u!1001 &482152007786606100
 PrefabInstance:
   m_ObjectHideFlags: 0

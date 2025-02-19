@@ -37,7 +37,8 @@ public class EnemyReciever : MonoBehaviour
 
     #endregion
     #region References
-    
+
+    private CamBehavior _camBehavior;
     private EnemyAuraBehaviour _enemyAuraBehaviour;
     private EnemyStatus _enemyStatus;
     
@@ -52,7 +53,7 @@ public class EnemyReciever : MonoBehaviour
     private void Awake()
     {
         _enemyStatus = GetComponent<EnemyStatus>();
-        vcam = FindObjectOfType<CinemachineFreeLook>();
+        _camBehavior = GetComponent<CamBehavior>();
         _enemyAuraBehaviour = GetComponent<EnemyAuraBehaviour>();
         _vfx = GetComponentInChildren<VisualEffect>();
         _rigidbody = GetComponent<Rigidbody>();
@@ -101,7 +102,7 @@ public class EnemyReciever : MonoBehaviour
         {
             _vfx.Play();
             Pushback();
-            CamShake();
+          _camBehavior.CamShake();
             Debug.Log("TOOK DAMAGE ENEMY");
         }
 
@@ -144,17 +145,5 @@ public class EnemyReciever : MonoBehaviour
         _rigidbody.AddForce(-this.gameObject.transform.position * knockback, ForceMode.Impulse);
     }
 
-    public void CamShake()
-    {
-        float randomX = Random.value - 0.5f;
-        float randomY = Random.value - 0.5f;
-        float randomZ = Random.value - 0.5f;
-
-        float shakeStrength = Mathf.SmoothDamp(camStrength, 0f, ref vCAmStrengthVelocity, vCamSmoothTime);
-        vcam.transform.localEulerAngles = new Vector3(randomX, randomY, randomZ) * shakeStrength;
-       
-       
-        
-       
-    }
+  
 }

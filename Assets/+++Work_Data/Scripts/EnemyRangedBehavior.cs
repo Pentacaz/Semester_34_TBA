@@ -44,7 +44,7 @@ public class EnemyRangedBehavior : MonoBehaviour
     [SerializeField] private float enemyAggroArea;
     [SerializeField] private float enemyAttackArea;
     [SerializeField] private float enemyStopArea;
-
+    private CamBehavior _camBehavior;
     #endregion
     [Header("Gizmos")] [SerializeField] private bool showWaypoints = true;
     [SerializeField] private bool showRange = true;
@@ -63,6 +63,7 @@ public class EnemyRangedBehavior : MonoBehaviour
 
     private void Awake()
     {
+        _camBehavior = GetComponent<CamBehavior>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         _enemyStatus = GetComponent<EnemyStatus>();
         _enemyReciever = GetComponent<EnemyReciever>();
@@ -344,11 +345,14 @@ public class EnemyRangedBehavior : MonoBehaviour
     
     public void EnemyAttack()
     {
+        _camBehavior.isImpactShake = true;
+        _camBehavior.CamShake();
         SpawnProjectileOnLastPlayerPosition();
         _isAttacking = true;
     }
     public void StopEnemyAttack()
     {
+        _camBehavior.isImpactShake = false;
         auraDmgObject.SetActive(false);
         _isAttacking = false;
     }
@@ -356,8 +360,6 @@ public class EnemyRangedBehavior : MonoBehaviour
 
     void SpawnProjectileOnLastPlayerPosition()
     {
-
-
 
         Vector3 spawnPosition = playerHitAreaIndicator.transform.position;
 

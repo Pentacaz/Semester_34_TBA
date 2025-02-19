@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 4979562958856174204}
   - component: {fileID: 3828806199240855703}
   - component: {fileID: 6460928456207894048}
+  - component: {fileID: 2874366664680569151}
   m_Layer: 0
   m_Name: Enemy_Prototype_Easy_Ground
   m_TagString: Enemy
@@ -283,6 +284,24 @@ MonoBehaviour:
   enemyStopArea: 2
   showWaypoints: 1
   showRange: 1
+--- !u!114 &2874366664680569151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347742249817391899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3163ca3c6fa256c41812022b745b2862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTarget: {fileID: 0}
+  shakeDuration: 0.1
+  shakeStrength: 0.08
+  baseShakeStrength: 0
+  isImpactShake: 0
+  impactShakeValue: 5
 --- !u!1 &469815682747092376
 GameObject:
   m_ObjectHideFlags: 0
