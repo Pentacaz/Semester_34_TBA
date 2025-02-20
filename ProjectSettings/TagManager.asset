@@ -10,6 +10,7 @@ TagManager:
   - wp
   - Bin
   - NPCBase
+  - Menu
   layers:
   - Default
   - TransparentFX

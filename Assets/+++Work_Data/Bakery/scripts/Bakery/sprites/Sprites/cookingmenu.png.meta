@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4579bb6f74750d245851d1b82623d026
+guid: abaf8f87e97dc15498a406e274a4946e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -149,13 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dialouge_und_inventar_UI_0
+      name: cookingmenu_0
       rect:
         serializedVersion: 2
-        x: 77
-        y: 254
-        width: 787
-        height: 762
+        x: 104
+        y: 2122
+        width: 538
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c2ba885095c8d241a385b0dfcd13acc
-      internalID: -1841145575
+      spriteID: ca7052b015bf95e4193a52e9181b8ea3
+      internalID: -1418841415
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dialouge_und_inventar_UI_1
+      name: cookingmenu_1
       rect:
         serializedVersion: 2
-        x: 1010
-        y: 766
-        width: 313
-        height: 261
+        x: 218
+        y: 1240
+        width: 3072
+        height: 788
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c620f17ef085384ab0994184f7b3ec7
-      internalID: 140732896
+      spriteID: 44c7571011689fb448b605271278a98f
+      internalID: -1051675072
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dialouge_und_inventar_UI_4
+      name: cookingmenu_2
       rect:
         serializedVersion: 2
-        x: 1432
-        y: 499
-        width: 470
-        height: 129
+        x: 1072
+        y: 502
+        width: 1377
+        height: 423
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13a75cb8f9b4e9a46a295fc9d56ed1a4
-      internalID: -497037327
+      spriteID: a38647d16b2aed743b2b6c49d7d71eae
+      internalID: 1956058086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dialouge_und_inventar_UI_5
+      name: cookingmenu_4
       rect:
         serializedVersion: 2
-        x: 956
-        y: 389
-        width: 420
-        height: 72
+        x: 3105
+        y: 94
+        width: 247
+        height: 1088
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,20 +226,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f665a720595fd0b419b23cb26e13858e
-      internalID: -1146073979
+      spriteID: 012172974d3fcea459b7999cc77bb604
+      internalID: -1156782383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dialouge_und_inventar_UI_6
+      name: cookingmenu_5
       rect:
         serializedVersion: 2
-        x: 1431
-        y: 375
-        width: 83
-        height: 80
+        x: 51
+        y: 62
+        width: 530
+        height: 442
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,20 +247,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0008eda56e4c0de4da7a24ae4b15b4de
-      internalID: -1732008429
+      spriteID: fb98e17cdfba80e4baec45880afa56e9
+      internalID: 851886617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dialouge_und_inventar_UI_7
+      name: cookingmenu_6
       rect:
         serializedVersion: 2
-        x: 162
-        y: 43
-        width: 617
-        height: 168
+        x: 2597
+        y: 307
+        width: 378
+        height: 670
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,29 +268,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72d4d78f667cd654e94fe532226962dc
-      internalID: -2024808551
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dialouge_und_inventar_UI_8
-      rect:
-        serializedVersion: 2
-        x: 985
-        y: 42
-        width: 910
-        height: 304
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f3ec7fb4fc1dafb419f8d5ca36ca743a
-      internalID: -394014758
+      spriteID: ea1edbd144576b84884e507f4d96a3ed
+      internalID: -1258339666
       vertices: []
       indices: 
       edges: []
@@ -298,7 +277,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a0d493a85abfdc947ad547ca6613d944
+    spriteID: f41b3951c34b62c49b629aaf0539ef2c
     internalID: 0
     vertices: []
     indices: 
@@ -306,15 +285,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dialouge_und_inventar_UI_0: -1841145575
-      Dialouge_und_inventar_UI_1: 140732896
-      Dialouge_und_inventar_UI_2: 453262883
-      Dialouge_und_inventar_UI_3: 1145140851
-      Dialouge_und_inventar_UI_4: -497037327
-      Dialouge_und_inventar_UI_5: -1146073979
-      Dialouge_und_inventar_UI_6: -1732008429
-      Dialouge_und_inventar_UI_7: -2024808551
-      Dialouge_und_inventar_UI_8: -394014758
+      cookingmenu_0: -1418841415
+      cookingmenu_1: -1051675072
+      cookingmenu_2: 1956058086
+      cookingmenu_3: 679219640
+      cookingmenu_4: -1156782383
+      cookingmenu_5: 851886617
+      cookingmenu_6: -1258339666
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

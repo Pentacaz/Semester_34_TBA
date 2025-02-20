@@ -39,7 +39,7 @@ public class InventoryManagerBakes : MonoBehaviour
          if (currentStateList.Count == 0)
          {
             itemDescriptionContainer.SetActive(false);
-            inventorySlots[i].TurnOffBorder();
+          // inventorySlots[i].TurnOffBorder();
          }
          
          

@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     {
         player = FindObjectOfType<PlayerControllerBakery>();
         dialogueController = FindObjectOfType<DialogueController>();
+        
     }
 
     private void OnEnable()

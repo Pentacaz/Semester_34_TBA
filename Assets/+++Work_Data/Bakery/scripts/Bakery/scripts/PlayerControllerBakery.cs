@@ -69,6 +69,8 @@ public class PlayerControllerBakery : MonoBehaviour
     private InputAction jumpAction;
     private Interactable selectedInteractable;
     private InputAction interactAction;
+
+    private InputAction openMenu;
    // private InputAction attackAction;
     
     private Vector2 moveInput;
@@ -87,6 +89,10 @@ public class PlayerControllerBakery : MonoBehaviour
     private float currentSpeed;
     private int upperBody_AnimLayer;
     
+    
+    
+    public GameObject exitMenu;
+
     
     [SerializeField] private float gravity = -19.62f;
     private Vector3 velocity;
@@ -109,7 +115,12 @@ public class PlayerControllerBakery : MonoBehaviour
         characterTargetRotation = transform.rotation;
         cameraRotation = cameraTarget.rotation.eulerAngles;
 
+        openMenu = inputActions.Player.Menu;
+
         currentSpeed = walkSpeed;
+        exitMenu = GameObject.FindGameObjectWithTag("Menu");
+        exitMenu.SetActive(false);
+
     }
 
     public void OnEnable()
@@ -122,6 +133,8 @@ public class PlayerControllerBakery : MonoBehaviour
         
 
         interactAction.performed += Interact;
+
+        openMenu.performed += OpenMenu;
 
         //attackAction.performed += AttackInput;
     }
@@ -146,8 +159,8 @@ public class PlayerControllerBakery : MonoBehaviour
     public void OnDisable()
     {
         inputActions.Disable();
-       
-        
+
+        openMenu.performed -= OpenMenu;
 
         interactAction.performed -= Interact;
 
@@ -335,6 +348,17 @@ public class PlayerControllerBakery : MonoBehaviour
     
     
     #endregion
+
+    private void OpenMenu(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            print("openMenu");
+            exitMenu.SetActive(!exitMenu.activeInHierarchy);
+
+        }
+        
+    }
     
     #region Ground Check
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4579bb6f74750d245851d1b82623d026
+guid: 1f28f761c7025e244971ca3d8f6c119e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -149,13 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dialouge_und_inventar_UI_0
+      name: slider2_0
       rect:
         serializedVersion: 2
-        x: 77
-        y: 254
-        width: 787
-        height: 762
+        x: 86
+        y: 1975
+        width: 3336
+        height: 370
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c2ba885095c8d241a385b0dfcd13acc
-      internalID: -1841145575
+      spriteID: f38be861bc2a3774dabb86a357f29bc6
+      internalID: 987168196
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dialouge_und_inventar_UI_1
+      name: slider2_1
       rect:
         serializedVersion: 2
-        x: 1010
-        y: 766
-        width: 313
-        height: 261
+        x: 300
+        y: 1713
+        width: 2922
+        height: 197
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c620f17ef085384ab0994184f7b3ec7
-      internalID: 140732896
+      spriteID: 93ce336d9be68f5478c28388217b743e
+      internalID: -1694150851
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dialouge_und_inventar_UI_4
+      name: slider2_2
       rect:
         serializedVersion: 2
-        x: 1432
-        y: 499
-        width: 470
-        height: 129
+        x: 279
+        y: 1500
+        width: 2922
+        height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13a75cb8f9b4e9a46a295fc9d56ed1a4
-      internalID: -497037327
+      spriteID: 4ea014f4a1a70a94d8342aee36199200
+      internalID: -1693218148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dialouge_und_inventar_UI_5
+      name: slider2_3
       rect:
         serializedVersion: 2
-        x: 956
-        y: 389
-        width: 420
-        height: 72
+        x: 272
+        y: 1204
+        width: 1349
+        height: 216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,20 +226,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f665a720595fd0b419b23cb26e13858e
-      internalID: -1146073979
+      spriteID: 3b131ba421ec0954f9888426158f9142
+      internalID: 990698007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dialouge_und_inventar_UI_6
+      name: slider2_4
       rect:
         serializedVersion: 2
-        x: 1431
-        y: 375
-        width: 83
-        height: 80
+        x: 279
+        y: 971
+        width: 1297
+        height: 165
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,20 +247,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0008eda56e4c0de4da7a24ae4b15b4de
-      internalID: -1732008429
+      spriteID: b6fc3b34d937aea4daaa4415ecd614e8
+      internalID: 376745333
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dialouge_und_inventar_UI_7
+      name: slider2_5
       rect:
         serializedVersion: 2
-        x: 162
-        y: 43
-        width: 617
-        height: 168
+        x: 1673
+        y: 975
+        width: 1297
+        height: 162
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,20 +268,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72d4d78f667cd654e94fe532226962dc
-      internalID: -2024808551
+      spriteID: 082c3c0550f0f8e4ebe752dcdd48b8d3
+      internalID: -432698706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dialouge_und_inventar_UI_8
+      name: slider2_6
       rect:
         serializedVersion: 2
-        x: 985
-        y: 42
-        width: 910
-        height: 304
+        x: 264
+        y: 135
+        width: 962
+        height: 723
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,8 +289,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3ec7fb4fc1dafb419f8d5ca36ca743a
-      internalID: -394014758
+      spriteID: 602d439ca3b2fe04290c2ef0d33ac493
+      internalID: 1112360643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slider2_7
+      rect:
+        serializedVersion: 2
+        x: 1596
+        y: 357
+        width: 158
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba491886066afed4884916991c163406
+      internalID: -103265330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slider2_8
+      rect:
+        serializedVersion: 2
+        x: 2037
+        y: 317
+        width: 541
+        height: 541
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 233b46d7211c9464fa7bdd11a0313f9d
+      internalID: -1764527711
       vertices: []
       indices: 
       edges: []
@@ -298,7 +340,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a0d493a85abfdc947ad547ca6613d944
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -306,15 +348,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dialouge_und_inventar_UI_0: -1841145575
-      Dialouge_und_inventar_UI_1: 140732896
-      Dialouge_und_inventar_UI_2: 453262883
-      Dialouge_und_inventar_UI_3: 1145140851
-      Dialouge_und_inventar_UI_4: -497037327
-      Dialouge_und_inventar_UI_5: -1146073979
-      Dialouge_und_inventar_UI_6: -1732008429
-      Dialouge_und_inventar_UI_7: -2024808551
-      Dialouge_und_inventar_UI_8: -394014758
+      slider2_0: 987168196
+      slider2_1: -1694150851
+      slider2_2: -1693218148
+      slider2_3: 990698007
+      slider2_4: 376745333
+      slider2_5: -432698706
+      slider2_6: 1112360643
+      slider2_7: -103265330
+      slider2_8: -1764527711
+      slider2_9: 884975407
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

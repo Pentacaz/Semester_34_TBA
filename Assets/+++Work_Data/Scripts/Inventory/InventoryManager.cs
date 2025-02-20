@@ -35,7 +35,7 @@ public class InventoryManager : MonoBehaviour
 
             if (currentStateList.Count == 0)
             {
-                inventorySlots[i].TurnOffBorder();
+               // inventorySlots[i].TurnOffBorder();
             }
          
          

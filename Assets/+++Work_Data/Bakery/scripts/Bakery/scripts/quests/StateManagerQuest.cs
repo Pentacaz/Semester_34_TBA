@@ -5,16 +5,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class StateManager : MonoBehaviour
+public class StateManagerQuest : MonoBehaviour
 {
     private GameController gameController;
     
     // Einen Array vom Typ X mit dem Namen Y
     [SerializeField] public StateInfo[] _stateInfos;
     
-    //[SerializeField] private GameObject state_PanelContainer;
+    [SerializeField] private GameObject state_PanelContainer;
   
-    //[SerializeField] private Button itemButton;
+    [SerializeField] private Button itemButton;
     private void Awake()
     {
         gameController = FindObjectOfType<GameController>();
@@ -22,12 +22,12 @@ public class StateManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameState.StateAdded += AddNewState;
+        GameStateQuest.StateAdded += AddNewState;
     }
 
     private void OnDisable()
     {
-        GameState.StateAdded -= AddNewState;
+        GameStateQuest.StateAdded -= AddNewState;
     }
 
     void AddNewState(string id, int amount)
@@ -54,7 +54,7 @@ public class StateManager : MonoBehaviour
         yield return null;
 //        state_PanelContainer.SetActive(true);
         Selectable newSelection;
-      //  newSelection = itemButton;
+        newSelection = itemButton;
         //gameController.StartStatePopUp();
         
         
@@ -62,14 +62,9 @@ public class StateManager : MonoBehaviour
 
       //  newSelection.Select();
     }
-/*
-    public void CloseStatePopUp()
-    {
-       // EventSystem.current.SetSelectedGameObject(null);
-        state_PanelContainer.SetActive(false);
-        //gameController.EndStatePopUp();
-    }
-*/
+
+   
+
     public StateInfo GetStateInfoById(string id)
     {
         foreach (StateInfo stateInfo in _stateInfos)

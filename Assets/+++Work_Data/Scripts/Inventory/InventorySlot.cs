@@ -10,8 +10,6 @@ public class InventorySlot : MonoBehaviour
 {
     private StateInfo stateInfo;
     private InventoryManager inventoryManager;
-    [SerializeField] private Toggle inventorySlotToggle;
-    [SerializeField] private GameObject inventorySlotBorder;
     [SerializeField] private Image iventorySlotImage;
     [SerializeField] private TextMeshProUGUI inventorySlotAmountText;
     private StateManager stateManager;
@@ -42,12 +40,13 @@ public class InventorySlot : MonoBehaviour
 
     public void TurnOnOffVisuals(bool value)
     {
-        inventorySlotToggle.interactable = value;
+     //   inventorySlotToggle.interactable = value;
         iventorySlotImage.gameObject.SetActive(value);
         inventorySlotAmountText.gameObject.SetActive(value); 
-        inventorySlotBorder.gameObject.SetActive(false);
+       // inventorySlotBorder.gameObject.SetActive(false);
     }
 
+    /*
     public void TurnOffBorder()
     {
         StartCoroutine(InitiateTurnOffBorder());
@@ -66,4 +65,5 @@ public class InventorySlot : MonoBehaviour
             //inventoryManager.ShowItemDescription(stateInfo);
         }
     }
+    */
 }
