@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -13,7 +14,9 @@ public class EnemyReciever : MonoBehaviour
     #region takeDMG
     private VisualEffect _vfx;
     public float currentHp;
- 
+    
+    public bool hasShields;
+    public float currentShields;
     #region Damage Indicator
 
     public CinemachineFreeLook vcam;
@@ -24,29 +27,19 @@ public class EnemyReciever : MonoBehaviour
     public float knockback;
     private SpawnEnemies _spawnEnemies;
     public Image damageIndicator;
-
+    public Image shieldIndicator;
+    public TextMeshProUGUI damageText;
     #endregion
   
     #endregion
 
-    #region CAM
-
-    public float camStrength;
-    public float vCAmStrengthVelocity;
-    public float vCamSmoothTime;
-
-    #endregion
+    
     #region References
 
     private CamBehavior _camBehavior;
-    private EnemyAuraBehaviour _enemyAuraBehaviour;
     private EnemyStatus _enemyStatus;
-    
     private Rigidbody _rigidbody;
-    
     private Animator _animator;
-    
-  
     public GameObject loot;
     
     #endregion
@@ -54,7 +47,6 @@ public class EnemyReciever : MonoBehaviour
     {
         _enemyStatus = GetComponent<EnemyStatus>();
         _camBehavior = GetComponent<CamBehavior>();
-        _enemyAuraBehaviour = GetComponent<EnemyAuraBehaviour>();
         _vfx = GetComponentInChildren<VisualEffect>();
         _rigidbody = GetComponent<Rigidbody>();
         _spawnEnemies = FindObjectOfType<SpawnEnemies>();
@@ -65,7 +57,8 @@ public class EnemyReciever : MonoBehaviour
     {Debug.Log("enemyreciever");
         currentHp = _enemyStatus.enemyMaxHp;
         _invincibilityTimerValue = invincibilityTimer;
-        DamageIndication(damageIndicator,_enemyStatus.enemyMaxHp,currentHp);;
+        DamageIndication(damageIndicator,_enemyStatus.enemyMaxHp,currentHp,0);;
+        SetShields();
     }
     private void Update()
     {
@@ -79,7 +72,15 @@ public class EnemyReciever : MonoBehaviour
         if (canGetDamage)
         {
             tookDamage = true;
-            currentHp -= dmg;
+            if (hasShields)
+            {
+                currentShields -= dmg / 2f;
+            }
+            else
+            {
+                currentHp -= dmg; 
+            }
+         
 
 
             if (currentHp > _enemyStatus.enemyMaxHp)
@@ -87,22 +88,27 @@ public class EnemyReciever : MonoBehaviour
                 currentHp = _enemyStatus.enemyMaxHp;
             }
 
-            DamageIndication(damageIndicator,_enemyStatus.enemyMaxHp,currentHp);
+            DamageIndication(damageIndicator,_enemyStatus.enemyMaxHp,currentHp,dmg);
         }
         
     }
     
-    public void DamageIndication(Image damageind,float maxHpval, float currentHpval)
+    public void DamageIndication(Image damageind, float maxHpval , float currentHpval, int damagevalue)
     {
        
-      
-        damageind.fillAmount = currentHpval / maxHpval;
-        
-        if (tookDamage)
+        if (hasShields)
         {
+            shieldIndicator.fillAmount = currentShields / _enemyStatus.enemyDefense;
+        }
+     
+        if (tookDamage)
+        { 
+            damageText.enabled = true;
             _vfx.Play();
             Pushback();
           _camBehavior.CamShake();
+         
+          damageText.SetText($"{damagevalue}");
             Debug.Log("TOOK DAMAGE ENEMY");
         }
 
@@ -117,6 +123,14 @@ public class EnemyReciever : MonoBehaviour
             
             //deathIndicator.SetActive(true);
             Debug.Log("DEATH ENEMY");
+        }
+
+        if (currentShields <= 0)
+        {
+            hasShields = false;
+            damageind.fillAmount = currentHpval / maxHpval;
+            shieldIndicator.enabled = false;
+            //play vfx
         }
     }
 
@@ -145,5 +159,15 @@ public class EnemyReciever : MonoBehaviour
         _rigidbody.AddForce(-this.gameObject.transform.position * knockback, ForceMode.Impulse);
     }
 
-  
+    public void SetShields()
+    {
+        float shieldSpawnChance = 0.2f;
+        if (Random.value < shieldSpawnChance)
+        {
+            hasShields = true;
+            shieldIndicator.enabled = true;
+            currentShields = _enemyStatus.enemyDefense;
+            
+        }
+    }
 }

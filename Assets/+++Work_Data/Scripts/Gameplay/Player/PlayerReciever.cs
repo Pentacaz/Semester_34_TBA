@@ -53,11 +53,18 @@ public class PlayerReciever : MonoBehaviour
         }
     }
 
-    public void GetHeal(int amount)
+    public void GetHeal()
     {
+        
+        if (currentHp >= maxHp)
+        {
+            Debug.Log("Player is already at max health. No heal used.");
+            return;
+        }
+        
         healCount++;
-        
-        
+
+
         if (healCount >= maxHeal)
         {
             Debug.Log("No heals remaining!");
@@ -65,6 +72,7 @@ public class PlayerReciever : MonoBehaviour
         }
         else
         {
+            int amount = (int)(maxHp * 0.25f);
             currentHp += amount;
 
             // Ensure health doesn't exceed max health
@@ -72,14 +80,12 @@ public class PlayerReciever : MonoBehaviour
             {
                 currentHp = maxHp;
             }
-            _uiManager.RefreshHealthbar(maxHp,currentHp);
+
+            _uiManager.RefreshHealthbar(maxHp, currentHp);
             Debug.Log($"Player healed by {amount}. Current health: {currentHp}/{maxHp}");
         }
-        
-    
-            
     }
-    
+
     public void Invincibility()
     {
         if (tookDamage)

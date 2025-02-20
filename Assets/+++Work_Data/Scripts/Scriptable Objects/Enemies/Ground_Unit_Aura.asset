@@ -19,7 +19,7 @@ MonoBehaviour:
     type: 3}
   unitName: Test_Enemy
   unitLevel: 1
-  defense: 1
+  defense: 10
   damage: 2
   maxHp: 25
   speed: 10

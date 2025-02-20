@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3249239855659662007}
   - component: {fileID: 3922243750961688276}
   - component: {fileID: 856852737516389327}
+  - component: {fileID: 4360052672003608774}
   m_Layer: 0
   m_Name: "Biscat_S\xE4ule_broken"
   m_TagString: Untagged
@@ -83,3 +84,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4360052672003608774
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7238725735380414464}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5313912992425754160, guid: 8ee0cc1366aa4944a9ac72bbfaa85f2b, type: 3}

@@ -15,8 +15,10 @@ public class CamBehavior : MonoBehaviour
     public float impactShakeValue;
     void Start()
     {
+            cameraTarget = GameObject.Find("Camera_Target").transform;
             originalPosition = cameraTarget.localPosition;
             baseShakeStrength = shakeStrength;
+        
     }
 
     void Update()

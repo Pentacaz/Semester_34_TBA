@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7230647022325276603}
   - component: {fileID: 4787751885208470204}
   - component: {fileID: 3542338869196171575}
+  - component: {fileID: 4368486102517481279}
   m_Layer: 0
   m_Name: "Biscat_S\xE4ule_stump"
   m_TagString: Untagged
@@ -83,3 +84,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4368486102517481279
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530480074924794856}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8790072570396503042, guid: f7a24197975e7214bbbc3c0e9d0f9bae, type: 3}

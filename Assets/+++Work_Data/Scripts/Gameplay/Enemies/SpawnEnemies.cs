@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class SpawnEnemies : MonoBehaviour
 {
-    public List<Vector3> spawnPositions;
+    public List<Transform> spawnPositions;
     public List<GameObject> enemyPrefabs; 
     public List<GameObject> activeEnemies; 
     public int numberOfEnemiesToSpawn = 5; 
@@ -120,9 +120,9 @@ public class SpawnEnemies : MonoBehaviour
         {
             
             GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
-            Vector3 spawnPosition = spawnPositions[Random.Range(0, spawnPositions.Count)];
+            Transform spawnPosition = spawnPositions[Random.Range(0, spawnPositions.Count)];
 
-            GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition.position, Quaternion.identity);
             activeEnemies.Add(newEnemy);
         }
 
