@@ -14,7 +14,7 @@ public class EnemyRangedBehavior : MonoBehaviour
 
     #region Inspector
 
-    //private static readonly int Hash_MovementSpeed = Animator.StringToHash("MovementSpeed");
+    private static readonly int Hash_MovementSpeed = Animator.StringToHash("MovementSpeed");
     [SerializeField] private Animator anim;
 
     [Header("Waypoints")] 
@@ -93,7 +93,7 @@ public class EnemyRangedBehavior : MonoBehaviour
         AttackCooldown();
         IsChasing();
         //UpdateAnimator()
-        //anim.SetFloat(Hash_MovementSpeed, navMeshAgent.velocity.magnitude);
+        anim.SetFloat(Hash_MovementSpeed, navMeshAgent.velocity.magnitude);
         
         
         

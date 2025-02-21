@@ -29,6 +29,7 @@ public class EnemyReciever : MonoBehaviour
     public Image damageIndicator;
     public Image shieldIndicator;
     public TextMeshProUGUI damageText;
+    public GameObject damageTextObject;
     #endregion
   
     #endregion
@@ -39,7 +40,7 @@ public class EnemyReciever : MonoBehaviour
     private CamBehavior _camBehavior;
     private EnemyStatus _enemyStatus;
     private Rigidbody _rigidbody;
-    private Animator _animator;
+    public Animator _animator;
     public GameObject loot;
     
     #endregion
@@ -57,7 +58,7 @@ public class EnemyReciever : MonoBehaviour
     {Debug.Log("enemyreciever");
         currentHp = _enemyStatus.enemyMaxHp;
         _invincibilityTimerValue = invincibilityTimer;
-        DamageIndication(damageIndicator,_enemyStatus.enemyMaxHp,currentHp,0);;
+        DamageIndication(damageIndicator,_enemyStatus.enemyMaxHp,currentHp,0,false);;
         SetShields();
     }
     private void Update()
@@ -67,7 +68,7 @@ public class EnemyReciever : MonoBehaviour
         
     }
     
-    public void GetDmg(int dmg)
+    public void GetDmg(int dmg,bool crit)
     {
         if (canGetDamage)
         {
@@ -81,19 +82,17 @@ public class EnemyReciever : MonoBehaviour
                 currentHp -= dmg; 
             }
          
-
-
             if (currentHp > _enemyStatus.enemyMaxHp)
             {
                 currentHp = _enemyStatus.enemyMaxHp;
             }
 
-            DamageIndication(damageIndicator,_enemyStatus.enemyMaxHp,currentHp,dmg);
+            DamageIndication(damageIndicator,_enemyStatus.enemyMaxHp,currentHp,dmg,crit);
         }
         
     }
     
-    public void DamageIndication(Image damageind, float maxHpval , float currentHpval, int damagevalue)
+    public void DamageIndication(Image damageind, float maxHpval , float currentHpval, int damagevalue,bool crit)
     {
        
         if (hasShields)
@@ -103,24 +102,29 @@ public class EnemyReciever : MonoBehaviour
      
         if (tookDamage)
         { 
+            _camBehavior.CamShake();
             damageText.enabled = true;
+            StartCoroutine(DamageDisplay(damagevalue, crit));
             _vfx.Play();
             Pushback();
-          _camBehavior.CamShake();
-         
-          damageText.SetText($"{damagevalue}");
+        
             Debug.Log("TOOK DAMAGE ENEMY");
         }
 
         if (currentHp <= 0)
         {
-              Destroy(this.gameObject);
-             // this.gameObject.SetActive(false);
-              _spawnEnemies.RemoveDefeatedEnemy(this.gameObject);
-              loot.transform.position = this.gameObject.transform.position;
-              loot.SetActive(true);
-              //play vfx
-            
+            if (_animator != null)
+            {
+                _animator.SetTrigger("ActionTrigger");
+                _animator.SetInteger("ActionId", 1);
+            }
+
+            Destroy(this.gameObject, 0.2f);
+            _spawnEnemies.RemoveDefeatedEnemy(this.gameObject);
+            loot.transform.position = this.gameObject.transform.position;
+            loot.SetActive(true);
+            //play vfx
+
             //deathIndicator.SetActive(true);
             Debug.Log("DEATH ENEMY");
         }
@@ -159,6 +163,38 @@ public class EnemyReciever : MonoBehaviour
         _rigidbody.AddForce(-this.gameObject.transform.position * knockback, ForceMode.Impulse);
     }
 
+    
+    
+    // Showcases dmg numbers and moves them upwards a bit - purely visual
+    public IEnumerator DamageDisplay(int dmg,bool crit)
+    {
+
+
+        damageText.enableVertexGradient = crit;
+        float moveDistance = 1f;
+        Vector3 targetPosition = damageTextObject.transform.position + Vector3.up * moveDistance;
+        Vector3 originalPosition = damageTextObject.transform.position;
+        
+        
+        float moveDurationTimer = 0f; 
+        float moveDuration = 1f;
+        
+        
+        damageTextObject.SetActive(true);
+        damageText.SetText($"{dmg}");
+        
+        while (moveDurationTimer < moveDuration)
+        {
+           
+            damageTextObject.transform.position = Vector3.Lerp(originalPosition, targetPosition, moveDurationTimer / moveDuration);
+            moveDurationTimer += Time.deltaTime;
+            yield return null;
+        }
+
+        damageTextObject.SetActive(false);
+        damageTextObject.transform.position = originalPosition;
+        
+    }
     public void SetShields()
     {
         float shieldSpawnChance = 0.2f;

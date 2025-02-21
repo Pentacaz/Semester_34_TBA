@@ -1,0 +1,223 @@
+fileFormatVersion: 2
+guid: ecfe73a10319ac448a59ee2d0e08db4d
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      internalID: 1827226128182048838
+      firstFrame: 0
+      lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 50
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: Idle(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jnt_Hip
+      parentName: Idle(Clone)
+      position: {x: 0, y: 0.0031723368, z: 0}
+      rotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jnt_Chest
+      parentName: Jnt_Hip
+      position: {x: -0.0031769949, y: 0, z: 6.3046495e-21}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jnt_Neck
+      parentName: Jnt_Chest
+      position: {x: -0.0006007553, y: -6.9388944e-20, z: -3.0814554e-35}
+      rotation: {x: -0.4724583, y: 0.5261018, z: 0.4724583, w: 0.5261018}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jnt_Shoulder_L
+      parentName: Jnt_Chest
+      position: {x: 0.000003292554, y: -3.7716683e-19, z: 0.001340452}
+      rotation: {x: -0.4869875, y: 0.5121409, z: 0.5106157, w: 0.48972082}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jnt_Elbow_L
+      parentName: Jnt_Shoulder_L
+      position: {x: -0.0011796746, y: 0.0000020593757, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jnt_Shoulder_R
+      parentName: Jnt_Chest
+      position: {x: -0.000005008128, y: -8.890457e-20, z: -0.0014135671}
+      rotation: {x: -0.50942767, y: 0.4905614, z: 0.48798943, w: 0.5115657}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jnt_Elbow_R
+      parentName: Jnt_Shoulder_R
+      position: {x: 0.0011065596, y: 0.0000035925489, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jnt_Tail_Base
+      parentName: Jnt_Hip
+      position: {x: 0.00023201392, y: -0.0014461991, z: 0}
+      rotation: {x: 0.000035626388, y: -0.000049885246, z: 0.9250998, w: 0.37972403}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jnt_Tail_Middle
+      parentName: Jnt_Tail_Base
+      position: {x: -0.0012654335, y: -2.3418765e-19, z: 2.5410988e-23}
+      rotation: {x: -0.0000071219683, y: 0.0000021187957, z: -0.61550653, w: 0.7881318}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jnt_Tail_Tip
+      parentName: Jnt_Tail_Middle
+      position: {x: -0.0016360396, y: 1.1622648e-18, z: 1.1011427e-22}
+      rotation: {x: -0.023972007, y: 0.706699, z: 0.024009928, w: 0.7067003}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jnt_Leg_L
+      parentName: Jnt_Hip
+      position: {x: 0.0013369411, y: 0, z: 0.00069927494}
+      rotation: {x: -0.69660836, y: -0.10318828, z: 0.058736555, w: 0.7075585}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jnt_Knee_L
+      parentName: Jnt_Leg_L
+      position: {x: 0.00079847325, y: -0.0000000022723272, z: 1.1292844e-10}
+      rotation: {x: -0.040331453, y: 0.33495295, z: 0.03954255, w: 0.94054043}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jnt_Foot_L
+      parentName: Jnt_Knee_L
+      position: {x: 0.00094477227, y: 6.938894e-19, z: 2.128211e-10}
+      rotation: {x: 0.009763199, y: -0.708872, z: 0.019488944, w: 0.7050003}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jnt_Leg_R
+      parentName: Jnt_Hip
+      position: {x: 0.0013369411, y: 0, z: -0.0006992775}
+      rotation: {x: 0.10318843, y: -0.6966084, z: 0.7075584, w: -0.05873671}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jnt_Knee_R
+      parentName: Jnt_Leg_R
+      position: {x: -0.0007984755, y: -1.5429551e-19, z: 0}
+      rotation: {x: -0.04032856, y: 0.33495346, z: 0.039539825, w: 0.9405405}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jnt_Foot_R
+      parentName: Jnt_Knee_R
+      position: {x: -0.0009447717, y: -2.7755578e-19, z: 2.0816681e-19}
+      rotation: {x: 0.009762711, y: -0.70887154, z: 0.01948913, w: 0.70500076}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.5
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
