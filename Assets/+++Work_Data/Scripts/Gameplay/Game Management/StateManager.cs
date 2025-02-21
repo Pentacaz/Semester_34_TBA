@@ -15,6 +15,9 @@ public class StateManager : MonoBehaviour
     //[SerializeField] private GameObject state_PanelContainer;
   
     //[SerializeField] private Button itemButton;
+    
+    
+    /*
     private void Awake()
     {
         gameController = FindObjectOfType<GameController>();
@@ -30,9 +33,10 @@ public class StateManager : MonoBehaviour
         GameState.StateAdded -= AddNewState;
     }
 
+
     void AddNewState(string id, int amount)
     {
-        /*
+
         foreach (StateInfo stateInfo in _stateInfos)
         {
             if (stateInfo.id == id)
@@ -43,8 +47,8 @@ public class StateManager : MonoBehaviour
 
             }
         }
-        */
-        
+
+
         StartCoroutine(DelayOpenPanel());
 
     }
@@ -56,20 +60,22 @@ public class StateManager : MonoBehaviour
         Selectable newSelection;
       //  newSelection = itemButton;
         //gameController.StartStatePopUp();
-        
-        
+
+
         yield return null; // Wait for next Update() / next frame
 
       //  newSelection.Select();
     }
-/*
+
     public void CloseStatePopUp()
     {
        // EventSystem.current.SetSelectedGameObject(null);
         state_PanelContainer.SetActive(false);
         //gameController.EndStatePopUp();
     }
-*/
+    */
+
+
     public StateInfo GetStateInfoById(string id)
     {
         foreach (StateInfo stateInfo in _stateInfos)

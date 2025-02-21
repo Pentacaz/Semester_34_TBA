@@ -126,7 +126,7 @@ public class GameController : MonoBehaviour
         newSelectable = newSelactable;
 
         //newSelactable.Select();
-        StartCoroutine(DelayNewSelectable(newSelectable));
+        StartCoroutine(DelaySetSelectable(newSelectable));
     }
 
     public void ExitMenu()
@@ -135,10 +135,21 @@ public class GameController : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
     }
 
-    IEnumerator DelayNewSelectable(Selectable newSelectable)
+   
+  /*  
+    public void SetSelectable(Button button)
+    {
+        Selectable selectable = button;
+
+        StartCoroutine(DelaySetSelectable(selectable));
+
+    }
+    */
+
+    IEnumerator DelaySetSelectable(Selectable selectable)
     {
         yield return null;
-        newSelectable.Select();
+        selectable.Select();
     }
 }
 

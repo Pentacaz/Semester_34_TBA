@@ -26,26 +26,17 @@ public class Cooking : MonoBehaviour
     [Header("Adjustable")]
     [SerializeField] private float tolerance = 0.4f;
     [SerializeField] private float sliderSpeed = 5f;
-    [SerializeField] public bool inRange;
+    public bool inRange;
    
     private float _sliderValue;
     private float targetAmount;
+    
+    
     #endregion
     
-
     
-//#TODO put this mf in a coroutine
 
-private void Awake()
-{
-   
-}
 
-void Start()
-    {
-        // Moves the area that needs to be hit once very time the action is started.
-        SetSuccessArea();
-    }
 
     void Update()
     {
@@ -56,7 +47,6 @@ void Start()
 
     public void MoveSlider()
     {
-        // you expected a function, but it was me, PingPong.
         _sliderValue = Mathf.PingPong(Time.time * sliderSpeed, 1f);
         slider.value = _sliderValue;
         // Debug.Log(sliderValue);
@@ -96,9 +86,25 @@ void Start()
     {
         textObject.SetActive(true);
         resultTextDisplay.text = outcome;
-        yield return new WaitForSeconds(0.6f); //#TODO replace with actual animation lengh value
+        yield return new WaitForSeconds(0.6f);
         textObject.SetActive(false);
 
+    }
+
+    public void CookAction()
+    {
+        if ( inRange)
+        {
+            StartCoroutine(ResultTextDisplay("Purrfection!"));
+            Debug.Log("SUCCESS");
+            
+            
+        }
+        else
+        {
+            StartCoroutine(ResultTextDisplay("Cat-astrophe..."));
+            Debug.Log("FAIL");
+        }
     }
 }
 

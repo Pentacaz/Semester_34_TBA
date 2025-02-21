@@ -261,10 +261,17 @@ public class PlayerControllerBakery : MonoBehaviour
         if (Mathf.Abs(currentSpeed - targetSpeed) > 0.01f)
         {
             currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, speedChangeRate * Time.deltaTime);
+            animator.SetInteger(Hash_ActionId,1);
+            animator.SetFloat(Hash_MovementSpeed,1);
+
         }
         else
         {
             currentSpeed = targetSpeed;
+            animator.SetInteger(Hash_ActionId,0);
+            animator.SetFloat(Hash_MovementSpeed,0);
+
+
         }
 
         Vector3 targetDirection = characterTargetRotation * Vector3.forward;
@@ -355,8 +362,18 @@ public class PlayerControllerBakery : MonoBehaviour
         {
             print("openMenu");
             exitMenu.SetActive(!exitMenu.activeInHierarchy);
-
+            if (exitMenu.activeInHierarchy)
+            {
+                moveAction.Disable();
+            
+            }
+            else
+            {
+                moveAction.Enable();
+            }
         }
+
+       
         
     }
     
@@ -386,7 +403,7 @@ public class PlayerControllerBakery : MonoBehaviour
         velocity.y = 0;
         float speed = velocity.magnitude;
         
-//        animator.SetFloat(Hash_MovementSpeed, speed);
+         animator.SetFloat(Hash_MovementSpeed, speed);
 //        animator.SetBool(Hash_Grounded, isGrounded);
        // animator.SetBool(Hash_Crouched, isCrouched);
     }

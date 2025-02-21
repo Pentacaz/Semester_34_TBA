@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class RemoveItem : MonoBehaviour
 {
     public State state;
-    [SerializeField] State money;
+    public State money;
 
     [SerializeField]  private UnityEvent onCollected;
     [SerializeField] private GameObject Indicator;
@@ -12,12 +12,14 @@ public class RemoveItem : MonoBehaviour
     
     private Interactable _selectedInteractable;
     private GameState gameState;
+    private Cooking cooking;
     
 
     private void Start()
     {
         navMeshPatrol = GetComponent<NavMeshPatrolBakes>();
         gameState = GetComponent<GameState>();
+        cooking = GetComponent<Cooking>();
     }
 
     public void Remove()
@@ -30,6 +32,21 @@ public class RemoveItem : MonoBehaviour
         Indicator.SetActive(false);
         
     }
+
+    public void Cook()
+    {
+        if (cooking.inRange)
+        {
+            FindObjectOfType<GameState>().Add(state);
+            FindObjectOfType<GameState>().Remove(money);
+        }
+        else
+        {
+            FindObjectOfType<GameState>().Remove(money);
+        }
+    }
+
+    
 
     public void TakeOrder()
     {

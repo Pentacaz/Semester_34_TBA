@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TriggerEvents : MonoBehaviour
+public class TriggerEventsBakery : MonoBehaviour
 {
     private const string PlayerTag = "Player";
     private const string NoTag = "Untagged";
