@@ -91,19 +91,23 @@ public class Cooking : MonoBehaviour
 
     }
 
-    public void CookAction()
+    public void CookAction(RemoveItem removeItem)
     {
         if ( inRange)
         {
             StartCoroutine(ResultTextDisplay("Purrfection!"));
             Debug.Log("SUCCESS");
-            
+            FindObjectOfType<GameState>().Add(removeItem.state);
+            FindObjectOfType<GameState>().Remove(removeItem.money);
+
             
         }
         else
         {
             StartCoroutine(ResultTextDisplay("Cat-astrophe..."));
             Debug.Log("FAIL");
+            FindObjectOfType<GameState>().Remove(removeItem.money);
+
         }
     }
 }
