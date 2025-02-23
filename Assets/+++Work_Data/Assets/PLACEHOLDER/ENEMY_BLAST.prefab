@@ -248,8 +248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b61e3fa30041534b81d4c0f4cd4c42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  enemyMesh: {fileID: 0}
   enemyLevel: 0
   enemyMaxHp: 0
   enemyDmg: 0
@@ -271,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112e0a20474e93f40a9f6fbec1c326ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsBoss: 0
   currentHp: 0
   hasShields: 0
   currentShields: 0
@@ -364,6 +363,7 @@ MonoBehaviour:
   shakeDuration: 0.2
   shakeStrength: 0.1
   baseShakeStrength: 0
+  baseShakeDuration: 0
   isImpactShake: 0
   impactShakeValue: 5
 --- !u!1 &469815682747092376
@@ -550,7 +550,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815560918174586170}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

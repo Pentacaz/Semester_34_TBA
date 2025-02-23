@@ -11,12 +11,17 @@ using UnityEngine.VFX;
 
 public class EnemyReciever : MonoBehaviour
 {
+
+    public bool IsBoss = false;
+
     #region takeDMG
+
     private VisualEffect _vfx;
     public float currentHp;
-    
+
     public bool hasShields;
     public float currentShields;
+
     #region Damage Indicator
 
     public CinemachineFreeLook vcam;
@@ -30,11 +35,12 @@ public class EnemyReciever : MonoBehaviour
     public Image shieldIndicator;
     public TextMeshProUGUI damageText;
     public GameObject damageTextObject;
-    #endregion
-  
+
     #endregion
 
-    
+    #endregion
+
+
     #region References
 
     private CamBehavior _camBehavior;
@@ -42,33 +48,37 @@ public class EnemyReciever : MonoBehaviour
     private Rigidbody _rigidbody;
     public Animator _animator;
     public GameObject loot;
-    
+
     #endregion
+
     private void Awake()
     {
         _enemyStatus = GetComponent<EnemyStatus>();
         _camBehavior = GetComponent<CamBehavior>();
-        _vfx = GetComponentInChildren<VisualEffect>();
+        //_vfx = GetComponentInChildren<VisualEffect>();
         _rigidbody = GetComponent<Rigidbody>();
         _spawnEnemies = FindObjectOfType<SpawnEnemies>();
 
     }
-    
+
     private void Start()
-    {Debug.Log("enemyreciever");
+    {
+        Debug.Log("enemyreciever");
         currentHp = _enemyStatus.enemyMaxHp;
         _invincibilityTimerValue = invincibilityTimer;
-        DamageIndication(damageIndicator,_enemyStatus.enemyMaxHp,currentHp,0,false);;
+        DamageIndication(damageIndicator, _enemyStatus.enemyMaxHp, currentHp, 0, false);
+        ;
         SetShields();
     }
+
     private void Update()
     {
-      
+
         Invincibility(tookDamage);
-        
+
     }
-    
-    public void GetDmg(int dmg,bool crit)
+
+    public void GetDmg(int dmg, bool crit)
     {
         if (canGetDamage)
         {
@@ -79,35 +89,35 @@ public class EnemyReciever : MonoBehaviour
             }
             else
             {
-                currentHp -= dmg; 
+                currentHp -= dmg;
             }
-         
+
             if (currentHp > _enemyStatus.enemyMaxHp)
             {
                 currentHp = _enemyStatus.enemyMaxHp;
             }
 
-            DamageIndication(damageIndicator,_enemyStatus.enemyMaxHp,currentHp,dmg,crit);
+            DamageIndication(damageIndicator, _enemyStatus.enemyMaxHp, currentHp, dmg, crit);
         }
-        
+
     }
-    
-    public void DamageIndication(Image damageind, float maxHpval , float currentHpval, int damagevalue,bool crit)
+
+    public void DamageIndication(Image damageind, float maxHpval, float currentHpval, int damagevalue, bool crit)
     {
-       
+
         if (hasShields)
         {
             shieldIndicator.fillAmount = currentShields / _enemyStatus.enemyDefense;
         }
-     
+
         if (tookDamage)
-        { 
+        {
             _camBehavior.CamShake();
             damageText.enabled = true;
             StartCoroutine(DamageDisplay(damagevalue, crit));
-            _vfx.Play();
+            //_vfx.Play();
             Pushback();
-        
+
             Debug.Log("TOOK DAMAGE ENEMY");
         }
 
@@ -119,8 +129,8 @@ public class EnemyReciever : MonoBehaviour
                 _animator.SetInteger("ActionId", 1);
             }
 
-            Destroy(this.gameObject, 0.2f);
             _spawnEnemies.RemoveDefeatedEnemy(this.gameObject);
+            Destroy(this.gameObject, 0.2f);
             loot.transform.position = this.gameObject.transform.position;
             loot.SetActive(true);
             //play vfx
@@ -138,23 +148,26 @@ public class EnemyReciever : MonoBehaviour
         }
     }
 
-  
-    
+
+
     public void Invincibility(bool damage)
     {
-        if (damage)
+        if (!IsBoss)
         {
-            canGetDamage = false;
-            //_enemyAuraBehaviour.StopPatrol();
-            invincibilityTimer -= Time.deltaTime;
+            if (damage)
+            {
+                canGetDamage = false;
+                invincibilityTimer -= Time.deltaTime;
+            }
+
+            if (invincibilityTimer <= 0)
+            {
+                tookDamage = false;
+                canGetDamage = true;
+                invincibilityTimer = _invincibilityTimerValue;
+            }
         }
 
-        if (invincibilityTimer <= 0)
-        {   tookDamage = false;
-            canGetDamage = true;
-            //_enemyAuraBehaviour.ResumePatrol();
-            invincibilityTimer = _invincibilityTimerValue;
-        }
     }
 
     public void Pushback()
@@ -163,10 +176,10 @@ public class EnemyReciever : MonoBehaviour
         _rigidbody.AddForce(-this.gameObject.transform.position * knockback, ForceMode.Impulse);
     }
 
-    
-    
+
+
     // Showcases dmg numbers and moves them upwards a bit - purely visual
-    public IEnumerator DamageDisplay(int dmg,bool crit)
+    public IEnumerator DamageDisplay(int dmg, bool crit)
     {
 
 
@@ -174,36 +187,43 @@ public class EnemyReciever : MonoBehaviour
         float moveDistance = 1f;
         Vector3 targetPosition = damageTextObject.transform.position + Vector3.up * moveDistance;
         Vector3 originalPosition = damageTextObject.transform.position;
-        
-        
-        float moveDurationTimer = 0f; 
+
+
+        float moveDurationTimer = 0f;
         float moveDuration = 1f;
-        
-        
+
+
         damageTextObject.SetActive(true);
         damageText.SetText($"{dmg}");
-        
+
         while (moveDurationTimer < moveDuration)
         {
-           
-            damageTextObject.transform.position = Vector3.Lerp(originalPosition, targetPosition, moveDurationTimer / moveDuration);
+
+            damageTextObject.transform.position =
+                Vector3.Lerp(originalPosition, targetPosition, moveDurationTimer / moveDuration);
             moveDurationTimer += Time.deltaTime;
             yield return null;
         }
 
         damageTextObject.SetActive(false);
         damageTextObject.transform.position = originalPosition;
-        
+
     }
+
     public void SetShields()
     {
-        float shieldSpawnChance = 0.2f;
-        if (Random.value < shieldSpawnChance)
+
+        if (!IsBoss && Random.value < 0.2f)
         {
             hasShields = true;
             shieldIndicator.enabled = true;
             currentShields = _enemyStatus.enemyDefense;
-            
+        }
+        else if (IsBoss)
+        {
+            hasShields = true;
+            shieldIndicator.enabled = true;
+            currentShields = _enemyStatus.enemyDefense;
         }
     }
 }

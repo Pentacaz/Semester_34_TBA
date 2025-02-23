@@ -19,8 +19,8 @@ MonoBehaviour:
     type: 3}
   unitName: Test_Enemy
   unitLevel: 1
-  defense: 10
-  damage: 2
-  maxHp: 25
-  speed: 10
+  defense: 150
+  damage: 5
+  maxHp: 120
+  speed: 8
   attackCooldown: 1.5

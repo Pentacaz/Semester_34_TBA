@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class SpawnEnemies : MonoBehaviour
 {
+    #region enemy spawn
+
     public List<Transform> spawnPositions;
     public List<GameObject> enemyPrefabs; 
     public List<GameObject> activeEnemies; 
@@ -13,41 +16,50 @@ public class SpawnEnemies : MonoBehaviour
     public int totalRounds = 3; 
     public int currentRound = 1; 
     public bool roundIsActive;
-    private List<GameObject> allEnemies; 
+    public bool noMoreEnemies;
+    public List<GameObject> allEnemies; 
     private Collider triggerCollider;
     public bool hasEntered;
-
+    public bool isBoss = false;
     public float coolDownTimer;
     public float cooldowntimervalue;
-    
+    #endregion
 
+    private UiManager _uiManager;
+    
+    private void Awake()
+    {   _uiManager = FindObjectOfType<UiManager>();
+        triggerCollider = GetComponent<Collider>(); 
+    }
+    
     private void Start()
     {
+     
         AddToEnemiesList();
+        //_uiManager.EnemyCountDisplay(activeEnemies.Count,currentRound);
         cooldowntimervalue = coolDownTimer;
     }
 
-    private void Awake()
-    {
-        triggerCollider = GetComponent<Collider>(); 
-    }
+  
 
     private void Update()
     {
         Rounds();
+       
         if (hasEntered)
         {
             StartNewRound();
+            _uiManager.uiContainer.SetActive(true);
         }
 
       
-       
+        _uiManager.EnemyCountDisplay(allEnemies.Count,totalRounds);
     }
 
     private void OnTriggerEnter(Collider other)
     {
        
-        if (other.CompareTag("Player") && !roundIsActive && currentRound <= totalRounds)
+        if (!isBoss && other.CompareTag("Player") && !roundIsActive && currentRound <= totalRounds)
         {
             hasEntered = true;
             triggerCollider.enabled = false;
@@ -87,6 +99,7 @@ public class SpawnEnemies : MonoBehaviour
             Debug.Log("Starting Round " + currentRound);
             PlaceEnemies();
             AddToEnemiesList();
+           
         }
     }
 
@@ -95,9 +108,9 @@ public class SpawnEnemies : MonoBehaviour
     {
         roundIsActive = false;
         Debug.Log("Round " + currentRound + " completed!");
-        
         if (currentRound >= totalRounds)
         {
+            _uiManager.uiContainer.SetActive(false);
             EndGame();
         }
         else
@@ -153,6 +166,8 @@ public class SpawnEnemies : MonoBehaviour
     }
     public void EndGame()
     {
+      //remove everthing from list
+      noMoreEnemies = true;
         Debug.Log("All rounds completed! Game Over.");
     }
 }

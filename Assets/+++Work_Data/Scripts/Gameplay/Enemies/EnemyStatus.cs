@@ -5,9 +5,7 @@ using UnityEngine;
 public class EnemyStatus : MonoBehaviour
 {
   
-    public Animator anim;
-    public SkinnedMeshRenderer enemyMesh;
-    
+  
     public int enemyLevel;
     public float enemyMaxHp;
     public int enemyDmg;
@@ -21,9 +19,7 @@ public class EnemyStatus : MonoBehaviour
     
     public void SetUpEnemy(Unit unit)
     {
-        //anim.runtimeAnimatorController = unit.animController;
-//        enemyMesh.sharedMesh = unit.unitMesh;
-        //enemyMesh.rootBone = unit.unitRig.GetComponent<>();
+   
         enemyName = unit.unitName;
         enemyLevel = unit.unitLevel ;
         enemyBaseDefense = unit.defense;

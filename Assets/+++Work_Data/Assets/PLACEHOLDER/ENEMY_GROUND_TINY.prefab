@@ -222,11 +222,11 @@ GameObject:
   - component: {fileID: 3118513509554421937}
   - component: {fileID: 1453185596435521701}
   - component: {fileID: 3745347579618423777}
-  - component: {fileID: 7595954093125582912}
   - component: {fileID: 5249539960173459270}
   - component: {fileID: 7713055433642505452}
   - component: {fileID: 4579150278387226906}
   - component: {fileID: 6063546674544672806}
+  - component: {fileID: 6580410146687970914}
   - component: {fileID: 4009767641651224509}
   - component: {fileID: 8668349986503684127}
   m_Layer: 0
@@ -309,29 +309,6 @@ MonoBehaviour:
   enemyStopArea: 0.46
   showWaypoints: 1
   showRange: 1
---- !u!136 &7595954093125582912
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2123031341721789180}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5249539960173459270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,8 +335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b61e3fa30041534b81d4c0f4cd4c42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 4579150278387226906}
-  enemyMesh: {fileID: 0}
   enemyLevel: 0
   enemyMaxHp: 0
   enemyDmg: 0
@@ -402,6 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112e0a20474e93f40a9f6fbec1c326ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsBoss: 0
   currentHp: 0
   hasShields: 0
   currentShields: 0
@@ -416,6 +392,27 @@ MonoBehaviour:
   damageTextObject: {fileID: 5251743002206804526}
   _animator: {fileID: 3329017970078419109}
   loot: {fileID: 304468114453348443}
+--- !u!135 &6580410146687970914
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123031341721789180}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2
+  m_Center: {x: 0, y: 1.13, z: 0}
 --- !u!54 &4009767641651224509
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -459,6 +456,7 @@ MonoBehaviour:
   shakeDuration: 0.2
   shakeStrength: 0.1
   baseShakeStrength: 0
+  baseShakeDuration: 0
   isImpactShake: 0
   impactShakeValue: 0
 --- !u!1 &3211882863797736097
@@ -514,8 +512,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3.12
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 4.2
+  m_Center: {x: 0, y: 1.06, z: 0}
 --- !u!114 &4391095509247891155
 MonoBehaviour:
   m_ObjectHideFlags: 0

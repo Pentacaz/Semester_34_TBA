@@ -5,11 +5,12 @@ using Cinemachine;
 
 public class CamBehavior : MonoBehaviour
 {
-    public Transform cameraTarget; // The target the FreeLook camera is following (e.g., the player)
-    public float shakeDuration = 0.5f; // Duration of the shake effect
-    public float shakeStrength = 0.1f; // Strength of the shake
+    public Transform cameraTarget; 
+    public float shakeDuration = 0.5f;
+    public float shakeStrength = 0.1f;
     public float baseShakeStrength; 
-    private Vector3 originalPosition; // The original position of the target
+    public float baseShakeDuration; 
+    private Vector3 originalPosition; 
     private float shakeElapsedTime = 0f;
     public bool isImpactShake = false;
     public float impactShakeValue;
@@ -18,7 +19,8 @@ public class CamBehavior : MonoBehaviour
             cameraTarget = GameObject.Find("Camera_Target").transform;
             originalPosition = cameraTarget.localPosition;
             baseShakeStrength = shakeStrength;
-        
+            baseShakeDuration = shakeDuration;
+
     }
 
     void Update()
@@ -41,22 +43,22 @@ public class CamBehavior : MonoBehaviour
                 Random.Range(-1f, 1f)
             ) * shakeStrength;
 
-            // Apply the offset to the target's position
+           
             cameraTarget.localPosition = originalPosition + randomOffset;
 
-            // Reduce the shake timer
+        
             shakeElapsedTime -= Time.deltaTime;
         }
         else
         {
-            // Reset the target's position when the shake is over
+           
             cameraTarget.localPosition = originalPosition;
         }
     }
 
     public void CamShake()
     {
-        // Start the shake effect
+     
         shakeElapsedTime = shakeDuration;
     }
 }

@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animController: {fileID: 0}
   animator: {fileID: 0}
-  unitRig: {fileID: 919132149155446097, guid: e22d69562af435346ac487c3402733c2, type: 3}
-  unitMesh: {fileID: 8128920186567372103, guid: e22d69562af435346ac487c3402733c2,
-    type: 3}
+  unitRig: {fileID: 0}
+  unitMesh: {fileID: 0}
   unitName: Test_Enemy
   unitLevel: 1
-  defense: 25
-  damage: 2
-  maxHp: 25
+  defense: 200
+  damage: 12
+  maxHp: 180
   speed: 3
   attackCooldown: 1

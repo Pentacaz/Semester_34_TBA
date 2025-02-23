@@ -13,10 +13,16 @@ public class UiManager : MonoBehaviour
 {
     #region Healthbar
     public Image _healthBar;
-    public Image[] healAmounts;
+    public TextMeshProUGUI healthAmount;
     #endregion
 
+    #region Enemy display
 
+    
+    public GameObject uiContainer;
+    public TextMeshProUGUI enemyCounter;
+    public TextMeshProUGUI roundCounter;
+    #endregion
    
 
     public void RefreshHealthbar(float maxHp, float currentHp)
@@ -25,6 +31,10 @@ public class UiManager : MonoBehaviour
     }
 
 
-    
+    public void EnemyCountDisplay(int enemyCount, int roundCount)
+    {
+        enemyCounter.SetText($"{enemyCount}");
+        roundCounter.SetText($"{roundCount}");
+    }
 
 }

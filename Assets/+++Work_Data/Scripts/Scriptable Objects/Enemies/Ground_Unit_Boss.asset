@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7f583307309e054eace20153a513eb6, type: 3}
-  m_Name: Ground_Unit_Fast
+  m_Name: Ground_Unit_Boss
   m_EditorClassIdentifier: 
   animController: {fileID: 0}
   animator: {fileID: 0}
   unitRig: {fileID: 0}
   unitMesh: {fileID: 0}
-  unitName: Tiny
+  unitName: Boss
   unitLevel: 1
-  defense: 50
-  damage: 5
-  maxHp: 30
-  speed: 25
-  attackCooldown: 0.2
+  defense: 100
+  damage: 15
+  maxHp: 410
+  speed: 0
+  attackCooldown: 1
