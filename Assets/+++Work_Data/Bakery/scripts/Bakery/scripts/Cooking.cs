@@ -26,18 +26,12 @@ public class Cooking : MonoBehaviour
     [Header("Adjustable")]
     [SerializeField] private float tolerance = 0.4f;
     [SerializeField] private float sliderSpeed = 5f;
-    public bool inRange;
+    [SerializeField] public bool inRange;
    
     private float _sliderValue;
     private float targetAmount;
-    
-    
     #endregion
     
-    
-
-
-
     void Update()
     {
         // Constantly moves the slider back and forth. 
@@ -91,35 +85,18 @@ public class Cooking : MonoBehaviour
 
     }
 
-<<<<<<< HEAD
-    public void CookAction(RemoveItem removeItem)
-=======
     public void CookAction()
->>>>>>> main
     {
         if ( inRange)
         {
             StartCoroutine(ResultTextDisplay("Purrfection!"));
             Debug.Log("SUCCESS");
-<<<<<<< HEAD
-            FindObjectOfType<GameState>().Add(removeItem.state);
-            FindObjectOfType<GameState>().Remove(removeItem.money);
-
-            
-=======
->>>>>>> main
         }
         else
         {
             StartCoroutine(ResultTextDisplay("Cat-astrophe..."));
-<<<<<<< HEAD
-            Debug.Log("FAIL");
-            FindObjectOfType<GameState>().Remove(removeItem.money);
-
-=======
 
             Debug.Log("FAIL");
->>>>>>> main
         }
     }
 }
