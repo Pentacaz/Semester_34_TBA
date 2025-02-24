@@ -10,7 +10,6 @@ using UnityEngine.Serialization;
 public class PlayerController : MonoBehaviour
 {
     private static readonly int Hash_MovementSpeed = Animator.StringToHash("MovementSpeed");
-    private static readonly int Hash_Grounded = Animator.StringToHash("Grounded");
     private static readonly int Hash_Crouch = Animator.StringToHash("Crouch");
 
     #region Inspector
@@ -18,39 +17,32 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float walkSpeed;
     [SerializeField] private float dashPower;
-    
+    [SerializeField] private Transform playerOrientation;
     [SerializeField] private float speedChangeRate = 10f;
     [SerializeField] private float rotationSpeed = 10f;
-
-    [SerializeField] public float gravity = -19.62f;
-    private Vector3 velocity;
+  
     [Header("Camera")] 
-    //needs a massive rework, doesnt fit for our type of game
+    //needs a massive rework, doesn't fit for our type of game
     [SerializeField] private Transform cameraTarget;
-    
     [SerializeField] private float verticalCameraRotationMin = -30f;
     [SerializeField] private float verticalCameraRotationMax = 70f;
     [SerializeField] private float cameraHorizontalSpeed = 200f;
     [SerializeField] private float cameraVerticalSpeed = 130f;
-
+    [SerializeField] private Transform cameraTransform; 
+    [SerializeField] private float cameraDistance = 5.0f;
+    [SerializeField] private float cameraRadius = 0.5f;
     [Header("Animations")] 
-    [SerializeField] private Animator animator;
-
-    [SerializeField] private float coyoteTime;
-    
     [Header("Mouse Settings")] 
-    
     [SerializeField] private float mouseCameraSensitivity = 1f;
-    
     [Header("Controller Settings")] 
     [SerializeField] private float controllerCameraSensitivity = 1f;
     [SerializeField] private bool invertY = true;
-
+    
     #endregion
     
     #region Private Variables
     private Rigidbody _rigidbody;
-    private CharacterController _characterController;
+ 
     
     private GameInput _inputActions;
     private InputAction _moveAction;
@@ -60,24 +52,28 @@ public class PlayerController : MonoBehaviour
     
     private Vector2 _moveInput;
     private Vector2 _lookInput;
+    private Vector3 _velocity;
 
     private Quaternion _characterTargetRotation = Quaternion.identity;
     
     private Vector2 _cameraRotation;
     private Vector3 _lastMovement;
 
-    private bool _isGrounded;
+
     private bool _isRunning;
     private bool _isCrouching;
-    private float _airTime;
+
     private float _currentSpeed = 3f;
+
+    [SerializeField] private bool isInDungeon;
+  
+
     #endregion
     
     #region Event Functions
     private void Awake()
     {
-      _characterController = GetComponent<CharacterController>();
-           
+        _rigidbody = GetComponent<Rigidbody>();
         _inputActions = new GameInput();
         _moveAction = _inputActions.Player.Move;
         _lookAction = _inputActions.Player.Look;
@@ -92,32 +88,29 @@ public class PlayerController : MonoBehaviour
 public void OnEnable()
     {
         _inputActions.Enable();
+        //if (isInDungeon)
         _dashAction.performed += DashAction;
+        
+        
        
     }
 
     private void Update()
     {
         ReadInput();
-
-        Rotate(_moveInput);
-        Move(_moveInput);
-
-        GroundCheck();
-        UpdateAnimator();
+        
     }
 
     private void LateUpdate()
     {
       RotateCamera(_lookInput);
+  
     }
 
   public void OnDisable()
     {
         _inputActions.Disable();
         _dashAction.performed -= DashAction;
-    
-    
     }
 
     private void OnDestroy()
@@ -138,85 +131,11 @@ public void OnEnable()
     #endregion
     
     #region Movement
-// #TODO rewrite cause this clips with walls.
-    private void Rotate(Vector2 moveInput)
-    {
-        if (moveInput != Vector2.zero)
-        {
-            Vector3 inputDirection = new Vector3(moveInput.x, 0, moveInput.y).normalized;
 
-            Vector3 worldInputDirection = cameraTarget.TransformDirection(inputDirection);
-            worldInputDirection.y = 0;
-            
-            _characterTargetRotation = Quaternion.LookRotation(worldInputDirection);
-        }
-
-        if (Quaternion.Angle(transform.rotation, _characterTargetRotation) > 0.1f)
-        {
-            transform.rotation =
-                Quaternion.Slerp(transform.rotation, _characterTargetRotation, rotationSpeed * Time.deltaTime);
-        }
-        else
-        {
-            transform.rotation = _characterTargetRotation;
-        }
-    }
-    // #TODO rewrite to fit rb because NO way I'll write custom physics
-    private void Move(Vector2 moveInput)
-    {
-        
-         float targetSpeed = moveInput == Vector2.zero ? 0 : this._currentSpeed * moveInput.magnitude;
-
-        Vector3 currentVelocity = _lastMovement;
-        currentVelocity.y = 0;
-
-        float currentSpeed = currentVelocity.magnitude;
-
-        if (Mathf.Abs(currentSpeed - targetSpeed) > 0.01f)
-        {
-            currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, speedChangeRate * Time.deltaTime);
-        }
-        else
-        {
-            currentSpeed = targetSpeed;
-        }
-
-        Vector3 targetDirection = _characterTargetRotation * Vector3.forward;
-
-        Vector3 movement = targetDirection * currentSpeed;
-        if (!_isGrounded)
-        {
-            velocity.y += gravity * Time.deltaTime;
-        }
-
-        movement.y = velocity.y;
-
-        _characterController.Move(movement * Time.deltaTime);
-        
-        _lastMovement = movement;
-    
-    }
+   
 
     #endregion
-
-    #region GroundCheck
-
-    private void GroundCheck()
-    {
-        if (_characterController.isGrounded)
-        {
-            _airTime = 0;
-        }
-        else
-        {
-            _airTime += Time.deltaTime;
-        }
-
-        _isGrounded = _airTime < coyoteTime;
-    }
-
-
-
+    
     public void DashAction(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
@@ -224,24 +143,15 @@ public void OnEnable()
            _rigidbody.AddForce(Vector3.forward * (dashPower * walkSpeed * Time.deltaTime));
         }
     }
-    #endregion    
+  
     
     #region Animator
 
-    private void UpdateAnimator()
-    {
-        Vector3 velocity = _lastMovement;
-        velocity.y = 0;
-        float speed = velocity.magnitude;
-        
-        animator.SetFloat(Hash_MovementSpeed, speed);
-        animator.SetBool(Hash_Grounded, _isGrounded);
-        animator.SetBool(Hash_Crouch, _isCrouching);
-    }
+
 
     #endregion
     
-    #region Camera
+ 
     //fix clipping into walls while were at it...
    
 
@@ -255,9 +165,6 @@ public void OnEnable()
     {
         TryDeselectInteractable(other);
     }
-    
- 
-
     private void Interact(InputAction.CallbackContext ctx)
     {
         if (_selectedInteractable != null)
@@ -265,7 +172,7 @@ public void OnEnable()
             _selectedInteractable.Interact();
         }
     }
-
+    
     private void TrySelectInteractable(Collider other)
     {
         Interactable interactable = other.GetComponent<Interactable>();
@@ -293,30 +200,31 @@ public void OnEnable()
             _selectedInteractable = null;
         }
     }
+    
+    #region Camera
     private void RotateCamera(Vector2 lookInput)
     {
         if (lookInput != Vector2.zero)
         {
-            bool isMouseLook = IsMouseLook(); 
-            //   ist mein bool true ? true : false
-            float deltaTimeMultiplier = isMouseLook ? 1 : Time.deltaTime;
+            bool isMouseLook = IsMouseLook();
 
+            float deltaTimeMultiplier = isMouseLook ? 1 : Time.deltaTime;
             float sensitivity = isMouseLook ? mouseCameraSensitivity : controllerCameraSensitivity;
-  
+
             lookInput *= deltaTimeMultiplier * sensitivity;
-            
+
             _cameraRotation.x += lookInput.y * cameraVerticalSpeed * (!isMouseLook && invertY ? -1 : 1);
             _cameraRotation.y += lookInput.x * cameraHorizontalSpeed;
 
-            _cameraRotation.x = NormalizeAngle(_cameraRotation.x);
+            _cameraRotation.x = Mathf.Clamp(NormalizeAngle(_cameraRotation.x), verticalCameraRotationMin, verticalCameraRotationMax);
             _cameraRotation.y = NormalizeAngle(_cameraRotation.y);
 
-            _cameraRotation.x = Mathf.Clamp(_cameraRotation.x, verticalCameraRotationMin, verticalCameraRotationMax);
+            cameraTarget.rotation = Quaternion.Euler(_cameraRotation.x, _cameraRotation.y, 0);
+            
         }
-        
-        cameraTarget.rotation = Quaternion.Euler(_cameraRotation.x, _cameraRotation.y, 0);
     }
-    
+
+
     private float NormalizeAngle(float angle)
     {
         angle %= 360;
@@ -336,14 +244,9 @@ public void OnEnable()
 
     private bool IsMouseLook()
     {
-        if (_lookAction.activeControl == null)
-        {
-            return true;
-        }
-
-        return _lookAction.activeControl.device.name == "Mouse";
+        return _lookAction.activeControl == null || _lookAction.activeControl.device.name == "Mouse";
     }
-    
+
     #endregion
 }
 

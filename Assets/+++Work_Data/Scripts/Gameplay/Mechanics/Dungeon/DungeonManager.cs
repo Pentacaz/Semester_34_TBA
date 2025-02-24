@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using Cache = UnityEngine.Cache;
 
 public class DungeonManager : MonoBehaviour
@@ -24,17 +27,21 @@ public class DungeonManager : MonoBehaviour
     public GameObject wallVertical;
     public GameObject wallHorizontal;
     public List<GameObject> decorativeAssets;
+    public GameObject assetPrefab;
+    
     private List<Vector3Int> possibleDoorVerticalPosition;
     private List<Vector3Int> possibleDoorHorizontalPosition;
     private List<Vector3Int> possibleWallVerticalPosition;
     private List<Vector3Int> possibleWallHorizontalPosition;
+    
+    private List<Vector3Int> possiblAssetPosition;
     
     
     
     // Start is called before the first frame update
     void Start()
     {
-        CreateDungeon();
+        //CreateDungeon();
     }
 
     public void CreateDungeon()
@@ -43,8 +50,10 @@ public class DungeonManager : MonoBehaviour
         DungeonGenerator generator = new DungeonGenerator(dungeonWidth, dungeonLenght);
         var roomList = generator.CalculateRooms(maxIterations, roomWidthMin, roomLenghtMin,
             roomBottomCornerModifier, roomTopCornerModifier, roomOffset, corridorwidth);
-        GameObject wallParent = new GameObject("WallParent");
+        GameObject wallParent = new GameObject("Wall_Parent");
+        GameObject assetParent = new GameObject("Asset_Parent");
         wallParent.transform.parent = transform;
+        assetParent.transform.parent = transform;
         possibleDoorVerticalPosition = new List<Vector3Int>();
         possibleDoorHorizontalPosition = new List<Vector3Int>();
         possibleWallVerticalPosition = new List<Vector3Int>();
@@ -52,9 +61,11 @@ public class DungeonManager : MonoBehaviour
         for (int i = 0; i < roomList.Count; i++)
         {
             CreateMeshes(roomList[i].bottomLeftAreaCorner, roomList[i].topRightAreaCorner);
+            
         }
 
         CreateWalls(wallParent);
+        CreateAssets(assetParent);
     }
 
     private void CreateWalls(GameObject wallParent)
@@ -62,17 +73,34 @@ public class DungeonManager : MonoBehaviour
         foreach (var wallposition in possibleWallHorizontalPosition)
         {
             CreateWall(wallParent,wallposition,wallHorizontal);
+           
         }
 
         foreach (var wallposition in possibleWallVerticalPosition)
         {
             CreateWall(wallParent, wallposition,wallVertical);
+           
         }
     }
 
     private void CreateWall(GameObject wallParent, Vector3Int wallposition, GameObject wallPrefab)
     {
         Instantiate(wallPrefab, wallposition, Quaternion.identity, wallParent.transform);
+    }
+    
+    public void CreateAssets(GameObject assetParent)
+    {
+        foreach (var assetposition  in possiblAssetPosition)
+        {
+           initiateAsset(assetParent,assetposition,assetPrefab);
+           
+        }
+        
+    }
+
+    public void initiateAsset(GameObject assetParent, Vector3Int assetPosition, GameObject assetPrefab)
+    {
+        Instantiate(assetPrefab, assetPosition, Quaternion.identity, assetParent.transform);
     }
     
     private void CreateMeshes(Vector2 bottomleftCorner, Vector2 topRightCorner)
@@ -108,16 +136,17 @@ public class DungeonManager : MonoBehaviour
         mesh.vertices = vertices;
         mesh.uv = uvs;
         mesh.triangles = triangles;
-        GameObject dungeonFloor = new GameObject("Mesh"+bottomleftCorner, typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider));
+        GameObject dungeonFloor = new GameObject
+            ("Mesh"+bottomleftCorner, typeof(MeshFilter), 
+                  typeof(MeshRenderer), typeof(NavMeshSurface));
         
         dungeonFloor.transform.position = Vector3.zero;
         dungeonFloor.transform.localScale = Vector3.one;
         dungeonFloor.GetComponent<MeshFilter>().mesh = mesh;
         dungeonFloor.GetComponent<MeshRenderer>().material = material;
-        dungeonFloor.GetComponent<MeshCollider>().convex = true;
-        dungeonFloor.GetComponent<MeshCollider>().sharedMesh = mesh;
         dungeonFloor.transform.parent = transform;
-
+        dungeonFloor.GetComponent<NavMeshSurface>().BuildNavMesh();
+       
         for (int row = (int)bottomLeftV.x; row < (int)bottomRightV.x; row++)
         {
             var wallPosition = new Vector3(row, 0, bottomLeftV.z);
@@ -144,11 +173,7 @@ public class DungeonManager : MonoBehaviour
     }
 
 
-    public void initiateAssets()
-    {
-        //find out the possible spaces in which the assets can spawn
-        //make sure assets cannot spawn out of bounds
-    }
+  
     private void AddWallPositionToList(Vector3 wallPosition, List<Vector3Int> wallList, List<Vector3Int> doorList)
     {
         Vector3Int point = Vector3Int.CeilToInt(wallPosition);

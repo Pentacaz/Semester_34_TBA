@@ -6,11 +6,17 @@ TagManager:
   tags:
   - Floor
   - Dungeon
+<<<<<<< HEAD
   - NPC
   - wp
   - Bin
   - NPCBase
   - Menu
+=======
+  - Weapon
+  - Enemy
+  - Wall
+>>>>>>> main
   layers:
   - Default
   - TransparentFX
