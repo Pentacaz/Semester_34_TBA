@@ -3,28 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Floor
-  - Dungeon
-<<<<<<< HEAD
-  - NPC
-  - wp
-  - Bin
-  - NPCBase
-  - Menu
-=======
-  - Weapon
-  - Enemy
-  - Wall
->>>>>>> main
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
-  - Enemy
+  - 
   - 
   - 
   - 
