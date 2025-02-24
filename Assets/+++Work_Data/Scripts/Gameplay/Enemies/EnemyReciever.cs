@@ -68,8 +68,11 @@ public class EnemyReciever : MonoBehaviour
         currentHp = _enemyStatus.enemyMaxHp;
         _invincibilityTimerValue = invincibilityTimer;
         DamageIndication(damageIndicator, _enemyStatus.enemyMaxHp, currentHp, 0, false);
-        ;
-        SetShields();
+        if (!IsBoss)
+        {
+            SetShields();
+        }
+       
     }
 
     private void Update()

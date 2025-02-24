@@ -7,10 +7,12 @@ using UnityEngine.Serialization;
 
 public class PlayerBaseController : MonoBehaviour
 {
-    [SerializeField] public Transform playerOrientation;
+
+  
+  
+  
     [SerializeField] private float speedChangeRate = 10f;
     [SerializeField] private float rotationSpeed = 10f;
-
     #region Camera
 
     private Quaternion _playerRotation;
@@ -20,7 +22,6 @@ public class PlayerBaseController : MonoBehaviour
     private float _turnSpeed = 8;
     private float _speed = 6;
     public Camera _Vcam;
-    private Vector2 _cameraRotation;
     public GameObject trail;
     [Header("Camera")]
     //needs a massive rework, doesn't fit for our type of game
@@ -98,6 +99,8 @@ public class PlayerBaseController : MonoBehaviour
     
     private void Awake()
     {
+      
+       
 
         _inputActions = new PlayerInputActions();
 
@@ -106,20 +109,21 @@ public class PlayerBaseController : MonoBehaviour
         _dodgeAction = _inputActions.Player.Dash;
         _engageAction = _inputActions.Player.Engage;
         _attackAction = _inputActions.Player.Attack;
-
-
-        _cameraRotation = cameraTarget.rotation.eulerAngles;
+      
 
     }
 
     void Start()
     {
+        
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponentInChildren<Animator>();
         _movementSpeedHash = Animator.StringToHash("MovementSpeed");
         _playerCombatController = GetComponent<PlayerCombatController>();
         _cooking = GameObject.FindObjectOfType<Cooking>();
-        
+      
+
+
     }
 
 
@@ -140,7 +144,8 @@ public class PlayerBaseController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {  
+    {
+     
         ReadInput();
         AnimationSetUp(_currentVelocity);
 
