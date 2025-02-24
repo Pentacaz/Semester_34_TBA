@@ -33,6 +33,7 @@ public class EnemyReciever : MonoBehaviour
     private SpawnEnemies _spawnEnemies;
     public Image damageIndicator;
     public Image shieldIndicator;
+    public GameObject shieldGameObject;
     public TextMeshProUGUI damageText;
     public GameObject damageTextObject;
 
@@ -216,6 +217,7 @@ public class EnemyReciever : MonoBehaviour
         if (!IsBoss && Random.value < 0.2f)
         {
             hasShields = true;
+            shieldGameObject.SetActive(true);
             shieldIndicator.enabled = true;
             currentShields = _enemyStatus.enemyDefense;
         }
@@ -223,6 +225,7 @@ public class EnemyReciever : MonoBehaviour
         {
             hasShields = true;
             shieldIndicator.enabled = true;
+            shieldGameObject.SetActive(true);
             currentShields = _enemyStatus.enemyDefense;
         }
     }
