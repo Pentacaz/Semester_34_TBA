@@ -27,7 +27,6 @@ public class NpcAreaBehaviour : MonoBehaviour
                     if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance + 0.01f)
                     {
                         navMeshAgent.SetDestination(npcSpotLocation.location.position);
-
                     }
                     break;
                 }
@@ -52,6 +51,13 @@ public class NpcAreaBehaviour : MonoBehaviour
         }
     }
     */
-    
+
+    public void NotOccupied()
+    {
+        for (int i = 0; i < npcSpotLocations.Count; i++)
+        {
+            npcSpotLocations[i].isOccupied = false;
+        }
+    }
     
 }

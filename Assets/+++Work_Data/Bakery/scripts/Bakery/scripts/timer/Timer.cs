@@ -13,12 +13,15 @@ public class Timer : MonoBehaviour
     public GameObject highlightedArea;
     private NavMeshPatrolBakes navMeshPatrol;
     
+    private NpcSpotLocation spotLocation;
 
 
 
      private void Start()
     {
         navMeshPatrol = GetComponent<NavMeshPatrolBakes>();
+        spotLocation = FindObjectOfType<NpcSpotLocation>();
+
     }
 
    public void StartTimer()
@@ -48,6 +51,8 @@ public class Timer : MonoBehaviour
                 navMeshPatrol.CompletedOrder();
                 highlightedArea.SetActive(false);
                 navMeshPatrol.enabled = false;
+                spotLocation.ChangeStatus(false);
+
 
             }
 

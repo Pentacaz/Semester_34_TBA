@@ -15,7 +15,7 @@ public class ClockTimer : MonoBehaviour
     public bool timerStop;
     public GameObject highlightedArea;
 
-    private NpcSpotLocation spotLocation;
+    private NpcSpotLocation[] spotLocation;
 
     
     [SerializeField] private GameObject[] customers;
@@ -23,16 +23,16 @@ public class ClockTimer : MonoBehaviour
     private ClockTimer clockTimer;
     private float spawnInterval;
     private LightingManager lightingManager;
-    private NpcAreaBehaviour areaBehaviour;
+    public NpcAreaBehaviour areaBehaviour;
     private NavMeshPatrolBakes navMeshPatrol;
     
 
    private void Awake()
    {
        lightingManager = GetComponent<LightingManager>();
-       spotLocation = FindObjectOfType<NpcSpotLocation>();
-       areaBehaviour = GetComponent<NpcAreaBehaviour>();
+       spotLocation = FindObjectsOfType<NpcSpotLocation>();
        navMeshPatrol = GetComponent<NavMeshPatrolBakes>();
+       
    }
 
    private void Start()
@@ -77,9 +77,8 @@ public class ClockTimer : MonoBehaviour
                 }
 
                 StopTimer();
-              //  spotLocation.ChangeStatus(false);
-                navMeshPatrol.CheckForNpcSpotLocation();
-
+               // navMeshPatrol.CheckForNpcSpotLocation();
+               areaBehaviour.NotOccupied();
 
             }
             if (timerStop == false)
