@@ -306,7 +306,7 @@ MonoBehaviour:
   chaseTime: 5
   enemyAggroArea: 13
   enemyAttackArea: 6
-  enemyStopArea: 0.46
+  enemyStopArea: 1.13
   showWaypoints: 1
   showRange: 1
 --- !u!114 &5249539960173459270
@@ -512,7 +512,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 4.2
+  m_Radius: 6.45
   m_Center: {x: 0, y: 1.06, z: 0}
 --- !u!114 &4391095509247891155
 MonoBehaviour:

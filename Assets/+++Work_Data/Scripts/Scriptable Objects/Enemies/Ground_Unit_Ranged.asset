@@ -22,4 +22,4 @@ MonoBehaviour:
   damage: 12
   maxHp: 180
   speed: 3
-  attackCooldown: 1
+  attackCooldown: 2.5
