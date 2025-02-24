@@ -23,12 +23,16 @@ public class ClockTimer : MonoBehaviour
     private ClockTimer clockTimer;
     private float spawnInterval;
     private LightingManager lightingManager;
+    private NpcAreaBehaviour areaBehaviour;
+    private NavMeshPatrolBakes navMeshPatrol;
     
 
    private void Awake()
    {
        lightingManager = GetComponent<LightingManager>();
-       spotLocation = GetComponent<NpcSpotLocation>();
+       spotLocation = FindObjectOfType<NpcSpotLocation>();
+       areaBehaviour = GetComponent<NpcAreaBehaviour>();
+       navMeshPatrol = GetComponent<NavMeshPatrolBakes>();
    }
 
    private void Start()
@@ -73,8 +77,8 @@ public class ClockTimer : MonoBehaviour
                 }
 
                 StopTimer();
-
-                spotLocation.isOccupied = false;
+              //  spotLocation.ChangeStatus(false);
+                navMeshPatrol.CheckForNpcSpotLocation();
 
 
             }
@@ -93,6 +97,7 @@ public class ClockTimer : MonoBehaviour
 
         CancelInvoke("RandomOrder"); 
         highlightedArea.SetActive(true);
+
     }
 
     public void RandomOrder()

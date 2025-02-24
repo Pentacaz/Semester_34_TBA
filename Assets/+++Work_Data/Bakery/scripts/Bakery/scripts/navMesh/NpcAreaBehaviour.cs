@@ -31,16 +31,20 @@ public class NpcAreaBehaviour : MonoBehaviour
                     }
                     break;
                 }
-                /*else
+                /*else if(npcSpotLocations[i].isOccupied)
                 {
+                    npcSpotLocations[i].ChangeStatus(false);
+
                     other.GetComponent<NavMeshPatrolBakes>().CompletedOrder(); 
                 }
                 */
+                
             }
         }
     }
+    /*
 
-  /*  private void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(tagName))
         {
@@ -48,4 +52,6 @@ public class NpcAreaBehaviour : MonoBehaviour
         }
     }
     */
+    
+    
 }
