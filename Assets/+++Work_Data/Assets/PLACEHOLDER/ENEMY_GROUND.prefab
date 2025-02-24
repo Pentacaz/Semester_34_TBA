@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2066661494187691224}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4682737301915578813}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ENEMY_GROUND
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 7316327881268619382}
   - component: {fileID: 7286498491359839449}
   - component: {fileID: 1930929112926309435}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shields
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 8239112197986406191}
   - component: {fileID: 6656403437352955156}
   - component: {fileID: 8513877283049869211}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 4656378456488548593}
   - component: {fileID: 7647154078523426726}
   - component: {fileID: 1118490857701651219}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,6 +305,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8053571438017996201}
   - {fileID: 3277818421533852779}
   - {fileID: 7316327881268619382}
   - {fileID: 8239112197986406191}
@@ -388,7 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7278007630502375689}
   - component: {fileID: 477398894556946609}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +475,7 @@ GameObject:
   - component: {fileID: 3277818421533852779}
   - component: {fileID: 1789328479721032625}
   - component: {fileID: 6974272089875866989}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +548,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1789533929819001566}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Loot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -570,6 +571,81 @@ Transform:
   - {fileID: 88466495945951743}
   m_Father: {fileID: 4682737301915578813}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6165219004640263618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8053571438017996201}
+  - component: {fileID: 1115631359949641487}
+  - component: {fileID: 5898136751306126751}
+  m_Layer: 7
+  m_Name: Alert
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &8053571438017996201
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6165219004640263618}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5824448543931715234}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.482}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1115631359949641487
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6165219004640263618}
+  m_CullTransparentMesh: 1
+--- !u!114 &5898136751306126751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6165219004640263618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -103265330, guid: 1f28f761c7025e244971ca3d8f6c119e, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &7892154741436333043
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +657,7 @@ GameObject:
   - component: {fileID: 1496640774114089641}
   - component: {fileID: 1744990477481977550}
   - component: {fileID: 3976263673934637088}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Damage_Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,7 +736,7 @@ GameObject:
   - component: {fileID: 7956995060630738324}
   - component: {fileID: 1694009117489948424}
   - component: {fileID: 870040187085978811}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy_Prototype_Easy_Ground
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -747,6 +823,7 @@ MonoBehaviour:
   enemyStopArea: 2
   showWaypoints: 1
   showRange: 1
+  alertSymbol: {fileID: 6165219004640263618}
 --- !u!136 &4489174374583928991
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1014,10 +1091,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6673518281260927255, guid: 45c802d68c8370b4ca075733639fc1da,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 45c802d68c8370b4ca075733639fc1da,
         type: 3}
       propertyPath: m_Name
       value: Strawberry
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 45c802d68c8370b4ca075733639fc1da,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1157,6 +1244,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Impact
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869683353009800506, guid: 29164f87cebbd7d44afd5eb383104f9a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8869683353009800506, guid: 29164f87cebbd7d44afd5eb383104f9a,
         type: 3}

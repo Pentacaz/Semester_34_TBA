@@ -52,6 +52,8 @@ public class EnemyAuraBehaviour : MonoBehaviour
     private float _auraDmgTimer;
     private float _chaseTimer;
 
+     public GameObject alertSymbol;
+
     #region Unity Event Functions
 
     private void Awake()
@@ -81,12 +83,14 @@ public class EnemyAuraBehaviour : MonoBehaviour
          anim.SetFloat(Hash_MovementSpeed, navMeshAgent.velocity.magnitude);
         
         
-        
+         
         if (!navMeshAgent.isStopped && 
             (enemyState == EnemyState.PATROL || enemyState == EnemyState.IDLE))
         {
             CheckIfWaypointIsReached();
         }
+           
+
         
         if ((enemyState != EnemyState.PATROL || enemyState != EnemyState.IDLE) && !navMeshAgent.isStopped)
         {
@@ -192,6 +196,7 @@ public class EnemyAuraBehaviour : MonoBehaviour
         {
             print("aggro");
             _playerInRange = true;
+           
             if (enemyState != EnemyState.CHASE &&
                 enemyState != EnemyState.CANATTACK &&
                 enemyState != EnemyState.ATTACKING)
@@ -205,7 +210,6 @@ public class EnemyAuraBehaviour : MonoBehaviour
         else if (_playerInRange)
         {
             _playerInRange = false;
-
             if (enemyState != EnemyState.CANATTACK &&
                 enemyState != EnemyState.ATTACKING)
             {
@@ -321,6 +325,8 @@ public class EnemyAuraBehaviour : MonoBehaviour
 
     #endregion
     
+    
+   
     #region Gizmos
 
     private void OnDrawGizmos()

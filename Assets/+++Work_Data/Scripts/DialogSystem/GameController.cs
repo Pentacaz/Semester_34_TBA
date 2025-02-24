@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    private PlayerControllerBakery player;
+    //private PlayerController player;
+    private PlayerBaseController playerBaseController;
     private DialogueController dialogueController;
 
     public enum GameMode
@@ -18,9 +19,9 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        player = FindObjectOfType<PlayerControllerBakery>();
+        //player = FindObjectOfType<PlayerController>();
+        playerBaseController = FindObjectOfType<PlayerBaseController>();
         dialogueController = FindObjectOfType<DialogueController>();
-        
     }
 
     private void OnEnable()
@@ -30,8 +31,13 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        if(player)
-            EnterPlayMode();
+        //if(player)
+           // EnterPlayMode();
+
+           if (playerBaseController)
+           {
+               EnterPlayMode();
+           }
     }
 
     private void OnDisable()
@@ -48,7 +54,8 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1;
         // In the editor: Unlock with ESC.
         //Cursor.lockState = CursorLockMode.Locked;
-        player.OnEnable();
+        //player.OnEnable();
+        playerBaseController.OnEnable();
     }
 
    public void EnterDialogueMode()
@@ -56,22 +63,24 @@ public class GameController : MonoBehaviour
         // 1 = spiel läuft weiter, 0 = game freeze
         Time.timeScale = 1;
         //Cursor.lockState = CursorLockMode.Locked;
-        player.OnDisable(); 
+        //player.OnDisable(); 
+        playerBaseController.OnDisable();
     }
 
     public void EnterStatePopUpMode()
     {
         
         Time.timeScale = 1;
-//        player.OnDisable(); 
+        //player.OnDisable(); 
+        //playerBaseController.OnDisable();
     }
 
     // inventory
     public void EnterInventoryMode()
     {
         Time.timeScale = 0;
-  //      player.OnDisable(); 
-        
+        //player.OnDisable(); 
+        playerBaseController.OnDisable();
     }
    
     #endregion
@@ -126,7 +135,7 @@ public class GameController : MonoBehaviour
         newSelectable = newSelactable;
 
         //newSelactable.Select();
-        StartCoroutine(DelaySetSelectable(newSelectable));
+        StartCoroutine(DelayNewSelectable(newSelectable));
     }
 
     public void ExitMenu()
@@ -135,21 +144,10 @@ public class GameController : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
     }
 
-   
-  /*  
-    public void SetSelectable(Button button)
-    {
-        Selectable selectable = button;
-
-        StartCoroutine(DelaySetSelectable(selectable));
-
-    }
-    */
-
-    IEnumerator DelaySetSelectable(Selectable selectable)
+    IEnumerator DelayNewSelectable(Selectable newSelectable)
     {
         yield return null;
-        selectable.Select();
+        newSelectable.Select();
     }
 }
 

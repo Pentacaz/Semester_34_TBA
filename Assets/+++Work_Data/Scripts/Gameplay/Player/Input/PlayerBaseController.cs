@@ -81,6 +81,7 @@ public class PlayerBaseController : MonoBehaviour
 
     public bool isDashing;
     public float pushBackForce = 1.0f;
+    
     [FormerlySerializedAs("isDashing")] public bool canDash;
 
     #endregion
@@ -118,10 +119,11 @@ public class PlayerBaseController : MonoBehaviour
         _movementSpeedHash = Animator.StringToHash("MovementSpeed");
         _playerCombatController = GetComponent<PlayerCombatController>();
         _cooking = GameObject.FindObjectOfType<Cooking>();
+        
     }
 
 
-    private void OnEnable()
+    public void OnEnable()
     {
         EnableInput();
 
@@ -146,10 +148,12 @@ public class PlayerBaseController : MonoBehaviour
         { dashCooldownTimer -= Time.deltaTime;
             if (dashCooldownTimer <= 0)
             {
+                //Physics.IgnoreLayerCollision(, false);
                 isDashing = false;
                 trail.SetActive(false);
             } 
         }
+     
     }
 
     private void FixedUpdate()
@@ -163,7 +167,7 @@ public class PlayerBaseController : MonoBehaviour
     }
 
  
-    private void OnDisable()
+    public void OnDisable()
     {
         DisableInput();
         _engageAction.performed-= Interact;
@@ -180,7 +184,8 @@ public class PlayerBaseController : MonoBehaviour
                 {  trail.SetActive(true);
                     isDashing = true;
                     dashCooldownTimer = dashCooldown;
-                    
+                  
+
                 }
                 else if (ctx.canceled)
                 { 

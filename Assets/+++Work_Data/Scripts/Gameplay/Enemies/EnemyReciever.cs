@@ -55,7 +55,7 @@ public class EnemyReciever : MonoBehaviour
     {
         _enemyStatus = GetComponent<EnemyStatus>();
         _camBehavior = GetComponent<CamBehavior>();
-        //_vfx = GetComponentInChildren<VisualEffect>();
+        _vfx = GetComponentInChildren<VisualEffect>();
         _rigidbody = GetComponent<Rigidbody>();
         _spawnEnemies = FindObjectOfType<SpawnEnemies>();
 
@@ -115,7 +115,7 @@ public class EnemyReciever : MonoBehaviour
             _camBehavior.CamShake();
             damageText.enabled = true;
             StartCoroutine(DamageDisplay(damagevalue, crit));
-            //_vfx.Play();
+            _vfx.Play();
             Pushback();
 
             Debug.Log("TOOK DAMAGE ENEMY");

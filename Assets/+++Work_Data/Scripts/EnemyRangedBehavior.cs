@@ -58,7 +58,7 @@ public class EnemyRangedBehavior : MonoBehaviour
     private bool _isAttacking = true;
     private float _auraDmgTimer;
     private float _chaseTimer;
-
+    public GameObject alertSymbol;
     #region Unity Event Functions
 
     private void Awake()
@@ -86,8 +86,8 @@ public class EnemyRangedBehavior : MonoBehaviour
         {
             playerHitAreaIndicator.transform.position = player.transform.position;
         }
-
       
+        
         CalculateEnemyAggroRange(enemyAggroArea);
         CalculateEnemyAttackRange(enemyAttackArea);
         AttackCooldown();
@@ -206,7 +206,8 @@ public class EnemyRangedBehavior : MonoBehaviour
         if (distance < aggroRange)
         {
             print("aggro");
-            _playerInRange = true;
+      
+    
             if (enemyState != EnemyState.CHASE &&
                 enemyState != EnemyState.CANATTACK &&
                 enemyState != EnemyState.ATTACKING)
@@ -220,7 +221,7 @@ public class EnemyRangedBehavior : MonoBehaviour
         else if (_playerInRange)
         {
             _playerInRange = false;
-
+       
             if (enemyState != EnemyState.CANATTACK &&
                 enemyState != EnemyState.ATTACKING)
             {

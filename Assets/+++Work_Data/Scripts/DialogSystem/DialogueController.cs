@@ -29,8 +29,6 @@ public class DialogueController : MonoBehaviour
 
     [SerializeField] private DialogueBox dialogueBox;
 
-    [SerializeField] private GameObject inventory;  
-
     #endregion
 
     private Story inkStory;
@@ -91,7 +89,6 @@ public class DialogueController : MonoBehaviour
     private void OpenDialogue()
     {
         dialogueBox.gameObject.SetActive(true);
-        inventory.SetActive(false);
     }
 
     private void CloseDialogue()
@@ -99,7 +96,6 @@ public class DialogueController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         dialogueBox.gameObject.SetActive(false);
         DialogueClosed?.Invoke();
-        inventory.SetActive(true);
     }
 
     private void ContinueDialogue()
