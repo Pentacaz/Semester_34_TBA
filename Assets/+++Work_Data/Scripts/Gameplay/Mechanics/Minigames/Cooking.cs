@@ -32,10 +32,6 @@ public class Cooking : MonoBehaviour
     private float targetAmount;
     #endregion
     
-    
-
-
-
     void Update()
     {
         // Constantly moves the slider back and forth. 
