@@ -18,15 +18,15 @@ public class Transport : MonoBehaviour
  {
      if (_dungeonRoomTracker.canAccessHealing)
      {
-                 spawnPoints.Add(_dungeonRoomTracker.HealArea);
-                 
+         AddObjectToList(_dungeonRoomTracker.HealArea);
+
      }
 
      if (_dungeonRoomTracker.canAccessBoss)
      {
          spawnPoints.Clear();
-         spawnPoints.Add(_dungeonRoomTracker.BossArea);
-         _dungeonRoomTracker.canAccessBoss = false;
+         AddObjectToList(_dungeonRoomTracker.BossArea);
+         
      }
  }
 
@@ -40,6 +40,24 @@ public class Transport : MonoBehaviour
           }
  }
 
- 
- 
+
+ void AddObjectToList(Transform obj)
+ {
+  
+     if (!spawnPoints.Contains(obj))
+     {
+    
+         spawnPoints.Add(obj);
+         Debug.Log(obj.name + " added to the list.");
+     }
+     else
+     {
+        
+         Debug.Log(obj.name + " is already in the list.");
+     }
+ }
+
+
 }
+ 
+

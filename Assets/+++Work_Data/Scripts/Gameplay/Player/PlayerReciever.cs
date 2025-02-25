@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerReciever : MonoBehaviour
-{   public GameObject spawnPoint;
+{   
     PlayerController pController;
     private UiManager _uiManager;
     public int healCount;
@@ -36,21 +36,6 @@ public class PlayerReciever : MonoBehaviour
         Invincibility();
     }
 
-    public void Spawn(bool spwn)
-    {
-        if (spwn)
-        {
-            this.gameObject.transform.position = spawnPoint.transform.position;
-            
-        }
-
-        if (  this.gameObject.transform.position == spawnPoint.transform.position)
-        {
-            _setSpawn = false;
-            spawnPoint.SetActive(false);
-        }
-      
-    }
 
     public void GetDmg(int dmg)
     {

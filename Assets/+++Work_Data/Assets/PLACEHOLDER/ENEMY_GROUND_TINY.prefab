@@ -575,6 +575,7 @@ GameObject:
   - component: {fileID: 7325590436449509300}
   - component: {fileID: 563250073745131352}
   - component: {fileID: 2091601489101148051}
+  - component: {fileID: 3596920071987407572}
   m_Layer: 5
   m_Name: Shields
   m_TagString: Untagged
@@ -639,6 +640,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3596920071987407572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4479378899131590393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fd8b0780e10cc42b9d5a6056392dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiCamera: {fileID: 0}
 --- !u!1 &5251743002206804526
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +664,7 @@ GameObject:
   - component: {fileID: 2185223498179939946}
   - component: {fileID: 6701347407272245549}
   - component: {fileID: 3165211624681239930}
+  - component: {fileID: 9142468547097447505}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -773,6 +788,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &9142468547097447505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5251743002206804526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fd8b0780e10cc42b9d5a6056392dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiCamera: {fileID: 0}
 --- !u!1 &5861925854705299929
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,6 +929,7 @@ GameObject:
   - component: {fileID: 8097968474520702363}
   - component: {fileID: 7847004949756289585}
   - component: {fileID: 5399953806874546992}
+  - component: {fileID: 8266906424818951202}
   m_Layer: 5
   m_Name: Alert
   m_TagString: Untagged
@@ -965,6 +994,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8266906424818951202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6152454158079147164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fd8b0780e10cc42b9d5a6056392dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiCamera: {fileID: 0}
 --- !u!1 &7899285197982453404
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,6 +1018,7 @@ GameObject:
   - component: {fileID: 3009438687584794089}
   - component: {fileID: 4103378596431872699}
   - component: {fileID: 8597373499597853403}
+  - component: {fileID: 4820689014274309357}
   m_Layer: 5
   m_Name: HP
   m_TagString: Untagged
@@ -1040,6 +1083,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4820689014274309357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7899285197982453404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fd8b0780e10cc42b9d5a6056392dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiCamera: {fileID: 0}
 --- !u!1001 &967353974537490685
 PrefabInstance:
   m_ObjectHideFlags: 0

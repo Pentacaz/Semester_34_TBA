@@ -169,8 +169,10 @@ public class SpawnEnemies : MonoBehaviour
     }
     public void EndGame()
     {
-      //remove everthing from list
+     
         noMoreEnemies = true;
+        allEnemies.Clear();
+        activeEnemies.Clear();
         Debug.Log("All rounds completed! Game Over.");
         if (!isBoss)
         {
