@@ -67,7 +67,7 @@ public class EnemyReciever : MonoBehaviour
         Debug.Log("enemyreciever");
         currentHp = _enemyStatus.enemyMaxHp;
         _invincibilityTimerValue = invincibilityTimer;
-        DamageIndication(damageIndicator, _enemyStatus.enemyMaxHp, currentHp, 0, false);
+//        DamageIndication(damageIndicator, _enemyStatus.enemyMaxHp, currentHp, 0, false);
         if (!IsBoss)
         {
             SetShields();
@@ -125,6 +125,14 @@ public class EnemyReciever : MonoBehaviour
             Debug.Log("TOOK DAMAGE ENEMY");
         }
 
+        if (currentShields <= 0)
+        {
+            hasShields = false;
+            damageind.fillAmount = currentHpval / maxHpval;
+            shieldIndicator.enabled = false;
+            //play vfx
+        }
+        
         if (currentHp <= 0)
         {
             if (_animator != null)
@@ -143,13 +151,7 @@ public class EnemyReciever : MonoBehaviour
             Debug.Log("DEATH ENEMY");
         }
 
-        if (currentShields <= 0)
-        {
-            hasShields = false;
-            damageind.fillAmount = currentHpval / maxHpval;
-            shieldIndicator.enabled = false;
-            //play vfx
-        }
+      
     }
 
 

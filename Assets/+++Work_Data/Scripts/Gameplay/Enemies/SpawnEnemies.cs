@@ -23,13 +23,16 @@ public class SpawnEnemies : MonoBehaviour
     public bool isBoss = false;
     public float coolDownTimer;
     public float cooldowntimervalue;
+
+    private DungeonRoomTracker _dungeonRoomTracker;
     #endregion
 
     private UiManager _uiManager;
     
     private void Awake()
     {   _uiManager = FindObjectOfType<UiManager>();
-        triggerCollider = GetComponent<Collider>(); 
+        triggerCollider = GetComponent<Collider>();
+        _dungeonRoomTracker = FindObjectOfType<DungeonRoomTracker>();
     }
     
     private void Start()
@@ -167,8 +170,12 @@ public class SpawnEnemies : MonoBehaviour
     public void EndGame()
     {
       //remove everthing from list
-      noMoreEnemies = true;
+        noMoreEnemies = true;
         Debug.Log("All rounds completed! Game Over.");
+        if (!isBoss)
+        {
+            _dungeonRoomTracker.AddClearedRoom();
+        }
     }
 }
     
