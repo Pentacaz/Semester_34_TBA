@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17419308, g: 0.21783538, b: 0.30003923, a: 1}
+  m_IndirectSpecularColor: {r: 0.17419326, g: 0.21783574, b: 0.30004013, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1038,9 +1038,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1087,6 +1087,18 @@ MonoBehaviour:
       - m_Target: {fileID: 38049623}
         m_TargetAssemblyTypeName: RemoveItemQuest, Assembly-CSharp
         m_MethodName: TakeOrder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 710790999}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2521,7 +2533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 2010695738}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &99390148
@@ -2575,7 +2587,7 @@ MonoBehaviour:
     type: 3}
   m_TrackedDevicePositionAction: {fileID: 0}
   m_TrackedDeviceOrientationAction: {fileID: 0}
-  m_DeselectOnBackgroundClick: 1
+  m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
 --- !u!1001 &105512841
@@ -3070,12 +3082,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 34035066170068972, guid: 8cc3d4fcd18eaf24bb69fddf4bd80c00,
     type: 3}
   m_PrefabInstance: {fileID: 112198940}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &113491367 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2088106246}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &120425538
 GameObject:
@@ -4473,12 +4479,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b16d35e5617280e4089a69722319ab83, type: 3}
---- !u!4 &177492664 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1626252890}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &183214988
 GameObject:
   m_ObjectHideFlags: 0
@@ -7200,9 +7200,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7249,6 +7249,18 @@ MonoBehaviour:
       - m_Target: {fileID: 242536674}
         m_TargetAssemblyTypeName: RemoveItemQuest, Assembly-CSharp
         m_MethodName: TakeOrder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 710790999}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7876,9 +7888,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7925,6 +7937,18 @@ MonoBehaviour:
       - m_Target: {fileID: 260660217}
         m_TargetAssemblyTypeName: RemoveItemQuest, Assembly-CSharp
         m_MethodName: TakeOrder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 710790999}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8101,111 +8125,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 658244333}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &268551928
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 268551932}
-  - component: {fileID: 268551931}
-  - component: {fileID: 268551930}
-  - component: {fileID: 268551929}
-  m_Layer: 0
-  m_Name: r
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &268551929
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268551928}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &268551930
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268551928}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: e9fa2068df8de614e915f3131bc9082d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &268551931
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268551928}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &268551932
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268551928}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.75, y: 1.57, z: -3.04}
-  m_LocalScale: {x: 2.2572198, y: 0.02500094, z: 3.5233316}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &269802338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8995,9 +8914,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -9032,6 +8951,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1080508992}
         m_TargetAssemblyTypeName: Cooking, Assembly-CSharp
         m_MethodName: SetSuccessArea
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 939447460}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14979,9 +14910,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.76214844, g: 0.85050946, b: 0.9339623, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -15037,9 +14968,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 459694717}
-        m_TargetAssemblyTypeName: RemoveItem, Assembly-CSharp
-        m_MethodName: Buy
+      - m_Target: {fileID: 710790999}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15052,6 +14983,18 @@ MonoBehaviour:
       - m_Target: {fileID: 459694721}
         m_TargetAssemblyTypeName: RemoveItemQuest, Assembly-CSharp
         m_MethodName: TakeOrder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 459694717}
+        m_TargetAssemblyTypeName: RemoveItem, Assembly-CSharp
+        m_MethodName: Buy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15855,9 +15798,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -15892,6 +15835,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1080508992}
         m_TargetAssemblyTypeName: Cooking, Assembly-CSharp
         m_MethodName: SetSuccessArea
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 939447460}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16042,9 +15997,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -16091,6 +16046,18 @@ MonoBehaviour:
       - m_Target: {fileID: 476566907}
         m_TargetAssemblyTypeName: RemoveItemQuest, Assembly-CSharp
         m_MethodName: TakeOrder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 710790999}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17727,7 +17694,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &522871856
 Transform:
   m_ObjectHideFlags: 0
@@ -18239,7 +18206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &555182740
 Transform:
   m_ObjectHideFlags: 0
@@ -19801,9 +19768,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.76214844, g: 0.85050946, b: 0.9339623, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -19850,6 +19817,18 @@ MonoBehaviour:
       - m_Target: {fileID: 592906377}
         m_TargetAssemblyTypeName: RemoveItemQuest, Assembly-CSharp
         m_MethodName: TakeOrder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 710790999}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21341,7 +21320,7 @@ PrefabInstance:
     - target: {fileID: 2861251187047141416, guid: 9ee51e9b6ac33fa4a97908370da9a45c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.19418669
+      value: -0.3601867
       objectReference: {fileID: 0}
     - target: {fileID: 2861251187047141416, guid: 9ee51e9b6ac33fa4a97908370da9a45c,
         type: 3}
@@ -22802,6 +22781,7 @@ GameObject:
   - component: {fileID: 710790996}
   - component: {fileID: 710790998}
   - component: {fileID: 710790997}
+  - component: {fileID: 710790999}
   m_Layer: 0
   m_Name: highlightedArea
   m_TagString: Untagged
@@ -22852,6 +22832,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 710790999}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: EnterDialogueMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 710790999}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -22879,6 +22883,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 6.6
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &710790999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710790995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff566759f0f6dea449f4277f149ab0cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameMode: 4
+  lastSelectable: {fileID: 925987849}
 --- !u!4 &712511603 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9079978331764143307, guid: 1d04874ad6f76d34ca22c09d33b328ff,
@@ -30134,6 +30152,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1080508982}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: EnterPlayMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 710790999}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &925987850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30343,9 +30385,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -30392,6 +30434,18 @@ MonoBehaviour:
       - m_Target: {fileID: 929416093}
         m_TargetAssemblyTypeName: RemoveItemQuest, Assembly-CSharp
         m_MethodName: TakeOrder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 710790999}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30876,6 +30930,7 @@ GameObject:
   - component: {fileID: 939447456}
   - component: {fileID: 939447458}
   - component: {fileID: 939447457}
+  - component: {fileID: 939447460}
   m_Layer: 0
   m_Name: highlightedArea
   m_TagString: Untagged
@@ -30925,6 +30980,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 939447460}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: EnterDialogueMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 939447460}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -30952,6 +31031,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 6.6
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &939447460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939447455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff566759f0f6dea449f4277f149ab0cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameMode: 0
+  lastSelectable: {fileID: 1694260491}
 --- !u!1001 &942806341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31062,7 +31155,7 @@ PrefabInstance:
     - target: {fileID: 2861251187047141416, guid: 9ee51e9b6ac33fa4a97908370da9a45c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.166
       objectReference: {fileID: 0}
     - target: {fileID: 2861251187047141416, guid: 9ee51e9b6ac33fa4a97908370da9a45c,
         type: 3}
@@ -33505,7 +33598,7 @@ GameObject:
   - component: {fileID: 1006826419}
   - component: {fileID: 1006826418}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: DayTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35152,9 +35245,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -35193,6 +35286,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1041412384}
           m_ObjectArgumentAssemblyTypeName: RemoveItem, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 939447460}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -36609,7 +36714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1069309560
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37475,7 +37580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMode: 4
-  lastSelectable: {fileID: 1387896108}
+  lastSelectable: {fileID: 0}
 --- !u!114 &1080508984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39722,12 +39827,12 @@ PrefabInstance:
     - target: {fileID: 2861251187047141416, guid: 9ee51e9b6ac33fa4a97908370da9a45c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2861251187047141416, guid: 9ee51e9b6ac33fa4a97908370da9a45c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0040330887
+      value: -0.1700331
       objectReference: {fileID: 0}
     - target: {fileID: 2861251187047141416, guid: 9ee51e9b6ac33fa4a97908370da9a45c,
         type: 3}
@@ -40307,7 +40412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1155996707
 Transform:
   m_ObjectHideFlags: 0
@@ -41505,9 +41610,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -41542,6 +41647,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1080508992}
         m_TargetAssemblyTypeName: Cooking, Assembly-CSharp
         m_MethodName: SetSuccessArea
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 939447460}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -42861,6 +42978,12 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2373495878834113223, guid: c62be02b1e84f8c4585cca86ec7ce855, type: 3}
+--- !u!4 &1224861668 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8517568620777223978, guid: 2a5db343e27c37442a34eec4962f487e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1486606626}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1227608186 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1028704078005667182, guid: 4e00aedd5332bd54cb33f7bd695d78cd,
@@ -42878,7 +43001,7 @@ PrefabInstance:
     - target: {fileID: 2498075050137609486, guid: d99dc2047fb05854da86ffb17d2d4205,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.106015444
+      value: 0.15596151
       objectReference: {fileID: 0}
     - target: {fileID: 2498075050137609486, guid: d99dc2047fb05854da86ffb17d2d4205,
         type: 3}
@@ -42888,12 +43011,12 @@ PrefabInstance:
     - target: {fileID: 2498075050137609486, guid: d99dc2047fb05854da86ffb17d2d4205,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.31707668
+      value: -0.5283699
       objectReference: {fileID: 0}
     - target: {fileID: 2498075050137609486, guid: d99dc2047fb05854da86ffb17d2d4205,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.90636903
+      value: 0.78703076
       objectReference: {fileID: 0}
     - target: {fileID: 2498075050137609486, guid: d99dc2047fb05854da86ffb17d2d4205,
         type: 3}
@@ -42903,7 +43026,7 @@ PrefabInstance:
     - target: {fileID: 2498075050137609486, guid: d99dc2047fb05854da86ffb17d2d4205,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.42248702
+      value: 0.6169138
       objectReference: {fileID: 0}
     - target: {fileID: 2498075050137609486, guid: d99dc2047fb05854da86ffb17d2d4205,
         type: 3}
@@ -42918,7 +43041,7 @@ PrefabInstance:
     - target: {fileID: 2498075050137609486, guid: d99dc2047fb05854da86ffb17d2d4205,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 49.983
+      value: 76.182
       objectReference: {fileID: 0}
     - target: {fileID: 2498075050137609486, guid: d99dc2047fb05854da86ffb17d2d4205,
         type: 3}
@@ -42962,7 +43085,7 @@ PrefabInstance:
     - target: {fileID: 2861251187047141416, guid: 9ee51e9b6ac33fa4a97908370da9a45c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.20263386
+      value: -0.36863387
       objectReference: {fileID: 0}
     - target: {fileID: 2861251187047141416, guid: 9ee51e9b6ac33fa4a97908370da9a45c,
         type: 3}
@@ -46325,9 +46448,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -46366,6 +46489,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1360222911}
           m_ObjectArgumentAssemblyTypeName: RemoveItem, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 939447460}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -47420,9 +47555,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -47469,6 +47604,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1387896111}
         m_TargetAssemblyTypeName: RemoveItemQuest, Assembly-CSharp
         m_MethodName: TakeOrder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 710790999}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -50392,6 +50539,74 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1001 &1486606626
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1911464540}
+    m_Modifications:
+    - target: {fileID: 8517568620777223978, guid: 2a5db343e27c37442a34eec4962f487e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.06274724
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517568620777223978, guid: 2a5db343e27c37442a34eec4962f487e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517568620777223978, guid: 2a5db343e27c37442a34eec4962f487e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.5182803
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517568620777223978, guid: 2a5db343e27c37442a34eec4962f487e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0000029653306
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517568620777223978, guid: 2a5db343e27c37442a34eec4962f487e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517568620777223978, guid: 2a5db343e27c37442a34eec4962f487e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517568620777223978, guid: 2a5db343e27c37442a34eec4962f487e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517568620777223978, guid: 2a5db343e27c37442a34eec4962f487e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517568620777223978, guid: 2a5db343e27c37442a34eec4962f487e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517568620777223978, guid: 2a5db343e27c37442a34eec4962f487e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043134751342390672, guid: 2a5db343e27c37442a34eec4962f487e,
+        type: 3}
+      propertyPath: m_Name
+      value: Theke_base_right (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a5db343e27c37442a34eec4962f487e, type: 3}
 --- !u!1 &1489296627
 GameObject:
   m_ObjectHideFlags: 0
@@ -56521,74 +56736,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1742898568}
   m_SourcePrefab: {fileID: 100100000, guid: 62edddf03e6d6bf48a4bc701dd03bcf7, type: 3}
---- !u!1001 &1626252890
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1911464540}
-    m_Modifications:
-    - target: {fileID: 8300351113020652517, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_Name
-      value: Theke_base_mid (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.0583436
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 45505a9989769d845af92781a9f0f53f, type: 3}
 --- !u!1 &1628364737
 GameObject:
   m_ObjectHideFlags: 0
@@ -58445,9 +58592,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -58482,6 +58629,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1080508992}
         m_TargetAssemblyTypeName: Cooking, Assembly-CSharp
         m_MethodName: SetSuccessArea
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 939447460}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -59829,7 +59988,7 @@ PrefabInstance:
     - target: {fileID: 2861251187047141416, guid: 9ee51e9b6ac33fa4a97908370da9a45c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.017945766
+      value: -0.18394578
       objectReference: {fileID: 0}
     - target: {fileID: 2861251187047141416, guid: 9ee51e9b6ac33fa4a97908370da9a45c,
         type: 3}
@@ -61416,12 +61575,12 @@ PrefabInstance:
     - target: {fileID: 2861251187047141416, guid: 9ee51e9b6ac33fa4a97908370da9a45c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2861251187047141416, guid: 9ee51e9b6ac33fa4a97908370da9a45c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.19888258
+      value: -0.3648826
       objectReference: {fileID: 0}
     - target: {fileID: 2861251187047141416, guid: 9ee51e9b6ac33fa4a97908370da9a45c,
         type: 3}
@@ -61501,7 +61660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1797089458
 Transform:
   m_ObjectHideFlags: 0
@@ -63632,9 +63791,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -63681,6 +63840,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1895113212}
         m_TargetAssemblyTypeName: RemoveItemQuest, Assembly-CSharp
         m_MethodName: TakeOrder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 710790999}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -63953,7 +64124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1911464540
 Transform:
   m_ObjectHideFlags: 0
@@ -63968,10 +64139,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 342568518}
+  - {fileID: 1224861668}
   - {fileID: 2066545413}
   - {fileID: 1812662563}
-  - {fileID: 113491367}
-  - {fileID: 177492664}
   - {fileID: 307187762}
   - {fileID: 608483236}
   - {fileID: 2030165859}
@@ -64280,7 +64450,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.40838623, y: 50.864502}
+  m_AnchoredPosition: {x: 0, y: 25}
   m_SizeDelta: {x: -678.78, y: -131.0943}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1918102619
@@ -65904,7 +66074,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.000061035156, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1966076217
@@ -66217,9 +66387,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -66258,6 +66428,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1973406428}
           m_ObjectArgumentAssemblyTypeName: RemoveItem, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 939447460}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -66562,7 +66744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1977994856
 Transform:
   m_ObjectHideFlags: 0
@@ -68236,7 +68418,7 @@ GameObject:
   - component: {fileID: 2023631962}
   - component: {fileID: 2023631961}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68258,8 +68440,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -813.26514, y: 483.39453}
-  m_SizeDelta: {x: 272.3973, y: 98.5858}
+  m_AnchoredPosition: {x: -785, y: 439}
+  m_SizeDelta: {x: 300.8514, y: 143.2994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2023631961
 MonoBehaviour:
@@ -68309,6 +68491,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 939447460}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 939447460}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: EnterPlayMode
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -69634,7 +69840,7 @@ PrefabInstance:
     - target: {fileID: 2079565267125775428, guid: 9adac779460cc394f8d65adb0aab946e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -71302,74 +71508,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2087771768}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2088106246
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1911464540}
-    m_Modifications:
-    - target: {fileID: 8300351113020652517, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_Name
-      value: Theke_base_mid (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.058344
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681556830044643679, guid: 45505a9989769d845af92781a9f0f53f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 45505a9989769d845af92781a9f0f53f, type: 3}
 --- !u!1001 &2089054488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72416,9 +72554,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -72465,6 +72603,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2126303553}
         m_TargetAssemblyTypeName: RemoveItemQuest, Assembly-CSharp
         m_MethodName: TakeOrder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 710790999}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: SetLastSelectable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -72810,7 +72960,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2128381624
 Transform:
   m_ObjectHideFlags: 0
@@ -73890,51 +74040,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.1, y: 9.622713}
   m_SizeDelta: {x: 160, y: 40.3444}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &579995795720913532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6162586272891445938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c85ee105d91269a48a042da1c332655c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onInteracted:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Cooking, Assembly-CSharp
-        m_MethodName: CookAction
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Cooking, Assembly-CSharp
-        m_MethodName: SetSuccessArea
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onSelected:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeselected:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!224 &646329104310428934
 RectTransform:
   m_ObjectHideFlags: 0
@@ -75434,7 +75539,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -75448,7 +75553,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1598502375748719840}
   m_FillRect: {fileID: 2414090658710368719}
   m_HandleRect: {fileID: 7386709929308581074}
@@ -75589,7 +75694,7 @@ PrefabInstance:
     - target: {fileID: 2192195251135350387, guid: 6b1408f46d1418f4799b4cdd191896a1,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -75907,7 +76012,6 @@ GameObject:
   - component: {fileID: 9138496493873419094}
   - component: {fileID: 8078445369553250831}
   - component: {fileID: 546648172275571659}
-  - component: {fileID: 579995795720913532}
   m_Layer: 0
   m_Name: Cooking
   m_TagString: Untagged
@@ -76782,7 +76886,7 @@ PrefabInstance:
     - target: {fileID: 466422312005810402, guid: 18b3244e08354d747b9ee0d7f32a9bc9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 951033798833496664, guid: 18b3244e08354d747b9ee0d7f32a9bc9,
         type: 3}
@@ -77013,7 +77117,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -77027,7 +77131,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 8458181996938913715}
   m_FillRect: {fileID: 2352080391842254599}
   m_HandleRect: {fileID: 646329104310428934}
@@ -77301,7 +77405,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 29.612976, y: 285}
+  m_AnchoredPosition: {x: 29.613037, y: 285}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1660057539 &9223372036854775807
@@ -77331,4 +77435,3 @@ SceneRoots:
   - {fileID: 3472676110000403998}
   - {fileID: 8804837107777415462}
   - {fileID: 6010032547385267104}
-  - {fileID: 268551932}

@@ -56,8 +56,9 @@ public class NavMeshPatrolBakes : MonoBehaviour
     private bool isWaiting;
 
     private bool isInActionArea;
-    
+    private bool isFinished;
     public NpcSpotLocation npcSpotLocation;
+
     
     #region Unity Event Functions
 
@@ -67,53 +68,39 @@ public class NavMeshPatrolBakes : MonoBehaviour
         // Disable auto breaking if we don't want to wait at each waypoint.
         navMeshAgent.autoBraking = waitAtWaypoint;
         waypoints.AddRange(GameObject.FindGameObjectsWithTag("wp"));
-        npcSpotLocation = FindObjectOfType<NpcSpotLocation>();
         bin = GameObject.FindWithTag("Bin");;
-
+        
     }
 
     private void Start()
     {
         // Move to the first waypoint on game start.
         SetNextWaypoint();
-
+        
     }
 
     private void Update()
     {
-
-    
-
+        
         // Update the MovementSpeed in the animator with the speed of the navMeshAgent.
         animator.SetFloat(MovementSpeedId, navMeshAgent.velocity.magnitude);
 
         if (!navMeshAgent.isStopped && !isInActionArea)
         {
             CheckIfWaypointIsReached();
-
         }
-        else if (isInActionArea)
+        else if (isInActionArea && !isFinished)
         {
             if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance + 0.01f)
             {
                 navMeshAgent.SetDestination(npcSpotLocation.location.position);
-
             }
-            
         }
-        
-        
     }
-
     
-
     #endregion
 
     #region Navigation
-
-
-   
-
     /// <summary>
     /// Stop the <see cref="navMeshAgent"/> from moving for an interaction.
     /// Call this if it should automatically resume it's patrol once the dialogue finishes.
@@ -195,10 +182,9 @@ public class NavMeshPatrolBakes : MonoBehaviour
     public void CompletedOrder()
     {
         navMeshAgent.SetDestination(bin.transform.position);
-        CheckForNpcSpotLocation();
         navMeshAgent.isStopped = false;
-        
-
+        isFinished = true;
+        CheckForNpcSpotLocation();
 
     }
     
@@ -236,6 +222,7 @@ public class NavMeshPatrolBakes : MonoBehaviour
         yield return new WaitForSeconds(duration);
         isWaiting = false;
         SetNextWaypoint();
+        
     }
 
     public void SetNavMeshDestination(NpcSpotLocation npcSpotLocation)
@@ -244,17 +231,13 @@ public class NavMeshPatrolBakes : MonoBehaviour
         isInActionArea = true;
         
     }
-    
-    
-    
 
     public void CheckForNpcSpotLocation()
     {
         if (npcSpotLocation == null) return;
-        
+        print("##########################Set Back");
         npcSpotLocation.ChangeStatus(false);
-        npcSpotLocation = null;
-
+         npcSpotLocation = null;
     }
 
     #endregion

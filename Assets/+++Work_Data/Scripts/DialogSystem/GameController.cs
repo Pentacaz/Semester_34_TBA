@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +22,10 @@ public class GameController : MonoBehaviour
         player = FindObjectOfType<PlayerControllerBakery>();
         dialogueController = FindObjectOfType<DialogueController>();
         
+        
     }
+
+    
 
     private void OnEnable()
     {
@@ -75,7 +79,7 @@ public class GameController : MonoBehaviour
     }
    
     #endregion
-// Metoden aufruf
+// Methoden aufruf
     public void StartDialogue(string dialoguePath)
     {// with find typ of object
         EnterDialogueMode();
@@ -119,6 +123,7 @@ public class GameController : MonoBehaviour
     {
         SetSelectable(lastSelectable);
     }
+    
     public void SetSelectable(Button newSelactable)
     {
         Selectable newSelectable;

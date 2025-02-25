@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6996456074148971689}
   - component: {fileID: 2309363315710653319}
   - component: {fileID: 1749629536474939942}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 8732295425877059589}
   - component: {fileID: 2751234246109985121}
   - component: {fileID: 6785137507228604125}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3924260316234054532}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 383186442733164543}
   - component: {fileID: 1322158598834212410}
   - component: {fileID: 1960006735764053963}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,9 +275,9 @@ GameObject:
   - component: {fileID: 7605114472451662513}
   - component: {fileID: 5787210099855104744}
   - component: {fileID: 5996563000601099852}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: HighlightedArea
-  m_TagString: NPC
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 3590801740268296795}
   - component: {fileID: 7683834072489599311}
   - component: {fileID: 5349150773077889623}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 3455765436976603128}
   - component: {fileID: 3344845068806689777}
   - component: {fileID: 5711177254993593531}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Indicator
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -629,7 +629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7623647840468856916}
   - component: {fileID: 8732239316571979654}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +718,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4565110104497722107}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +756,7 @@ GameObject:
   - component: {fileID: 3903029161806939984}
   - component: {fileID: 691923667491491094}
   - component: {fileID: 4037510264882432679}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: speechBubble
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -1095,7 +1095,7 @@ GameObject:
   - component: {fileID: 7438809535326077230}
   - component: {fileID: 1575003284000085114}
   - component: {fileID: 7371160516170239417}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Image
   m_TagString: NPC
   m_Icon: {fileID: 0}

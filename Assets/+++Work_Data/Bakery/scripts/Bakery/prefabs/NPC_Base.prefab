@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3942033703839191551}
   - component: {fileID: 3913488738763432529}
   - component: {fileID: 7750507014777478583}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: speechBubble
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8364121272120231258}
   - component: {fileID: 3858252018561679169}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 2752430084272367680}
   - component: {fileID: 1408355706033040297}
   - component: {fileID: 3835578050062646821}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Image
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 2306308077248410316}
   - component: {fileID: 6807860678995055875}
   - component: {fileID: 7368677290735650274}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 5492378500632328903}
   - component: {fileID: 6932065921096784346}
   - component: {fileID: 682820065933814440}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: NPC_Base
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 4837030480637139058}
   - component: {fileID: 937541769265744702}
   - component: {fileID: 5793529173905415392}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -714,7 +714,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5214153775690960668}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -752,7 +752,7 @@ GameObject:
   - component: {fileID: 89356649221976306}
   - component: {fileID: 615424198455267945}
   - component: {fileID: 6154105847081929367}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -828,9 +828,9 @@ GameObject:
   - component: {fileID: 6444188114653645360}
   - component: {fileID: 757004344679588833}
   - component: {fileID: 8727846989291874177}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: HighlightedArea
-  m_TagString: NPC
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -962,7 +962,7 @@ GameObject:
   - component: {fileID: 4953352973840110993}
   - component: {fileID: 7237350974942337656}
   - component: {fileID: 8256838273371573431}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Indicator
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -1062,7 +1062,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 41752498880570888}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1101,7 +1101,7 @@ GameObject:
   - component: {fileID: 2489431622602583072}
   - component: {fileID: 364455614193261535}
   - component: {fileID: 9172550722673781101}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

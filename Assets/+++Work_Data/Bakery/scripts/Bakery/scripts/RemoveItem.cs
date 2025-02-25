@@ -17,7 +17,7 @@ public class RemoveItem : MonoBehaviour
 
     private void Start()
     {
-        navMeshPatrol = GetComponent<NavMeshPatrolBakes>();
+        navMeshPatrol = GetComponentInParent<NavMeshPatrolBakes>();
         gameState = GetComponent<GameState>();
         cooking = GetComponent<Cooking>();
     }
@@ -27,7 +27,6 @@ public class RemoveItem : MonoBehaviour
         onCollected.Invoke();
         
         FindObjectOfType<GameState>().Remove(state);
-        //gameState.Get(state.id);
 
         Indicator.SetActive(false);
         

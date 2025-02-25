@@ -360,7 +360,7 @@ public class PlayerControllerBakery : MonoBehaviour
     {
         if (ctx.performed)
         {
-            print("openMenu");
+            
             exitMenu.SetActive(!exitMenu.activeInHierarchy);
             if (exitMenu.activeInHierarchy)
             {
