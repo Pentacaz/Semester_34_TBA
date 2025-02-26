@@ -14,11 +14,11 @@ public class SpawnEnemies : MonoBehaviour
     public List<GameObject> activeEnemies; 
     public int numberOfEnemiesToSpawn = 5; 
     public int totalRounds = 3; 
-    public int currentRound = 1; 
-    public bool roundIsActive;
+    public int currentRound = 1;
+    public bool roundIsActive = false;
     public bool noMoreEnemies;
     public List<GameObject> allEnemies; 
-    private Collider triggerCollider;
+    public Collider triggerCollider;
     public bool hasEntered;
     public bool isBoss = false;
     public float coolDownTimer;
@@ -30,38 +30,37 @@ public class SpawnEnemies : MonoBehaviour
     private UiManager _uiManager;
     
     private void Awake()
-    {   _uiManager = FindObjectOfType<UiManager>();
+    {   
+        _uiManager = FindObjectOfType<UiManager>();
         triggerCollider = GetComponent<Collider>();
         _dungeonRoomTracker = FindObjectOfType<DungeonRoomTracker>();
     }
     
     private void Start()
     {
-     
         AddToEnemiesList();
-        //_uiManager.EnemyCountDisplay(activeEnemies.Count,currentRound);
         cooldowntimervalue = coolDownTimer;
     }
 
-  
-
     private void Update()
     {
-        Rounds();
-       
-        if (hasEntered)
+        if (hasEntered && !roundIsActive && currentRound <= totalRounds)
         {
             StartNewRound();
             _uiManager.uiContainer.SetActive(true);
         }
+        
 
-      
-        _uiManager.EnemyCountDisplay(allEnemies.Count,totalRounds);
+        if (roundIsActive && allEnemies.Count == 0)
+        {
+            EndRound();
+        }
+
+        _uiManager.EnemyCountDisplay(allEnemies.Count, totalRounds);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-       
         if (!isBoss && other.CompareTag("Player") && !roundIsActive && currentRound <= totalRounds)
         {
             hasEntered = true;
@@ -69,16 +68,6 @@ public class SpawnEnemies : MonoBehaviour
         }
     }
 
-    public void Rounds()
-    {
-        if (allEnemies.Count == 0 && roundIsActive)
-        {
-            CoolDownTimer();
-        
-        }
-    }
-
-  
     void AddToEnemiesList()
     {
         EnemyStatus[] enemyStatusArray = FindObjectsOfType<EnemyStatus>();
@@ -92,28 +81,21 @@ public class SpawnEnemies : MonoBehaviour
         Debug.Log("Found " + allEnemies.Count + " enemies with EnemyStatus component.");
     }
 
-   
     public void StartNewRound()
     {
         hasEntered = false;
-        if (currentRound <= totalRounds)
-        {
-            roundIsActive = true;
-            Debug.Log("Starting Round " + currentRound);
-            PlaceEnemies();
-            AddToEnemiesList();
-           
-        }
+        roundIsActive = true;
+        Debug.Log("Starting Round " + currentRound);
+        PlaceEnemies();
+        AddToEnemiesList();
     }
 
- 
     public void EndRound()
     {
         roundIsActive = false;
         Debug.Log("Round " + currentRound + " completed!");
         if (currentRound >= totalRounds)
         {
-            _uiManager.uiContainer.SetActive(false);
             EndGame();
         }
         else
@@ -123,7 +105,6 @@ public class SpawnEnemies : MonoBehaviour
         }
     }
 
-   
     public void PlaceEnemies()
     {
         if (enemyPrefabs.Count == 0 || spawnPositions.Count == 0)
@@ -134,42 +115,29 @@ public class SpawnEnemies : MonoBehaviour
 
         for (int i = 0; i < numberOfEnemiesToSpawn; i++)
         {
-            
             GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
             Transform spawnPosition = spawnPositions[Random.Range(0, spawnPositions.Count)];
 
             GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition.position, Quaternion.identity);
             activeEnemies.Add(newEnemy);
+            allEnemies.Add(newEnemy);
         }
 
         Debug.Log("Spawned " + numberOfEnemiesToSpawn + " enemies for round " + currentRound);
-        return ;
     }
 
-   
     public void RemoveDefeatedEnemy(GameObject enemy)
     {
         if (allEnemies.Contains(enemy))
         {
             allEnemies.Remove(enemy);
+            activeEnemies.Remove(enemy);
             Debug.Log("Removed defeated enemy from the list.");
         }
     }
 
-    public void CoolDownTimer()
-    {
-        coolDownTimer -= Time.deltaTime;
-
-    if (coolDownTimer <= 0)
-    {  
-        EndRound();
-        coolDownTimer = cooldowntimervalue;
-    }  
-    
-    }
     public void EndGame()
-    {
-     
+    {  _uiManager.uiContainer.SetActive(false);
         noMoreEnemies = true;
         allEnemies.Clear();
         activeEnemies.Clear();
@@ -180,5 +148,4 @@ public class SpawnEnemies : MonoBehaviour
         }
     }
 }
-    
 

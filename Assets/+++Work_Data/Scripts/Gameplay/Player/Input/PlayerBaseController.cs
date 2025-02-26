@@ -8,12 +8,14 @@ using UnityEngine.Serialization;
 public class PlayerBaseController : MonoBehaviour
 {
 
-  
-  
-  
+
+
+
+
+    #region Camera
+
     [SerializeField] private float speedChangeRate = 10f;
     [SerializeField] private float rotationSpeed = 10f;
-    #region Camera
 
     private Quaternion _playerRotation;
     private Quaternion _rotation;
@@ -23,10 +25,8 @@ public class PlayerBaseController : MonoBehaviour
     private float _speed = 6;
     public Camera _Vcam;
     public GameObject trail;
-    [Header("Camera")]
-    //needs a massive rework, doesn't fit for our type of game
-    [SerializeField]
-    private Transform cameraTarget;
+
+    [SerializeField] private Transform cameraTarget;
 
     [SerializeField] private float verticalCameraRotationMin = -30f;
     [SerializeField] private float verticalCameraRotationMax = 70f;
@@ -45,7 +45,7 @@ public class PlayerBaseController : MonoBehaviour
     [SerializeField] private bool invertY = true;
 
     #endregion
-    
+
     #region Input
 
     private PlayerInputActions _inputActions;
@@ -61,46 +61,41 @@ public class PlayerBaseController : MonoBehaviour
     #endregion
 
     #region Movement
+
     private Rigidbody _rigidbody;
 
     private Vector3 _currentVelocity;
-    [FormerlySerializedAs("_moveInput")] public  Vector2 moveInput;
+    [FormerlySerializedAs("_moveInput")] public Vector2 moveInput;
     [FormerlySerializedAs("_lookInput")] public Vector2 lookInput;
 
     public float moveSpeed;
     public float maxForce;
 
-    #region  Dash
+    #region Dash
 
-    public float dashForce;
     public float dashSpeed;
-    public float dashUpForce;
-    public float dashDuration;
-    
     public float dashCooldown;
     public float dashCooldownTimer;
-
     public bool isDashing;
     public float pushBackForce = 1.0f;
-    
-    [FormerlySerializedAs("isDashing")] public bool canDash;
 
     #endregion
-   
+
     #endregion
 
     private Animator _animator;
     private int _movementSpeedHash;
+    private Collider _playerCollider;
 
     private Cooking _cooking;
     private PlayerCombatController _playerCombatController;
 
     public int engageId;
-    
+
     private void Awake()
     {
-      
-       
+
+
 
         _inputActions = new PlayerInputActions();
 
@@ -109,19 +104,20 @@ public class PlayerBaseController : MonoBehaviour
         _dodgeAction = _inputActions.Player.Dash;
         _engageAction = _inputActions.Player.Engage;
         _attackAction = _inputActions.Player.Attack;
-      
+
 
     }
 
     void Start()
     {
-        
+
         _rigidbody = GetComponent<Rigidbody>();
+        _playerCollider = GetComponent<Collider>();
         _animator = GetComponentInChildren<Animator>();
         _movementSpeedHash = Animator.StringToHash("MovementSpeed");
         _playerCombatController = GetComponent<PlayerCombatController>();
         _cooking = GameObject.FindObjectOfType<Cooking>();
-      
+
 
 
     }
@@ -131,13 +127,13 @@ public class PlayerBaseController : MonoBehaviour
     {
         EnableInput();
 
-       _dodgeAction.performed += OnDash;
-       //_dodgeAction.canceled += OnDash;
-       
-       _attackAction.performed += OnBaseAttack;
-       //_attackAction.canceled += OnBaseAttack;
-        
-        
+        _dodgeAction.performed += OnDash;
+        //_dodgeAction.canceled += OnDash;
+
+        _attackAction.performed += OnBaseAttack;
+        //_attackAction.canceled += OnBaseAttack;
+
+
         _engageAction.performed += Interact;
 
     }
@@ -145,20 +141,12 @@ public class PlayerBaseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
+
         ReadInput();
         AnimationSetUp(_currentVelocity);
 
-        if (isDashing) 
-        { dashCooldownTimer -= Time.deltaTime;
-            if (dashCooldownTimer <= 0)
-            {
-                //Physics.IgnoreLayerCollision(, false);
-                isDashing = false;
-                trail.SetActive(false);
-            } 
-        }
-     
+        DashActionCheck();
+
     }
 
     private void FixedUpdate()
@@ -171,70 +159,116 @@ public class PlayerBaseController : MonoBehaviour
         OnLook(lookInput);
     }
 
- 
+
     public void OnDisable()
     {
         DisableInput();
-        _engageAction.performed-= Interact;
+        _engageAction.performed -= Interact;
         _dodgeAction.performed -= OnDash;
         _dodgeAction.canceled -= OnDash;
-        
+
         _attackAction.performed -= OnBaseAttack;
         _attackAction.canceled -= OnBaseAttack;
     }
 
     private void OnDash(InputAction.CallbackContext ctx)
     {
-                if (ctx.performed)
-                {  trail.SetActive(true);
-                    isDashing = true;
-                    dashCooldownTimer = dashCooldown;
-                  
+        if (ctx.performed)
+        {
+            trail.SetActive(true);
+            isDashing = true;
+            dashCooldownTimer = dashCooldown;
 
-                }
-                else if (ctx.canceled)
-                { 
-                    //isDashing = false;
-                    
-                }
+
+        }
+
     }
+
+    public void DashActionCheck()
+    {
+
+        if (isDashing)
+        {
+            DeactivateCollider();
+            dashCooldownTimer -= Time.deltaTime;
+            if (dashCooldownTimer <= 0)
+            {
+                ActivateCollider();
+                isDashing = false;
+                trail.SetActive(false);
+            }
+        }
+
+
+    }
+
+    public void ActivateCollider()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Collider enemyCollider = enemy.GetComponent<Collider>();
+
+            if (enemyCollider != null)
+            {
+                Physics.IgnoreCollision(_playerCollider, enemyCollider, false);
+            }
+        }
+    }
+
+    public void DeactivateCollider()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Collider enemyCollider = enemy.GetComponent<Collider>();
+
+            if (enemyCollider != null)
+            {
+                Physics.IgnoreCollision(_playerCollider, enemyCollider, true);
+            }
+        }
+    }
+
 
     private void OnBaseAttack(InputAction.CallbackContext ctx)
     {
         if (_playerCombatController.canAttack)
         {
-            if(ctx.performed)
+            if (ctx.performed)
             {
                 _playerCombatController.attack = !_playerCombatController.attack;
                 _playerCombatController.attackId = 1;
-                _playerCombatController.AttackHandler(); 
-           
-            }else if (ctx.canceled)
+                _playerCombatController.AttackHandler();
+
+            }
+            else if (ctx.canceled)
             {
-                
+
                 _playerCombatController.attack = false;
             }
         }
-      
+
     }
 
     private void OnHeavyAttack(InputAction.CallbackContext ctx)
     {
         if (_playerCombatController.canHeavyAttack)
         {
-            if(ctx.performed)
+            if (ctx.performed)
             {
                 _playerCombatController.attack = !_playerCombatController.attack;
                 _playerCombatController.attackId = 2;
-           
-            }else if (ctx.canceled)
+
+            }
+            else if (ctx.canceled)
             {
-                
+
                 _playerCombatController.attack = false;
             }
         }
     }
-    
+
 
     public void EnableInput()
     {
@@ -266,12 +300,7 @@ public class PlayerBaseController : MonoBehaviour
 
     public void RotateTarget()
     {
-        
-        /*
 
-comment comment comment
-
-*/ 
         _relativeDirection = _Vcam.transform.TransformDirection(_playerDirection);
         _relativeDirection.y = 0f;
         _relativeDirection.Normalize();
@@ -283,11 +312,12 @@ comment comment comment
 
 
         _rigidbody.MovePosition(_rigidbody.position + _relativeDirection * (_speed * Time.deltaTime));
-        
+
     }
 
-   
+
     #region Engage
+
     private void OnTriggerEnter(Collider other)
     {
         TrySelectInteractable(other);
@@ -297,9 +327,10 @@ comment comment comment
     {
         TryDeselectInteractable(other);
     }
+
     private void Interact(InputAction.CallbackContext ctx)
     {
-   
+
         if (selectedInteractable != null)
         {
             selectedInteractable.Interact();
@@ -314,22 +345,28 @@ comment comment comment
     {
         Interactable interactable = other.GetComponent<Interactable>();
 
-        if (interactable == null){ return; }
+        if (interactable == null)
+        {
+            return;
+        }
 
         if (selectedInteractable != null)
         {
             selectedInteractable.Deselect();
         }
-        
+
         selectedInteractable = interactable;
         selectedInteractable.Select();
     }
-    
+
     private void TryDeselectInteractable(Collider other)
     {
         Interactable interactable = other.GetComponent<Interactable>();
 
-        if (interactable == null){ return; }
+        if (interactable == null)
+        {
+            return;
+        }
 
         if (interactable == selectedInteractable)
         {
@@ -339,10 +376,10 @@ comment comment comment
     }
 
     #endregion
-    
+
     public void OnLook(Vector2 lookInput)
     {
-     
+
     }
 
     private float NormalizeAngle(float angle)
@@ -371,7 +408,7 @@ comment comment comment
     {
         return lookAction.activeControl != null && lookAction.activeControl.device.name == "Gamepad";
     }
-    
+
     void ReadInput()
     {
         moveInput = moveAction.ReadValue<Vector2>();
@@ -387,10 +424,8 @@ comment comment comment
 
         _animator.SetFloat(_movementSpeedHash, speed);
     }
-    
-    
 
-    
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
@@ -405,8 +440,7 @@ comment comment comment
             }
         }
     }
-    
-    
+
 }
 
 

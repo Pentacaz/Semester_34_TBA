@@ -30,7 +30,7 @@ public class EnemyReciever : MonoBehaviour
     public float invincibilityTimer = 1.5f;
     private float _invincibilityTimerValue;
     public float knockback;
-    private SpawnEnemies _spawnEnemies;
+   
     public Image damageIndicator;
     public Image shieldIndicator;
     public GameObject shieldGameObject;
@@ -43,7 +43,7 @@ public class EnemyReciever : MonoBehaviour
 
 
     #region References
-
+    private SpawnEnemies[] _spawnEnemies;
     private CamBehavior _camBehavior;
     private EnemyStatus _enemyStatus;
     private Rigidbody _rigidbody;
@@ -58,7 +58,7 @@ public class EnemyReciever : MonoBehaviour
         _camBehavior = GetComponent<CamBehavior>();
         _vfx = GetComponentInChildren<VisualEffect>();
         _rigidbody = GetComponent<Rigidbody>();
-        _spawnEnemies = FindObjectOfType<SpawnEnemies>();
+        _spawnEnemies = FindObjectsOfType<SpawnEnemies>();
 
     }
 
@@ -140,15 +140,20 @@ public class EnemyReciever : MonoBehaviour
                 _animator.SetTrigger("ActionTrigger");
                 _animator.SetInteger("ActionId", 1);
             }
-
-            _spawnEnemies.RemoveDefeatedEnemy(this.gameObject);
-            Destroy(this.gameObject, 0.2f);
+            
+            
+            foreach (var obj in _spawnEnemies)
+            {
+                obj.RemoveDefeatedEnemy(this.gameObject);
+            }
             loot.transform.position = this.gameObject.transform.position;
             loot.SetActive(true);
             //play vfx
-
             //deathIndicator.SetActive(true);
             Debug.Log("DEATH ENEMY");
+            transform.parent.gameObject.SetActive(false);
+            //Destroy(gameObject, 0.2f);
+            //Destroy(transform.parent.gameObject, 0.2f);
         }
 
       

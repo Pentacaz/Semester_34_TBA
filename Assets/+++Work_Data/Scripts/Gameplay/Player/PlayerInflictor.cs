@@ -30,7 +30,7 @@ public class PlayerInflictor : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") && collision != null)
         {
             Debug.Log("Attack enemy");
 
