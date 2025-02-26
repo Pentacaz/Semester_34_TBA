@@ -10,10 +10,12 @@ public class SceneChangeManager : MonoBehaviour
     public GameObject playerContainer; 
     private Transform spawnPoint;
     private bool spawned = true;
-
+    private SaveGameData _saveGameData;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        _saveGameData = FindObjectOfType<SaveGameData>();
+        
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -22,6 +24,11 @@ public class SceneChangeManager : MonoBehaviour
         spawnPoint = GameObject.FindWithTag("SpawnPoint")?.transform;
         playerContainer.transform.position = spawnPoint.position;
         spawned = true;
+        if (_saveGameData != null)
+        {
+           _saveGameData.LoadStates("gameObjectsState.json");
+        }
+        
     }
 
     private void Update()
