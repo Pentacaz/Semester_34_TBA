@@ -19,6 +19,7 @@ public class RemoveItemQuest : MonoBehaviour
         navMeshPatrol = GetComponent<NavMeshPatrolBakes>();
         gameState = GetComponent<GameStateQuest>();
     }
+    // this script removes and adds different items. Depending on the need of the customer or what you buy at the shop 
 
     public void Remove()
     {
@@ -33,36 +34,25 @@ public class RemoveItemQuest : MonoBehaviour
 
     public void TakeOrder()
     {
-        
         FindObjectOfType<GameStateQuest>().Add(state);
-
-        
     }
     
     public void GiveOrder()
     {
-
-      
             FindObjectOfType<GameStateQuest>().Add(money);
             FindObjectOfType<GameStateQuest>().Remove(state);
-        
-        
-
     }
     
     public void Buy()
     {
         Indicator.SetActive(true);
         FindObjectOfType<GameStateQuest>().Remove(state);
-
-        
     }
 
     public void IndicatorState()
     {
         Destroy(Indicator);
         navMeshPatrol.CompletedOrder();
-        
     }
 
     

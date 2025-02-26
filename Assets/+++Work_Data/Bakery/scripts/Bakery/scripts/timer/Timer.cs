@@ -24,6 +24,7 @@ public class Timer : MonoBehaviour
 
     }
 
+     // the timer starts
    public void StartTimer()
     {
         timerStop = false;
@@ -38,6 +39,7 @@ public class Timer : MonoBehaviour
         StartCoroutine(StartTimerTicker());
     }
 
+    
     IEnumerator StartTimerTicker()
     {
         while (timerStop == false)
@@ -47,9 +49,10 @@ public class Timer : MonoBehaviour
 
             if (sliderTimer <- 0)
             {
+                // if the timer hits 0 The Time stops and the customer leaves the bakery  
                 StopTimer(); 
                 navMeshPatrol.CompletedOrder();
-                highlightedArea.SetActive(false);
+//                highlightedArea.SetActive(false);
                 navMeshPatrol.enabled = false;
                 spotLocation.ChangeStatus(false);
 

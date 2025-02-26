@@ -178,7 +178,7 @@ public class NavMeshPatrolBakes : MonoBehaviour
         print("Set Next waypoint");
     }
 
-    
+    // completes the order and the customer goes to the bin where it gets deleted
     public void CompletedOrder()
     {
         navMeshAgent.SetDestination(bin.transform.position);
@@ -235,7 +235,6 @@ public class NavMeshPatrolBakes : MonoBehaviour
     public void CheckForNpcSpotLocation()
     {
         if (npcSpotLocation == null) return;
-        print("##########################Set Back");
         npcSpotLocation.ChangeStatus(false);
          npcSpotLocation = null;
     }

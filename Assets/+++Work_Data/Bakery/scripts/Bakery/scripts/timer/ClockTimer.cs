@@ -22,14 +22,15 @@ public class ClockTimer : MonoBehaviour
 
     private ClockTimer clockTimer;
     private float spawnInterval;
-    private LightingManager lightingManager;
+    public LightingManager lightingManager;
     public NpcAreaBehaviour areaBehaviour;
     private NavMeshPatrolBakes navMeshPatrol;
     
 
+    
+    
    private void Awake()
    {
-       lightingManager = GetComponent<LightingManager>();
        spotLocation = FindObjectsOfType<NpcSpotLocation>();
        navMeshPatrol = GetComponent<NavMeshPatrolBakes>();
        
@@ -40,7 +41,8 @@ public class ClockTimer : MonoBehaviour
         highlightedArea.SetActive(true); 
         
     }
-
+    
+   // the timer starts 
    public void StartTimer()
    {
         sliderTimer = maxTime;
@@ -51,7 +53,7 @@ public class ClockTimer : MonoBehaviour
         highlightedArea.SetActive(false);
 
         
-
+         // customers spawn in at random
         StartCoroutine(StartTimerTicker());
         RandomOrder();
     }
@@ -68,6 +70,10 @@ public class ClockTimer : MonoBehaviour
 
             if (sliderTimer <- 0)
             {
+                //if the timer is 0 or below 0 it disables the lightningmanager -> the day stops
+                lightingManager.enabled = false;
+                // all the Npcs get deleted 
+
                 GameObject[] gos = GameObject.FindGameObjectsWithTag("NPC");
                 foreach (GameObject go in gos)
                 {
@@ -90,6 +96,7 @@ public class ClockTimer : MonoBehaviour
         }
     }
 
+    // the timer Stops
     public void StopTimer()
     {
         timerStop = true;
@@ -98,7 +105,8 @@ public class ClockTimer : MonoBehaviour
         highlightedArea.SetActive(true);
 
     }
-
+     
+    // customer spawn at random every 8 to 10 seconds
     public void RandomOrder()
     {
         

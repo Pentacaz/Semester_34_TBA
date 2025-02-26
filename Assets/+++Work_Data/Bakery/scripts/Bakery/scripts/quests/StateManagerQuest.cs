@@ -30,20 +30,10 @@ public class StateManagerQuest : MonoBehaviour
         GameStateQuest.StateAdded -= AddNewState;
     }
 
+    // a new item gets added 
     void AddNewState(string id, int amount)
     {
-        /*
-        foreach (StateInfo stateInfo in _stateInfos)
-        {
-            if (stateInfo.id == id)
-            {
-                item_image.sprite = stateInfo.sprite;
-                text_itemHeader.SetText(stateInfo.name);
-                text_itemDescription.SetText(stateInfo.description);
-
-            }
-        }
-        */
+       
         
         StartCoroutine(DelayOpenPanel());
 
@@ -52,15 +42,12 @@ public class StateManagerQuest : MonoBehaviour
     IEnumerator DelayOpenPanel()
     {
         yield return null;
-//        state_PanelContainer.SetActive(true);
         Selectable newSelection;
         newSelection = itemButton;
-        //gameController.StartStatePopUp();
         
         
         yield return null; // Wait for next Update() / next frame
 
-      //  newSelection.Select();
     }
 
    

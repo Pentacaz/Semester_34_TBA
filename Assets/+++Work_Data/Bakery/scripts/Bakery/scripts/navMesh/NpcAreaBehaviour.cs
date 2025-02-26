@@ -9,12 +9,11 @@ public class NpcAreaBehaviour : MonoBehaviour
     [SerializeField] private List<NpcSpotLocation> npcSpotLocations;
     private NavMeshAgent navMeshAgent;
     
-    
+    // if an Npcs enters this area they go to one of the assigned NpcSpotLocations
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(tagName))
         {
-            print(other.name);
             for (int i = 0; i < npcSpotLocations.Count; i++)
             {
                 if (!npcSpotLocations[i].isOccupied)
@@ -47,6 +46,7 @@ public class NpcAreaBehaviour : MonoBehaviour
     }
     */
 
+    //UnOccupies all the NpcSpotLocations
     public void NotOccupied()
     {
         for (int i = 0; i < npcSpotLocations.Count; i++)

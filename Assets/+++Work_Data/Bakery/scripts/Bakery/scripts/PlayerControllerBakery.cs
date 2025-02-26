@@ -88,8 +88,8 @@ public class PlayerControllerBakery : MonoBehaviour
     private bool isCrouched;
     private float currentSpeed;
     private int upperBody_AnimLayer;
-    
-    
+
+    private GameController gameController;
     
     public GameObject exitMenu;
 
@@ -104,6 +104,7 @@ public class PlayerControllerBakery : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         //animator = GetComponentInChildren<>()
+        gameController = FindObjectOfType<GameController>();
         upperBody_AnimLayer = animator.GetLayerIndex("UpperBody");
         
         inputActions = new GameInput();
@@ -226,6 +227,7 @@ public class PlayerControllerBakery : MonoBehaviour
     
     #region Movement
     
+    // rotates the player in the right direction
     private void Rotate(Vector2 moveInput)
     {
         if (moveInput != Vector2.zero)
@@ -247,6 +249,8 @@ public class PlayerControllerBakery : MonoBehaviour
             transform.rotation = characterTargetRotation;
         }
     }
+    
+    // moves the Player on button press
     
     private void Move(Vector2 moveInput)
     {
@@ -308,6 +312,7 @@ public class PlayerControllerBakery : MonoBehaviour
     
     #region Interaction
 
+    // interact with things while pressing [E]
     private void Interact(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
@@ -321,7 +326,8 @@ public class PlayerControllerBakery : MonoBehaviour
             
        
     }
-
+    
+    // if you are in a collider with the script Interactable it checks for any interactions
     private void TrySelectInteractable(Collider other)
     {
         Interactable interactable = other.GetComponent<Interactable>();
@@ -337,6 +343,7 @@ public class PlayerControllerBakery : MonoBehaviour
         selectedInteractable.Select();
     }
     
+    // deselects said interactable 
     private void TryDeselectInteractable(Collider other)
     {
         Interactable interactable = other.GetComponent<Interactable>();
@@ -355,6 +362,8 @@ public class PlayerControllerBakery : MonoBehaviour
     
     
     #endregion
+    
+    // opens the mainmenu
 
     private void OpenMenu(InputAction.CallbackContext ctx)
     {
@@ -364,12 +373,15 @@ public class PlayerControllerBakery : MonoBehaviour
             exitMenu.SetActive(!exitMenu.activeInHierarchy);
             if (exitMenu.activeInHierarchy)
             {
+                
                 moveAction.Disable();
+                gameController.SetLastSelectable();
             
             }
             else
             {
                 moveAction.Enable();
+                gameController.SetLastSelectable();
             }
         }
 
@@ -425,6 +437,7 @@ public class PlayerControllerBakery : MonoBehaviour
     
     #region Camera
 
+    // rotates the camera according to the mouse directions
     private void RotateCamera(Vector2 lookInput)
     {
         if (lookInput != Vector2.zero)
