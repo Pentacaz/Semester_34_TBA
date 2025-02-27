@@ -4,19 +4,18 @@ using Cinemachine;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-
-using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.VFX;
 
 public class EnemyReciever : MonoBehaviour
 {
-
+    public  VisualEffect hitVFX;
+   
     public bool IsBoss = false;
 
     #region takeDMG
 
-    private VisualEffect _vfx;
+  
     public float currentHp;
 
     public bool hasShields;
@@ -48,15 +47,14 @@ public class EnemyReciever : MonoBehaviour
     private EnemyStatus _enemyStatus;
     private Rigidbody _rigidbody;
     public Animator _animator;
-    public GameObject loot;
-
+    public List<GameObject> loot;
+    public float noSpawnChance = 0.1f;
     #endregion
 
     private void Awake()
     {
         _enemyStatus = GetComponent<EnemyStatus>();
         _camBehavior = GetComponent<CamBehavior>();
-        _vfx = GetComponentInChildren<VisualEffect>();
         _rigidbody = GetComponent<Rigidbody>();
         _spawnEnemies = FindObjectsOfType<SpawnEnemies>();
 
@@ -67,21 +65,25 @@ public class EnemyReciever : MonoBehaviour
         Debug.Log("enemyreciever");
         currentHp = _enemyStatus.enemyMaxHp;
         _invincibilityTimerValue = invincibilityTimer;
-//        DamageIndication(damageIndicator, _enemyStatus.enemyMaxHp, currentHp, 0, false);
+        //DamageIndication(damageIndicator, _enemyStatus.enemyMaxHp, currentHp, 0, false);
         if (!IsBoss)
         {
             SetShields();
         }
-       
+
+        
     }
 
     private void Update()
     {
-
+        if (tookDamage && hasShields)
+        {
+            
+        }
         Invincibility(tookDamage);
 
     }
-
+//applies damage to enemy if possible atm and updates Healthbar Ui. enemies have thier own little health and shields attacked to them.
     public void GetDmg(int dmg, bool crit)
     {
         if (canGetDamage)
@@ -90,6 +92,7 @@ public class EnemyReciever : MonoBehaviour
             if (hasShields)
             {
                 currentShields -= dmg / 2f;
+                
             }
             else
             {
@@ -119,7 +122,7 @@ public class EnemyReciever : MonoBehaviour
             _camBehavior.CamShake();
             damageText.enabled = true;
             StartCoroutine(DamageDisplay(damagevalue, crit));
-            _vfx.Play();
+            hitVFX.Play();
             Pushback();
 
             Debug.Log("TOOK DAMAGE ENEMY");
@@ -130,9 +133,9 @@ public class EnemyReciever : MonoBehaviour
             hasShields = false;
             damageind.fillAmount = currentHpval / maxHpval;
             shieldIndicator.enabled = false;
-            //play vfx
+            
         }
-        
+
         if (currentHp <= 0)
         {
             if (_animator != null)
@@ -140,23 +143,12 @@ public class EnemyReciever : MonoBehaviour
                 _animator.SetTrigger("ActionTrigger");
                 _animator.SetInteger("ActionId", 1);
             }
-            
-            
-            foreach (var obj in _spawnEnemies)
-            {
-                obj.RemoveDefeatedEnemy(this.gameObject);
-            }
-            loot.transform.position = this.gameObject.transform.position;
-            loot.SetActive(true);
-            //play vfx
-            //deathIndicator.SetActive(true);
-            Debug.Log("DEATH ENEMY");
-            transform.parent.gameObject.SetActive(false);
-            //Destroy(gameObject, 0.2f);
-            //Destroy(transform.parent.gameObject, 0.2f);
+
+
+            StartCoroutine(nameof(Enemydeath));
         }
 
-      
+
     }
 
 
@@ -239,4 +231,47 @@ public class EnemyReciever : MonoBehaviour
             currentShields = _enemyStatus.enemyDefense;
         }
     }
+    
+    
+    public void SpawnRandomLoot()
+    {
+        if (Random.value < noSpawnChance)
+        {
+            Debug.Log("Nothing this time!...How unfortunate");
+            return;
+        }
+        
+        int Index = Random.Range(0, loot.Count);
+        GameObject enemyLoot = loot[Index];
+
+     
+        enemyLoot.transform.position = gameObject.transform.position;
+    
+        enemyLoot.SetActive(true);
+
+    }
+
+    IEnumerator Enemydeath()
+    {
+        
+        if (_animator != null)
+        {
+            _animator.SetTrigger("ActionTrigger");
+            _animator.SetInteger("ActionId", 1);
+        }
+
+
+        foreach (var obj in _spawnEnemies)
+        {
+            obj.RemoveDefeatedEnemy(this.gameObject);
+        }
+        
+        Debug.Log("DEATH ENEMY");
+        transform.parent.gameObject.SetActive(false);
+       
+        yield return new WaitForSeconds(0.2f);
+        SpawnRandomLoot();
+        Destroy(transform.parent.gameObject, 2f);
+    }
+    
 }

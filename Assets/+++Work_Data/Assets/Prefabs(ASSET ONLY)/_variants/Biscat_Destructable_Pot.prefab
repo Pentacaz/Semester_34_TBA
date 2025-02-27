@@ -874,6 +874,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Biscat_Pot 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5414407129536572637, guid: 1bc5462f544940e4981d336e2825e59c,
+        type: 3}
+      propertyPath: _color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414407129536572637, guid: 1bc5462f544940e4981d336e2825e59c,
+        type: 3}
+      propertyPath: _color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414407129536572637, guid: 1bc5462f544940e4981d336e2825e59c,
+        type: 3}
+      propertyPath: _color.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

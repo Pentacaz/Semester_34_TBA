@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour
     private PlayerInputActions inputActions;
     private InputAction openInventoryAction;
     private InputAction openMenuAction;
-    private PlayerController playerController;
+    private PlayerBaseController playerController;
     private InventoryManager inventoryManager;
     private bool inventoryCanOpen;
     private bool menuCanOpen;
@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour
         inputActions = new PlayerInputActions();
        // openInventoryAction = inputActions.UI.Inventory;
        // openMenuAction = inputActions.UI.Menu;
-        playerController = Component.FindObjectOfType<PlayerController>();
+        playerController = Component.FindObjectOfType<PlayerBaseController>();
         inventoryManager = Component.FindObjectOfType<InventoryManager>();
     }
 
