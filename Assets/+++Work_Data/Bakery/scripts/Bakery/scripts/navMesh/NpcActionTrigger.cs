@@ -31,7 +31,7 @@ public class NpcActionTrigger : MonoBehaviour
                 int listIndex = Random.Range(0, animActions.Count);
 
                 other.GetComponent<NavMeshPatrolBakes>().StopPatrol();
-               // other.GetComponent<NavMeshPatrol>().CallAnimationAction(animActions[listIndex].actionId);
+                other.GetComponent<NavMeshPatrolBakes>().CallAnimationAction(animActions[listIndex].actionId);
                 
                 StartCoroutine(ResumePatrol(other.GetComponent<NavMeshPatrolBakes>(), 
                     Random.Range(animActions[listIndex].waitTime.x, animActions[listIndex].waitTime.y),

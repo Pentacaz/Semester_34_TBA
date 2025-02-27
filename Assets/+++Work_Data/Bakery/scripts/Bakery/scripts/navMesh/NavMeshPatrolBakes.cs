@@ -260,6 +260,20 @@ public class NavMeshPatrolBakes : MonoBehaviour
         animator.SetTrigger(ActionEndTrigger);
     }
 
+    public void AnimationStart()
+    {
+        
+         CallAnimationAction(1);
+         StartCoroutine(AnimationTime());
+    }
+
+    IEnumerator AnimationTime()
+    {
+        CallAnimationAction(2);
+        yield return new WaitForSeconds(8);
+        CallAnimationAction(3);
+    }
+
     #endregion
 
     #region Gizmos

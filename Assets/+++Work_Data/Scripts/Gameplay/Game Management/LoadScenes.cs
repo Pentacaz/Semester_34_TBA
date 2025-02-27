@@ -15,4 +15,10 @@ public class LoadScenes : MonoBehaviour
             SceneManager.LoadScene(scene);
         }
     }
+
+    public void ChangeScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
+
+    }
 }

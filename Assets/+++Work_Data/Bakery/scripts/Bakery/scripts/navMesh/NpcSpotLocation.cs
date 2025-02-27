@@ -10,4 +10,6 @@ public class NpcSpotLocation : MonoBehaviour
     {
         isOccupied = status;
     }
+    
+
 }
