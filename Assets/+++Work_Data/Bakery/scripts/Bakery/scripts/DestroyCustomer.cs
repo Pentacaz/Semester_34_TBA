@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DestroyCustomer : MonoBehaviour
 {
+    
+    // if the customers enter the bin, they will be deleted 
 
     private void OnTriggerEnter(Collider other)
     {

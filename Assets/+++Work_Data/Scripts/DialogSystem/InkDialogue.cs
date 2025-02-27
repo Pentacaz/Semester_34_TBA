@@ -8,6 +8,8 @@ public class InkDialogue : MonoBehaviour
     [SerializeField] private string dialoguePath;
     
     #endregion
+    
+    // gets the path for the right dialogue
     public void StartDialogue()
     {
         if (string.IsNullOrWhiteSpace(dialoguePath))

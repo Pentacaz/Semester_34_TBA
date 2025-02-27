@@ -1,0 +1,339 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &894449080677333215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 535604622097871819}
+  - component: {fileID: 2981068899158774570}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &535604622097871819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894449080677333215}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.005044106, y: 0.0123569975, z: 0.010733475}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5570367931117845790}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2981068899158774570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894449080677333215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f6d5d9de32fefc4980e0188ecf6a00c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterVolume: 1
+  musicVolume: 1
+  SFXVolume: 1
+--- !u!1 &6917875137914056745
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5570367931117845790}
+  - component: {fileID: 2539750867940127555}
+  m_Layer: 0
+  m_Name: FMODEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5570367931117845790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6917875137914056745}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 535604622097871819}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2539750867940127555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6917875137914056745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46109bf3e840f9e4cbf01cec3bc6615f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <music>k__BackingField:
+    Guid:
+      Data1: 1717990569
+      Data2: 1300367034
+      Data3: -767380331
+      Data4: -1322021312
+    Path: event:/Music/Bakery
+  <playerDeath>k__BackingField:
+    Guid:
+      Data1: -1940674774
+      Data2: 1275555333
+      Data3: -1536961918
+      Data4: -1639261443
+    Path: event:/SFX/Player/Player Death
+  <playerWoodSteps>k__BackingField:
+    Guid:
+      Data1: 1314550148
+      Data2: 1237191777
+      Data3: -136430686
+      Data4: 1735451015
+    Path: event:/SFX/Player/Player Wood Steps
+  <playerGrassSteps>k__BackingField:
+    Guid:
+      Data1: 1581580655
+      Data2: 1195476691
+      Data3: 498847362
+      Data4: -1543313478
+    Path: event:/SFX/Player/Player Grass Steps
+  <playerGravelSteps>k__BackingField:
+    Guid:
+      Data1: -589189688
+      Data2: 1142870129
+      Data3: 378914450
+      Data4: -1894147842
+    Path: event:/SFX/Player/Player Gravel Steps
+  <collectItem>k__BackingField:
+    Guid:
+      Data1: 1678841543
+      Data2: 1252900716
+      Data3: -1090916458
+      Data4: -1758060978
+    Path: event:/SFX/Player/Item Collect
+  <dash>k__BackingField:
+    Guid:
+      Data1: 426503608
+      Data2: 1082628201
+      Data3: 1497308307
+      Data4: -1571960086
+    Path: event:/SFX/Player/Dash
+  <combat>k__BackingField:
+    Guid:
+      Data1: -2029447312
+      Data2: 1125656933
+      Data3: 492943241
+      Data4: 1690648071
+    Path: event:/SFX/Player/Combat
+  <beanDeath>k__BackingField:
+    Guid:
+      Data1: -966103176
+      Data2: 1172427841
+      Data3: -1339855981
+      Data4: -55753968
+    Path: event:/SFX/Bean/Bean Death
+  <beanMove>k__BackingField:
+    Guid:
+      Data1: -543985397
+      Data2: 1111607858
+      Data3: -1276714078
+      Data4: -777193857
+    Path: event:/SFX/Bean/Bean Move
+  <breadAttack>k__BackingField:
+    Guid:
+      Data1: -602251566
+      Data2: 1229723364
+      Data3: -1402971215
+      Data4: -2025752321
+    Path: event:/SFX/Bread/Bread Attack
+  <breadDeath>k__BackingField:
+    Guid:
+      Data1: -769053660
+      Data2: 1269215179
+      Data3: 2127396766
+      Data4: -185562613
+    Path: event:/SFX/Bread/Bread Death
+  <breadGrassSteps>k__BackingField:
+    Guid:
+      Data1: -517732961
+      Data2: 1127044742
+      Data3: 638534077
+      Data4: -1057743604
+    Path: event:/SFX/Bread/Bread Grass Steps
+  <breadGravelSteps>k__BackingField:
+    Guid:
+      Data1: 2012004123
+      Data2: 1249332163
+      Data3: 120387480
+      Data4: -1186677834
+    Path: event:/SFX/Bread/Bread Gravel Steps
+  <durstiDeath>k__BackingField:
+    Guid:
+      Data1: -2098425406
+      Data2: 1281613262
+      Data3: 229054393
+      Data4: -477233892
+    Path: event:/SFX/Dursti/Dursti Death
+  <durstiGravelSteps>k__BackingField:
+    Guid:
+      Data1: -5826129
+      Data2: 1324920810
+      Data3: 1750777749
+      Data4: 1558873007
+    Path: event:/SFX/Dursti/Dursti Gravel Steps
+  <durstiGrassSteps>k__BackingField:
+    Guid:
+      Data1: 1362743535
+      Data2: 1256183384
+      Data3: 1271919765
+      Data4: -403017033
+    Path: event:/SFX/Dursti/Dursti Grass Steps
+  <durstiShoot>k__BackingField:
+    Guid:
+      Data1: 272608978
+      Data2: 1178131393
+      Data3: 111691965
+      Data4: 999179585
+    Path: event:/SFX/Dursti/Dursti Shoot
+  <durstiGrowl>k__BackingField:
+    Guid:
+      Data1: -1543423289
+      Data2: 1097801062
+      Data3: 1892485772
+      Data4: -410061124
+    Path: event:/SFX/Dursti/Dusti Growl
+  <canRolling>k__BackingField:
+    Guid:
+      Data1: -1806725445
+      Data2: 1092339935
+      Data3: 272125085
+      Data4: 1712386496
+    Path: event:/SFX/Can Rolling
+  <cans>k__BackingField:
+    Guid:
+      Data1: -2011315313
+      Data2: 1220208761
+      Data3: 1796671880
+      Data4: -370943239
+    Path: event:/SFX/Cans
+  <paperMoving>k__BackingField:
+    Guid:
+      Data1: -2032513332
+      Data2: 1275996877
+      Data3: -2007783265
+      Data4: 89089211
+    Path: event:/SFX/Paper Moving
+  <pebbels>k__BackingField:
+    Guid:
+      Data1: -1245498615
+      Data2: 1168248388
+      Data3: 957889158
+      Data4: -1388532764
+    Path: event:/SFX/Pebbels
+  <glassShatter>k__BackingField:
+    Guid:
+      Data1: -1877947078
+      Data2: 1338196238
+      Data3: 6365611
+      Data4: -1288531689
+    Path: event:/SFX/Glass Shatter
+  <mircowave>k__BackingField:
+    Guid:
+      Data1: -2113411399
+      Data2: 1224122207
+      Data3: -745345134
+      Data4: -2016112411
+    Path: event:/SFX/mircowave
+  <dishes>k__BackingField:
+    Guid:
+      Data1: -826468132
+      Data2: 1332949482
+      Data3: -1619822185
+      Data4: 130560972
+    Path: event:/SFX/Dishes
+  <doorClose>k__BackingField:
+    Guid:
+      Data1: -2125991802
+      Data2: 1183983410
+      Data3: 102071218
+      Data4: -1092448650
+    Path: event:/SFX/Door Close
+  <doorOpen>k__BackingField:
+    Guid:
+      Data1: -1595328113
+      Data2: 1080360187
+      Data3: -1028200790
+      Data4: -1273166876
+    Path: event:/SFX/Door Open
+  <portal>k__BackingField:
+    Guid:
+      Data1: 2068324133
+      Data2: 1076089489
+      Data3: 1526443155
+      Data4: -1735064524
+    Path: event:/SFX/Portal
+  <npcEating>k__BackingField:
+    Guid:
+      Data1: -166869882
+      Data2: 1338839034
+      Data3: 2042515627
+      Data4: 1442875899
+    Path: event:/SFX/Npc Eating
+  <npcWalking>k__BackingField:
+    Guid:
+      Data1: 1314550148
+      Data2: 1237191777
+      Data3: -136430686
+      Data4: 1735451015
+    Path: event:/SFX/Player/Player Wood Steps
+  <rangedAttack>k__BackingField:
+    Guid:
+      Data1: -488765284
+      Data2: 1188480872
+      Data3: 1639323789
+      Data4: -892553090
+    Path: event:/SFX/Ranged Attack
+  <rockShatter>k__BackingField:
+    Guid:
+      Data1: 1582519306
+      Data2: 1077109001
+      Data3: -1580078446
+      Data4: 2004568233
+    Path: event:/SFX/Rock Shatter
+  <healingLake>k__BackingField:
+    Guid:
+      Data1: -1490721680
+      Data2: 1218754959
+      Data3: -1525121602
+      Data4: 589912698
+    Path: event:/SFX/Healing Lake
+  <itemDrop>k__BackingField:
+    Guid:
+      Data1: -1463760179
+      Data2: 1297071394
+      Data3: 1592669583
+      Data4: -645063533
+    Path: event:/SFX/Item Drop

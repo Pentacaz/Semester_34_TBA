@@ -10,6 +10,8 @@ public class NpcBehaviourTrigger : MonoBehaviour
     [SerializeField] private List<AnimAction> animActions;
 
     
+    // the animations has only a chance to be played and is not a 100 % set on being played
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("NPC_ActionPatrol"))

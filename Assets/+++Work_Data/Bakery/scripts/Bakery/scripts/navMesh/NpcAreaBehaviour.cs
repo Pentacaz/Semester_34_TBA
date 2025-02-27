@@ -8,39 +8,36 @@ public class NpcAreaBehaviour : MonoBehaviour
     [SerializeField] private string tagName;
     [SerializeField] private List<NpcSpotLocation> npcSpotLocations;
     private NavMeshAgent navMeshAgent;
-    private NpcSpotLocation npcSpotLocation;
     
-    
-    
+    // if an Npcs enters this area they go to one of the assigned NpcSpotLocations
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(tagName))
         {
-
             for (int i = 0; i < npcSpotLocations.Count; i++)
             {
                 if (!npcSpotLocations[i].isOccupied)
                 {
                     npcSpotLocations[i].ChangeStatus(true);
-                    other.GetComponent<NavMeshPatrolBakes>().SetNavMeshDestination(npcSpotLocations[i]);
+                    navMeshAgent = other.GetComponent<NavMeshAgent>();
+                    NavMeshPatrolBakes navMeshPatrolBakes = other.GetComponent<NavMeshPatrolBakes>();
+
+                    navMeshPatrolBakes.SetNavMeshDestination(npcSpotLocations[i]);
                     
                     if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance + 0.01f)
                     {
-                        navMeshAgent.SetDestination(npcSpotLocation.location.position);
-
+                        navMeshAgent.SetDestination(npcSpotLocations[i].location.position);
                     }
                     break;
                 }
-                /*else
-                {
-                    other.GetComponent<NavMeshPatrolBakes>().CompletedOrder(); 
-                }
-                */
+             
             }
         }
     }
+    
+    /*
 
-  /*  private void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(tagName))
         {
@@ -48,4 +45,14 @@ public class NpcAreaBehaviour : MonoBehaviour
         }
     }
     */
+
+    //UnOccupies all the NpcSpotLocations
+    public void NotOccupied()
+    {
+        for (int i = 0; i < npcSpotLocations.Count; i++)
+        {
+            npcSpotLocations[i].isOccupied = false;
+        }
+    }
+    
 }
