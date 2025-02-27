@@ -1,11 +1,11 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    //private PlayerController player;
-    private PlayerBaseController playerBaseController;
+    private PlayerControllerBakery player;
     private DialogueController dialogueController;
 
     public enum GameMode
@@ -19,10 +19,13 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        //player = FindObjectOfType<PlayerController>();
-        playerBaseController = FindObjectOfType<PlayerBaseController>();
+        player = FindObjectOfType<PlayerControllerBakery>();
         dialogueController = FindObjectOfType<DialogueController>();
+        
+        
     }
+
+    
 
     private void OnEnable()
     {
@@ -31,13 +34,8 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        //if(player)
-           // EnterPlayMode();
-
-           if (playerBaseController)
-           {
-               EnterPlayMode();
-           }
+        if(player)
+            EnterPlayMode();
     }
 
     private void OnDisable()
@@ -54,8 +52,7 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1;
         // In the editor: Unlock with ESC.
         //Cursor.lockState = CursorLockMode.Locked;
-        //player.OnEnable();
-        playerBaseController.OnEnable();
+        player.OnEnable();
     }
 
    public void EnterDialogueMode()
@@ -63,28 +60,26 @@ public class GameController : MonoBehaviour
         // 1 = spiel läuft weiter, 0 = game freeze
         Time.timeScale = 1;
         //Cursor.lockState = CursorLockMode.Locked;
-        //player.OnDisable(); 
-        playerBaseController.OnDisable();
+        player.OnDisable(); 
     }
 
     public void EnterStatePopUpMode()
     {
         
         Time.timeScale = 1;
-        //player.OnDisable(); 
-        //playerBaseController.OnDisable();
+//        player.OnDisable(); 
     }
 
     // inventory
     public void EnterInventoryMode()
     {
         Time.timeScale = 0;
-        //player.OnDisable(); 
-        playerBaseController.OnDisable();
+  //      player.OnDisable(); 
+        
     }
    
     #endregion
-// Metoden aufruf
+// Methoden aufruf
     public void StartDialogue(string dialoguePath)
     {// with find typ of object
         EnterDialogueMode();
@@ -128,6 +123,7 @@ public class GameController : MonoBehaviour
     {
         SetSelectable(lastSelectable);
     }
+    
     public void SetSelectable(Button newSelactable)
     {
         Selectable newSelectable;
@@ -135,7 +131,7 @@ public class GameController : MonoBehaviour
         newSelectable = newSelactable;
 
         //newSelactable.Select();
-        StartCoroutine(DelayNewSelectable(newSelectable));
+        StartCoroutine(DelaySetSelectable(newSelectable));
     }
 
     public void ExitMenu()
@@ -144,10 +140,21 @@ public class GameController : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
     }
 
-    IEnumerator DelayNewSelectable(Selectable newSelectable)
+   
+  /*  
+    public void SetSelectable(Button button)
+    {
+        Selectable selectable = button;
+
+        StartCoroutine(DelaySetSelectable(selectable));
+
+    }
+    */
+
+    IEnumerator DelaySetSelectable(Selectable selectable)
     {
         yield return null;
-        newSelectable.Select();
+        selectable.Select();
     }
 }
 

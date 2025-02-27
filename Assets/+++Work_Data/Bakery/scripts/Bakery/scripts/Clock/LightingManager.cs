@@ -12,7 +12,7 @@ public class LightingManager : MonoBehaviour
 
     [SerializeField, Range(0, 60)] private float timeOfDay;
 
-
+     
     private void Update()
     {
         StartDay();
@@ -21,13 +21,13 @@ public class LightingManager : MonoBehaviour
     public void StartDay()
   {
       
-      
       timeOfDay += Time.deltaTime;
       timeOfDay %= 60;
       UpdateLighting(timeOfDay/60f);
       
   }
 
+    // the lighting changes depending of the time of the day
     private void UpdateLighting(float timePercent)
     {
         RenderSettings.ambientLight = preset.AmbientColor.Evaluate(timePercent);
@@ -36,6 +36,7 @@ public class LightingManager : MonoBehaviour
         if (directionalLight != null)
         {
             directionalLight.color = preset.DirectionalColor.Evaluate(timePercent);
+            // the directionsal light changes it rotation which changes how the day is
             directionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 360f) -90f,170,0));
         }
     }
