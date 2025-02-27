@@ -33022,6 +33022,7 @@ GameObject:
   - component: {fileID: 939447457}
   - component: {fileID: 939447460}
   - component: {fileID: 939447461}
+  - component: {fileID: 939447462}
   m_Layer: 0
   m_Name: highlightedArea
   m_TagString: Untagged
@@ -33160,6 +33161,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e874593c3806b994ca5cde5a2bcf1f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &939447462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939447455}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdd29e6898a91c443bf826a84d896b46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 4782356512125071054}
+  successArea: {fileID: 8394108400290504485}
+  sliderSize: {fileID: 2622263510928865645}
+  resultTextDisplay: {fileID: 1969276127318643573}
+  textObject: {fileID: 3202514998888877199}
+  _animator: {fileID: 4291361985945432661}
+  tolerance: 0.4
+  sliderSpeed: 2
+  inRange: 0
 --- !u!1001 &942806341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66447,7 +66469,7 @@ GameObject:
   - component: {fileID: 1833968876}
   - component: {fileID: 1833968875}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: BakeryCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
