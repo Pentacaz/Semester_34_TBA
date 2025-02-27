@@ -21,7 +21,7 @@ public class PlayerReciever : MonoBehaviour
     public bool _setSpawn;
 
 
-    public VisualEffect healEffect;
+   
     private void Start()
     {
         _uiManager = Component.FindObjectOfType<UiManager>();
@@ -80,7 +80,7 @@ public class PlayerReciever : MonoBehaviour
         {
             int amount = (int)(maxHp * 0.25f);
             currentHp += amount;
-            healEffect.Play();
+       
             // Ensure health doesn't exceed max health
             if (currentHp > maxHp)
             {

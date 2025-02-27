@@ -20,13 +20,13 @@ public class Transport : MonoBehaviour
 
     private void Update()
     {
-        if (_dungeonRoomTracker.canAccessHealing)
+        if ( _dungeonRoomTracker != null && _dungeonRoomTracker.canAccessHealing )
         {
             AddObjectToList(_dungeonRoomTracker.HealArea);
 
         }
 
-        if (_dungeonRoomTracker.canAccessBoss)
+        if ( _dungeonRoomTracker != null &&_dungeonRoomTracker.canAccessBoss )
         {
             spawnPoints.Clear();
             AddObjectToList(_dungeonRoomTracker.BossArea);
