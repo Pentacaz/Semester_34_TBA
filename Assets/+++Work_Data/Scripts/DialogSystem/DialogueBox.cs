@@ -54,6 +54,8 @@ public class DialogueBox : MonoBehaviour
 
     #endregion
 
+    
+    // display the Line of Dialogue 
     public void DisplayText(DialogueLine line)
     {
         if (line.speaker != null)
@@ -67,7 +69,8 @@ public class DialogueBox : MonoBehaviour
 
         DisplayButtons(line.choices);
     }
-
+    
+    // shows all the buttons you can choose your dialogue options with
     private void DisplayButtons(List<Choice> choices)
     {
         // wir legen eine neue selction an
@@ -99,6 +102,8 @@ public class DialogueBox : MonoBehaviour
 
         newSelection.Select();
     }
+    
+    //deletes the choices if not needed
 
     private void ClearChoices()
     {
@@ -107,6 +112,8 @@ public class DialogueBox : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
+    
+    // generates all the buttons for the choices
 
     private List<Button> GenerateChoices(List<Choice> choices)
     {

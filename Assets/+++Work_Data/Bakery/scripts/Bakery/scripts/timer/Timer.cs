@@ -13,14 +13,18 @@ public class Timer : MonoBehaviour
     public GameObject highlightedArea;
     private NavMeshPatrolBakes navMeshPatrol;
     
+    private NpcSpotLocation spotLocation;
 
 
 
      private void Start()
     {
         navMeshPatrol = GetComponent<NavMeshPatrolBakes>();
+        spotLocation = FindObjectOfType<NpcSpotLocation>();
+
     }
 
+     // the timer starts
    public void StartTimer()
     {
         timerStop = false;
@@ -35,6 +39,7 @@ public class Timer : MonoBehaviour
         StartCoroutine(StartTimerTicker());
     }
 
+    
     IEnumerator StartTimerTicker()
     {
         while (timerStop == false)
@@ -44,10 +49,13 @@ public class Timer : MonoBehaviour
 
             if (sliderTimer <- 0)
             {
+                // if the timer hits 0 The Time stops and the customer leaves the bakery  
                 StopTimer(); 
                 navMeshPatrol.CompletedOrder();
-                highlightedArea.SetActive(false);
+//                highlightedArea.SetActive(false);
                 navMeshPatrol.enabled = false;
+                spotLocation.ChangeStatus(false);
+
 
             }
 
