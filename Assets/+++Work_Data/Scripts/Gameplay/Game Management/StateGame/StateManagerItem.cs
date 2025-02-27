@@ -32,7 +32,7 @@ public class StateManagerItem : MonoBehaviour
     
     //referenec to GameController Script (for stop player)
     private GameController _controller;
-    private PlayerController _player;
+    //private PlayerController _player;
 
    
 

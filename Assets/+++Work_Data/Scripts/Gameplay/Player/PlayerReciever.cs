@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PlayerReciever : MonoBehaviour
 {   
-    PlayerController pController;
+    PlayerBaseController pController;
     private UiManager _uiManager;
     public int healCount;
     public int maxHeal;
@@ -18,12 +19,13 @@ public class PlayerReciever : MonoBehaviour
     private Rigidbody _rigidbody;
     public float knockback;
     public bool _setSpawn;
-       
+
+
+    public VisualEffect healEffect;
     private void Start()
     {
-        //playerInfo = GetComponent<PlayerInfo>();
         _uiManager = Component.FindObjectOfType<UiManager>();
-        pController = GetComponent<PlayerController>();
+        pController = GetComponent<PlayerBaseController>();
         _rigidbody = GetComponent<Rigidbody>();
         _invincibilityTimerValue = invincibilityTimer;
         _uiManager.RefreshHealthbar(maxHp,currentHp);
@@ -43,16 +45,16 @@ public class PlayerReciever : MonoBehaviour
         {
             tookDamage = true;
             currentHp -= dmg;
-            Pushback();
+            //Pushback();
 
             if (currentHp > maxHp)
             {
                 currentHp = maxHp;
             }
             _uiManager.RefreshHealthbar(maxHp, currentHp);
-            if (currentHp < 1)
+            if (currentHp <= 0)
             {
-                //pController.AnimationsAction(10);
+               // StartCoroutine(nameof(PlayerDeath));
             }
         }
     }
@@ -78,7 +80,7 @@ public class PlayerReciever : MonoBehaviour
         {
             int amount = (int)(maxHp * 0.25f);
             currentHp += amount;
-
+            healEffect.Play();
             // Ensure health doesn't exceed max health
             if (currentHp > maxHp)
             {
@@ -105,10 +107,27 @@ public class PlayerReciever : MonoBehaviour
         }
     }
 
-    public void Pushback()
-    {
-        print("PUSHED!!!!");
-        _rigidbody.AddForce(-this.gameObject.transform.position * knockback, ForceMode.Impulse);
-    }
     
+    //removed temporarily - caused issues w/ player
+   // public void Pushback()
+   // {
+        //print("PUSHED!!!!");
+        //_rigidbody.AddForce(-this.gameObject.transform.position * knockback, ForceMode.Impulse);
+    //
+    
+    IEnumerator PlayerDeath()
+    {
+        
+        if (pController._animator != null)
+        {
+            pController._animator.SetTrigger("ActionTrigger");
+            pController._animator.SetInteger("ActionId", 1);
+        }
+        
+        
+        Debug.Log("DEATH PLAYER");
+        transform.parent.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+    
+    }
 }

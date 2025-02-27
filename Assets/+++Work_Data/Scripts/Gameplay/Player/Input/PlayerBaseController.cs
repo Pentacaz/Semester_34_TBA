@@ -7,43 +7,18 @@ using UnityEngine.Serialization;
 
 public class PlayerBaseController : MonoBehaviour
 {
-
-
-
-
-
     #region Camera
 
-    [SerializeField] private float speedChangeRate = 10f;
-    [SerializeField] private float rotationSpeed = 10f;
+   
 
     private Quaternion _playerRotation;
     private Quaternion _rotation;
     public Vector3 _playerDirection;
     private Vector3 _relativeDirection;
-    private float _turnSpeed = 8;
     private float _speed = 6;
     public Camera _Vcam;
     public GameObject trail;
-
-    [SerializeField] private Transform cameraTarget;
-
-    [SerializeField] private float verticalCameraRotationMin = -30f;
-    [SerializeField] private float verticalCameraRotationMax = 70f;
-    [SerializeField] private float cameraHorizontalSpeed = 200f;
-    [SerializeField] private float cameraVerticalSpeed = 130f;
-    [SerializeField] private Transform cameraTransform;
-    [SerializeField] private float cameraDistance = 5.0f;
-    [SerializeField] private float cameraRadius = 0.5f;
-
-    [Header("Mouse Settings")] [SerializeField]
-    private float mouseCameraSensitivity = 1f;
-
-    [Header("Controller Settings")] [SerializeField]
-    private float controllerCameraSensitivity = 1f;
-
-    [SerializeField] private bool invertY = true;
-
+    
     #endregion
 
     #region Input
@@ -83,7 +58,7 @@ public class PlayerBaseController : MonoBehaviour
 
     #endregion
 
-    private Animator _animator;
+    public Animator _animator;
     private int _movementSpeedHash;
     private Collider _playerCollider;
 
