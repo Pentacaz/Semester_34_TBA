@@ -51,13 +51,12 @@ public class Cooking : MonoBehaviour
         inRange = _sliderValue >= lowerBound && _sliderValue <= upperBound;
     }
     
-    //Sets different success points after a success pr fail
     public void SetSuccessArea()
     {
         targetAmount = Random.Range(0f, 1f);
         successArea.value = targetAmount;
         
-       // Debug.Log(targetAmount);
+        Debug.Log(targetAmount);
 
         float scalingFactor = 100f;
 
@@ -77,7 +76,6 @@ public class Cooking : MonoBehaviour
         sliderSize.sizeDelta = new Vector2(newSliderWidth, sliderSize.sizeDelta.y);
     }
 
-    //shows Result text
     public IEnumerator ResultTextDisplay(string outcome)
     {
         textObject.SetActive(true);
@@ -86,25 +84,19 @@ public class Cooking : MonoBehaviour
         textObject.SetActive(false);
 
     }
-    
-    // starts the cooking and adds and removes the items accordingly
-    public void CookAction(RemoveItem removeItem)
+
+    public void CookAction()
     {
         if ( inRange)
         {
             StartCoroutine(ResultTextDisplay("Purrfection!"));
             Debug.Log("SUCCESS");
-            FindObjectOfType<GameState>().Add(removeItem.state);
-            FindObjectOfType<GameState>().Remove(removeItem.money);
-
         }
         else
         {
             StartCoroutine(ResultTextDisplay("Cat-astrophe..."));
 
             Debug.Log("FAIL");
-            FindObjectOfType<GameState>().Remove(removeItem.money);
-
         }
     }
 }

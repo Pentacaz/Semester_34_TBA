@@ -28,8 +28,6 @@ public class InventoryManagerBakes : MonoBehaviour
       stateManager = FindObjectOfType<StateManager>();
    }
    
-   
-   // inventory gets refreshed
    public void RefreshInventory()
    {
       List<State> currentStateList = gameState.GetStateList();

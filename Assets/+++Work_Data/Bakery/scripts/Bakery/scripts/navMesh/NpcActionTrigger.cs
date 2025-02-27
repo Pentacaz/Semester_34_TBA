@@ -19,8 +19,6 @@ public class NpcActionTrigger : MonoBehaviour
     public float lineThickness = 3f;
     public Color arrowColor = Color.red;
     
-    
-    // on a trigger the chosen animation starts playing after it ends the customer starts walking again
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(tagName))
