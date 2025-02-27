@@ -14,13 +14,10 @@ public class RemoveItem : MonoBehaviour
     private GameState gameState;
     private Cooking cooking;
     
-    
-    // this script removes and adds different items. Depending on the need of the customer or what you buy at the shop 
-
 
     private void Start()
     {
-        navMeshPatrol = GetComponentInParent<NavMeshPatrolBakes>();
+        navMeshPatrol = GetComponent<NavMeshPatrolBakes>();
         gameState = GetComponent<GameState>();
         cooking = GetComponent<Cooking>();
     }
@@ -30,6 +27,7 @@ public class RemoveItem : MonoBehaviour
         onCollected.Invoke();
         
         FindObjectOfType<GameState>().Remove(state);
+        //gameState.Get(state.id);
 
         Indicator.SetActive(false);
         

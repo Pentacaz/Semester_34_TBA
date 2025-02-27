@@ -15,25 +15,20 @@ public class ClockTimer : MonoBehaviour
     public bool timerStop;
     public GameObject highlightedArea;
 
-    private NpcSpotLocation[] spotLocation;
+    private NpcSpotLocation spotLocation;
 
     
     [SerializeField] private GameObject[] customers;
 
     private ClockTimer clockTimer;
     private float spawnInterval;
-    public LightingManager lightingManager;
-    public NpcAreaBehaviour areaBehaviour;
-    private NavMeshPatrolBakes navMeshPatrol;
+    private LightingManager lightingManager;
     
 
-    
-    
    private void Awake()
    {
-       spotLocation = FindObjectsOfType<NpcSpotLocation>();
-       navMeshPatrol = GetComponent<NavMeshPatrolBakes>();
-       
+       lightingManager = GetComponent<LightingManager>();
+       spotLocation = GetComponent<NpcSpotLocation>();
    }
 
    private void Start()
@@ -41,8 +36,7 @@ public class ClockTimer : MonoBehaviour
         highlightedArea.SetActive(true); 
         
     }
-    
-   // the timer starts 
+
    public void StartTimer()
    {
         sliderTimer = maxTime;
@@ -53,7 +47,7 @@ public class ClockTimer : MonoBehaviour
         highlightedArea.SetActive(false);
 
         
-         // customers spawn in at random
+
         StartCoroutine(StartTimerTicker());
         RandomOrder();
     }
@@ -70,10 +64,6 @@ public class ClockTimer : MonoBehaviour
 
             if (sliderTimer <- 0)
             {
-                //if the timer is 0 or below 0 it disables the lightningmanager -> the day stops
-                lightingManager.enabled = false;
-                // all the Npcs get deleted 
-
                 GameObject[] gos = GameObject.FindGameObjectsWithTag("NPC");
                 foreach (GameObject go in gos)
                 {
@@ -83,8 +73,9 @@ public class ClockTimer : MonoBehaviour
                 }
 
                 StopTimer();
-               // navMeshPatrol.CheckForNpcSpotLocation();
-               areaBehaviour.NotOccupied();
+
+                spotLocation.isOccupied = false;
+
 
             }
             if (timerStop == false)
@@ -96,17 +87,14 @@ public class ClockTimer : MonoBehaviour
         }
     }
 
-    // the timer Stops
     public void StopTimer()
     {
         timerStop = true;
 
         CancelInvoke("RandomOrder"); 
         highlightedArea.SetActive(true);
-
     }
-     
-    // customer spawn at random every 8 to 10 seconds
+
     public void RandomOrder()
     {
         

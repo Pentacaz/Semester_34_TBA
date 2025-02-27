@@ -32,9 +32,6 @@ public class TriggerEventsBakery : MonoBehaviour
             reactOn = NoTag;
         }
     }
-    
-    // if the tag collides with the collider an event gets played 
-    // same if the tag leaves the collider
 
     private void OnTriggerEnter(Collider other)
     {
