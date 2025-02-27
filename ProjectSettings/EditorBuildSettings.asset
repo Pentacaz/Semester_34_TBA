@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/+++Work_Data/Scenes/UI/MainMenu.unity
+    guid: ef277d94839c50441865090abb174f03
+  - enabled: 1
     path: Assets/+++Work_Data/Scenes/Test_Scene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/+++Work_Data/Scenes/VFX_TEST.unity
     guid: ecbab0d5343115041949de51b46aae41
+  - enabled: 1
+    path: Assets/+++Work_Data/Bakery/scripts/Bakery/Scenes/Bakery.unity
+    guid: ee0bc787db084df4ca498393d6e0c833
   m_configObjects: {}
