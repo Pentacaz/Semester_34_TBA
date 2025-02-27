@@ -15,6 +15,7 @@ public class SceneChangeManager : MonoBehaviour
     private bool spawned = true;
     private SaveGameData _saveGameData;
     private GameObject _dungeonIndicator;
+    private GameObject _bakeryIndicator;
     private void Awake()
     {
      
@@ -29,6 +30,7 @@ public class SceneChangeManager : MonoBehaviour
     {
      
         _dungeonIndicator = GameObject.Find("DungeonIndicator");
+        _bakeryIndicator = GameObject.Find("BakeryIndicator");
         spawnPoint = GameObject.FindWithTag("SpawnPoint")?.transform;
         playerContainer.transform.position = spawnPoint.position;
         spawned = true;
@@ -71,10 +73,6 @@ public class SceneChangeManager : MonoBehaviour
                 obj.SetActive(false);
             }
             
-            foreach (GameObject obj in bakeryObjects)
-            {
-                obj.SetActive(true);
-            }
         }
         else
         {
@@ -86,9 +84,20 @@ public class SceneChangeManager : MonoBehaviour
                 obj.SetActive(true);
             }
             
+        }
+
+        if (_bakeryIndicator == null)
+        {
             foreach (GameObject obj in bakeryObjects)
             {
                 obj.SetActive(false);
+            }
+        }
+        else
+        {
+            foreach (GameObject obj in bakeryObjects)
+            {
+                obj.SetActive(true);
             }
         }
     }

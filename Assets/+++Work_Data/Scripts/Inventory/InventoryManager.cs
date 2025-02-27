@@ -39,7 +39,7 @@ public class InventoryManager : MonoBehaviour
             }
          
          
-            if (i < currentStateList.Count)
+            if (inventorySlots != null && i < currentStateList.Count)
             {
                 StateInfo newStateInfo = stateManager.GetStateInfoById(currentStateList[i].id);
                 newStateInfo.amount = currentStateList[i].amount;
