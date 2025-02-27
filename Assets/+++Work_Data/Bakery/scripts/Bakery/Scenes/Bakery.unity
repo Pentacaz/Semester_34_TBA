@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17419308, g: 0.21783538, b: 0.30003923, a: 1}
+  m_IndirectSpecularColor: {r: 0.17419326, g: 0.21783574, b: 0.30004013, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -24276,7 +24276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff566759f0f6dea449f4277f149ab0cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameMode: 4
+  gameMode: 0
   lastSelectable: {fileID: 925987849}
 --- !u!4 &712511603 stripped
 Transform:
@@ -40346,7 +40346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   states:
   - id: money
-    amount: 501
+    amount: 101
   - id: schleim
     amount: 10
   - id: strawberry
@@ -50753,11 +50753,11 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 710790999}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: SetLastSelectable
-        m_Mode: 1
+        m_MethodName: SetSelectable
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 925987849}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -73252,8 +73252,8 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 0.4481132, b: 0.4481132, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
+    m_SelectedColor: {r: 0.7162861, g: 0.71444464, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

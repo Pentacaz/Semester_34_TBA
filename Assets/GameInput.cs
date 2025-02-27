@@ -681,7 +681,7 @@ namespace UnityEngine.InputSystem
                 {
                     ""name"": """",
                     ""id"": ""99b79359-273d-4f71-b64e-acbfc99d45f9"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
