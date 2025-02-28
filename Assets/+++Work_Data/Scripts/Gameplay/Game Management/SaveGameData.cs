@@ -1,17 +1,21 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
 public class SaveGameData : MonoBehaviour
-{//if this fails i WILL start crying
+{
+    //if this fails i WILL start crying
     /// <summary>
     /// basically takes the objects from the list -> translates to player prefs and then saves to json.
     /// call SaveStates("gameObjectsState.json"); to save and   LoadStates("gameObjectsState.json"); to load.
     /// </summary>
+    public static SaveGameData Instance { get; private set; }
+
     [System.Serializable]
     private class GameObjectState
     {
-        public string name;
+        public string name; 
         public bool isActive;
     }
 
@@ -21,83 +25,89 @@ public class SaveGameData : MonoBehaviour
         public List<GameObjectState> gameObjectStates = new List<GameObjectState>();
     }
 
-    // List of GameObjects to save/load
-    public List<GameObject> gameObjectsToSave = new List<GameObject>();
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
-    
     public void SaveStates(string fileName)
     {
-        GameObjectStateCollection collection = new GameObjectStateCollection();
+      
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+        List<GameObject> saveableObjects = new List<GameObject>();
 
-        foreach (GameObject gameObject in gameObjectsToSave)
+        foreach (GameObject gameObject in allObjects)
         {
-            if (gameObject != null)
+            if (gameObject.CompareTag("Saveable"))
             {
-               
-                GameObjectState state = new GameObjectState
-                {
-                    name = gameObject.name,
-                    isActive = gameObject.activeSelf
-                };
-
-              
-                PlayerPrefs.SetInt(gameObject.name + "_ActiveState", state.isActive ? 1 : 0);
-
-               
-                collection.gameObjectStates.Add(state);
+                saveableObjects.Add(gameObject);
             }
-          
         }
 
-       
-        PlayerPrefs.Save();
+        Debug.Log("Found " + saveableObjects.Count + " objects with the 'Saveable' tag.");
 
-        
+        GameObjectStateCollection collection = new GameObjectStateCollection();
+
+        foreach (GameObject gameObject in saveableObjects)
+        {
+            GameObjectState state = new GameObjectState
+            {
+                name = gameObject.name, 
+                isActive = gameObject.activeSelf
+            };
+
+            collection.gameObjectStates.Add(state);
+            Debug.Log("Saving state for " + gameObject.name + ": " + (state.isActive ? "Active" : "Inactive"));
+        }
+
         string json = JsonUtility.ToJson(collection, true);
         File.WriteAllText(Application.persistentDataPath + "/" + fileName, json);
 
         Debug.Log("States saved for " + collection.gameObjectStates.Count + " GameObjects.");
     }
 
-
+    
+    
     public void LoadStates(string fileName)
     {
-       
-        bool loadedFromPlayerPrefs = false;
-        foreach (GameObject gameObject in gameObjectsToSave)
-        {
-            if (gameObject != null && PlayerPrefs.HasKey(gameObject.name + "_ActiveState"))
-            {
-                int activeState = PlayerPrefs.GetInt(gameObject.name + "_ActiveState");
-                gameObject.SetActive(activeState == 1);
-                loadedFromPlayerPrefs = true;
-            }
-        }
-
-        if (loadedFromPlayerPrefs)
-        {
-            Debug.Log("States loaded from PlayerPrefs.");
-            return;
-        }
-
-        // If not found in PlayerPrefs, try to load from JSON file
         string filePath = Application.persistentDataPath + "/" + fileName;
         if (File.Exists(filePath))
         {
             string json = File.ReadAllText(filePath);
             GameObjectStateCollection collection = JsonUtility.FromJson<GameObjectStateCollection>(json);
 
-            foreach (GameObject gameObject in gameObjectsToSave)
+
+           // GameObject[] saveableObjects = GameObject.FindGameObjectsWithTag("Saveable");
+           
+           GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+           List<GameObject> saveableObjects = new List<GameObject>();
+           
+           foreach (GameObject gameObject in allObjects)
+           {
+               if (gameObject.CompareTag("Saveable"))
+               {
+                   saveableObjects.Add(gameObject);
+               }
+           }
+
+            foreach (GameObject gameObject in saveableObjects)
             {
-                if (gameObject != null)
+                foreach (var state in collection.gameObjectStates)
                 {
-                    foreach (var state in collection.gameObjectStates)
+                    if (state.name == gameObject.name) // Match by name
                     {
-                        if (state.name == gameObject.name)
-                        {
-                            gameObject.SetActive(state.isActive);
-                            break;
-                        }
+                        gameObject.SetActive(state.isActive);
+                        Debug.Log("Loaded state for " + gameObject.name + ": " +
+                                  (state.isActive ? "Active" : "Inactive"));
+                        break;
                     }
                 }
             }
@@ -109,7 +119,4 @@ public class SaveGameData : MonoBehaviour
             Debug.LogWarning("No saved states found in JSON file.");
         }
     }
-
-
-   
 }

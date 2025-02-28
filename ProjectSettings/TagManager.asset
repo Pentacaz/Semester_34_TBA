@@ -8,6 +8,12 @@ TagManager:
   - Wall
   - Weapon
   - SpawnPoint
+  - wp
+  - Floor
+  - Bin
+  - NPC
+  - Menu
+  - Saveable
   layers:
   - Default
   - TransparentFX

@@ -16,94 +16,89 @@ public class SceneChangeManager : MonoBehaviour
     private SaveGameData _saveGameData;
     private GameObject _dungeonIndicator;
     private GameObject _bakeryIndicator;
-    private void Awake()
+     private void Start()
     {
-     
-        _saveGameData = FindObjectOfType<SaveGameData>();
+        Debug.Log("SceneLoader started.");
+        
+   
        
-        
-        
+
         SceneManager.sceneLoaded += OnSceneLoaded;
+        InitializeScene();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-     
+        Debug.Log("OnSceneLoaded called for scene: " + scene.name);
+
+
         _dungeonIndicator = GameObject.Find("DungeonIndicator");
         _bakeryIndicator = GameObject.Find("BakeryIndicator");
         spawnPoint = GameObject.FindWithTag("SpawnPoint")?.transform;
+
         playerContainer.transform.position = spawnPoint.position;
-        spawned = true;
-        if (_saveGameData != null)
-        {
-           _saveGameData.LoadStates("gameObjectsState.json");
-        }
+        playerBakeryContainer.transform.position = spawnPoint.position;
+        
+        //SaveGameData.Instance.LoadStates("gameObjectsState.json");
 
-       
+        ControlActivePlayer();
     }
+    
 
-    private void Update()
-    {   ControlActivePlayer();
-        if (spawned)
-        {
-            StartCoroutine(DisableSpawn());
-        }
-    }
-
-    IEnumerator DisableSpawn()
+    private void InitializeScene()
     {
-        yield return new WaitForSeconds(0.5f);
-        spawned = false;
+        ControlActivePlayer();
     }
 
-    private void OnDestroy()
+    private void ControlActivePlayer()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-
-    public void ControlActivePlayer()
-    {
+     
         if (_dungeonIndicator == null)
         {
+          
             playerBakeryContainer.SetActive(true);
             playerContainer.SetActive(false);
-            foreach (GameObject obj in dungeonObjects)
-            {
-                obj.SetActive(false);
-            }
-            
+            SetObjectsActive(dungeonObjects, false);
         }
         else
         {
+           
             playerBakeryContainer.SetActive(false);
             playerContainer.SetActive(true);
-
-            foreach (GameObject obj in dungeonObjects)
-            {
-                obj.SetActive(true);
-            }
-            
+            SetObjectsActive(dungeonObjects, true);
         }
 
         if (_bakeryIndicator == null)
         {
-            foreach (GameObject obj in bakeryObjects)
-            {
-                obj.SetActive(false);
-            }
+          
+            SetObjectsActive(bakeryObjects, false);
         }
         else
         {
-            foreach (GameObject obj in bakeryObjects)
+          
+            SetObjectsActive(bakeryObjects, true);
+        }
+    }
+
+    private void SetObjectsActive(List<GameObject> objects, bool isActive)
+    {
+        foreach (GameObject obj in objects)
+        {
+            if (obj != null)
             {
-                obj.SetActive(true);
+                obj.SetActive(isActive);
             }
         }
     }
 
-
+    private void OnDestroy()
+    {
+        Debug.Log("SceneLoader destroyed.");
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 }
+
+
     
 
 

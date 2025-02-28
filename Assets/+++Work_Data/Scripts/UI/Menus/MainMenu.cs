@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private GameObject container;
     private PlayerControllerBakery _controllerBakery;
+    
     private void Awake()
     {
-        
+        container = GameObject.Find("----Essential_Container----");
     }
 
     private void Start()
@@ -21,6 +23,7 @@ public class MainMenu : MonoBehaviour
     {
 
        SceneManager.LoadScene("Bakery");
+       SetActiveContainer();
        
 
     }
@@ -51,5 +54,13 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
 
     }
+
+    public void SetActiveContainer()
+    {
+        Transform child = container.transform.GetChild(0);
+        child.gameObject.SetActive(true);
+        
+    }
+    
 
 }

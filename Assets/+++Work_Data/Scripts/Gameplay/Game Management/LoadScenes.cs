@@ -18,7 +18,9 @@ public class LoadScenes : MonoBehaviour
 
     public void ChangeScene(string scene)
     {
+        //SaveGameData.Instance.SaveStates("gameObjectsState.json");
         SceneManager.LoadScene(scene);
+        
 
     }
 }
