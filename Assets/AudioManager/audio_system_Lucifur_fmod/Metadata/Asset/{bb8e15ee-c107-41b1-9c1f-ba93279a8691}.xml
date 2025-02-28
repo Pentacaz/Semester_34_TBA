@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{bb8e15ee-c107-41b1-9c1f-ba93279a8691}">
+		<property name="assetPath">
+			<value>Enemy/Bread/Gravel Steps/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3be42432-1d0d-4874-aec6-8611ccdef45f}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9a53bc57-9a82-44dd-9dad-f094c7d18e15}">
+		<property name="assetPath">
+			<value>Enemy/Bread/Grass Steps/Bread_Grass_Crunch_Move_6.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.55200000000000005</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3be42432-1d0d-4874-aec6-8611ccdef45f}</destination>
+		</relationship>
+	</object>
+</objects>
