@@ -38,5 +38,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
 
     }
+    
+    public void Bakery()
+    {
+        SceneManager.LoadScene("Bakery");
+
+    }
 
 }
