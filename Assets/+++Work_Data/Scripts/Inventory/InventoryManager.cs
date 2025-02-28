@@ -8,23 +8,19 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] private InventorySlot[] inventorySlots;
+   public InventorySlot[] inventorySlots;
     private GameState gameState;
     private StateManager stateManager;
 
-
-   
-   
-   
-   
     private void Awake()
     {
         gameState = FindObjectOfType<GameState>();
         stateManager = FindObjectOfType<StateManager>();
-        
-        RefreshInventory();
+
+      RefreshInventory();
     }
-   
+
+  
     public void RefreshInventory()
     {
         List<State> currentStateList = gameState.GetStateList();

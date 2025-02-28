@@ -17,5 +17,6 @@ public class InkDialogue : MonoBehaviour
         }
         
         FindObjectOfType<GameController>().StartDialogue(dialoguePath);
+        FindObjectOfType<GameController>().EnterPlayMode();
     }
 }

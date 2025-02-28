@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
@@ -10,17 +9,17 @@ public class MainMenu : MonoBehaviour
     private PlayerControllerBakery _controllerBakery;
     private void Awake()
     {
-        _controllerBakery = FindObjectOfType<PlayerControllerBakery>();
+        
     }
 
     private void Start()
     {
-        _controllerBakery.OnDisable();
+       
     }
 
     public void StartButton()
     {
-        _controllerBakery.OnEnable();
+
        SceneManager.LoadScene("Bakery");
        
 
@@ -43,8 +42,8 @@ public class MainMenu : MonoBehaviour
     }
 
     public void NewGameButton()
-    {   _controllerBakery.OnEnable();
-        SceneManager.LoadScene("Bakery");
+    {   
+        SceneManager.LoadScene("Story");
     }
 
     public void BackButton()

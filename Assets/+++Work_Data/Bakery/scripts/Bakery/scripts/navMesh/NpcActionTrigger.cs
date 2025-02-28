@@ -69,7 +69,7 @@ public class NpcActionTrigger : MonoBehaviour
         navMeshPatrol.ResumePatrol();
     }
     
-    
+    /*
     private void OnDrawGizmos()
     {
         if (drawGizmos)
@@ -94,4 +94,5 @@ public class NpcActionTrigger : MonoBehaviour
             Handles.DrawAAPolyLine(lineThickness, end, end + right * arrowHeadLenght);
         }
     }
+    */
 }

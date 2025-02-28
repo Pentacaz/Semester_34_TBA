@@ -19,7 +19,7 @@ MonoBehaviour:
     Data3: 1526443155
     Data4: -1735064524
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
@@ -75,7 +75,7 @@ MonoBehaviour:
     Data3: 957889158
     Data4: -1388532764
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -83,26 +83,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
---- !u!114 &-7967984510141655065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Music.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../Downloads/audio_system_Lucifur_fmod.zip/audio_system_Lucifur_fmod/Build/Desktop/Music.bank
-  Name: Music
-  StudioPath: bank:/Music
-  lastModified: 638761624746079414
-  FileSizes:
-  - Name: Desktop
-    Value: 8615008
-  Exists: 1
 --- !u!114 &-7552530470115633309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +102,7 @@ MonoBehaviour:
     Data3: -1339855981
     Data4: -55753968
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -130,7 +110,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1000
---- !u!114 &-7045419925334126838
+--- !u!114 &-7264315177864718532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,15 +120,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
+  m_Name: bank:/Music.bank
   m_EditorClassIdentifier: 
-  Path: ../../../Downloads/audio_system_Lucifur_fmod.zip/audio_system_Lucifur_fmod/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638761624745504843
+  Path: Assets/AudioManager/audio_system_Lucifur_fmod/Build/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 638763337796598524
   FileSizes:
   - Name: Desktop
-    Value: 2594
+    Value: 8615008
   Exists: 1
 --- !u!114 &-6905124231116686533
 MonoBehaviour:
@@ -169,7 +149,7 @@ MonoBehaviour:
     Data3: 498847362
     Data4: -1543313478
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -196,7 +176,7 @@ MonoBehaviour:
     Data3: -767380331
     Data4: -1322021312
   Banks:
-  - {fileID: -7967984510141655065}
+  - {fileID: -7264315177864718532}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -224,7 +204,7 @@ MonoBehaviour:
     Data3: -2007783265
     Data4: 89089211
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -251,7 +231,7 @@ MonoBehaviour:
     Data3: 1750777749
     Data4: 1558873007
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -278,7 +258,7 @@ MonoBehaviour:
     Data3: 1796671880
     Data4: -370943239
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -305,7 +285,7 @@ MonoBehaviour:
     Data3: -745345134
     Data4: -2016112411
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
@@ -313,6 +293,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-2905981866850742665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/AudioManager/audio_system_Lucifur_fmod/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638763337796415238
+  FileSizes:
+  - Name: Desktop
+    Value: 974
+  Exists: 1
 --- !u!114 &-2841604884279139614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,7 +332,7 @@ MonoBehaviour:
     Data3: 111691965
     Data4: 999179585
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -359,7 +359,7 @@ MonoBehaviour:
     Data3: -1090916458
     Data4: -1758060978
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -386,7 +386,7 @@ MonoBehaviour:
     Data3: 2127396766
     Data4: -185562613
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -413,7 +413,7 @@ MonoBehaviour:
     Data3: 2042515627
     Data4: 1442875899
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -440,7 +440,7 @@ MonoBehaviour:
     Data3: 102071218
     Data4: -1092448650
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -467,7 +467,7 @@ MonoBehaviour:
     Data3: 396628663
     Data4: 1192982191
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -494,7 +494,7 @@ MonoBehaviour:
     Data3: 1497308307
     Data4: -1571960086
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -521,7 +521,7 @@ MonoBehaviour:
     Data3: -2129070415
     Data4: 744656449
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -529,6 +529,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-688685075471461324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/AudioManager/audio_system_Lucifur_fmod/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638763337796415238
+  FileSizes:
+  - Name: Desktop
+    Value: 2594
+  Exists: 1
 --- !u!114 &-466714581498342014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,7 +568,7 @@ MonoBehaviour:
     Data3: 229054393
     Data4: -477233892
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -575,7 +595,7 @@ MonoBehaviour:
     Data3: 1639323789
     Data4: -892553090
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -583,6 +603,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-10468114392698075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/AudioManager/audio_system_Lucifur_fmod/Build/Desktop/SFX.bank
+  Name: SFX
+  StudioPath: bank:/SFX
+  lastModified: 638763337796779229
+  FileSizes:
+  - Name: Desktop
+    Value: 2976448
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,10 +636,10 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -7045419925334126838}
-  - {fileID: 2314203710593860728}
-  - {fileID: -7967984510141655065}
-  - {fileID: 1752381487816495384}
+  - {fileID: -688685075471461324}
+  - {fileID: -2905981866850742665}
+  - {fileID: -7264315177864718532}
+  - {fileID: -10468114392698075}
   EditorEvents:
   - {fileID: -6722675907294707212}
   - {fileID: -8580999331561620296}
@@ -639,10 +679,10 @@ MonoBehaviour:
   - {fileID: -965266097096360141}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 2314203710593860728}
+  - {fileID: -2905981866850742665}
   StringsBanks:
-  - {fileID: -7045419925334126838}
-  cacheTime: 638761624746380822
+  - {fileID: -688685075471461324}
+  cacheTime: 638763337796779229
   cacheVersion: 131623
 --- !u!114 &360845649549149981
 MonoBehaviour:
@@ -663,7 +703,7 @@ MonoBehaviour:
     Data3: -1525121602
     Data4: 589912698
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
@@ -690,7 +730,7 @@ MonoBehaviour:
     Data3: 1271919765
     Data4: -403017033
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -717,7 +757,7 @@ MonoBehaviour:
     Data3: -1028200790
     Data4: -1273166876
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -725,26 +765,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &1752381487816495384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/SFX.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../Downloads/audio_system_Lucifur_fmod.zip/audio_system_Lucifur_fmod/Build/Desktop/SFX.bank
-  Name: SFX
-  StudioPath: bank:/SFX
-  lastModified: 638761624746380822
-  FileSizes:
-  - Name: Desktop
-    Value: 2976448
-  Exists: 1
 --- !u!114 &2127876317246030381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,7 +784,7 @@ MonoBehaviour:
     Data3: -1580078446
     Data4: 2004568233
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -772,26 +792,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
---- !u!114 &2314203710593860728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../Downloads/audio_system_Lucifur_fmod.zip/audio_system_Lucifur_fmod/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638761624745364152
-  FileSizes:
-  - Name: Desktop
-    Value: 974
-  Exists: 1
 --- !u!114 &2539820535670915373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,7 +811,7 @@ MonoBehaviour:
     Data3: 120387480
     Data4: -1186677834
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -838,7 +838,7 @@ MonoBehaviour:
     Data3: -136430686
     Data4: 1735451015
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -865,7 +865,7 @@ MonoBehaviour:
     Data3: 6365611
     Data4: -1288531689
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -892,7 +892,7 @@ MonoBehaviour:
     Data3: -1276714078
     Data4: -777193857
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -919,7 +919,7 @@ MonoBehaviour:
     Data3: 1892485772
     Data4: -410061124
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -946,7 +946,7 @@ MonoBehaviour:
     Data3: 1592669583
     Data4: -645063533
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -973,7 +973,7 @@ MonoBehaviour:
     Data3: 272125085
     Data4: 1712386496
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1000,7 +1000,7 @@ MonoBehaviour:
     Data3: -1402971215
     Data4: -2025752321
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1027,7 +1027,7 @@ MonoBehaviour:
     Data3: 638534077
     Data4: -1057743604
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -1054,7 +1054,7 @@ MonoBehaviour:
     Data3: 378914450
     Data4: -1894147842
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -1081,7 +1081,7 @@ MonoBehaviour:
     Data3: -1619822185
     Data4: 130560972
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1108,7 +1108,7 @@ MonoBehaviour:
     Data3: -1536961918
     Data4: -1639261443
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1135,7 +1135,7 @@ MonoBehaviour:
     Data3: 492943241
     Data4: 1690648071
   Banks:
-  - {fileID: 1752381487816495384}
+  - {fileID: -10468114392698075}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1

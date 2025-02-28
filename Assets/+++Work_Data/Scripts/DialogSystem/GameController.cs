@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    private PlayerControllerBakery player;
+    public PlayerControllerBakery player;
     private DialogueController dialogueController;
 
     public enum GameMode
@@ -52,7 +52,7 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1;
         // In the editor: Unlock with ESC.
         //Cursor.lockState = CursorLockMode.Locked;
-        player.OnEnable();
+        //player.OnEnable();
     }
 
    public void EnterDialogueMode()
@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour
         // 1 = spiel läuft weiter, 0 = game freeze
         Time.timeScale = 1;
         //Cursor.lockState = CursorLockMode.Locked;
-        player.OnDisable(); 
+        //  player.OnDisable(); 
     }
 
     public void EnterStatePopUpMode()
@@ -82,8 +82,9 @@ public class GameController : MonoBehaviour
 // Methoden aufruf
     public void StartDialogue(string dialoguePath)
     {// with find typ of object
-        EnterDialogueMode();
+        // EnterDialogueMode();
         dialogueController.StartDialogue(dialoguePath);
+        // player.DisableInput();
     }
 
     public void StartStatePopUp()
@@ -117,6 +118,7 @@ public class GameController : MonoBehaviour
     {// aktion event
         
         EnterPlayMode();
+        // player.OnEnable();
     }
 
     public void SetLastSelectable()
