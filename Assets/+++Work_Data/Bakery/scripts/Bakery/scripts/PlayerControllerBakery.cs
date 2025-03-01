@@ -100,14 +100,25 @@ public class PlayerControllerBakery : MonoBehaviour
     #endregion
     
     #region Unity Event Functios
+
+    void CreateInputActionsIfNoneExist()
+    {
+        if (inputActions != null)
+        {
+            return;
+        }
+        inputActions = new GameInput();
+    }
+    
     private void Awake()
     {
+        CreateInputActionsIfNoneExist();
         characterController = GetComponent<CharacterController>();
         //animator = GetComponentInChildren<>()
         gameController = FindObjectOfType<GameController>();
         upperBody_AnimLayer = animator.GetLayerIndex("UpperBody");
         
-        inputActions = new GameInput();
+
         moveAction = inputActions.Player.Move;
         lookAction = inputActions.Player.Look;
         
@@ -126,18 +137,14 @@ public class PlayerControllerBakery : MonoBehaviour
 
     public void OnEnable()
     {
-        inputActions.Enable();
-       // runAction.performed += ShiftInput;
-        //runAction.canceled += ShiftInput;
-        //crouchAction.performed += CrouchInput;
-        //crouchAction.canceled += CrouchInput;
+        CreateInputActionsIfNoneExist();
+            
+        EnableInput();
         
-
         interactAction.performed += Interact;
 
         openMenu.performed += OpenMenu;
-
-        //attackAction.performed += AttackInput;
+        
     }
 
     private void Update()
@@ -159,7 +166,7 @@ public class PlayerControllerBakery : MonoBehaviour
 
     public void OnDisable()
     {
-        inputActions.Disable();
+      DisableInput();
 
         openMenu.performed -= OpenMenu;
 
@@ -181,20 +188,7 @@ public class PlayerControllerBakery : MonoBehaviour
         moveInput = moveAction.ReadValue<Vector2>();
         lookInput = lookAction.ReadValue<Vector2>();
     }
-
-  
- 
-   
-
-   /* private void AttackInput(InputAction.CallbackContext ctx)
-    {
-        if (ctx.performed)
-        {
-            animator.SetTrigger("ActionTrigger");
-            animator.SetInteger("ActionId",0);
-        }
-    }
-*/
+    
     public void UpperBody_Layer(float weight)
     {
         animator.SetLayerWeight(upperBody_AnimLayer,weight);
@@ -416,8 +410,7 @@ public class PlayerControllerBakery : MonoBehaviour
         float speed = velocity.magnitude;
         
          animator.SetFloat(Hash_MovementSpeed, speed);
-//        animator.SetBool(Hash_Grounded, isGrounded);
-       // animator.SetBool(Hash_Crouched, isCrouched);
+
     }
 
   

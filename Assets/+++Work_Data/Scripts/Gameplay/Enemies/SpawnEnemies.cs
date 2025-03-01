@@ -47,7 +47,7 @@ public class SpawnEnemies : MonoBehaviour
         if (hasEntered && !roundIsActive && currentRound <= totalRounds)
         {
             StartNewRound();
-            _uiManager.uiContainer.SetActive(true);
+            
         }
         
 
@@ -56,7 +56,7 @@ public class SpawnEnemies : MonoBehaviour
             EndRound();
         }
 
-        _uiManager.EnemyCountDisplay(allEnemies.Count, totalRounds);
+       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -96,7 +96,7 @@ public class SpawnEnemies : MonoBehaviour
         Debug.Log("Round " + currentRound + " completed!");
         if (currentRound >= totalRounds)
         {
-            EndGame();
+            FinalRoundOver();
         }
         else
         {
@@ -136,12 +136,12 @@ public class SpawnEnemies : MonoBehaviour
         }
     }
 
-    public void EndGame()
-    {  _uiManager.uiContainer.SetActive(false);
+    public void FinalRoundOver()
+    { 
         noMoreEnemies = true;
         allEnemies.Clear();
         activeEnemies.Clear();
-        Debug.Log("All rounds completed! Game Over.");
+        Debug.Log("All rounds completed!");
         if (!isBoss)
         {
             _dungeonRoomTracker.AddClearedRoom();

@@ -35,12 +35,12 @@ public class SceneChangeManager : MonoBehaviour
         _dungeonIndicator = GameObject.Find("DungeonIndicator");
         _bakeryIndicator = GameObject.Find("BakeryIndicator");
         spawnPoint = GameObject.FindWithTag("SpawnPoint")?.transform;
-
+        _saveGameData = FindObjectOfType<SaveGameData>();
+        
+      
         playerContainer.transform.position = spawnPoint.position;
         playerBakeryContainer.transform.position = spawnPoint.position;
         
-        //SaveGameData.Instance.LoadStates("gameObjectsState.json");
-
         ControlActivePlayer();
     }
     
@@ -53,16 +53,17 @@ public class SceneChangeManager : MonoBehaviour
     private void ControlActivePlayer()
     {
      
-        if (_dungeonIndicator == null)
+        if (_dungeonIndicator == null && _bakeryIndicator!= null)
         {
-          
+            _saveGameData.LoadStates("gameObjectsState.json");
             playerBakeryContainer.SetActive(true);
             playerContainer.SetActive(false);
             SetObjectsActive(dungeonObjects, false);
+           
         }
         else
         {
-           
+          
             playerBakeryContainer.SetActive(false);
             playerContainer.SetActive(true);
             SetObjectsActive(dungeonObjects, true);
@@ -91,6 +92,8 @@ public class SceneChangeManager : MonoBehaviour
         }
     }
 
+
+   
     private void OnDestroy()
     {
         Debug.Log("SceneLoader destroyed.");

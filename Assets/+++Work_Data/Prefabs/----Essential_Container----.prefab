@@ -17304,9 +17304,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 539447444140399822}
+  - component: {fileID: 6975491566714578254}
   - component: {fileID: 6910953264734838374}
   - component: {fileID: 19072895248806680}
-  - component: {fileID: 6975491566714578254}
   - component: {fileID: 6451803759380704524}
   - component: {fileID: 705957152768651048}
   - component: {fileID: 7911758755459794581}
@@ -17336,6 +17336,21 @@ Transform:
   - {fileID: 5484568735377524461}
   m_Father: {fileID: 6133954952122743700}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6975491566714578254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7116784398659138113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff566759f0f6dea449f4277f149ab0cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: []
+  gameMode: 4
+  lastSelectable: {fileID: 8390440107297121280}
 --- !u!114 &6910953264734838374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17453,21 +17468,6 @@ MonoBehaviour:
     name: Honey
     description: cook with it
     sprite: {fileID: 708113840, guid: e56180d561926094ea79c8b5d1c43e92, type: 3}
---- !u!114 &6975491566714578254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7116784398659138113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff566759f0f6dea449f4277f149ab0cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1645563270007283333}
-  gameMode: 4
-  lastSelectable: {fileID: 8390440107297121280}
 --- !u!114 &6451803759380704524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17524,9 +17524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 3699229443043068924}
   healthAmount: {fileID: 0}
-  uiContainer: {fileID: 2101028789386801792}
-  enemyCounter: {fileID: 2956043293482072180}
-  roundCounter: {fileID: 4510982989869598506}
+  deathScreen: {fileID: 0}
 --- !u!114 &8581177852326681548
 MonoBehaviour:
   m_ObjectHideFlags: 0

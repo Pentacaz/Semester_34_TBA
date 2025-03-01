@@ -15,13 +15,10 @@ public class UiManager : MonoBehaviour
     public Image _healthBar;
     public TextMeshProUGUI healthAmount;
     #endregion
-
-    #region Enemy display
-
     
-    public GameObject uiContainer;
-    public TextMeshProUGUI enemyCounter;
-    public TextMeshProUGUI roundCounter;
+    #region DeathScreen
+
+    public GameObject deathScreen;
     #endregion
    
 
@@ -30,11 +27,7 @@ public class UiManager : MonoBehaviour
         _healthBar.fillAmount = currentHp / maxHp;
     }
 
-
-    public void EnemyCountDisplay(int enemyCount, int roundCount)
-    {
-        enemyCounter.SetText($"{enemyCount}");
-        roundCounter.SetText($"{roundCount}");
-    }
+    
+    
 
 }

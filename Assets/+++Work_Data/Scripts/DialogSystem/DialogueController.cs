@@ -89,6 +89,7 @@ public class DialogueController : MonoBehaviour
     private void OpenDialogue()
     {
         dialogueBox.gameObject.SetActive(true);
+     
     }
 
     private void CloseDialogue()

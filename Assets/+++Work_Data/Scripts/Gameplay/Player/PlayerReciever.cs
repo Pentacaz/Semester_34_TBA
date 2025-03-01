@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
 
 public class PlayerReciever : MonoBehaviour
@@ -54,7 +55,7 @@ public class PlayerReciever : MonoBehaviour
             _uiManager.RefreshHealthbar(maxHp, currentHp);
             if (currentHp <= 0)
             {
-               // StartCoroutine(nameof(PlayerDeath));
+               StartCoroutine(nameof(PlayerDeath));
             }
         }
     }
@@ -114,20 +115,23 @@ public class PlayerReciever : MonoBehaviour
         //print("PUSHED!!!!");
         //_rigidbody.AddForce(-this.gameObject.transform.position * knockback, ForceMode.Impulse);
     //
-    
+
     IEnumerator PlayerDeath()
     {
-        
+        pController.DisableInput();
+        Debug.Log("DEATH PLAYER");
         if (pController._animator != null)
         {
             pController._animator.SetTrigger("ActionTrigger");
             pController._animator.SetInteger("ActionId", 1);
         }
-        
-        
-        Debug.Log("DEATH PLAYER");
-        transform.parent.gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.2f);
-    
+
+        yield return new WaitForSeconds(1f);
+        _uiManager.deathScreen.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        pController.EnableInput();
+        _uiManager.deathScreen.SetActive(false);
+        SceneManager.LoadScene("Bakery");
+
     }
 }

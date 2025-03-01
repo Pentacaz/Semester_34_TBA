@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public PlayerControllerBakery player;
+    public PlayerControllerBakery[] player;
     private DialogueController dialogueController;
 
     public enum GameMode
@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        player = FindObjectOfType<PlayerControllerBakery>();
+        player = Resources.FindObjectsOfTypeAll<PlayerControllerBakery>();
         dialogueController = FindObjectOfType<DialogueController>();
         
         
@@ -34,8 +34,11 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        if(player)
+        if (player != null)
+        {
             EnterPlayMode();
+        }
+          
     }
 
     private void OnDisable()
@@ -52,7 +55,11 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1;
         // In the editor: Unlock with ESC.
         //Cursor.lockState = CursorLockMode.Locked;
-        //player.OnEnable();
+        foreach (var cntrol in player)
+        {
+            cntrol.OnEnable();
+        }
+        
     }
 
    public void EnterDialogueMode()
@@ -60,31 +67,45 @@ public class GameController : MonoBehaviour
         // 1 = spiel läuft weiter, 0 = game freeze
         Time.timeScale = 1;
         //Cursor.lockState = CursorLockMode.Locked;
-        //  player.OnDisable(); 
+        foreach (var cntrol in player)
+        {
+            cntrol.OnDisable();
+        }
+        // 
     }
 
     public void EnterStatePopUpMode()
     {
-        
+
         Time.timeScale = 1;
-//        player.OnDisable(); 
+        foreach (var cntrol in player)
+        {
+            cntrol.OnDisable();
+        }
     }
 
     // inventory
     public void EnterInventoryMode()
     {
         Time.timeScale = 0;
-  //      player.OnDisable(); 
-        
+        //player.OnDisable();
+        foreach (var cntrol in player)
+        {
+            cntrol.OnDisable();
+        }
+
     }
-   
+
     #endregion
 // Methoden aufruf
     public void StartDialogue(string dialoguePath)
     {// with find typ of object
         // EnterDialogueMode();
         dialogueController.StartDialogue(dialoguePath);
-        // player.DisableInput();
+        foreach (var cntrol in player)
+        {
+            cntrol.OnDisable();
+        }
     }
 
     public void StartStatePopUp()
@@ -118,7 +139,11 @@ public class GameController : MonoBehaviour
     {// aktion event
         
         EnterPlayMode();
-        // player.OnEnable();
+        foreach (var cntrol in player)
+        {
+            cntrol.OnEnable();
+        }
+     
     }
 
     public void SetLastSelectable()
