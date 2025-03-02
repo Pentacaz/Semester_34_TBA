@@ -1441,7 +1441,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 1.09
+  m_BaseOffset: 0.6
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &8968691139946569321
@@ -1514,6 +1514,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   units:
   - {fileID: 11400000, guid: 27bceea6d629a9f4f8e6e5ade9dde921, type: 2}
+  - {fileID: 11400000, guid: 64ba20d4441d6654bb6863f62652291d, type: 2}
+  - {fileID: 11400000, guid: 6c97111e3fd10a14f8e8e91b7947897d, type: 2}
 --- !u!114 &8413988100113665006
 MonoBehaviour:
   m_ObjectHideFlags: 0

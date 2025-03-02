@@ -46005,6 +46005,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ENEMY_GROUND
       objectReference: {fileID: 0}
+    - target: {fileID: 1057127773430224185, guid: a282eb0e4aa33614190bcab4b4bf84bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1608432579884527121, guid: a282eb0e4aa33614190bcab4b4bf84bb,
         type: 3}
       propertyPath: m_Enabled

@@ -218,6 +218,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   units:
   - {fileID: 11400000, guid: 4bcfc2190f8d8364785ee8a0a64baa85, type: 2}
+  - {fileID: 11400000, guid: ad5070f2b1e177848851b09cfeacebfe, type: 2}
+  - {fileID: 11400000, guid: fbfc8dcb1c3986b439fd2910e2f56906, type: 2}
 --- !u!114 &7713055433642505452
 MonoBehaviour:
   m_ObjectHideFlags: 0

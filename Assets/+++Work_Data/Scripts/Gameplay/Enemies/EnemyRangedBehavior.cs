@@ -281,7 +281,7 @@ public class EnemyRangedBehavior : MonoBehaviour
             
             if (_attackCooldownvalue <= _enemyStatus.enemyAttackCooldown/2)
             {
-                print($"{_attackCooldownvalue}");
+                //print($"{_attackCooldownvalue}");
                 playerHitAreaIndicator.SetActive(true);
             }  else 
             {

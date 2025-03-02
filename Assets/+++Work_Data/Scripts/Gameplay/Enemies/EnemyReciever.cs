@@ -236,6 +236,7 @@ public class EnemyReciever : MonoBehaviour
     
     public void SpawnRandomLoot()
     {
+        
         if (Random.value < noSpawnChance)
         {
             Debug.Log("Nothing this time!...How unfortunate");
@@ -247,7 +248,7 @@ public class EnemyReciever : MonoBehaviour
 
      
         enemyLoot.transform.position = gameObject.transform.position;
-    
+        enemyLoot.transform.parent = null;
         enemyLoot.SetActive(true);
 
     }
@@ -268,11 +269,12 @@ public class EnemyReciever : MonoBehaviour
         }
         
         Debug.Log("DEATH ENEMY");
-        SpawnRandomLoot();
+      
         yield return new WaitForSeconds(0.2f);
-        this.gameObject.SetActive(false);
-        
-        Destroy(transform.parent.gameObject, 3f);
+        SpawnRandomLoot();
+        transform.parent.gameObject.SetActive(false);
+        yield return new WaitForSeconds(5f);
+       Destroy(transform.parent.gameObject);;
     }
     
 }
