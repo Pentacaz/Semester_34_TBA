@@ -4550,6 +4550,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3723315065403030678, guid: 47186816134d0684bbe61d4c19a2c15b,
+        type: 3}
+      propertyPath: damageValues
+      value: 9999
+      objectReference: {fileID: 0}
     - target: {fileID: 4360948956877325348, guid: 47186816134d0684bbe61d4c19a2c15b,
         type: 3}
       propertyPath: m_IsActive

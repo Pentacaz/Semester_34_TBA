@@ -122,6 +122,7 @@ public class PlayerBaseController : MonoBehaviour
 
     public void OnEnable()
     {
+        CreateInputActionsIfNoneExist();
         EnableInput();
 
         _dodgeAction.performed += OnDash;

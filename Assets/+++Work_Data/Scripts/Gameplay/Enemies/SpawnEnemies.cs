@@ -62,7 +62,7 @@ public class SpawnEnemies : MonoBehaviour
 
         }
 
-
+        allEnemies.Remove(null);
         if (roundIsActive && allEnemies.Count == 0)
         {
             EndRound();

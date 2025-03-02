@@ -43,7 +43,6 @@ public class EnemyReciever : MonoBehaviour
 
 
     #region References
-    private SpawnEnemies[] _spawnEnemies;
     private CamBehavior _camBehavior;
     private EnemyStatus _enemyStatus;
     private Rigidbody _rigidbody;
@@ -57,7 +56,6 @@ public class EnemyReciever : MonoBehaviour
         _enemyStatus = GetComponent<EnemyStatus>();
         _camBehavior = GetComponent<CamBehavior>();
         _rigidbody = GetComponent<Rigidbody>();
-        _spawnEnemies = FindObjectsOfType<SpawnEnemies>();
 
     }
 
@@ -255,26 +253,22 @@ public class EnemyReciever : MonoBehaviour
 
     IEnumerator Enemydeath()
     {
-        
+        SpawnEnemies[] _spawnEnemies = FindObjectsOfType<SpawnEnemies>();
+        foreach (var obj in _spawnEnemies)
+        {
+            obj.RemoveDefeatedEnemy(this.gameObject);
+        }
         if (_animator != null)
         {
             _animator.SetTrigger("ActionTrigger");
             _animator.SetInteger("ActionId", 1);
         }
-
-
-        foreach (var obj in _spawnEnemies)
-        {
-            obj.RemoveDefeatedEnemy(this.gameObject);
-        }
+        
         
         Debug.Log("DEATH ENEMY");
       
         yield return new WaitForSeconds(0.2f);
         SpawnRandomLoot();
         transform.parent.gameObject.SetActive(false);
-        yield return new WaitForSeconds(5f);
-       Destroy(transform.parent.gameObject);;
     }
-    
 }

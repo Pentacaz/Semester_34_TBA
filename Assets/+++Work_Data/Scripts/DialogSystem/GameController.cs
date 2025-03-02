@@ -86,7 +86,10 @@ public class GameController : MonoBehaviour
         {
             foreach (var cntrol in player)
             {
-                cntrol.OnEnable();
+                if (cntrol != null)
+                {
+                    cntrol.OnEnable();
+                }
             }
         }
         else if (_dungeonIndicator != null)
