@@ -63,12 +63,18 @@ public class SpawnEnemies : MonoBehaviour
         }
 
         allEnemies.Remove(null);
+        for (int i = allEnemies.Count - 1; i >= 0; i--)
+        {
+            if (allEnemies[i].GetComponent<EnemyReciever>().IsDead)
+            {
+                 allEnemies.RemoveAt(i);
+            }
+        }
+        
         if (roundIsActive && allEnemies.Count == 0)
         {
             EndRound();
         }
-
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -142,16 +148,6 @@ public class SpawnEnemies : MonoBehaviour
         }
 
         Debug.Log("Spawned " + numberOfEnemiesToSpawn + " enemies for round " + currentRound);
-    }
-
-    public void RemoveDefeatedEnemy(GameObject enemy)
-    {
-        if (allEnemies.Contains(enemy))
-        {
-            allEnemies.Remove(enemy);
-            activeEnemies.Remove(enemy);
-            Debug.Log("Removed defeated enemy from the list.");
-        }
     }
 
     public void FinalRoundOver()
