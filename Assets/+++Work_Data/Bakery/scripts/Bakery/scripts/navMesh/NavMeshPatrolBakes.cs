@@ -260,11 +260,18 @@ public class NavMeshPatrolBakes : MonoBehaviour
         animator.SetTrigger(ActionEndTrigger);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("wp"))
+        {
+            CallAnimationAction(1);
+            StartCoroutine(AnimationTime());
+        }
+    }
+
     public void AnimationStart()
     {
-        
-         CallAnimationAction(1);
-         StartCoroutine(AnimationTime());
+       
     }
 
     IEnumerator AnimationTime()

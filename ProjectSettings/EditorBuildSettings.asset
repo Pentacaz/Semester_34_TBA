@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/+++Work_Data/Scenes/VFX_TEST.unity
     guid: ecbab0d5343115041949de51b46aae41
+  - enabled: 1
+    path: Assets/+++Work_Data/Scenes/UI/Options.unity
+    guid: d9d8c5006225fd643b089e136df97b78
   m_configObjects: {}
