@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/+++Work_Data/Bakery/scripts/Bakery/Scenes/Bakery.unity
     guid: ee0bc787db084df4ca498393d6e0c833
   - enabled: 1
-    path: Assets/+++Work_Data/Scenes/Test_Scene.unity
+    path: Assets/+++Work_Data/Scenes/Dungeon.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 0
     path: Assets/+++Work_Data/Scenes/VFX_TEST.unity

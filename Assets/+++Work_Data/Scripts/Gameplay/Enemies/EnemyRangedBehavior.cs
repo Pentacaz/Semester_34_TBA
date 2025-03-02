@@ -84,7 +84,7 @@ public class EnemyRangedBehavior : MonoBehaviour
     {
         if (!lockedIn)
         {
-            playerHitAreaIndicator.transform.position = player.transform.position;
+            playerHitAreaIndicator.transform.position = player.transform.position + new Vector3(0, 0.2f, 0);
         }
       
         

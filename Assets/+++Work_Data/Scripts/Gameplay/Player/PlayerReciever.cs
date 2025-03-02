@@ -126,8 +126,10 @@ public class PlayerReciever : MonoBehaviour
             pController._animator.SetInteger("ActionId", 1);
         }
 
-        yield return new WaitForSeconds(1f);
+      
         _uiManager.deathScreen.SetActive(true);
+        currentHp = maxHp;
+        _uiManager.RefreshHealthbar(maxHp, currentHp);
         yield return new WaitForSeconds(2f);
         pController.EnableInput();
         _uiManager.deathScreen.SetActive(false);

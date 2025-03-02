@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.VFX;
+using WaitForSeconds = UnityEngine.WaitForSeconds;
 
 public class EnemyReciever : MonoBehaviour
 {
@@ -267,11 +268,11 @@ public class EnemyReciever : MonoBehaviour
         }
         
         Debug.Log("DEATH ENEMY");
-        transform.parent.gameObject.SetActive(false);
-       
-        yield return new WaitForSeconds(0.2f);
         SpawnRandomLoot();
-        Destroy(transform.parent.gameObject, 2f);
+        yield return new WaitForSeconds(0.2f);
+        this.gameObject.SetActive(false);
+        
+        Destroy(transform.parent.gameObject, 3f);
     }
     
 }
