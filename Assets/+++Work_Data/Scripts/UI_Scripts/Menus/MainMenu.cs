@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     private GameObject container;
-    
+    public GameObject options;
+
     
     private void Awake()
     {
@@ -36,13 +37,14 @@ public class MainMenu : MonoBehaviour
 
     public void CreditsButton()
     {
-        SceneManager.LoadScene("Credits");
+        
     }
 
     public void OptionsButton()
     {
-        SceneManager.LoadScene("Options");
-
+     
+        options.SetActive(true);
+      
     }
 
     public void NewGameButton()
@@ -53,7 +55,8 @@ public class MainMenu : MonoBehaviour
     public void BackButton()
     {
         SceneManager.LoadScene("MainMenu");
-
+        options.SetActive(false);
+   
     }
 
     public void SetActiveContainer()
