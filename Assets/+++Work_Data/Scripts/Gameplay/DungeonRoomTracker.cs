@@ -15,11 +15,20 @@ public class DungeonRoomTracker : MonoBehaviour
     private PlayerReciever _playerReciever;
     private void Awake()
     {
+        
         _playerReciever = GetComponent<PlayerReciever>();
+    }
+
+    private void Start()
+    {
+      
     }
 
     private void Update()
     {
+        HealArea = GameObject.Find("SPAWNPOINT_ROOM_HEAL").transform;
+        BossArea = GameObject.Find("SPAWNPOINT_ROOM_FINAL").transform;
+        
         if (_playerReciever.currentHp != _playerReciever.maxHp)
         {
             canAccessHealing = true;

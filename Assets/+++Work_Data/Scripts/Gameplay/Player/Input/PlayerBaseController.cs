@@ -8,7 +8,18 @@ using UnityEngine.Serialization;
 public class PlayerBaseController : MonoBehaviour
 {
     #region Camera
+    //only relevant for bakery ---
+    [SerializeField] private Transform cameraTarget;
+    private Vector2 cameraRotation;
+   
+    [Header("Mouse Settings")]
+    [Range(0f,2f)]
+    [SerializeField] private float mouseCameraSensitivity = 1f;
 
+    [Header("Controller Settings")]
+    [Range(0f,2f)]
+    [SerializeField] private float controllerCameraSensitivity = 1f;
+    [SerializeField] private bool invertY = true;
    
 
     private Quaternion _playerRotation;
@@ -31,6 +42,7 @@ public class PlayerBaseController : MonoBehaviour
     private InputAction _dodgeAction;
     private InputAction _engageAction;
     private InputAction _attackAction;
+    private InputAction _openMenu;
 
 
     #endregion
@@ -55,23 +67,32 @@ public class PlayerBaseController : MonoBehaviour
     public float pushBackForce = 1.0f;
 
     #endregion
-
+ 
     #endregion
 
     public Animator _animator;
+    public GameObject exitMenu;
     private int _movementSpeedHash;
     private Collider _playerCollider;
 
-    private Cooking _cooking;
+   
     private PlayerCombatController _playerCombatController;
-
+    private GameController gameController;
+    private GameObject _dungeonIndicator;
+    private GameObject _bakeryIndicator;
     public int engageId;
 
-    private void Awake()
+    
+    void CreateInputActionsIfNoneExist()
     {
-
-
-
+        if (_inputActions != null)
+        {
+            return;
+        }
+        _inputActions = new PlayerInputActions();
+    }
+    private void Awake()
+    {   CreateInputActionsIfNoneExist();
         _inputActions = new PlayerInputActions();
 
         moveAction = _inputActions.Player.Move;
@@ -79,6 +100,8 @@ public class PlayerBaseController : MonoBehaviour
         _dodgeAction = _inputActions.Player.Dash;
         _engageAction = _inputActions.Player.Engage;
         _attackAction = _inputActions.Player.Attack;
+        _openMenu = _inputActions.Player.Menu;
+        
 
 
     }
@@ -91,8 +114,7 @@ public class PlayerBaseController : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
         _movementSpeedHash = Animator.StringToHash("MovementSpeed");
         _playerCombatController = GetComponent<PlayerCombatController>();
-        _cooking = GameObject.FindObjectOfType<Cooking>();
-
+     
 
 
     }
@@ -103,11 +125,8 @@ public class PlayerBaseController : MonoBehaviour
         EnableInput();
 
         _dodgeAction.performed += OnDash;
-        //_dodgeAction.canceled += OnDash;
-
         _attackAction.performed += OnBaseAttack;
-        //_attackAction.canceled += OnBaseAttack;
-
+        _openMenu.performed += OpenMenu;
 
         _engageAction.performed += Interact;
 
@@ -116,7 +135,8 @@ public class PlayerBaseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        _bakeryIndicator = GameObject.Find("BakeryIndicator");
+        _dungeonIndicator = GameObject.Find("DungeonIndicator");
         ReadInput();
         AnimationSetUp(_currentVelocity);
 
@@ -129,10 +149,7 @@ public class PlayerBaseController : MonoBehaviour
         OnMove(moveInput);
     }
 
-    private void LateUpdate()
-    {
-        OnLook(lookInput);
-    }
+   
 
 
     public void OnDisable()
@@ -144,11 +161,14 @@ public class PlayerBaseController : MonoBehaviour
 
         _attackAction.performed -= OnBaseAttack;
         _attackAction.canceled -= OnBaseAttack;
+        
+        _openMenu.performed -= OpenMenu;
+       
     }
 
     private void OnDash(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed)
+        if (ctx.performed && _dungeonIndicator!= null)
         {
             trail.SetActive(true);
             isDashing = true;
@@ -208,7 +228,7 @@ public class PlayerBaseController : MonoBehaviour
 
     private void OnBaseAttack(InputAction.CallbackContext ctx)
     {
-        if (_playerCombatController.canAttack)
+        if (_dungeonIndicator!= null && _playerCombatController.canAttack)
         {
             if (ctx.performed)
             {
@@ -228,7 +248,7 @@ public class PlayerBaseController : MonoBehaviour
 
     private void OnHeavyAttack(InputAction.CallbackContext ctx)
     {
-        if (_playerCombatController.canHeavyAttack)
+        if (_dungeonIndicator!= null && _playerCombatController.canHeavyAttack)
         {
             if (ctx.performed)
             {
@@ -352,36 +372,28 @@ public class PlayerBaseController : MonoBehaviour
 
     #endregion
 
-    public void OnLook(Vector2 lookInput)
+    private void OpenMenu(InputAction.CallbackContext ctx)
     {
-
-    }
-
-    private float NormalizeAngle(float angle)
-    {
-        angle %= 360;
-
-        if (angle < 0)
+        if (ctx.performed)
         {
-            angle += 360;
+            
+            exitMenu.SetActive(!exitMenu.activeInHierarchy);
+            if (exitMenu.activeInHierarchy)
+            {
+                
+                moveAction.Disable();
+                gameController.SetLastSelectable();
+            
+            }
+            else
+            {
+                moveAction.Enable();
+                gameController.SetLastSelectable();
+            }
         }
 
-        if (angle > 180)
-        {
-            angle -= 360;
-        }
-
-        return angle;
-    }
-
-    private bool IsMouseLook()
-    {
-        return lookAction.activeControl != null && lookAction.activeControl.device.name == "Mouse";
-    }
-
-    private bool IsControllerLook()
-    {
-        return lookAction.activeControl != null && lookAction.activeControl.device.name == "Gamepad";
+       
+        
     }
 
     void ReadInput()

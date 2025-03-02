@@ -10,14 +10,14 @@ public class SpawnEnemies : MonoBehaviour
     #region enemy spawn
 
     public List<Transform> spawnPositions;
-    public List<GameObject> enemyPrefabs; 
-    public List<GameObject> activeEnemies; 
-    public int numberOfEnemiesToSpawn = 5; 
-    public int totalRounds = 3; 
+    public List<GameObject> enemyPrefabs;
+    public List<GameObject> activeEnemies;
+    public int numberOfEnemiesToSpawn = 5;
+    public int totalRounds = 3;
     public int currentRound = 1;
     public bool roundIsActive = false;
     public bool noMoreEnemies;
-    public List<GameObject> allEnemies; 
+    public List<GameObject> allEnemies;
     public Collider triggerCollider;
     public bool hasEntered;
     public bool isBoss = false;
@@ -25,17 +25,28 @@ public class SpawnEnemies : MonoBehaviour
     public float cooldowntimervalue;
 
     private DungeonRoomTracker _dungeonRoomTracker;
+
+    #endregion
+
+    #region Indicator
+
+
+    public List<GameObject> ToSetInactiveAtStart;
+    public List<GameObject> ToBeSetActiveAtStart;
+    public List<GameObject> ToBeSetActivAtEnd;
+    public List<GameObject> ToBeSetInactiveAtEnd;
+
     #endregion
 
     private UiManager _uiManager;
-    
+
     private void Awake()
-    {   
+    {
         _uiManager = FindObjectOfType<UiManager>();
         triggerCollider = GetComponent<Collider>();
-        _dungeonRoomTracker = FindObjectOfType<DungeonRoomTracker>();
+     
     }
-    
+
     private void Start()
     {
         AddToEnemiesList();
@@ -44,19 +55,20 @@ public class SpawnEnemies : MonoBehaviour
 
     private void Update()
     {
+        _dungeonRoomTracker = FindObjectOfType<DungeonRoomTracker>();
         if (hasEntered && !roundIsActive && currentRound <= totalRounds)
         {
             StartNewRound();
-            
+
         }
-        
+
 
         if (roundIsActive && allEnemies.Count == 0)
         {
             EndRound();
         }
 
-       
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -64,6 +76,8 @@ public class SpawnEnemies : MonoBehaviour
         if (!isBoss && other.CompareTag("Player") && !roundIsActive && currentRound <= totalRounds)
         {
             hasEntered = true;
+            SetActiveStart();
+            SetInactiveStart();
             triggerCollider.enabled = false;
         }
     }
@@ -82,12 +96,16 @@ public class SpawnEnemies : MonoBehaviour
     }
 
     public void StartNewRound()
-    {
+    {  
+        
+        
         hasEntered = false;
         roundIsActive = true;
         Debug.Log("Starting Round " + currentRound);
         PlaceEnemies();
         AddToEnemiesList();
+
+
     }
 
     public void EndRound()
@@ -137,15 +155,57 @@ public class SpawnEnemies : MonoBehaviour
     }
 
     public void FinalRoundOver()
-    { 
+    {
+        _dungeonRoomTracker.AddClearedRoom();
         noMoreEnemies = true;
         allEnemies.Clear();
         activeEnemies.Clear();
+       SetActiveEnd();
+       SetInactiveEnd();
         Debug.Log("All rounds completed!");
-        if (!isBoss)
+     
+          
+        
+    }
+
+    public void SetActiveStart()
+    {
+        foreach (var obj in ToBeSetActiveAtStart)
         {
-            _dungeonRoomTracker.AddClearedRoom();
+            obj.SetActive(true);
         }
     }
+
+    public void SetActiveEnd()
+    {
+        foreach (var obj in ToBeSetActivAtEnd)
+        {
+            obj.SetActive(true);
+        }
+    }
+
+    public void SetInactiveStart()
+    {
+        foreach (var obj in ToSetInactiveAtStart)
+        {
+            obj.SetActive(false);
+        }
+    }
+
+
+    public void SetInactiveEnd()
+    {
+        foreach (var obj in ToBeSetInactiveAtEnd)
+        {
+            obj.SetActive(false);
+        }
+    }
+    
+       
+    
+   
+ 
+
+
 }
 

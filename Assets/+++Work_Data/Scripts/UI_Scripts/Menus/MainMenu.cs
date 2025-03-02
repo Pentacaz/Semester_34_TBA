@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     private GameObject container;
-    private PlayerControllerBakery _controllerBakery;
+    
     
     private void Awake()
     {

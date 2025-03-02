@@ -76,7 +76,7 @@ public class PlayerControllerBakery : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 lookInput;
     
-    private Quaternion characterTargetRotation = Quaternion.identity;
+  private Quaternion characterTargetRotation = Quaternion.identity;
 
     private Vector3 lastMovement;
     private Vector2 cameraRotation;
