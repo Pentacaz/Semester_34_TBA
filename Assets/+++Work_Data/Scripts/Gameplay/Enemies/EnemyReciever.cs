@@ -49,6 +49,7 @@ public class EnemyReciever : MonoBehaviour
     public Animator _animator;
     public List<GameObject> loot;
     public float noSpawnChance = 0.1f;
+    public bool IsDead = false;
     #endregion
 
     private void Awake()
@@ -56,7 +57,7 @@ public class EnemyReciever : MonoBehaviour
         _enemyStatus = GetComponent<EnemyStatus>();
         _camBehavior = GetComponent<CamBehavior>();
         _rigidbody = GetComponent<Rigidbody>();
-
+        IsDead = false;
     }
 
     private void Start()
@@ -248,27 +249,22 @@ public class EnemyReciever : MonoBehaviour
         enemyLoot.transform.position = gameObject.transform.position;
         enemyLoot.transform.parent = null;
         enemyLoot.SetActive(true);
-
     }
 
     IEnumerator Enemydeath()
     {
-        SpawnEnemies[] _spawnEnemies = FindObjectsOfType<SpawnEnemies>();
-        foreach (var obj in _spawnEnemies)
-        {
-            obj.RemoveDefeatedEnemy(this.gameObject);
-        }
+        IsDead = true;
         if (_animator != null)
         {
             _animator.SetTrigger("ActionTrigger");
             _animator.SetInteger("ActionId", 1);
         }
-        
-        
         Debug.Log("DEATH ENEMY");
-      
+        
         yield return new WaitForSeconds(0.2f);
         SpawnRandomLoot();
         transform.parent.gameObject.SetActive(false);
+        yield return new WaitForSeconds(5.0f);
+        Destroy(transform.parent.gameObject);
     }
 }
