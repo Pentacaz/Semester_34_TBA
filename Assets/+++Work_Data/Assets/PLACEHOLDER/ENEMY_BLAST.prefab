@@ -210,7 +210,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 1.54
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &5352152260763948573
@@ -305,6 +305,7 @@ MonoBehaviour:
   - {fileID: 765452048338664388}
   - {fileID: 8016316282523428585}
   noSpawnChance: 0.1
+  IsDead: 1
 --- !u!54 &3828806199240855703
 Rigidbody:
   m_ObjectHideFlags: 0
