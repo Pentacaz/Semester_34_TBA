@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/++++WorkData/story/Story.unity
     guid: 47fb2795f29ff3d4dbf65345328e6880
   - enabled: 1
-    path: Assets/+++Work_Data/Bakery/scripts/Bakery/Scenes/Bakery.unity
+    path: Assets/++++WorkData/Scene/Finished/Bakery.unity
     guid: ee0bc787db084df4ca498393d6e0c833
   - enabled: 1
     path: Assets/++++WorkData/Scene/Finished/Dungeon.unity
